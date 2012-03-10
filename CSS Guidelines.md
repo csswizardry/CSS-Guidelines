@@ -1,17 +1,20 @@
 # General CSS notes, advice and guidelines
 
+[Follow me on Twitter](http://twitter.com/csswizardry) and [tweet these guidelines](https://twitter.com/intent/tweet?text=CSS+Guidelines+by+%40csswizardry%3A+https://github.com/csswizardry/CSS-Guidelines/blob/master/CSS-Guidelines.md).
+
 
 ## CSS documents
 
-We maintain a table of contents at the top of each CSS file which maps to sections in the document. Each section is prefixed with a $ symbol which means that doing a find for $[section name] will only yield results that are sections.
+We maintain a table of contents at the top of each CSS file which maps to sections in the document. Each section is prefixed with a `$` symbol which means that doing a find for `$[section name]` will only yield results that are sections.
 
-We use multi-line CSS to help with version control (diffing single line CSS is a nightmare).
+We use multi-line CSS to help with version control (diffing single line CSS is a nightmare) and we order CSS declarations by relevance, **not** alphabetically.
 
-We order CSS declarations by relevance, **not** alphabetically.
+For an example of our preferred CSS file formatting and structure please see [github.com/csswizardry/vanilla/&hellip;/style.css](http://github.com/csswizardry/vanilla/blob/master/css/style.css)
 
-For an example of our preferred CSS file formatting and structure please see github.com/csswizardry/vanilla/blob/master/css/style.css
+**Read:**
 
-Read: coding.smashingmagazine.com/2011/08/26/writing-css-for-others jasoncale.com/articles/5-dont-format-your-css-onto-one-line
+* [coding.smashingmagazine.com/&hellip;/writing-css-for-others](http://coding.smashingmagazine.com/2011/08/26/writing-css-for-others)
+* [jasoncale.com/&hellip;/5-dont-format-your-css-onto-one-line](http://jasoncale.com/articles/5-dont-format-your-css-onto-one-line)
 
 
 ## Comments
@@ -38,7 +41,7 @@ Also write vendor prefixed CSS so that colons all line up, thus:
        -moz-border-radius:4px;
             border-radius:4px;
 
-This means that we can quickly scan down and see that they are all set to 4px, but more importantly--if our text editor supports it--we can type in columns to change all the values at once.
+This means that we can quickly scan down and see that they are all set to 4px, but more importantly&mdash;if our text editor supports it&mdash;we can type in columns to change all the values at once.
 
 
 ## Building components
@@ -48,18 +51,21 @@ When building a new component write markup **before** CSS. This means you can vi
 
 ## OOCSS
 
-I’m not sure OOCSS is necessarily the best term for the way we build components, but try and keep a DRY, OO frame of mind.
+When building components try and keep a DRY, OO frame of mind.
 
 Instead of building dozens of unique components, try and spot repeated design patterns abstract them; build these skeletons as base ‘objects’ and then peg classes onto these to extend their styling for more unique circumstances.
 
 If you have to build a new component split it into structure and skin; build the structure of the component using very generic classes so that we can reuse that construct and then use more specific classes to skin it up and add design treatments.
 
-Read: csswizardry.com/2011/09/the-nav-abstraction stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code
+**Read:**
+
+* [csswizardry.com/&hellip;/the-nav-abstraction](http://csswizardry.com/2011/09/the-nav-abstraction)
+* [stubbornella.org/&hellip;/the-media-object-saves-hundreds-of-lines-of-code](http://stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code)
 
 
 ## Layout
 
-All components should be left totally free of widths; your components should always remain fluid an their widths should be governed by a grid system.
+All components should be left totally free of widths; your components should always remain fluid and their widths should be governed by a grid system.
 
 Heights should **never** be be applied to elements. Heights should only be applied to things which had dimensions _before_ they entered the site (i.e. images and sprites). Never ever set heights on `p`s, `ul`s, `div`s, anything. You can normally achieve the desierd effect with line-heights which are far more flexible.
 
@@ -72,7 +78,9 @@ You should never apply any styles to a grid item, they are for layout purposes o
 
 We use a combination of methods for sizing UIs. Percentages, pixels, ems, rems and nothing at all.
 
-Read: csswizardry.com/2011/12/measuring-and-sizing-uis-2011-style
+**Read:**
+
+* [csswizardry.com/&hellip;/measuring-and-sizing-uis-2011-style](http://csswizardry.com/2011/12/measuring-and-sizing-uis-2011-style)
 
 
 ## Font sizing
@@ -83,7 +91,9 @@ We want to avoid defining font sizes over and over; to achieve this we have a pr
 
 Before writing another font-size declaration, see if a class for it already exists.
 
-Read: csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css
+**Read:**
+
+* [csswizardry.com/&hellip;/pragmatic-practical-font-sizing-in-css](http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css)
 
 
 ## Shorthand
@@ -109,7 +119,10 @@ Make sure styles aren’t dependent on location where possible, and make sure se
 
 **Remember:** classes are neither semantic or insemantic; they are sensible or insensible! Stop stressing about ‘semantic’ class names and pick something sensible and futureproof.
 
-Read: speakerdeck.com/u/csswizardry/p/breaking-good-habits csswizardry.com/2011/09/writing-efficient-css-selectors
+**Read:**
+
+* [speakerdeck.com/&hellip;/breaking-good-habits](http://speakerdeck.com/u/csswizardry/p/breaking-good-habits)
+* [csswizardry.com/&hellip;/writing-efficient-css-selectors](http://csswizardry.com/2011/09/writing-efficient-css-selectors)
 
 ### Over-qualified selectors
 
@@ -121,7 +134,9 @@ Another example of an over-qualified selector might be `ul.nav li a{}`. As above
 
 Whilst it is true that browsers will only ever keep getting faster at rendering CSS, efficiency is something we could do to keep an eye on. Short selectors, not using the universal (`*{}`) selector and avoiding more complex CSS3 selectors should help circumvent these problems.
 
-See csswizardry.com/2011/09/writing-efficient-css-selectors
+**Read:**
+
+* [csswizardry.com/2011/09/writing-efficient-css-selectors](http://csswizardry.com/2011/09/writing-efficient-css-selectors)
 
 
 ## Be explicit, don’t make assumptions
@@ -141,7 +156,9 @@ Do not use IDs in CSS **at all**. They can be used in your markup for JS and fra
 
 Classes come with the benefit of being reusable (even if we don’t want to, we can) and they have a nice, low specificity.
 
-Read: csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class
+**Read:**
+
+* [csswizardry.com/&hellip;/when-using-ids-can-be-a-pain-in-the-class](http://csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class)
 
 
 ## `!important`
@@ -159,7 +176,7 @@ For example, using `.dropdown-nav li:hover ul{ top:37px; }` to move a dropdown t
 
 Instead we should use `.dropdown-nav li:hover ul{ top:100%; }` which means no matter how tall the `.dropdown-nav` gets, the dropdown will always sit 100% from the top.
 
-Every time you hard code a number think twice; if you can avoid it by using keywords or ‘aliases’ (i.e. `top:100%` to mean ‘all the way from the top’) or--even better--no measurements at all then you probably should.
+Every time you hard code a number think twice; if you can avoid it by using keywords or ‘aliases’ (i.e. `top:100%` to mean ‘all the way from the top’) or&mdash;even better&mdash;no measurements at all then you probably should.
 
 Every hard-coded measurement you set is a commitment you might not necessarily want to keep.
 
@@ -168,7 +185,7 @@ Every hard-coded measurement you set is a commitment you might not necessarily w
 
 IE stylesheets can, by and large, be totally avoided. The only time an IE stylesheet may be required is to circumvent blatant lack of support (e.g. PNG fixes).
 
-As a general rule, all layout and box-model rules can and _will_ work without an IE stylesheet if you refactor and rework your CSS. This means we never want to see `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` or other such CSS that is clearly using arbitrary styling to just ‘make stuff work’.
+As a general rule, all layout and box-model rules can and _will_ work without an IE stylesheet if you refactor and rework your CSS. This means we never want to see `<!&mdash;[if IE 7]> element{ margin-left:-9px; } < ![endif]&mdash;>` or other such CSS that is clearly using arbitrary styling to just ‘make stuff work’.
 
 
 ## Debugging
@@ -178,3 +195,29 @@ If you run into a CSS problem **take code away before you start adding more** in
 Delete chunks of markup and CSS until your problem goes away, then you can determine which part of the code the problem lies in.
 
 It can be tempting to put an `overflow:hidden;` on something to hide the effects of a layout quirk, but overflow was probably never the problem; **fix the problem, not its symptoms.**
+
+
+## Preprocessors
+
+By following the above advice you should typically find the need for a preprocessor decreases dramatically. If you still wish to use a preprocessor then by all means do so, but only as en extension of the above, not an alternative.
+
+For example, preprocessors’ nesting abilities often lead to overly specific and location dependent selectors. Let’s use our `. nav a{}` example again:
+
+    .nav{
+        li{
+            a{}
+        }
+    }
+
+Will compile to:
+
+
+    .nav {}
+    .nav li {}
+    .nav li a {}
+
+Whilst this is a very timid example, it does help illustrate how a lot of preprocessors’ built in ‘helpful’ aspects actually go against our ideals; `.nav li a{}` could (and should) just be `.nav a{}`.
+
+Also, with mixins and the like, preprocessors teach you how to recognise abstractions&mdash;which is great&mdash;but not necessarily how to use them properly; there’s no point writing an abstracted mixin when you proceed to repeat it a dozen times in a stylesheet.
+
+Be sure to know the ins-and-outs of excellent vanilla CSS and where a preprocessor can _aid_ that, not hinder or undo it.
