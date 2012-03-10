@@ -1,6 +1,6 @@
 # This document
 
-These guidelines are a culmination of the past several years of my career as a web developer. They are also a part the same guidelines I wrote for developers at [Sky](http://bskyb.com).
+These guidelines are a culmination of the past several years of my career as a web developer. They are also a part the same guidelines I wrote for developers at [Sky](http://www.bskyb.com).
 
 This documents is a personal one, and for use at my place of work. I decided to share it in the hope that it might be useful to others but if you disagree with anything please remember; **this is a document for me and Sky**. You do not have to follow the advice given, nor do I provide any guarantee.
 
