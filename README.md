@@ -13,7 +13,7 @@ I decided to host this document on GitHub so that other organisations and indivi
 
 ---
 
-Copyright 2011 Harry Roberts
+Copyright 2012 Harry Roberts
 
 Licensed under the Apache License, Version 2.0 (the “License”);
 you may not use this file except in compliance with the License.
