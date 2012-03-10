@@ -1,4 +1,7 @@
-# This document
+# CSS Guidelines
+## A high-level overview of CSS best practices
+
+**This document covers a very high-level overview of what makes for good, performant, maintainable, manageable CSS over large projects. If you’re looking for round corners and drop-shadows, turn back now&hellip;**
 
 These guidelines are a culmination of the past several years of my career as a web developer. They are also a part the same guidelines I wrote for developers at [Sky](http://www.bskyb.com).
 
