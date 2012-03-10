@@ -4,9 +4,9 @@ These guidelines are a culmination of the past several years of my career as a w
 
 This document is a personal one, and for use at my place of work. I decided to share it in the hope that it might be useful to others but if you disagree with anything please remember; **this is a document for me and Sky**. You do not have to follow the advice given, nor do I provide any guarantee.
 
-I decided to host this document on GitHub so that other organisations and individuals can fork it and make amends and additions as they see fit. I have licensed it under the Apache 2.0 License for formality, but all I do ask is that if you do fork, learn from and/or use any of this, please [give it a Tweet](https://twitter.com/intent/tweet?text=CSS+Guidelines+by+%40csswizardry%3A+https://github.com/csswizardry/CSS-Guidelines/blob/master/CSS-Guidelines.md) and leave credits and attribution in place.
+I decided to host this document on GitHub so that other organisations and individuals can fork it and make amends and additions as they see fit. I have licensed it under the Apache 2.0 License for formality, but all I do ask is that if you do fork, learn from and/or use any of this, please [give it a Tweet](https://twitter.com/intent/tweet?text=CSS+Guidelines+by+%40csswizardry%3A+https://github.com/csswizardry/CSS-Guidelines/blob/master/CSS Guidelines.md) and leave credits and attribution in place.
 
-[Follow me on Twitter](http://twitter.com/csswizardry) and [tweet these guidelines](https://twitter.com/intent/tweet?text=CSS+Guidelines+by+%40csswizardry%3A+https://github.com/csswizardry/CSS-Guidelines/blob/master/CSS-Guidelines.md).
+[Follow me on Twitter](http://twitter.com/csswizardry) and [tweet these guidelines](https://twitter.com/intent/tweet?text=CSS+Guidelines+by+%40csswizardry%3A+https://github.com/csswizardry/CSS-Guidelines/blob/master/CSS Guidelines.md).
 
 Copyright 2011 Harry Roberts
 
