@@ -1,6 +1,6 @@
 # General CSS notes, advice and guidelines
 
-**[Follow me on Twitter](http://twitter.com/csswizardry) and [tweet these guidelines](https://twitter.com/intent/tweet?text=CSS+Guidelines+by+%40csswizardry%3A+https://github.com/csswizardry/CSS-Guidelines/blob/master/CSS Guidelines.md).**
+**[Follow me on Twitter](http://twitter.com/csswizardry) and [tweet these guidelines](https://twitter.com/intent/tweet?text=CSS+Guidelines+by+%40csswizardry%3A+https://github.com/csswizardry/CSS-Guidelines/blob/master/CSS%20Guidelines.md).**
 
 
 ## CSS documents
