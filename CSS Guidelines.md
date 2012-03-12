@@ -185,7 +185,7 @@ Every hard-coded measurement you set is a commitment you might not necessarily w
 
 IE stylesheets can, by and large, be totally avoided. The only time an IE stylesheet may be required is to circumvent blatant lack of support (e.g. PNG fixes).
 
-As a general rule, all layout and box-model rules can and _will_ work without an IE stylesheet if you refactor and rework your CSS. This means we never want to see `<!&mdash;[if IE 7]> element{ margin-left:-9px; } < ![endif]&mdash;>` or other such CSS that is clearly using arbitrary styling to just ‘make stuff work’.
+As a general rule, all layout and box-model rules can and _will_ work without an IE stylesheet if you refactor and rework your CSS. This means we never want to see `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` or other such CSS that is clearly using arbitrary styling to just ‘make stuff work’.
 
 
 ## Debugging
