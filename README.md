@@ -9,7 +9,7 @@ This document is a personal one, and for use at my place of work. I decided to s
 
 I decided to host this document on GitHub so that other organisations and individuals can fork it and make amends and additions as they see fit. I have licensed it under the Apache 2.0 License for formality, but all I do ask is that if you do fork, learn from and/or use any of this, please [give it a Tweet](https://twitter.com/intent/tweet?text=CSS+Guidelines+by+%40csswizardry%3A+https://github.com/csswizardry/CSS-Guidelines/blob/master/CSS Guidelines.md) and leave credits and attribution in place.
 
-**[Follow me on Twitter](http://twitter.com/csswizardry) and [tweet these guidelines](https://twitter.com/intent/tweet?text=CSS+Guidelines+by+%40csswizardry%3A+https://github.com/csswizardry/CSS-Guidelines/blob/master/CSS Guidelines.md).**
+**[Follow me on Twitter](http://twitter.com/csswizardry) and [tweet these guidelines](https://twitter.com/intent/tweet?text=CSS+Guidelines+by+%40csswizardry%3A+https://github.com/csswizardry/CSS-Guidelines/).**
 
 ---
 
