@@ -7,7 +7,13 @@
 
 We maintain a table of contents at the top of each CSS file which maps to sections in the document. Each section is prefixed with a `$` symbol which means that doing a find for `$[section name]` will only yield results that are sections.
 
+### Syntax and formatting
+
 We use multi-line CSS to help with version control (diffing single line CSS is a nightmare) and we order CSS declarations by relevance, **not** alphabetically.
+
+We use hyphen delimited, lowercase selectors: `.thisIsBad{}`, `.this_is_also_bad{}` but `.this-is-correct{}`.
+
+Always use a trailing semi-colon on the last declaration in a ruleset to avoid any potential confusion and syntax errors over the life of the document.
 
 For an example of our preferred CSS file formatting and structure please see [github.com/csswizardry/vanilla/&hellip;/style.css](http://github.com/csswizardry/vanilla/blob/master/css/style.css)
 
