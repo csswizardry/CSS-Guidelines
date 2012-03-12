@@ -136,7 +136,7 @@ Whilst it is true that browsers will only ever keep getting faster at rendering 
 
 **Read:**
 
-* [csswizardry.com/2011/09/writing-efficient-css-selectors](http://csswizardry.com/2011/09/writing-efficient-css-selectors)
+* [csswizardry.com/…/writing-efficient-css-selectors](http://csswizardry.com/2011/09/writing-efficient-css-selectors)
 
 
 ## Be explicit, don’t make assumptions
