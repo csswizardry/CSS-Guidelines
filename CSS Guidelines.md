@@ -171,7 +171,7 @@ Classes come with the benefit of being reusable (even if we don’t want to, we 
 
 It is okay to use `!important` on helper classes only. To add `!important` preemptively is fine, e.g. `.error{ color:red!important }`, as you know you will **always** want this rule to take precedence.
 
-Using `!important` reactively, e.g. to get yourself out of nasty specificity situations, is not advised. Rework your CSS and try combat these issues by refactoring your selectors. Keeping your selectors short and avoiding IDs will help out here massively.
+Using `!important` reactively, e.g. to get yourself out of nasty specificity situations, is not advised. Rework your CSS and try to combat these issues by refactoring your selectors. Keeping your selectors short and avoiding IDs will help out here massively.
 
 
 ## Magic numbers and absolutes
