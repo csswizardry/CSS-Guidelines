@@ -1,8 +1,5 @@
 # General CSS notes, advice and guidelines
 
-**[Follow me on Twitter](http://twitter.com/csswizardry) and [tweet these guidelines](https://twitter.com/intent/tweet?text=CSS+Guidelines+by+%40csswizardry%3A+https://github.com/csswizardry/CSS-Guidelines/).**
-
-
 ## CSS documents
 
 We maintain a table of contents at the top of each CSS file which maps to sections in the document. Each section is prefixed with a `$` symbol which means that doing a find for `$[section name]` will only yield results that are sections.
