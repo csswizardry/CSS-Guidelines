@@ -155,6 +155,28 @@ The problem here should be obvious in that as soon as you add a simple text link
 
 Be explicit; target the element you want to affect, not its parent. Never assume that markup won’t change.
 
+### Key selectors should (typically) never be a type selector or an object/abstraction class
+
+You should never find yourself writing selectors whose key selector is a type selector (e.g. `.header ul{}`) or a base object (e.g. `.header .nav{}`). This is because you can never guarantee that there will only ever be one `ul` or `.nav` in that `.header`, the key selector is too loose—too broad.
+
+It would be more appropriate to give the element in question an explicit class targeting that one and that one only, so `.header .nav{}` would be replaced with `.site-nav`, for example.
+
+The only time where a type selector may be appropriate is if you have a situation like this:
+
+    a{
+        color:red;
+    }
+    .promo{
+        background-color:red;
+    }
+        .promo a{
+            colour:white;
+        }
+
+In this case you _know_ that every `a` in `.promo` needs a blanket rule because it would be unreadable without.
+
+**Write selectors that target what you want, not what happens to be there already.**
+
 
 ## IDs and classes
 
