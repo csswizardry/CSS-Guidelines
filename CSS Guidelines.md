@@ -167,10 +167,11 @@ The only time where a type selector may be appropriate is if you have a situatio
         color:red;
     }
     .promo{
-        background-color:red;
+        background-color:red; 
+        color:white;
     }
         .promo a{
-            colour:white;
+            color:white;
         }
 
 In this case you _know_ that every `a` in `.promo` needs a blanket rule because it would be unreadable without.
