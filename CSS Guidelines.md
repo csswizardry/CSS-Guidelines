@@ -1,44 +1,188 @@
 # General CSS notes, advice and guidelines
 
-## CSS documents
+In working on large, long running projects with dozens of developers, it is
+important that we all work in a unified way in order to, among other things:
 
-We maintain a table of contents at the top of each CSS file which maps to
-sections in the document. Each section is prefixed with a `$` symbol which means
-that doing a find for `$[section name]` will only yield results that are
-sections.
+* Keep stylesheets maintainable
+* Keep code transparent and readable
+* Keep stylesheets scalable
 
-### Syntax and formatting
+There are a variety of techniques we must employ in order to satisfy these
+goals.
 
-We use multi-line CSS to help with version control (diffing single line CSS is
-a nightmare) and we order CSS declarations by relevance, **not** alphabetically.
+The first part of this document will deal with syntax, formatting and our CSS
+anatomy, the second part will deal with our approach, mindframe and attitude
+toward writing and architecting CSS. Exciting, huh?
 
-We use hyphen delimited, lowercase selectors for most things (see BEM below):
-`.thisIsBad{}`, `.this_is_also_bad{}` but `.this-is-correct{}`.
+---
 
-Always use a trailing semi-colon on the last declaration in a ruleset to avoid
-any potential confusion and syntax errors over the life of the document.
+## CSS Document Anatomy
 
-For an example of our preferred CSS file formatting and structure please see
-[github.com/csswizardry/inuit.css](http://github.com/csswizardry/inuit.css)
+No matter the document, we must always try and keep a common formatting. This
+means consistent commenting, consistent syntax and consistent naming.
 
-**Read:**
+### General
 
-* [coding.smashingmagazine.com/&hellip;/writing-css-for-others](http://coding.smashingmagazine.com/2011/08/26/writing-css-for-others)
-* [jasoncale.com/&hellip;/5-dont-format-your-css-onto-one-line](http://jasoncale.com/articles/5-dont-format-your-css-onto-one-line)
+Limit your stylesheets to a maximum 80 character width where possible.
+Exceptions may be gradient syntax and URLs in comments. That’s fine, there’s
+nothing we can do about that.
 
+### One file vs. many files
 
-## Comments
+Typically we have worked with single, large files. This is fine, and by sticking
+to the following guidelines we will encounter no problems. Since moving to Sass
+we have started sharding our stylesheets out into lots of tiny includes. This
+too is fine… Whichever method you choose, the following rules and guidelines
+apply. The only notable difference is with regards our table of contents and our
+section titles. Read on for further explanation…
 
-Comment as much as you can as often as you can. Where it might be useful,
-include a commented out piece of markup which can help put the current CSS into
-context.
+### Table of contents
 
-Be verbose, go wild, CSS will be minified before it hits live servers.
+At the top of stylesheets, we maintain a table of contents which will detail the
+sections contained in the document, for example:
 
-## Naming
+    /*------------------------------------*\
+        $CONTENTS
+    \*------------------------------------*/
+    /**
+     * CONTENTS............You’re reading it!
+     * RESET...............Set our reset defaults
+     * FONT-FACE...........Import brand font files
+     */
 
-We use a [BEM](http://coding.smashingmagazine.com/2012/04/16/a-new-front-end-methodology-bem/)-esque
-methodology for naming our objects/abstractions and components.
+This will tell the next developer(s) exactly what they can expect to find in
+this file. Each item in the table of contents maps directly to a section title.
+
+If we are working in one big stylesheet, the corresponding section will also be
+in that file. If we are working across multiple files then each item in the
+table of contents will map to an include which pulls that section in.
+
+### Section titles
+
+The table of contents would be of no use unless it had corresponding section
+titles. We denote a section thus:
+
+    /*------------------------------------*\
+        $RESET
+    \*------------------------------------*/
+
+The `$` prefixing the name of the section allows us to run a find ([Cmd|Ctrl]+F)
+for `$[SECTION-NAME]` and **limit our search scope to section titles only**.
+
+If we are working in one large stylesheet, we leave five (5) carriage returns
+between each section, thus:
+
+    /*------------------------------------*\
+        $RESET
+    \*------------------------------------*/
+    [Our
+    reset
+    styles]
+    
+    
+    
+    
+    
+    /*------------------------------------*\
+        $FONT-FACE
+    \*------------------------------------*/
+
+This large chunk of whitespace is quickly noticeable when scrolling quickly
+through larger files.
+
+If we are working across multiple, included stylesheets, we start each of those
+files with a section title and there is no need for any carriage returns.
+
+## Source order
+
+Try and write stylesheets in specificity order. This ensures that we take full
+advantage of inheritance and CSS’ first <i>C</i>; the cascade.
+
+A well ordered stylesheet will be ordered something like this:
+
+1. **Reset** – ground zero.
+2. **Elements** – unclassed `h1`, unclassed `ul` etc.
+3. **Objects and abstractions** — generic, underlying design patterns.
+4. **Components** – full components constructed from objects and their
+   extensions.
+5. **Style trumps** – error states etc.
+
+This means that, as you go down the document, each section builds upon and
+inherits sensibly from the previous one. There should be less undoing of styles,
+less specificity problems and an all round better architected stylesheet.
+
+For further reading I cannot recommend Jonathan Snook’s
+[SMACSS](http://smacss.com) highly enough.
+
+## Anatomy of rulesets
+
+    [selector]{
+        [property]:[value];
+        [<- Declaration ->]
+    }    
+
+We have a number of standards when structuring our rulesets.
+
+* Use hyphen delimited class names (except for BEM notation, see below)
+* 4 space indented
+* Write multi-line CSS
+* Write declarations in relevance (**not** alphabetical) order
+* Align vendor prefixed declarations to each other
+* Indent our rulesets to mirror the DOM
+* Always include the final semi-colon in a ruleset
+
+A brief example:
+
+    .widget{
+        padding:10px;
+        border:1px solid #BADA55;
+        background-color:#C0FFEE;
+        -webkit-border-radius:4px;
+           -moz-border-radius:4px;
+                border-radius:4px;
+    }
+        .widget-heading{
+            font-size:1.5rem;
+            line-height:1;
+            font-weight:bold;
+            color:#BADA55;
+            margin-right:-10px;
+            margin-left: -10px;
+            padding:0.25em;
+        }
+
+Here we can see that `.widget-heading` must be a child of `.widget` as we have
+indented the `.widget-heading` ruleset one level deeper than `.widget`. This is
+useful information to developers that can now be gleaned just by a glance at the
+indentation of our rulesets.
+
+We can also see that `.widget-heading`’s declarations are ordered by their
+relevance; `.widget-heading` must be a textual element so we begin with our
+text rules, followed by everything else.
+
+One exception to our multi-line rule might be in cases of the following:
+
+    .t10    { width:10% }
+    .t20    { width:20% }
+    .t25    { width:25% }       /* 1/4 */
+    .t30    { width:30% }
+    .t33    { width:33.333% }   /* 1/3 */
+    .t40    { width:40% }
+    .t50    { width:50% }       /* 1/2 */
+    .t60    { width:60% }
+    .t66    { width:66.666% }   /* 2/3 */
+    .t70    { width:70% }
+    .t75    { width:75% }       /* 3/4*/
+    .t80    { width:80% }
+    .t90    { width:90% }
+
+In this example (from [inuit.css](http://inuitcss.com)’s table grid system) it
+makes more sense to single-line our CSS.
+
+## Naming conventions
+
+For the most past we simply use hyphen delimited classes (e.g. `.foo-bar`, not
+`.foo_bar` or `.fooBar`), however in certain circumstances we use BEM notation.
 
 <abbr title="Block, Element, Modifier">BEM</abbr> is a methodology for naming
 and classifying CSS selectors in a way to make them a lot more strict,
@@ -51,7 +195,8 @@ The naming convention follows this pattern:
     .block--modifier{}
 
 * `.block` represents the higher level of an abstraction or component.
-* `.block__element` represents a descendent of `.block` that helps form `.block` as a whole.
+* `.block__element` represents a descendent of `.block` that helps form `.block`
+  as a whole.
 * `.block--modifier` represents a different state or version of `.block`.
 
 An **analogy** of how BEM classes work might be:
@@ -71,128 +216,254 @@ We can now namespace our selectors based on their base objects and we can also
 communicate what job the selector does; is it a sub-component (`__`) or a
 variation (`--`)?
 
-**Read:**
+So, `.page-wrapper` is a standalone selector; it doesn’t form part of an
+abstraction or a component and as such it named correctly. `.widget-heading`,
+however, _is_ related to a component; it is a child of the `.widget` construct
+so we would rename this class `.widget__heading`.
 
-* [coding.smashingmagazine.com/…/a-new-front-end-methodology-bem](http://coding.smashingmagazine.com/2012/04/16/a-new-front-end-methodology-bem/)
-* [gist.github.com/3822990](https://gist.github.com/3822990)
-* [gist.github.com/1309546](https://gist.github.com/1309546)
+BEM looks a little uglier, and is a lot more verbose, but it grants us a lot of
+power in that we can glean the functions and relationships of elements from
+their classes alone. Also, BEM syntax will typically compress (gzip) very well
+as compression favours/works well with repetition.
 
-## Indenting
+Regardless of whether you need to use BEM or not, always ensure classes are
+sensibly named; keep them as short as possible but as long as necessary. Ensure
+any objects or abstractions are very vaguely named (e.g. `.ui-list`, `.media`)
+to allow for greater reuse. Extensions of objects should be much more explicitly
+named (e.g. `.user-avatar-link`). Don’t worry about the amount or length of
+classes; gzip will compress well written code _incredibly_ well.
 
-For each level of markup nesting, try and indent your CSS to match. For example:
+## Comments
 
+We use a docBlock-esque commenting style which we limit to 80 lines in length:
+
+    /**
+     * This is a docBlock style comment
+     * 
+     * This is a longer description of the comment, describing the code in more
+     * detail. We limit these lines to a maximum of 80 characters in length.
+     * 
+     * We can have markup in the comments, and are encouraged to do so:
+     * 
+       <div class=foo>
+           <p>Lorem</p>
+       </div>
+     * 
+     * We do not prefix lines of code with an astersik as to do so would inhibit
+     * copy and paste.
+     */
+
+We should document and comment our code as much as we possibly can, what may
+seem or feel transparent and self explanatory to you may not be to another dev.
+Write a chunk of code then write about it.
+
+### Comments on steroids
+
+We have a number of more advanced techniques we employ with regards comments,
+namely:
+
+* Quasi-qualified selectors
+* Tagging code
+* Object/extension pointers
+
+#### Quasi-qualified selectors
+
+We should never qualify our selectors; that is to say, we should never write
+`ul.nav{}` if we can just have `.nav`. Qualifying selectors decreases selector
+performance, inhibits the potential for reusing a class on a different type of
+element and it increases the selector’s specificity. These are all things that
+we should avoid at all costs.
+
+However, sometimes it is useful to communicate to the next developer(s) where
+you intend a class to be used. Let’s take `.product-page` for example; this
+class sounds as though it would be used on a high-level container, perhaps the
+`html` or `body` element, but with `.product-page` alone it is impossible to
+tell.
+
+By quasi-qualifying this selector we can communicate where we wish to have this
+class applied, thus:
+
+    /*html*/.product-page{}
+
+We can now see exactly where to apply this class but with none of the drawbacks.
+
+#### Tagging code
+
+If you write a new component then leave some tags pertaining to its function in
+a comment above it, for example:
+
+    /**
+     * ^navigation ^lists
+     */
     .nav{}
-        .nav li{}
-            .nav a{}
-            
-    .promo{}
-        .promo p{}
+    
+    /**
+     * ^grids ^lists ^tables
+     */
+    .matrix{}
 
-Also write vendor prefixed CSS so that colons all line up, thus:
+These tags allow other developers to find snippets of code by searching for
+function; if a developer needs to work with lists they can run a find for
+`^lists` and find the `.nav` and `.matrix` objects (and possibly more).
 
-    -webkit-border-radius:4px;
-       -moz-border-radius:4px;
-            border-radius:4px;
+#### Object/extension pointers
 
-This means that we can quickly scan down and see that they are all set to 4px,
-but more importantly&mdash;if our text editor supports it&mdash;we can type in
-columns to change all the values at once.
+When working in an object oriented manner you will often have two chunks of CSS
+(one being the skeleton (the object) and the other being the skin (the
+extension)) that are very closely related, but that live in very different
+places. In order to establish a concrete link between the object and its
+extension with use <i>object/extension pointers</i>. These are simply comments
+which work thus:
 
+In your base stylesheet:
 
-## Building components
+    /**
+     * Extend `.foo` in theme.css
+     */
+     .foo{}
+
+In your theme stylesheet:
+
+    /**
+     * Extends `.foo` in base.css
+     */
+     .bar{}
+
+Here we have established a concrete relationship between two very separate
+pieces of code.
+
+---
+
+## Writing CSS
+
+## Building new components
 
 When building a new component write markup **before** CSS. This means you can
 visually see which CSS properties are naturally inherited and thus avoid
 reapplying redundant styles.
 
+By writing markup first we can focus on semantics and then apply only the
+relevant classes and CSS _after_.
 
 ## OOCSS
 
-When building components try and keep a DRY, OO frame of mind.
+We work in an OOCSS manner; we split components into structure (objects) and
+skin (extensions). As an **analogy** (note, not example) take the following:
 
-Instead of building dozens of unique components, try and spot repeated design
-patterns abstract them; build these skeletons as base ‘objects’ and then peg
-classes onto these to extend their styling for more unique circumstances.
+    .room{}
+    
+    .room--kitchen{}
+    .room--bedroom{}
+    .room--bathroom{}
+
+We have several types of room in a house, but they all share similar traits;
+they all have floors, ceilings, walls and doors. We can share this information
+in an abstracted `.room{}` class. However we have specific types of room that
+are different from the others; a kitchen might have a tiled floor and a bedroom
+might have carpets, a bathroom might not have a window but a bedroom most likely
+will, each room likely has different coloured walls. OOCSS teaches us to
+abstract the shared styles out into a base object and then _extend_ this
+information with more specific classes to add the unique treatment(s).
+
+So, instead of building dozens of unique components, try and spot repeated
+design patterns across them all and abstract them out into reusable classes;
+build these skeletons as base ‘objects’ and then peg classes onto these to
+extend their styling for more unique circumstances.
 
 If you have to build a new component split it into structure and skin; build the
 structure of the component using very generic classes so that we can reuse that
 construct and then use more specific classes to skin it up and add design
 treatments.
 
-**Read:**
-
-* [csswizardry.com/&hellip;/the-nav-abstraction](http://csswizardry.com/2011/09/the-nav-abstraction)
-* [stubbornella.org/&hellip;/the-media-object-saves-hundreds-of-lines-of-code](http://stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code)
-
-
 ## Layout
 
-All components should be left totally free of widths; your components should
-always remain fluid and their widths should be governed by a grid system.
+All components we build should be left totally free of widths; they should
+always remain fluid and their widths should be governed by a parent/grid system.
 
 Heights should **never** be be applied to elements. Heights should only be 
 applied to things which had dimensions _before_ they entered the site (i.e.
 images and sprites). Never ever set heights on `p`s, `ul`s, `div`s, anything.
-You can normally achieve the desired effect with line-heights which are far more
+You can often achieve the desired effect with `line-height` which is far more
 flexible.
 
 Grid systems should be thought of as shelves. They contain content but are not
 content in themselves. You put up your shelves then fill them with your stuff.
+By setting up our grids separately to our components we can move components
+around a lot more easily than if they had dimensions applied to them; this makes
+our front-ends a lot more adaptable and quick to work with.
 
 You should never apply any styles to a grid item, they are for layout purposes
-only. Never, under any circumstances, apply box-model properties to a grid item.
+only. Apply styling to content _inside_ a grid item. Never, under _any_
+circumstances, apply box-model properties to a grid item.
 
-
-## Sizing
+## Sizing UIs
 
 We use a combination of methods for sizing UIs. Percentages, pixels, ems, rems
 and nothing at all.
 
-**Read:**
+Grid systems should, ideally, be set in percentages. Because we use grid systems
+to govern widths of columns and pages we can leave our components totally free
+of any dimensions (as discussed above).
 
-* [csswizardry.com/&hellip;/measuring-and-sizing-uis-2011-style](http://csswizardry.com/2011/12/measuring-and-sizing-uis-2011-style)
+Font sizes we set in rems with a pixel fallback. This gives us the accessibility
+benefits of ems with the confidence of pixels. Here is a handy Sass mixin to
+work out a rem and pixel fallback for you (assuming you set your base font
+size in a variable somewhere):
 
+    @mixin font-size($font-size){
+        font-size:$font-size +px;
+        font-size:$font-size / $base-font-size +rem;
+    }
 
-## Font sizing
+We only use pixels for items whose dimensions were defined before the came into
+the site. This includes things like images and sprites whose dimensions are
+inherently set absolutely in pixels.
 
-We use rems (with a pixel fallback for older browsers only). We do not want to
-define any font sizes in pixels as standard. We define line heights unitlessly
-everywhere **unless** we are trying to align text to known heights.
+### Font sizing
 
-We want to avoid defining font sizes over and over; to achieve this we have a
-predefined scale of font sizes tethered to classes. We can recycle these rather
-than having to declare styles over and over.
-
-Before writing another font-size declaration, see if a class for it already
-exists.
-
-**Read:**
-
-* [csswizardry.com/&hellip;/pragmatic-practical-font-sizing-in-css](http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css)
-
+We define a series of classes akin to a grid system for sizing fonts. These
+classes can be used to style type in a double stranded heading hierarchy. For a
+full explanation of how this works please refer to my article
+[Pragmatic, practical font-sizing in CSS](http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css)
 
 ## Shorthand
 
+**Shorthand CSS needs to be used with caution.**
+
 It might be tempting to use declarations like `background:red;` but in doing so
-what we are actually saying is ‘I want no image to scroll, aligned top left and
-repeating X and Y and a background colour of red’. Nine times out of ten this
+what we are actually saying is ‘I want no image to scroll, aligned top-left,
+repeating X and Y, and a background colour of red’. Nine times out of ten this
 won’t cause any issues but that one time it does is annoying enough to warrant
 not using such shorthand. Instead use `background-color:red;`.
 
 Similarly, declarations like `margin:0;` are nice and short, but
-**be explicit**. If you’re actually only really wanting to affect the margin on
+**be explicit**. If you actually only really want to affect the margin on
 the bottom of an element then it is more appropriate to use `margin-bottom:0;`.
 
 Be explicit in which properties you set and take care to not inadvertently unset
 others with shorthand. E.g. if you only want to remove the bottom margin on an
-element then there is no sense in blitzing all margins with `margin:0;`.
+element then there is no sense in setting all margins to zero with `margin:0;`.
 
 Shorthand is good, but easily misused.
 
+## IDs
+
+A quick note on IDs in CSS before we dive into selectors in general.
+
+**NEVER use IDs in CSS.***
+
+They can be used in your markup for JS and fragment identifiers but use only
+classes for styling. We don’t want to see a single ID in any stylesheets.
+
+Classes come with the benefit of being reusable (even if we don’t want to, we
+can) and they have a nice, low specificity. Specificity is one of the quickest
+ways to run into difficulties in projects and keeping it low at all times is
+imperative. An ID is **255** times more specific than a class, so never ever use
+them in CSS _ever_.
 
 ## Selectors
 
-Keep selectors efficient and portable.
+Keep selectors short, efficient and portable.
 
 Heavily location-based selectors are bad for a number of reasons. For example,
 take `.sidebar h3 span{}`. This selector is too location-based and thus we
@@ -206,16 +477,17 @@ four), the more work the browser has to do.
 Make sure styles aren’t dependent on location where possible, and make sure
 selectors are nice and short.
 
+Selectors as a whole should be kept short (e.g. one class deep) but the class
+names themselves should be as long as they need to be. A class of `.user-avatar`
+is far nicer than `.usr-avt`.
+
 **Remember:** classes are neither semantic or insemantic; they are sensible or
 insensible! Stop stressing about ‘semantic’ class names and pick something
 sensible and futureproof.
 
-**Read:**
-
-* [speakerdeck.com/&hellip;/breaking-good-habits](http://speakerdeck.com/u/csswizardry/p/breaking-good-habits)
-* [csswizardry.com/&hellip;/writing-efficient-css-selectors](http://csswizardry.com/2011/09/writing-efficient-css-selectors)
-
 ### Over-qualified selectors
+
+As discussed above, qualified selectors are bad news.
 
 An over-qualified selector is one like `div.promo`. We could probably get the
 same effect from just using `.promo`. Of course sometimes we will _want_ to
@@ -229,83 +501,43 @@ above, we can instantly drop the `ul` and because we know `.nav` is a list, we
 therefore know that any `a` _must_ be in an `li`, so we can get `ul.nav li a{}`
 down to just `.nav a{}`.
 
-### Performance
+### Selector performance
 
 Whilst it is true that browsers will only ever keep getting faster at rendering
-CSS, efficiency is something we could do to keep an eye on. Short selectors, not
-using the universal (`*{}`) selector and avoiding more complex CSS3 selectors
-should help circumvent these problems.
+CSS, efficiency is something we could do to keep an eye on. Short, unnested
+selectors, not using the universal (`*{}`) selector as the key selector, and
+avoiding more complex CSS3 selectors should help circumvent these problems.
 
-**Read:**
-
-* [csswizardry.com/…/writing-efficient-css-selectors](http://csswizardry.com/2011/09/writing-efficient-css-selectors)
-
-
-## Be explicit, don’t make assumptions
+## CSS selector intent
 
 Instead of using selectors to drill down the DOM to an element, it is often best
 to put a class on the element you explicitly want to style. Let’s take a
-specific example.
+specific example with a selector like `.header ul{}`…
 
-Imagine you have a promotional banner with a class of `.promo` and in there
-there is some text and call-to-action link. If there is just one `a` in the
-whole of `.promo` then it may be tempting to style that call-to-action via
-`.promo a{}`.
+Let’s imagine that `ul` is indeed the main navigation for our website. It lives
+in the header as you might expect and is currently the only `ul` in there;
+`.header ul{}` will work, but it’s not ideal or advisable. It’s not very future
+proof and certainly not explicit enough. As soon as we add another `ul` to that
+header it will adopt the styling of our main nav and the the chances are it
+won’t want to. This means we either have to refactor a lot of code _or_ undo a
+lot of styling on subsequent `ul`s in that `.header` to remove the effects of
+the far reaching selector.
 
-The problem here should be obvious in that as soon as you add a simple text link
-(or any other link for that matter) to the `.promo` container it will inherit
-the call-to-action styling, whether you want it to or not. In this case you
-would be best to explicitly add a class (e.g. `.cta`) to the link you want to
-affect.
+Your selector’s intent must match that of your reason for styling something;
+ask yourself **‘am I selecting this because it’s a `ul` inside of `.header` or
+because it is my site’s main nav?’**. The answer to this will determine your
+selector.
+
+Make sure your key selector is never an element/type selector or
+object/abstraction class. We never want to see selectors like
+`.sidebar ul{}` or `.footer .media{}` in our theme stylesheets.
 
 Be explicit; target the element you want to affect, not its parent. Never assume
-that markup won’t change.
+that markup won’t change. **Write selectors that target what you want, not what
+happens to be there already.**
 
-### Key selectors should (typically) never be a type selector or an object/abstraction class
-
-You should never find yourself writing selectors whose key selector is a type
-selector (e.g. `.header ul{}`) or a base object (e.g. `.header .nav{}`). This is
-because you can never guarantee that there will only ever be one `ul` or `.nav`
-in that `.header`, the key selector is too loose—too broad.
-
-It would be more appropriate to give the element in question an explicit class
-targeting that one and that one only, so `.header .nav{}` would be replaced with
-`.site-nav`, for example.
-
-The only time where a type selector may be appropriate is if you have a
-situation like this:
-
-    a{
-        color:red;
-    }
-    .promo{
-        background-color:red; 
-        color:white;
-    }
-        .promo a{
-            color:white;
-        }
-
-In this case you _know_ that every `a` in `.promo` needs a blanket rule because
-it would be unreadable without.
-
-**Write selectors that target what you want, not what happens to be there
-already.**
-
-
-## IDs and classes
-
-Do not use IDs in CSS **at all**. They can be used in your markup for JS and
-fragment-identifiers but use only classes for styling. We don’t want to see a
-single ID in any stylesheets.
-
-Classes come with the benefit of being reusable (even if we don’t want to, we
-can) and they have a nice, low specificity.
-
-**Read:**
-
-* [csswizardry.com/&hellip;/when-using-ids-can-be-a-pain-in-the-class](http://csswizardry.com/2011/09/when-using-ids-can-be-a-pain-in-the-class)
-
+For a full write up please see my article
+[Shoot to kill; CSS selector intent](http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/)
 
 ## `!important`
 
@@ -317,7 +549,6 @@ Using `!important` reactively, e.g. to get yourself out of nasty specificity
 situations, is not advised. Rework your CSS and try to combat these issues by
 refactoring your selectors. Keeping your selectors short and avoiding IDs will
 help out here massively.
-
 
 ## Magic numbers and absolutes
 
@@ -341,7 +572,6 @@ or&mdash;even better&mdash;no measurements at all then you probably should.
 Every hard-coded measurement you set is a commitment you might not necessarily
 want to keep.
 
-
 ## Conditional stylesheets
 
 IE stylesheets can, by and large, be totally avoided. The only time an IE
@@ -352,7 +582,6 @@ As a general rule, all layout and box-model rules can and _will_ work without an
 IE stylesheet if you refactor and rework your CSS. This means we never want to
 see `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` or other such
 CSS that is clearly using arbitrary styling to just ‘make stuff work’.
-
 
 ## Debugging
 
@@ -367,40 +596,36 @@ It can be tempting to put an `overflow:hidden;` on something to hide the effects
 of a layout quirk, but overflow was probably never the problem; **fix the
 problem, not its symptoms.**
 
-
 ## Preprocessors
 
-By following the above advice you should typically find the need for a
-preprocessor decreases dramatically. If you still wish to use a preprocessor
-then by all means do so, but only as en extension of the above, not an
-alternative.
+Sass is our preprocessor of choice. **Use it wisely.** Use Sass to make your CSS
+more powerful but avoid nesting like the plague! Nest only when it would
+actually be necessary in vanilla CSS, e.g.
 
-For example, preprocessors’ nesting abilities often lead to overly specific and
-location dependent selectors. Let’s use our `. nav a{}` example again:
+    .header{}
+    .header .site-nav{}
+    .header .site-nav li{}
+    .header .site-nav li a{}
 
-    .nav{
-        li{
-            a{}
+Would be wholly unnecessary in normal CSS, so the following would be **bad**
+Sass:
+
+    .header{
+        .site-nav{
+            li{
+                a{}
+            }
         }
     }
 
-Will compile to:
+If you were to Sass this up you’d write it as:
 
+    .header{}
+    .site-nav{
+        li{}
+        a{}
+    }
 
-    .nav {}
-    .nav li {}
-    .nav li a {}
-
-Whilst this is a very timid example, it does help illustrate how a lot of
-preprocessors’ built in ‘helpful’ aspects actually go against our ideals;
-`.nav li a{}` could (and should) just be `.nav a{}`.
-
-Also, with mixins and the like, preprocessors teach you how to recognise
-abstractions&mdash;which is great&mdash;but not necessarily how to use them
-properly; there’s no point writing an abstracted mixin when you proceed to
-repeat it a dozen times in a stylesheet.
-
-Be sure to know the ins-and-outs of excellent vanilla CSS and where a
-preprocessor can _aid_ that, not hinder or undo it. Learn the downsides of
-preprocessors inside-out and then fuse the best aspects of the two with the bad
-bits of neither.
+Our new in-house framework is a fork of [inuit.css](http://inuitcss.com) so for
+a publicly available, rough idea of how we should write Sass please refer to
+that.
