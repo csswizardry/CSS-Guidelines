@@ -486,7 +486,7 @@ Shorthand is good, but easily misused.
 
 A quick note on IDs in CSS before we dive into selectors in general.
 
-**NEVER use IDs in CSS.***
+**NEVER use IDs in CSS.**
 
 They can be used in your markup for JS and fragment identifiers but use only
 classes for styling. We don’t want to see a single ID in any stylesheets.
