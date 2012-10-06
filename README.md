@@ -14,6 +14,9 @@ The first part of this document will deal with syntax, formatting and our CSS
 anatomy, the second part will deal with our approach, mindframe and attitude
 toward writing and architecting CSS. Exciting, huh?
 
+**N.B. This document is intended largely for internal use at BSkyB. Adopt and
+adapt for your own team at will.**
+
 ## Contents
 
 * [CSS document anatomy](#css-document-anatomy)
