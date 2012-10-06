@@ -14,7 +14,7 @@ The first part of this document will deal with syntax, formatting and our CSS
 anatomy, the second part will deal with our approach, mindframe and attitude
 toward writing and architecting CSS. Exciting, huh?
 
-## Table of contents
+## Contents
 
 * [CSS document anatomy](#css-document-anatomy)
   * [General](#general)
