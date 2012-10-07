@@ -323,7 +323,8 @@ class applied, thus:
 
     /*html*/.product-page{}
 
-We can now see exactly where to apply this class but with none of the drawbacks.
+We can now see exactly where to apply this class but with none of the
+specificity or non-reusability drawbacks.
 
 #### Tagging code
 
