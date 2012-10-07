@@ -63,6 +63,8 @@ Limit your stylesheets to a maximum 80 character width where possible.
 Exceptions may be gradient syntax and URLs in comments. That’s fine, there’s
 nothing we can do about that.
 
+We prefer four (4) space indents over tabs and we write multi-line CSS.
+
 ### One file vs. many files
 
 Typically we have worked with single, large files. This is fine, and by sticking
