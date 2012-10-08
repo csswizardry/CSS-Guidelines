@@ -276,8 +276,8 @@ classes; gzip will compress well written code _incredibly_ well.
 
 ### JS hooks
 
-**Never use a CSS class as a JavaScript hook.** Attaching JS behaviour to a
-styling class means that we can never have one without the other.
+**Never use a CSS _styling_ class as a JavaScript hook.** Attaching JS behaviour
+to a styling class means that we can never have one without the other.
 
 If you need to bind to some markup use a JS specific CSS class. This is simply a
 class namespaced with `.js-`, e.g. `.js-toggle`, `.js-drag-and-drop`. This means
