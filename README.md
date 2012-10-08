@@ -146,9 +146,9 @@ A well ordered stylesheet will be ordered something like this:
    extensions.
 5. **Style trumps** – error states etc.
 
-This means that, as you go down the document, each section builds upon and
-inherits sensibly from the previous one. There should be less undoing of styles,
-less specificity problems and an all round better architected stylesheet.
+This means that—as you go down the document—each section builds upon and
+inherits sensibly from the previous one(s). There should be less undoing of
+styles, less specificity problems and all-round better architected stylesheets.
 
 For further reading I cannot recommend Jonathan Snook’s
 [SMACSS](http://smacss.com) highly enough.
