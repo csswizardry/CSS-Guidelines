@@ -396,8 +396,8 @@ When building a new component write markup **before** CSS. This means you can
 visually see which CSS properties are naturally inherited and thus avoid
 reapplying redundant styles.
 
-By writing markup first we can focus on semantics and then apply only the
-relevant classes and CSS _after_.
+By writing markup first we can focus on data, content and semantics and then
+apply only the relevant classes and CSS _afterwards_.
 
 ## OOCSS
 
