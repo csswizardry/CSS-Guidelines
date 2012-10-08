@@ -221,7 +221,8 @@ makes more sense to single-line our CSS.
 ## Naming conventions
 
 For the most part we simply use hyphen delimited classes (e.g. `.foo-bar`, not
-`.foo_bar` or `.fooBar`), however in certain circumstances we use BEM notation.
+`.foo_bar` or `.fooBar`), however in certain circumstances we use BEM (Block,
+Element, Modifier) notation.
 
 <abbr title="Block, Element, Modifier">BEM</abbr> is a methodology for naming
 and classifying CSS selectors in a way to make them a lot more strict,
