@@ -273,6 +273,23 @@ to allow for greater reuse. Extensions of objects should be much more explicitly
 named (e.g. `.user-avatar-link`). Don’t worry about the amount or length of
 classes; gzip will compress well written code _incredibly_ well.
 
+### JS hooks
+
+**Never use a CSS class as a JavaScript hook.** Attaching JS behaviour to a
+styling class means that we can never have one without the other.
+
+If you need to bind to some markup use a JS specific CSS class. This is simply a
+class namespaced with `.js-`, e.g. `.js-toggle`, `.js-drag-and-drop`. This means
+that we can attach both JS and CSS to classes in our markup but there will never
+be any troublesome overlap.
+
+    <th class="is-sortable js-is-sortable">
+    </th>
+
+The above markup holds two classes; one to which we can attach some styling for
+sortable table columns and another which allows us to add the sorting
+functionality.
+
 ## Comments
 
 We use a docBlock-esque commenting style which we limit to 80 lines in length:
