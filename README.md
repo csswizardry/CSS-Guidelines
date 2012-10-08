@@ -320,13 +320,22 @@ class sounds as though it would be used on a high-level container, perhaps the
 `html` or `body` element, but with `.product-page` alone it is impossible to
 tell.
 
-By quasi-qualifying this selector we can communicate where we wish to have this
-class applied, thus:
+By quasi-qualifying this selector (i.e. commenting out the leading type
+selector) we can communicate where we wish to have this class applied, thus:
 
     /*html*/.product-page{}
 
 We can now see exactly where to apply this class but with none of the
 specificity or non-reusability drawbacks.
+
+Other examples might be:
+
+    /*ol*/.breadcrumb{}
+    /*p*/.intro{}
+    /*ul*/.image-thumbs{}
+
+Here we can see where we intend each of these classes to be applied without
+actually ever impacting the specificity of the selectors.
 
 #### Tagging code
 
