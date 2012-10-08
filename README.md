@@ -386,6 +386,10 @@ pieces of code.
 
 ## Writing CSS
 
+The previous section dealt with how we structure and form our CSS; they were
+very quantifiable rules. The next section is a little more theoretical and deals
+with our attitude and approach.
+
 ## Building new components
 
 When building a new component write markup **before** CSS. This means you can
