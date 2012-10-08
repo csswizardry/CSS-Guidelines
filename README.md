@@ -289,7 +289,7 @@ We use a docBlock-esque commenting style which we limit to 80 lines in length:
            <p>Lorem</p>
        </div>
      * 
-     * We do not prefix lines of code with an astersik as to do so would inhibit
+     * We do not prefix lines of code with an asterisk as to do so would inhibit
      * copy and paste.
      */
 
