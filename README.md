@@ -220,7 +220,7 @@ makes more sense to single-line our CSS.
 
 ## Naming conventions
 
-For the most past we simply use hyphen delimited classes (e.g. `.foo-bar`, not
+For the most part we simply use hyphen delimited classes (e.g. `.foo-bar`, not
 `.foo_bar` or `.fooBar`), however in certain circumstances we use BEM notation.
 
 <abbr title="Block, Element, Modifier">BEM</abbr> is a methodology for naming
