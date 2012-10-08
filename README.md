@@ -216,8 +216,9 @@ One exception to our multi-line rule might be in cases of the following:
     .t80    { width:80% }
     .t90    { width:90% }
 
-In this example (from [inuit.css](http://inuitcss.com)’s table grid system) it
-makes more sense to single-line our CSS.
+In this example (from [inuit.css’s table grid system](
+https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88))
+it makes more sense to single-line our CSS.
 
 ## Naming conventions
 
