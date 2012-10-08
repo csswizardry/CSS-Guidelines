@@ -27,6 +27,7 @@ adapt for your own team at will.**
 * [Source order](#source-order)
 * [Anatomy of rulesets](#anatomy-of-rulesets)
 * [Naming conventions](#naming-conventions)
+  * [JS hooks](#js-hooks)
 * [Comments](#comments)
   * [Comments on steroids](#comments-on-steroids)
     * [Quasi-qualified selectors](#quasi-qualified-selectors)
