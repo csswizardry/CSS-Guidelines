@@ -275,6 +275,16 @@ to allow for greater reuse. Extensions of objects should be much more explicitly
 named (e.g. `.user-avatar-link`). Don’t worry about the amount or length of
 classes; gzip will compress well written code _incredibly_ well.
 
+### Classes in HTML
+
+In a bid to make things easier to read, separate classes is your HTML with two
+(2) spaces, thus:
+
+    <div class="foo--bar  bar__baz">
+
+This increased whitespace should hopefully allow for easier spotting and reading
+of multiple classes.
+
 ### JS hooks
 
 **Never use a CSS _styling_ class as a JavaScript hook.** Attaching JS behaviour
@@ -285,7 +295,7 @@ class namespaced with `.js-`, e.g. `.js-toggle`, `.js-drag-and-drop`. This means
 that we can attach both JS and CSS to classes in our markup but there will never
 be any troublesome overlap.
 
-    <th class="is-sortable js-is-sortable">
+    <th class="is-sortable  js-is-sortable">
     </th>
 
 The above markup holds two classes; one to which we can attach some styling for
