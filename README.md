@@ -10,9 +10,9 @@ important that we all work in a unified way in order to, among other things:
 There are a variety of techniques we must employ in order to satisfy these
 goals.
 
-The first part of this document will deal with syntax, formatting and our CSS
-anatomy, the second part will deal with our approach, mindframe and attitude
-toward writing and architecting CSS. Exciting, huh?
+The first part of this document will deal with syntax, formatting and CSS
+anatomy, the second part will deal with approach, mindframe and attitude toward
+writing and architecting CSS. Exciting, huh?
 
 ## Contents
 
@@ -61,20 +61,20 @@ Limit your stylesheets to a maximum 80 character width where possible.
 Exceptions may be gradient syntax and URLs in comments. That’s fine, there’s
 nothing we can do about that.
 
-We prefer four (4) space indents over tabs and we write multi-line CSS.
+I prefer four (4) space indents over tabs and we write multi-line CSS.
 
 ### One file vs. many files
 
-Typically we have worked with single, large files. This is fine, and by sticking
-to the following guidelines we will encounter no problems. Since moving to Sass
-we have started sharding our stylesheets out into lots of tiny includes. This
-too is fine… Whichever method you choose, the following rules and guidelines
-apply. The only notable difference is with regards our table of contents and our
-section titles. Read on for further explanation…
+Some people prefer to work with single, large files. This is fine, and by
+sticking to the following guidelines you’ll encounter no problems. Since moving
+to Sass I have started sharding my stylesheets out into lots of tiny includes.
+This too is fine… Whichever method you choose, the following rules and
+guidelines apply. The only notable difference is with regards our table of
+contents and our section titles. Read on for further explanation…
 
 ### Table of contents
 
-At the top of stylesheets, we maintain a table of contents which will detail the
+At the top of stylesheets, I maintain a table of contents which will detail the
 sections contained in the document, for example:
 
     /*------------------------------------*\
@@ -89,14 +89,14 @@ sections contained in the document, for example:
 This will tell the next developer(s) exactly what they can expect to find in
 this file. Each item in the table of contents maps directly to a section title.
 
-If we are working in one big stylesheet, the corresponding section will also be
-in that file. If we are working across multiple files then each item in the
+If you are working in one big stylesheet, the corresponding section will also be
+in that file. If you are working across multiple files then each item in the
 table of contents will map to an include which pulls that section in.
 
 ### Section titles
 
 The table of contents would be of no use unless it had corresponding section
-titles. We denote a section thus:
+titles. Denote a section thus:
 
     /*------------------------------------*\
         $RESET
@@ -105,7 +105,7 @@ titles. We denote a section thus:
 The `$` prefixing the name of the section allows us to run a find ([Cmd|Ctrl]+F)
 for `$[SECTION-NAME]` and **limit our search scope to section titles only**.
 
-If we are working in one large stylesheet, we leave five (5) carriage returns
+If you are working in one large stylesheet, you leave five (5) carriage returns
 between each section, thus:
 
     /*------------------------------------*\
@@ -126,12 +126,12 @@ between each section, thus:
 This large chunk of whitespace is quickly noticeable when scrolling quickly
 through larger files.
 
-If we are working across multiple, included stylesheets, we start each of those
+If you are working across multiple, included stylesheets, start each of those
 files with a section title and there is no need for any carriage returns.
 
 ## Source order
 
-Try and write stylesheets in specificity order. This ensures that we take full
+Try and write stylesheets in specificity order. This ensures that you take full
 advantage of inheritance and CSS’ first <i>C</i>; the cascade.
 
 A well ordered stylesheet will be ordered something like this:
@@ -157,7 +157,7 @@ For further reading I cannot recommend Jonathan Snook’s
         [<- Declaration ->]
     }    
 
-We have a number of standards when structuring our rulesets.
+I have a number of standards when structuring our rulesets.
 
 * Use hyphen delimited class names (except for BEM notation,
   [see below](#naming-conventions))
@@ -219,8 +219,8 @@ it makes more sense to single-line our CSS.
 
 ## Naming conventions
 
-For the most part we simply use hyphen delimited classes (e.g. `.foo-bar`, not
-`.foo_bar` or `.fooBar`), however in certain circumstances we use BEM (Block,
+For the most part I simply use hyphen delimited classes (e.g. `.foo-bar`, not
+`.foo_bar` or `.fooBar`), however in certain circumstances I use BEM (Block,
 Element, Modifier) notation.
 
 <abbr title="Block, Element, Modifier">BEM</abbr> is a methodology for naming
@@ -295,13 +295,13 @@ be any troublesome overlap.
     <th class="is-sortable  js-is-sortable">
     </th>
 
-The above markup holds two classes; one to which we can attach some styling for
-sortable table columns and another which allows us to add the sorting
+The above markup holds two classes; one to which you can attach some styling for
+sortable table columns and another which allows you to add the sorting
 functionality.
 
 ## Comments
 
-We use a docBlock-esque commenting style which we limit to 80 lines in length:
+I use a docBlock-esque commenting style which I limit to 80 lines in length:
 
     /**
      * This is a docBlock style comment
@@ -319,14 +319,14 @@ We use a docBlock-esque commenting style which we limit to 80 lines in length:
      * copy and paste.
      */
 
-We should document and comment our code as much as we possibly can, what may
+You should document and comment our code as much as you possibly can, what may
 seem or feel transparent and self explanatory to you may not be to another dev.
 Write a chunk of code then write about it.
 
 ### Comments on steroids
 
-We have a number of more advanced techniques we employ with regards comments,
-namely:
+There are a number of more advanced techniques you can employ with regards
+comments, namely:
 
 * Quasi-qualified selectors
 * Tagging code
@@ -334,11 +334,11 @@ namely:
 
 #### Quasi-qualified selectors
 
-We should never qualify our selectors; that is to say, we should never write
-`ul.nav{}` if we can just have `.nav`. Qualifying selectors decreases selector
+You should never qualify your selectors; that is to say, we should never write
+`ul.nav{}` if you can just have `.nav`. Qualifying selectors decreases selector
 performance, inhibits the potential for reusing a class on a different type of
 element and it increases the selector’s specificity. These are all things that
-we should avoid at all costs.
+should be avoided at all costs.
 
 However, sometimes it is useful to communicate to the next developer(s) where
 you intend a class to be used. Let’s take `.product-page` for example; this
@@ -422,12 +422,12 @@ When building a new component write markup **before** CSS. This means you can
 visually see which CSS properties are naturally inherited and thus avoid
 reapplying redundant styles.
 
-By writing markup first we can focus on data, content and semantics and then
+By writing markup first you can focus on data, content and semantics and then
 apply only the relevant classes and CSS _afterwards_.
 
 ## OOCSS
 
-We work in an OOCSS manner; we split components into structure (objects) and
+I work in an OOCSS manner; I split components into structure (objects) and
 skin (extensions). As an **analogy** (note, not example) take the following:
 
     .room{}
@@ -457,7 +457,7 @@ treatments.
 
 ## Layout
 
-All components we build should be left totally free of widths; they should
+All components you build should be left totally free of widths; they should
 always remain fluid and their widths should be governed by a parent/grid system.
 
 Heights should **never** be be applied to elements. Heights should only be 
@@ -468,7 +468,7 @@ flexible.
 
 Grid systems should be thought of as shelves. They contain content but are not
 content in themselves. You put up your shelves then fill them with your stuff.
-By setting up our grids separately to our components we can move components
+By setting up our grids separately to our components you can move components
 around a lot more easily than if they had dimensions applied to them; this makes
 our front-ends a lot more adaptable and quick to work with.
 
@@ -478,14 +478,14 @@ circumstances, apply box-model properties to a grid item.
 
 ## Sizing UIs
 
-We use a combination of methods for sizing UIs. Percentages, pixels, ems, rems
+I use a combination of methods for sizing UIs. Percentages, pixels, ems, rems
 and nothing at all.
 
-Grid systems should, ideally, be set in percentages. Because we use grid systems
-to govern widths of columns and pages we can leave our components totally free
-of any dimensions (as discussed above).
+Grid systems should, ideally, be set in percentages. Because I use grid systems
+to govern widths of columns and pages, I can leave components totally free of
+any dimensions (as discussed above).
 
-Font sizes we set in rems with a pixel fallback. This gives us the accessibility
+Font sizes I set in rems with a pixel fallback. This gives the accessibility
 benefits of ems with the confidence of pixels. Here is a handy Sass mixin to
 work out a rem and pixel fallback for you (assuming you set your base font
 size in a variable somewhere):
@@ -495,13 +495,13 @@ size in a variable somewhere):
         font-size:$font-size / $base-font-size +rem;
     }
 
-We only use pixels for items whose dimensions were defined before the came into
+I only use pixels for items whose dimensions were defined before the came into
 the site. This includes things like images and sprites whose dimensions are
 inherently set absolutely in pixels.
 
 ### Font sizing
 
-We define a series of classes akin to a grid system for sizing fonts. These
+I define a series of classes akin to a grid system for sizing fonts. These
 classes can be used to style type in a double stranded heading hierarchy. For a
 full explanation of how this works please refer to my article
 [Pragmatic, practical font-sizing in CSS](http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css)
@@ -511,7 +511,7 @@ full explanation of how this works please refer to my article
 **Shorthand CSS needs to be used with caution.**
 
 It might be tempting to use declarations like `background:red;` but in doing so
-what we are actually saying is ‘I want no image to scroll, aligned top-left,
+what you are actually saying is ‘I want no image to scroll, aligned top-left,
 repeating X and Y, and a background colour of red’. Nine times out of ten this
 won’t cause any issues but that one time it does is annoying enough to warrant
 not using such shorthand. Instead use `background-color:red;`.
@@ -533,7 +533,7 @@ A quick note on IDs in CSS before we dive into selectors in general.
 **NEVER use IDs in CSS.**
 
 They can be used in your markup for JS and fragment identifiers but use only
-classes for styling. We don’t want to see a single ID in any stylesheets.
+classes for styling. You don’t want to see a single ID in any stylesheets!
 
 Classes come with the benefit of being reusable (even if we don’t want to, we
 can) and they have a nice, low specificity. Specificity is one of the quickest
@@ -569,8 +569,8 @@ sensible and futureproof.
 
 As discussed above, qualified selectors are bad news.
 
-An over-qualified selector is one like `div.promo`. We could probably get the
-same effect from just using `.promo`. Of course sometimes we will _want_ to
+An over-qualified selector is one like `div.promo`. You could probably get the
+same effect from just using `.promo`. Of course sometimes you will _want_ to
 qualify a class with an element (e.g. if you have a generic `.error` class that
 needs to look different when applied to different elements (e.g.
 `.error{ color:red; }` `div.error{ padding:14px; }`)), but generally avoid it
@@ -584,7 +584,7 @@ down to just `.nav a{}`.
 ### Selector performance
 
 Whilst it is true that browsers will only ever keep getting faster at rendering
-CSS, efficiency is something we could do to keep an eye on. Short, unnested
+CSS, efficiency is something you could do to keep an eye on. Short, unnested
 selectors, not using the universal (`*{}`) selector as the key selector, and
 avoiding more complex CSS3 selectors should help circumvent these problems.
 
@@ -609,7 +609,7 @@ because it is my site’s main nav?’**. The answer to this will determine your
 selector.
 
 Make sure your key selector is never an element/type selector or
-object/abstraction class. We never want to see selectors like
+object/abstraction class. You never really want to see selectors like
 `.sidebar ul{}` or `.footer .media{}` in our theme stylesheets.
 
 Be explicit; target the element you want to affect, not its parent. Never assume
@@ -641,7 +641,7 @@ to the bottom of the nav on hover is bad, as 37px is a magic number. 37px only
 works here because in this particular scenario the `.dropdown-nav` happens to be
 37px tall.
 
-Instead we should use `.dropdown-nav li:hover ul{ top:100%; }` which means no
+Instead you should use `.dropdown-nav li:hover ul{ top:100%; }` which means no
 matter how tall the `.dropdown-nav` gets, the dropdown will always sit 100% from
 the top.
 
@@ -659,7 +659,7 @@ stylesheet may be required is to circumvent blatant lack of support (e.g. PNG
 fixes).
 
 As a general rule, all layout and box-model rules can and _will_ work without an
-IE stylesheet if you refactor and rework your CSS. This means we never want to
+IE stylesheet if you refactor and rework your CSS. This means you never want to
 see `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` or other such
 CSS that is clearly using arbitrary styling to just ‘make stuff work’.
 
@@ -678,7 +678,7 @@ problem, not its symptoms.**
 
 ## Preprocessors
 
-Sass is our preprocessor of choice. **Use it wisely.** Use Sass to make your CSS
+Sass is my preprocessor of choice. **Use it wisely.** Use Sass to make your CSS
 more powerful but avoid nesting like the plague! Nest only when it would
 actually be necessary in vanilla CSS, e.g.
 
@@ -705,7 +705,3 @@ If you were to Sass this up you’d write it as:
         li{}
         a{}
     }
-
-Our new in-house framework is a fork of [inuit.css](http://inuitcss.com) so for
-a publicly available, rough idea of how we should write Sass please refer to
-that.
