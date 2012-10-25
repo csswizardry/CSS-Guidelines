@@ -25,6 +25,7 @@ writing and architecting CSS. Exciting, huh?
 * [Anatomy of rulesets](#anatomy-of-rulesets)
 * [Naming conventions](#naming-conventions)
   * [JS hooks](#js-hooks)
+  * [Internationalisation](#internationalisation)
 * [Comments](#comments)
   * [Comments on steroids](#comments-on-steroids)
     * [Quasi-qualified selectors](#quasi-qualified-selectors)
@@ -298,6 +299,15 @@ be any troublesome overlap.
 The above markup holds two classes; one to which you can attach some styling for
 sortable table columns and another which allows you to add the sorting
 functionality.
+
+### Internationalisation
+
+As a British developer, if I have a class name like `.color-picker`, I try and
+provide a British version (`.colour-picker`) as well as a US version. This means
+that, even though CSS’ syntax is US-English, I don’t have to concern myself with
+remembering to switch between the two. If I accidentally slip into ‘British
+mode’, I can be sure my selectors will still match up. You might argue that this
+promotes laziness and looseness, but I see it as one less thing to remember. 
 
 ## Comments
 
