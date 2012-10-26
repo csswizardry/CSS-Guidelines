@@ -1,5 +1,13 @@
 # General CSS notes, advice and guidelines
 
+---
+
+## Translations
+
+* [Russian/русский](https://github.com/matmuchrapna/CSS-Guidelines/blob/master/README%20Russian.md)
+
+---
+
 In working on large, long running projects with dozens of developers, it is
 important that we all work in a unified way in order to, among other things:
 
