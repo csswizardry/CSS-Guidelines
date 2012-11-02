@@ -166,13 +166,13 @@ For further reading I cannot recommend Jonathan Snook’s
         [<- Declaration ->]
     }    
 
-I have a number of standards when structuring our rulesets.
+I have a number of standards when structuring rulesets.
 
 * Use hyphen delimited class names (except for BEM notation,
   [see below](#naming-conventions))
 * 4 space indented
 * Multi-line
-* Declarations in relevance (**not** alphabetical) order
+* Declarations in relevance (NOT alphabetical) order
 * Indent vendor prefixed declarations so that their values are aligned
 * Indent our rulesets to mirror the DOM
 * Always include the final semi-colon in a ruleset
