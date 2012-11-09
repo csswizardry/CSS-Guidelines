@@ -310,12 +310,24 @@ functionality.
 
 ### Internationalisation
 
-As a British developer, if I have a class name like `.color-picker`, I try and
-provide a British version (`.colour-picker`) as well as a US version. This means
-that, even though CSS’ syntax is US-English, I don’t have to concern myself with
-remembering to switch between the two. If I accidentally slip into ‘British
-mode’, I can be sure my selectors will still match up. You might argue that this
-promotes laziness and looseness, but I see it as one less thing to remember. 
+Despite being a British developer—and spending all my life writing <i>colour</i>
+instead of <i>color</i>—I feel that, for the sake of consistency, it is better
+to always use US-English in CSS. CSS, as with most (if not all) other languages,
+is written in US-English, so to mix syntax like `color:red;` with classes like
+`.colour-picker{}` lacks consistency. I have previously suggested and advocated
+writing bilingual classes, for example:
+
+    .color-picker,
+    .colour-picker{
+    }
+
+However, having recently worked on a very large Sass project where there were
+dozens of colour variables (e.g. `$brand-color`, `$highlight-color` etc.),
+maintaining two versions of each variable soon became tiresome. It also means
+twice as much work with things like find and replace.
+
+In the interests of consistency, always name classes and variables in the locale
+of the language you are working with.
 
 ## Comments
 
