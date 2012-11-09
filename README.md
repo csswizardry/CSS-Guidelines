@@ -70,7 +70,7 @@ Limit your stylesheets to a maximum 80 character width where possible.
 Exceptions may be gradient syntax and URLs in comments. That’s fine, there’s
 nothing we can do about that.
 
-I prefer four (4) space indents over tabs and we write multi-line CSS.
+I prefer four (4) space indents over tabs and write multi-line CSS.
 
 ### One file vs. many files
 
@@ -166,13 +166,13 @@ For further reading I cannot recommend Jonathan Snook’s
         [<- Declaration ->]
     }    
 
-I have a number of standards when structuring our rulesets.
+I have a number of standards when structuring rulesets.
 
 * Use hyphen delimited class names (except for BEM notation,
   [see below](#naming-conventions))
 * 4 space indented
 * Multi-line
-* Declarations in relevance (**not** alphabetical) order
+* Declarations in relevance (NOT alphabetical) order
 * Indent vendor prefixed declarations so that their values are aligned
 * Indent our rulesets to mirror the DOM
 * Always include the final semi-colon in a ruleset
