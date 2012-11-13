@@ -331,7 +331,7 @@ of the language you are working with.
 
 ## Comments
 
-I use a docBlock-esque commenting style which I limit to 80 character in length:
+I use a docBlock-esque commenting style which I limit to 80 characters in length:
 
     /**
      * This is a docBlock style comment
