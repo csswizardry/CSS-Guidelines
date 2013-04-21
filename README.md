@@ -1,4 +1,5 @@
 # General CSS notes, advice and guidelines
+# 普适性的 CSS 笔记、建议与指导
 
 ---
 
@@ -11,18 +12,31 @@
 In working on large, long running projects with dozens of developers, it is
 important that we all work in a unified way in order to, among other things:
 
+在参与规模庞大、历时漫长且人手众多的项目时，所有开发者遵守如下规则极为重要：
+
 * Keep stylesheets maintainable
 * Keep code transparent and readable
 * Keep stylesheets scalable
 
+* 保持 CSS 样式表的可维护性
+* 保持代码清晰移动
+* 保持代码的可拓展性
+
 There are a variety of techniques we must employ in order to satisfy these
 goals.
+
+为了实现这一目标，我们应当使用诸多技术。
 
 The first part of this document will deal with syntax, formatting and CSS
 anatomy, the second part will deal with approach, mindframe and attitude toward
 writing and architecting CSS. Exciting, huh?
 
+本文档第一部分将探讨语法、格式以及 CSS 解析；第二部分将从方法论、思维框架、以及编写与
+规划 CSS 样式的态度入手。
+
 ## Contents
+
+## 目录
 
 * [CSS document anatomy](#css-document-anatomy)
   * [General](#general)
@@ -56,6 +70,39 @@ writing and architecting CSS. Exciting, huh?
 * [Conditional stylesheets](#conditional-stylesheets)
 * [Debugging](#debugging)
 * [Preprocessors](#preprocessors)
+
+* [CSS 文档解析](#css-document-anatomy)
+  * [总览](#general)
+  * [单一文件与多文件](#one-file-vs-many-files)
+  * [目录](#table-of-contents)
+  * [章节标题](#section-titles)
+* [代码顺序](#source-order)
+* [规则解析](#anatomy-of-rulesets)
+* [命名规范](#naming-conventions)
+  * [JavaScript 钩子](#js-hooks)
+  * [国际化](#internationalisation)
+* [注释](#comments)
+  * [更好的命名方式](#comments-on-steroids)
+    * [Quasi-qualified selectors](#quasi-qualified-selectors)
+    * [Tagging code](#tagging-code)
+    * [Object/extension pointers](#objectextension-pointers)
+* [编写 CSS](#writing-css)
+* [添加新部分](#building-new-components)
+* [面向对象 CSS](#oocss)
+* [布局](#layout)
+* [界面尺寸](#sizing-uis)
+  * [字号调节](#font-sizing)
+* [简写](#shorthand)
+* [IDs](#ids)
+* [选择器](#selectors)
+  * [Over qualified selectors](#over-qualified-selectors)
+  * [选择器性能](#selector-performance)
+* [选择器继承](#css-selector-intent)
+* [`!important`](#important)
+* [魔法数字与绝对比例](#magic-numbers-and-absolutes)
+* [带条件 CSS](#conditional-stylesheets)
+* [Debugging](#debugging)
+* [预处理](#preprocessors)
 
 ---
 
