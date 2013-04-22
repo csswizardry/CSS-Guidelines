@@ -108,18 +108,32 @@ writing and architecting CSS. Exciting, huh?
 
 ## CSS Document Anatomy
 
+## CSS 文档解析
+
 No matter the document, we must always try and keep a common formatting. This
 means consistent commenting, consistent syntax and consistent naming.
 
+无论文档如何，我们都应当尽力维持统一的风格，这包括统一的注释、统一的语法与统一的
+命名风格。
+
 ### General
+
+### 总则
 
 Limit your stylesheets to a maximum 80 character width where possible.
 Exceptions may be gradient syntax and URLs in comments. That’s fine, there’s
 nothing we can do about that.
 
+尽量将行宽控制在 80 字符以下。除了渐变相关的语法以及注释中的 URL，这些我们本来也
+无法处理。
+
 I prefer four (4) space indents over tabs and write multi-line CSS.
 
+我倾向于用 4 个空格缩进、不用 Tab，并且将样式拆分成多行。
+
 ### One file vs. many files
+
+### 单一文件与多文件
 
 Some people prefer to work with single, large files. This is fine, and by
 sticking to the following guidelines you’ll encounter no problems. Since moving
@@ -128,10 +142,18 @@ This too is fine… Whichever method you choose, the following rules and
 guidelines apply. The only notable difference is with regards our table of
 contents and our section titles. Read on for further explanation…
 
+有些人喜欢将样式写成一个大文件，这并不赖，而且如果你遵守下文指导的话你也不会遇到
+什么问题。我在迁移至 Sass 之后，开始将样式拆分成众多小文件。这也不赖……无论你采用
+什么方式，下文中的规则都将适用。唯一的区别在于目录表以及区块标题。
+
 ### Table of contents
+
+### 目录表
 
 At the top of stylesheets, I maintain a table of contents which will detail the
 sections contained in the document, for example:
+
+在样式表的开头，我要维护一份详解文档区块内容的目录，如下所示：
 
     /*------------------------------------*\
         $CONTENTS
@@ -145,14 +167,24 @@ sections contained in the document, for example:
 This will tell the next developer(s) exactly what they can expect to find in
 this file. Each item in the table of contents maps directly to a section title.
 
+这将告诉其它开发者这份文件中具体含有哪些内容。这份目录中的每一项都与其对应的区块
+标题相同。
+
 If you are working in one big stylesheet, the corresponding section will also be
 in that file. If you are working across multiple files then each item in the
 table of contents will map to an include which pulls that section in.
 
+如果你在维护一份大规模的样式表，对应的区块也将在这份文件中。如果你是在编写一群小
+文件，那么目录表中的每一项应当对应其相应的 @include 语句。
+
 ### Section titles
+
+### 区块标题
 
 The table of contents would be of no use unless it had corresponding section
 titles. Denote a section thus:
+
+如果目录表中没有对应区块标题的话，它就没有意义。注意如下的这个区块标题：
 
     /*------------------------------------*\
         $RESET
@@ -161,8 +193,13 @@ titles. Denote a section thus:
 The `$` prefixing the name of the section allows us to run a find ([Cmd|Ctrl]+F)
 for `$[SECTION-NAME]` and **limit our search scope to section titles only**.
 
+在区块标题中前缀 `$` 可以让我们使用查找命令（[Cmd|Ctrl]+F）查找 `$[SECTION-NAME]`
+并 **限定查找范围仅仅在标题**。
+
 If you are working in one large stylesheet, you leave five (5) carriage returns
 between each section, thus:
+
+如果你在维护一份大文件，那么在每个区块之间空 5 行，如下：
 
     /*------------------------------------*\
         $RESET
