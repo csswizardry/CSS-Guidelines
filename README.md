@@ -412,6 +412,8 @@ power in that we can glean the functions and relationships of elements from
 their classes alone. Also, BEM syntax will typically compress (gzip) very well
 as compression favours/works well with repetition.
 
+BEM 命名法虽然不太好看，而且相当冗长，但是它使得我们可以仅仅通过名称便快速获知元素的功能和元素之间的关系。与此同时，BEM 语法中的重复部分非常有利于压缩算法。
+
 Regardless of whether you need to use BEM or not, always ensure classes are
 sensibly named; keep them as short as possible but as long as necessary. Ensure
 any objects or abstractions are very vaguely named (e.g. `.ui-list`, `.media`)
@@ -419,25 +421,39 @@ to allow for greater reuse. Extensions of objects should be much more explicitly
 named (e.g. `.user-avatar-link`). Don’t worry about the amount or length of
 classes; gzip will compress well written code _incredibly_ well.
 
+无论你是否使用 BEM 命名法，你都应当确保 class 命名得当，力保一字不多、一字不少；确保元素命名抽象化以提高可复用性（例如 `.ui-list`，`.media`）。由此拓展出去的元素命名则要尽量精准（例如 `.user-avatar-link`）。不用担心 class 名的数量或长度，因为写得好的代码 gzip 也能_有效_ 压缩。
+
 ### Classes in HTML
+
+### HTML 中的 class
 
 In a bid to make things easier to read, separate classes is your HTML with two
 (2) spaces, thus:
+
+为了确保易读性，在 HTML 中用两个空格隔开 class 名，例如：
 
     <div class="foo--bar  bar__baz">
 
 This increased whitespace should hopefully allow for easier spotting and reading
 of multiple classes.
 
+增加的空格应当可以使得在使用多个 class 时更易阅读与定位。
+
 ### JS hooks
+
+### JS 钩子
 
 **Never use a CSS _styling_ class as a JavaScript hook.** Attaching JS behaviour
 to a styling class means that we can never have one without the other.
+
+**千万不要把 CSS _样式_ 用作 JavaScript 钩子。** 把 JS 行为跟样式连在一起将无法分别处理。
 
 If you need to bind to some markup use a JS specific CSS class. This is simply a
 class namespaced with `.js-`, e.g. `.js-toggle`, `.js-drag-and-drop`. This means
 that we can attach both JS and CSS to classes in our markup but there will never
 be any troublesome overlap.
+
+如果你要把 JS 和某些标记绑定起来的话，写一个 JS 专用的 CSS class。简单地说就是一个前缀 `.js-` 的明明空间，例如 `.js-toggle`，`.js-drag-and-drop`。这意味着我们可以在 class 上同时绑定 JS 和 CSS 而不会因为重复而引发麻烦。
 
     <th class="is-sortable  js-is-sortable">
     </th>
@@ -446,7 +462,11 @@ The above markup holds two classes; one to which you can attach some styling for
 sortable table columns and another which allows you to add the sorting
 functionality.
 
+上面的这个标记有两个 class，你可以用其中一个来给这个可排序的表格栏添加样式，用另一个添加排序功能。
+
 ### Internationalisation
+
+### i18n
 
 Despite being a British developer—and spending all my life writing <i>colour</i>
 instead of <i>color</i>—I feel that, for the sake of consistency, it is better
@@ -454,6 +474,8 @@ to always use US-English in CSS. CSS, as with most (if not all) other languages,
 is written in US-English, so to mix syntax like `color:red;` with classes like
 `.colour-picker{}` lacks consistency. I have previously suggested and advocated
 writing bilingual classes, for example:
+
+虽然我（该 CSS Guideline 文档原作者 Harry Roberts）是个英国人，而且我一向拼写 <i>colour</i> 而非 <i>color</i>，但是为了统一性，我认为在 CSS 中用美式拼法更佳。CSS 以及其它多数语言都是以美式拼法写就，所以在 `.colour-picker{}` 中写 `color:red` 就缺乏统一性。我之前主张同时用两种拼法，例如：
 
     .color-picker,
     .colour-picker{
@@ -464,12 +486,20 @@ dozens of colour variables (e.g. `$brand-color`, `$highlight-color` etc.),
 maintaining two versions of each variable soon became tiresome. It also means
 twice as much work with things like find and replace.
 
+但是我最近参与了一份非常巨大的 Sass 项目，这个项目中有许多的色彩变量（例如 `$brand-color`，`$highlight-color` 等等），每个变量要维护两种拼法实在辛苦，要查找并替换时也要两倍的工作量。
+
 In the interests of consistency, always name classes and variables in the locale
 of the language you are working with.
 
+所以为了统一性，把所有的 class 与变量都以你参与的项目的管用拼法命名即可。
+
 ## Comments
 
+## 注释
+
 I use a docBlock-esque commenting style which I limit to 80 characters in length:
+
+我使用行宽不超过 80 字节的块状注释：
 
     /**
      * This is a docBlock style comment
@@ -487,20 +517,44 @@ I use a docBlock-esque commenting style which I limit to 80 characters in length
      * copy and paste.
      */
 
+    /**
+     * 是为块状注释
+     *
+     * 这部分是描述更详细、篇幅更长的注释。当然，我们要把行宽压在 80 字以内。
+     *
+     * 我们可以在注释中嵌入 HTML 标记，而且这也是个好办法：
+     *
+        <div class=foo>
+            <p>Lorem</p>
+        </div>
+     *
+     * 如果是注释内嵌的标记的话，我们前面不加星号，否则容易被复制进去。
+     */
+
 You should document and comment our code as much as you possibly can, what may
 seem or feel transparent and self explanatory to you may not be to another dev.
 Write a chunk of code then write about it.
 
+在注释中尽量详细描述代码，因为对你来说显然的内容对其他人可能并非如此。每写一部分代码就要专门写注释以详解。
+
 ### Comments on steroids
+
+### 更好的命名方式
 
 There are a number of more advanced techniques you can employ with regards
 comments, namely:
+
+在注释中有许多非常好的方法，例如：
 
 * Quasi-qualified selectors
 * Tagging code
 * Object/extension pointers
 
+* 准修饰选择器
+
 #### Quasi-qualified selectors
+
+#### 准修饰选择器
 
 You should never qualify your selectors; that is to say, we should never write
 `ul.nav{}` if you can just have `.nav`. Qualifying selectors decreases selector
@@ -508,21 +562,31 @@ performance, inhibits the potential for reusing a class on a different type of
 element and it increases the selector’s specificity. These are all things that
 should be avoided at all costs.
 
+你应当避免过分修饰选择器，例如如果你能写 `.nav{}` 的话就尽量不要写 `ul.nav{}`。过分修饰选择器将影响性能，影响 class 重用性，增加选择器专有度。这些都是你应当尽力避免的。
+
 However, sometimes it is useful to communicate to the next developer(s) where
 you intend a class to be used. Let’s take `.product-page` for example; this
 class sounds as though it would be used on a high-level container, perhaps the
 `html` or `body` element, but with `.product-page` alone it is impossible to
 tell.
 
+不过有时告诉其它开发者你希望 class 用在哪里倒是非常有效。以 `.product-page` 为例，这个 class 听起来像是一个高级别的容器，可能是 `html` 或者 `body` 元素，但是只有一个 `.product-page` 就无法判断。
+
 By quasi-qualifying this selector (i.e. commenting out the leading type
 selector) we can communicate where we wish to have this class applied, thus:
+
+我们可以在选择器前加上准修饰（即将前面的类型选择器注释掉）来描述我们希望的 class 作用元素：
 
     /*html*/.product-page{}
 
 We can now see exactly where to apply this class but with none of the
 specificity or non-reusability drawbacks.
 
+这样我们就能准确获知该 class 的作用范围而不会影响复用性。
+
 Other examples might be:
+
+其它例子如：
 
     /*ol*/.breadcrumb{}
     /*p*/.intro{}
@@ -531,10 +595,16 @@ Other examples might be:
 Here we can see where we intend each of these classes to be applied without
 actually ever impacting the specificity of the selectors.
 
+这样我们就能在不影响代码专有度的前提下获知 class 作用范围。
+
 #### Tagging code
+
+#### 代码标签
 
 If you write a new component then leave some tags pertaining to its function in
 a comment above it, for example:
+
+如果你写了一个新成员的话，可以在它上面加上标签，例如：
 
     /**
      * ^navigation ^lists
@@ -550,7 +620,11 @@ These tags allow other developers to find snippets of code by searching for
 function; if a developer needs to work with lists they can run a find for
 `^lists` and find the `.nav` and `.matrix` objects (and possibly more).
 
+这些标签可以使得其他开发者快速找到相关代码。如果一个开发者需要查找和列表相关的部分，他只要搜索 `^lists` 就能快速定位到 `.nav`，`.matrix` 以及其它可能存在的。
+
 #### Object/extension pointers
+
+#### 继承
 
 When working in an object oriented manner you will often have two chunks of CSS
 (one being the skeleton (the object) and the other being the skin (the
@@ -559,7 +633,11 @@ places. In order to establish a concrete link between the object and its
 extension with use <i>object/extension pointers</i>. These are simply comments
 which work thus:
 
+以面向对象的思路来干活的话，你经常能找到两块 CSS 密切相关（其一为骨，其一为皮）却分列两处。我们可以用对象指示器来在原元素和继承元素之间建立紧密联系。这些在注释中的写法如下：
+
 In your base stylesheet:
+
+在元素的基本样式表中：
 
     /**
      * Extend `.foo` in theme.css
@@ -567,6 +645,8 @@ In your base stylesheet:
      .foo{}
 
 In your theme stylesheet:
+
+在元素的装饰样式表中：
 
     /**
      * Extends `.foo` in base.css
@@ -576,24 +656,38 @@ In your theme stylesheet:
 Here we have established a concrete relationship between two very separate
 pieces of code.
 
+这样一来我们就能在两块相隔很远的代码间建立紧密联系。
+
 ---
 
 ## Writing CSS
+
+## 编写 CSS
 
 The previous section dealt with how we structure and form our CSS; they were
 very quantifiable rules. The next section is a little more theoretical and deals
 with our attitude and approach.
 
+之前的章节主要探讨如何规划 CSS，这些都是易于量化的规则。本章将探讨更理论化的东西，也将探讨我们的态度与方法。
+
 ## Building new components
+
+## 编写新组件
 
 When building a new component write markup **before** CSS. This means you can
 visually see which CSS properties are naturally inherited and thus avoid
 reapplying redundant styles.
 
+编写新组件时，要在 CSS **之前** 写好标记部分。这意味着你可以准确判断哪些 CSS 属性可以继承，避免重复浪费。
+
 By writing markup first you can focus on data, content and semantics and then
 apply only the relevant classes and CSS _afterwards_.
 
+先写标记的话，你就可以关注数据、内容与语义，__在这之后__ 再施加需要的 class 和 CSS 样式。
+
 ## OOCSS
+
+
 
 I work in an OOCSS manner; I split components into structure (objects) and
 skin (extensions). As an **analogy** (note, not example) take the following:
