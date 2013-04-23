@@ -219,15 +219,27 @@ between each section, thus:
 This large chunk of whitespace is quickly noticeable when scrolling quickly
 through larger files.
 
+在大文件中快速滚动时这些大块的空档非常显眼。
+
 If you are working across multiple, included stylesheets, start each of those
 files with a section title and there is no need for any carriage returns.
 
+如果你在维护多份、以 include 连接的样式表的话，在每份文件头加上区块标题即可，可以
+不用这样空行。
+
 ## Source order
+
+## 源文件顺序
 
 Try and write stylesheets in specificity order. This ensures that you take full
 advantage of inheritance and CSS’ first <i>C</i>; the cascade.
 
+尽量按照特定顺序编写样式表，这样确保你充分发挥 CSS 缩写中第一个 <i>C</i> 的意义：
+cascade，层叠。
+
 A well ordered stylesheet will be ordered something like this:
+
+一份规划良好的样式表应当按照如下排列：
 
 1. **Reset** – ground zero.
 2. **Elements** – unclassed `h1`, unclassed `ul` etc.
@@ -236,14 +248,27 @@ A well ordered stylesheet will be ordered something like this:
    extensions.
 5. **Style trumps** – error states etc.
 
+1. **Reset** 万物之根源
+2. **元素** 没有设置 clas 的 `h1`、`ul` 等
+3. **对象以及抽象内容** 最一般、最基础的设计模式
+4. **子元素** 从对象拓展出来的所有子元素及其子元素
+5. **修补** 异常状态
+
 This means that—as you go down the document—each section builds upon and
 inherits sensibly from the previous one(s). There should be less undoing of
 styles, less specificity problems and all-round better architected stylesheets.
 
+这意味着你顺文档而下时，每个区块都将继承在它之前区块的属性。这样就可以减少代码相
+互抵消的部分，减少某些特殊的问题，构成设计更理想的样式表结构。
+
 For further reading I cannot recommend Jonathan Snook’s
 [SMACSS](http://smacss.com) highly enough.
 
+关于这方面的更多信息，强烈推荐 Jonathan Snook 的 [SMACSS](http://smacss.com)。
+
 ## Anatomy of rulesets
+
+## CSS 规则集解析
 
     [selector]{
         [property]:[value];
@@ -251,6 +276,8 @@ For further reading I cannot recommend Jonathan Snook’s
     }    
 
 I have a number of standards when structuring rulesets.
+
+编写规则集时，我有诸多标准。
 
 * Use hyphen delimited class names (except for BEM notation,
   [see below](#naming-conventions))
@@ -261,7 +288,17 @@ I have a number of standards when structuring rulesets.
 * Indent our rulesets to mirror the DOM
 * Always include the final semi-colon in a ruleset
 
+* class 名称以连字符（-）连接，除了[下文](#命名规范)中提到的 BEM 命名；
+* 缩进 4 空格；
+* 声明拆分成多行；
+* 声明以相关性顺序排列，而非字母顺序；
+* 有前缀的声明适当缩进，使得其值对齐；
+* 缩进
+* 保留最后一条声明结尾的分号
+
 A brief example:
+
+上例子：
 
     .widget{
         padding:10px;
@@ -286,11 +323,19 @@ indented the `.widget-heading` ruleset one level deeper than `.widget`. This is
 useful information to developers that can now be gleaned just by a glance at the
 indentation of our rulesets.
 
+从中我们可以发现，`.widget-heading` 一定是 `.widget` 的子元素，因为前者比后者多缩
+进了一级。这使得开发者在阅读这些规则集时可以快速获取信息。
+
 We can also see that `.widget-heading`’s declarations are ordered by their
 relevance; `.widget-heading` must be a textual element so we begin with our
 text rules, followed by everything else.
 
+我们还可以看出 `.widget-heading` 的声明是根据其相关性排列的；`.widget-heading` 一
+定是个文字元素，所以我们先添加文字相关的样式声明，接下来是其它的。
+
 One exception to our multi-line rule might be in cases of the following:
+
+以下为一个不分成多行的例子：
 
     .t10    { width:10% }
     .t20    { width:20% }
@@ -310,17 +355,31 @@ In this example (from [inuit.css’s table grid system](
 https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88))
 it makes more sense to single-line our CSS.
 
+这个例子（来自[inuit.css’s table grid system](
+https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88)）中将 CSS 放在一行将使得代码更紧凑。
+
 ## Naming conventions
+
+## 命名规范
 
 For the most part I simply use hyphen delimited classes (e.g. `.foo-bar`, not
 `.foo_bar` or `.fooBar`), however in certain circumstances I use BEM (Block,
 Element, Modifier) notation.
 
+一般情况下我都是以连字符（-）连接 class 的名字（例如 `.foo-bar` 而非 `.foo_bar` 
+或 `.fooBar`），不过在某些特定的时候我会用 BEM（Block, Element, Modifier）命名
+法。
+
 <abbr title="Block, Element, Modifier">BEM</abbr> is a methodology for naming
 and classifying CSS selectors in a way to make them a lot more strict,
 transparent and informative.
 
+<abbr title="Block, Element, Modifier">BEM</abbr> 命名法可以使得选择器跟规范，更
+透明，更具语义化。
+
 The naming convention follows this pattern:
+
+该命名法按照如下格式：
 
     .block{}
     .block__element{}
