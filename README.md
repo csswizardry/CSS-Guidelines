@@ -31,8 +31,7 @@ The first part of this document will deal with syntax, formatting and CSS
 anatomy, the second part will deal with approach, mindframe and attitude toward
 writing and architecting CSS. Exciting, huh?
 
-本文档第一部分将探讨语法、格式以及 CSS 解析；第二部分将从方法论、思维框架、以及编写与
-规划 CSS 样式的态度入手。
+本文档第一部分将探讨语法、格式以及 CSS 解析；第二部分将从方法论、思维框架、以及编写与规划 CSS 样式的态度入手。
 
 ## Contents
 
@@ -113,8 +112,7 @@ writing and architecting CSS. Exciting, huh?
 No matter the document, we must always try and keep a common formatting. This
 means consistent commenting, consistent syntax and consistent naming.
 
-无论文档如何，我们都应当尽力维持统一的风格，这包括统一的注释、统一的语法与统一的
-命名风格。
+无论文档如何，我们都应当尽力维持统一的风格，这包括统一的注释、统一的语法与统一的命名风格。
 
 ### General
 
@@ -124,8 +122,7 @@ Limit your stylesheets to a maximum 80 character width where possible.
 Exceptions may be gradient syntax and URLs in comments. That’s fine, there’s
 nothing we can do about that.
 
-尽量将行宽控制在 80 字符以下。除了渐变相关的语法以及注释中的 URL，这些我们本来也
-无法处理。
+尽量将行宽控制在 80 字符以下。除了渐变相关的语法以及注释中的 URL，毕竟这些我们本来也无法处理。
 
 I prefer four (4) space indents over tabs and write multi-line CSS.
 
@@ -142,9 +139,7 @@ This too is fine… Whichever method you choose, the following rules and
 guidelines apply. The only notable difference is with regards our table of
 contents and our section titles. Read on for further explanation…
 
-有些人喜欢将样式写成一个大文件，这并不赖，而且如果你遵守下文指导的话你也不会遇到
-什么问题。我在迁移至 Sass 之后，开始将样式拆分成众多小文件。这也不赖……无论你采用
-什么方式，下文中的规则都将适用。唯一的区别在于目录表以及区块标题。
+有些人喜欢将样式写成一个大文件，这并不赖，而且如果你遵守下文指导的话你也不会遇到什么问题。我在迁移至 Sass 之后，开始将样式拆分成众多小文件。这也不赖……无论你采用什么方式，下文中的规则都将适用。唯一的区别在于目录表以及区块标题。
 
 ### Table of contents
 
@@ -167,15 +162,13 @@ sections contained in the document, for example:
 This will tell the next developer(s) exactly what they can expect to find in
 this file. Each item in the table of contents maps directly to a section title.
 
-这将告诉其它开发者这份文件中具体含有哪些内容。这份目录中的每一项都与其对应的区块
-标题相同。
+这将告诉其它开发者这份文件中具体含有哪些内容。这份目录中的每一项都与其对应的区块标题相同。
 
 If you are working in one big stylesheet, the corresponding section will also be
 in that file. If you are working across multiple files then each item in the
 table of contents will map to an include which pulls that section in.
 
-如果你在维护一份大规模的样式表，对应的区块也将在这份文件中。如果你是在编写一群小
-文件，那么目录表中的每一项应当对应其相应的 @include 语句。
+如果你在维护一份大规模的样式表，对应的区块也将在这份文件中。如果你是在编写一群小文件，那么目录表中的每一项应当对应其相应的 @include 语句。
 
 ### Section titles
 
@@ -193,8 +186,7 @@ titles. Denote a section thus:
 The `$` prefixing the name of the section allows us to run a find ([Cmd|Ctrl]+F)
 for `$[SECTION-NAME]` and **limit our search scope to section titles only**.
 
-在区块标题中前缀 `$` 可以让我们使用查找命令（[Cmd|Ctrl]+F）查找 `$[SECTION-NAME]`
-并 **限定查找范围仅仅在标题**。
+在区块标题中前缀 `$` 可以让我们使用查找命令（[Cmd|Ctrl]+F）查找 `$[SECTION-NAME]` 并 **将查找范围仅仅限定在区块标题**。
 
 If you are working in one large stylesheet, you leave five (5) carriage returns
 between each section, thus:
@@ -224,8 +216,7 @@ through larger files.
 If you are working across multiple, included stylesheets, start each of those
 files with a section title and there is no need for any carriage returns.
 
-如果你在维护多份、以 include 连接的样式表的话，在每份文件头加上区块标题即可，可以
-不用这样空行。
+如果你在维护多份、以 include 连接的样式表的话，在每份文件头加上标题即可，可以不用这样空行。
 
 ## Source order
 
@@ -234,8 +225,7 @@ files with a section title and there is no need for any carriage returns.
 Try and write stylesheets in specificity order. This ensures that you take full
 advantage of inheritance and CSS’ first <i>C</i>; the cascade.
 
-尽量按照特定顺序编写样式表，这样确保你充分发挥 CSS 缩写中第一个 <i>C</i> 的意义：
-cascade，层叠。
+尽量按照特定顺序编写样式表，这样将确保你充分发挥 CSS 缩写中第一个 <i>C</i> 的意义：cascade，层叠。
 
 A well ordered stylesheet will be ordered something like this:
 
@@ -258,8 +248,7 @@ This means that—as you go down the document—each section builds upon and
 inherits sensibly from the previous one(s). There should be less undoing of
 styles, less specificity problems and all-round better architected stylesheets.
 
-这意味着你顺文档而下时，每个区块都将继承在它之前区块的属性。这样就可以减少代码相
-互抵消的部分，减少某些特殊的问题，构成设计更理想的样式表结构。
+这意味着你顺文档而下时，每个区块都将继承在它之前区块的属性。这样就可以减少代码相互抵消的部分，减少某些特殊的问题，构成设计更理想的样式表结构。
 
 For further reading I cannot recommend Jonathan Snook’s
 [SMACSS](http://smacss.com) highly enough.
@@ -323,15 +312,13 @@ indented the `.widget-heading` ruleset one level deeper than `.widget`. This is
 useful information to developers that can now be gleaned just by a glance at the
 indentation of our rulesets.
 
-从中我们可以发现，`.widget-heading` 一定是 `.widget` 的子元素，因为前者比后者多缩
-进了一级。这使得开发者在阅读这些规则集时可以快速获取信息。
+从中我们可以发现，`.widget-heading` 一定是 `.widget` 的子元素，因为前者比后者多缩进了一级。这使得开发者在阅读这些规则集时可以快速获取信息。
 
 We can also see that `.widget-heading`’s declarations are ordered by their
 relevance; `.widget-heading` must be a textual element so we begin with our
 text rules, followed by everything else.
 
-我们还可以看出 `.widget-heading` 的声明是根据其相关性排列的；`.widget-heading` 一
-定是个文字元素，所以我们先添加文字相关的样式声明，接下来是其它的。
+我们还可以看出 `.widget-heading` 的声明是根据其相关性排列的；`.widget-heading` 一定是个文字元素，所以我们先添加文字相关的样式声明，接下来是其它的。
 
 One exception to our multi-line rule might be in cases of the following:
 
@@ -355,8 +342,7 @@ In this example (from [inuit.css’s table grid system](
 https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88))
 it makes more sense to single-line our CSS.
 
-这个例子（来自[inuit.css’s table grid system](
-https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88)）中将 CSS 放在一行将使得代码更紧凑。
+这个例子（来自[inuit.css’s table grid system](https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88)）中将 CSS 放在一行将使得代码更紧凑。
 
 ## Naming conventions
 
@@ -366,16 +352,13 @@ For the most part I simply use hyphen delimited classes (e.g. `.foo-bar`, not
 `.foo_bar` or `.fooBar`), however in certain circumstances I use BEM (Block,
 Element, Modifier) notation.
 
-一般情况下我都是以连字符（-）连接 class 的名字（例如 `.foo-bar` 而非 `.foo_bar` 
-或 `.fooBar`），不过在某些特定的时候我会用 BEM（Block, Element, Modifier）命名
-法。
+一般情况下我都是以连字符（-）连接 class 的名字（例如 `.foo-bar` 而非 `.foo_bar` 或 `.fooBar`），不过在某些特定的时候我会用 BEM（Block, Element, Modifier）命名法。
 
 <abbr title="Block, Element, Modifier">BEM</abbr> is a methodology for naming
 and classifying CSS selectors in a way to make them a lot more strict,
 transparent and informative.
 
-<abbr title="Block, Element, Modifier">BEM</abbr> 命名法可以使得选择器跟规范，更
-透明，更具语义化。
+<abbr title="Block, Element, Modifier">BEM</abbr> 命名法可以使得选择器更规范，更透明，更具语义化。
 
 The naming convention follows this pattern:
 
@@ -390,7 +373,13 @@ The naming convention follows this pattern:
   as a whole.
 * `.block--modifier` represents a different state or version of `.block`.
 
+* `.block` 代表某个顶层抽象元素；
+* `.block__element` 代表 `.block` 的一个子元素；
+* `.block--modifier` 代表 `.block` 某个状态不同的版本。
+
 An **analogy** of how BEM classes work might be:
+
+一份 BEM **结构** 大致如下：
 
     .person{}
     .person--woman{}
@@ -403,14 +392,20 @@ different type of person might be a woman. We can also see that people have
 hands; these are sub-parts of people, and there are different variations,
 like left and right.
 
+这个例子中我们描述的最基本元素是一个人，然后这个人的某个不同状态可能是一个女人。我们都知道人拥有手，这些是人体的一部分，而手也有不同的状态，如同左手与右手。
+
 We can now namespace our selectors based on their base objects and we can also
 communicate what job the selector does; is it a sub-component (`__`) or a
 variation (`--`)?
+
+这样我们就可以根据选择器的父元素来规定其命名空间并传达该选择器的职能，它是一个子元素（`__`）还是其他状态（`--`）？
 
 So, `.page-wrapper` is a standalone selector; it doesn’t form part of an
 abstraction or a component and as such it named correctly. `.widget-heading`,
 however, _is_ related to a component; it is a child of the `.widget` construct
 so we would rename this class `.widget__heading`.
+
+由此，`.page-wrapper` 是一个单独的选择器，这个命名是正确的而且它也不是其它元素的子元素或其它状态；然而 `.widget-heading` 则与其它对象 _相关_  ，它应当是 `.widget` 的子元素，所以我们应当将该 class 重命名为 `.widget__heading`。
 
 BEM looks a little uglier, and is a lot more verbose, but it grants us a lot of
 power in that we can glean the functions and relationships of elements from
