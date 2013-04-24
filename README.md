@@ -1,68 +1,18 @@
-# General CSS notes, advice and guidelines
-# 普适性的 CSS 笔记、建议与指导
+# 通用 CSS 笔记、建议与指导
 
 ---
 
-## Translations
-
-* [Russian/русский](https://github.com/matmuchrapna/CSS-Guidelines/blob/master/README%20Russian.md)
-
----
-
-In working on large, long running projects with dozens of developers, it is
-important that we all work in a unified way in order to, among other things:
 在参与规模庞大、历时漫长且人手众多的项目时，所有开发者遵守如下规则极为重要：
 
-* Keep stylesheets maintainable
-* Keep code transparent and readable
-* Keep stylesheets scalable
-* 保持 CSS 样式表的可维护性
-* 保持代码清晰移动
+* 保持 CSS 的可维护性
+* 保持代码清晰易懂
 * 保持代码的可拓展性
 
-There are a variety of techniques we must employ in order to satisfy these
-goals.
-为了实现这一目标，我们应当使用诸多技术。
+为了实现这一目标，我们要使用诸多方法。
 
-The first part of this document will deal with syntax, formatting and CSS
-anatomy, the second part will deal with approach, mindframe and attitude toward
-writing and architecting CSS. Exciting, huh?
-本文档第一部分将探讨语法、格式以及 CSS 解析；第二部分将从方法论、思维框架、以及编写与规划 CSS 样式的态度入手。
+本文档第一部分将探讨语法、格式以及 CSS 分析；第二部分将从方法论、思维框架、以及编写与规划 CSS 样式的态度入手。
 
-## Contents 目录
-
-* [CSS document anatomy](#css-document-anatomy)
-  * [General](#general)
-  * [One file vs. many files](#one-file-vs-many-files)
-  * [Table of contents](#table-of-contents)
-  * [Section titles](#section-titles)
-* [Source order](#source-order)
-* [Anatomy of rulesets](#anatomy-of-rulesets)
-* [Naming conventions](#naming-conventions)
-  * [JS hooks](#js-hooks)
-  * [Internationalisation](#internationalisation)
-* [Comments](#comments)
-  * [Comments on steroids](#comments-on-steroids)
-    * [Quasi-qualified selectors](#quasi-qualified-selectors)
-    * [Tagging code](#tagging-code)
-    * [Object/extension pointers](#objectextension-pointers)
-* [Writing CSS](#writing-css)
-* [Building new components](#building-new-components)
-* [OOCSS](#oocss)
-* [Layout](#layout)
-* [Sizing UIs](#sizing-uis)
-  * [Font sizing](#font-sizing)
-* [Shorthand](#shorthand)
-* [IDs](#ids)
-* [Selectors](#selectors)
-  * [Over qualified selectors](#over-qualified-selectors)
-  * [Selector performance](#selector-performance)
-* [CSS selector intent](#css-selector-intent)
-* [`!important`](#important)
-* [Magic numbers and absolutes](#magic-numbers-and-absolutes)
-* [Conditional stylesheets](#conditional-stylesheets)
-* [Debugging](#debugging)
-* [Preprocessors](#preprocessors)
+## 目录
 
 * [CSS 文档解析](#css-document-anatomy)
   * [总览](#general)
@@ -99,7 +49,7 @@ writing and architecting CSS. Exciting, huh?
 
 ---
 
-## CSS Document Anatomy CSS 文档解析
+## CSS 文档解析
 
 No matter the document, we must always try and keep a common formatting. This
 means consistent commenting, consistent syntax and consistent naming.
