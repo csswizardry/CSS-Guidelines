@@ -681,69 +681,86 @@ I define a series of classes akin to a grid system for sizing fonts. These
 classes can be used to style type in a double stranded heading hierarchy. For a
 full explanation of how this works please refer to my article
 [Pragmatic, practical font-sizing in CSS](http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css)
+我会定义一些与 grid system 原理类似的 class 来声明字号。这些 class 可以用于双重标题分级，关于这点请阅读 [Pragmatic, practical font-sizing in CSS](http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css)。
 
-## Shorthand
+## Shorthand 简写
 
 **Shorthand CSS needs to be used with caution.**
+**CSS 简写应当谨慎使用。**
 
 It might be tempting to use declarations like `background:red;` but in doing so
 what you are actually saying is ‘I want no image to scroll, aligned top-left,
 repeating X and Y, and a background colour of red’. Nine times out of ten this
 won’t cause any issues but that one time it does is annoying enough to warrant
 not using such shorthand. Instead use `background-color:red;`.
+写像 `background:red;` 这样的属性的确很省事，但是你这么写的意思其实是说 `background-image:none; background-position:top left; background-repeat: repeat; background-color:red;`。虽然大多数时候这样不会出什么问题，但是只要有一次不对劲就该考虑要不要放弃简写了。应当将其改为 `background-color:red;`。
 
 Similarly, declarations like `margin:0;` are nice and short, but
 **be explicit**. If you actually only really want to affect the margin on
 the bottom of an element then it is more appropriate to use `margin-bottom:0;`.
+类似的，像 `margin:0;` 这样的声明的确简介清爽，但是 **尽量写清楚**。如果你只是想改底边的边距，最好清楚一些，写成 `margin-bottom:0;`。
 
 Be explicit in which properties you set and take care to not inadvertently unset
 others with shorthand. E.g. if you only want to remove the bottom margin on an
 element then there is no sense in setting all margins to zero with `margin:0;`.
+反过来，你要声明的属性写清楚，不要因为简写而波及其它属性。例如如果你只想改掉底部的边距，那就不要用会把其它边距也清零的 `margin:0`。
 
 Shorthand is good, but easily misused.
+简写虽然是好东西，但是很容易滥用。
 
-## IDs
+## IDs ID
 
 A quick note on IDs in CSS before we dive into selectors in general.
+在我们开始处理选择器之前，牢记这句话：
 
 **NEVER use IDs in CSS.**
+**在 CSS 里坚决不要用 ID。**
 
 They can be used in your markup for JS and fragment identifiers but use only
 classes for styling. You don’t want to see a single ID in any stylesheets!
+在 HTML 里 ID 可以用于 JS 以及锚点定位，但是在 CSS 里只要用 class，连一个 ID 都不要用。
 
 Classes come with the benefit of being reusable (even if we don’t want to, we
 can) and they have a nice, low specificity. Specificity is one of the quickest
 ways to run into difficulties in projects and keeping it low at all times is
 imperative. An ID is **255** times more specific than a class, so never ever use
 them in CSS _ever_.
+Class 的优势在于重用性（），而且特异性也并不高。特异性非常容易导致问题，所以降低特异性就尤为重要。ID 的特异性是 class 的 **255** 倍，所以在 CSS 中坚决不要使用。
 
-## Selectors
+## Selectors 选择器
 
 Keep selectors short, efficient and portable.
+保持选择器简短、有效、轻便。
 
 Heavily location-based selectors are bad for a number of reasons. For example,
 take `.sidebar h3 span{}`. This selector is too location-based and thus we
 cannot move that `span` outside of a `h3` outside of `.sidebar` and maintain
 styling.
+定位过于精确的选择器并不理想，原因如下。例如 `.sidebar h3 span{}` 这样的选择器就是定位过于精确，很难把 span 移到 h3 和 sidebar 外面并保持其样式。
 
 Selectors which are too long also introduce performance issues; the more checks
 in a selector (e.g. `.sidebar h3 span` has three checks, `.content ul p a` has
 four), the more work the browser has to do.
+太长的选择器将会影响性能。选择器结构越复杂（如 `.sidebar h3 span` 为三层，`.content ul p a` 是四层），浏览器的消耗就越大。
 
 Make sure styles aren’t dependent on location where possible, and make sure
 selectors are nice and short.
+尽量使得样式不依赖于其定位，尽量保持选择器简洁清晰。
 
 Selectors as a whole should be kept short (e.g. one class deep) but the class
 names themselves should be as long as they need to be. A class of `.user-avatar`
 is far nicer than `.usr-avt`.
+作为一个整体，选择其应当尽量简短（例如只有一层结构），但是 class 名则不应当过于简略，例如 `.user-avatar` 就远比 `.usr-avt` 好。
 
 **Remember:** classes are neither semantic or insemantic; they are sensible or
 insensible! Stop stressing about ‘semantic’ class names and pick something
 sensible and futureproof.
+**牢记：** class 名无所谓是否语义化；应当关注它们是否合理。不要强调 class 名要符合语义，而要使用合理且不会过时的名称。
 
-### Over-qualified selectors
+### Over-qualified selectors 过度修饰的选择器
 
 As discussed above, qualified selectors are bad news.
+根据上文所述，过度修饰的选择器并不好。
 
 An over-qualified selector is one like `div.promo`. You could probably get the
 same effect from just using `.promo`. Of course sometimes you will _want_ to
@@ -751,24 +768,28 @@ qualify a class with an element (e.g. if you have a generic `.error` class that
 needs to look different when applied to different elements (e.g.
 `.error{ color:red; }` `div.error{ padding:14px; }`)), but generally avoid it
 where possible.
+过度修饰的选择器是指像 `div.promo` 这样的。如果你只用 `.promo` 的话也能得到相同的效果。当然你可能偶尔会用得着用元素类型来修饰 class（例如你写了一个 `.error` 而且想让它在不同的元素类型中显示效果不一样，例如 `.error{ color:red; }` `div.error{ padding:14px;}`），但是大多数时候还是应当尽量避免。
 
 Another example of an over-qualified selector might be `ul.nav li a{}`. As
 above, we can instantly drop the `ul` and because we know `.nav` is a list, we
 therefore know that any `a` _must_ be in an `li`, so we can get `ul.nav li a{}`
 down to just `.nav a{}`.
+再举一个修饰过度的选择器例子，`ul.nav li a{}`。如前文所说，我们马上就可以删掉 `ul` 因为我们知道 `.nav` 是个列表，然后我们就可以发现 `a` 一定在 `li` 中，所以我们就能将这个选择器改写成 `.nav a{}`。
 
-### Selector performance
+### Selector performance 选择器性能
 
 Whilst it is true that browsers will only ever keep getting faster at rendering
 CSS, efficiency is something you could do to keep an eye on. Short, unnested
 selectors, not using the universal (`*{}`) selector as the key selector, and
 avoiding more complex CSS3 selectors should help circumvent these problems.
+虽然浏览器性能日渐提升，渲染 CSS 速度越来越快，但是你还是应当关注效率。简单说来，不用嵌套的选择器，不要把全局选择器（`*{}`）用作关键选择器，避免使用日渐复杂的 CSS3 新选择器可以避免这样的问题。
 
-## CSS selector intent
+## CSS selector intent CSS 选择器的目的
 
 Instead of using selectors to drill down the DOM to an element, it is often best
 to put a class on the element you explicitly want to style. Let’s take a
 specific example with a selector like `.header ul{}`…
+比起使劲运用选择起定位到某元素，更好的办法是给你想要添加样式的元素直接添加一个 lcass。我们以 `.header ul{}` 这样一个选择器为例。
 
 Let’s imagine that `ul` is indeed the main navigation for our website. It lives
 in the header as you might expect and is currently the only `ul` in there;
@@ -778,85 +799,103 @@ header it will adopt the styling of our main nav and the the chances are it
 won’t want to. This means we either have to refactor a lot of code _or_ undo a
 lot of styling on subsequent `ul`s in that `.header` to remove the effects of
 the far reaching selector.
+设想这个 `ul` 是这个网站的全站导航，它位于 header 中，而且目前为止是 header 中唯一的 `ul` 元素。`.header ul{}` 的确可以生效，但是这样并不是好方法，它很容易过时，而且非常晦涩。如果我们在 header 中再添加一个 `ul` 的话，它就会套用我们给这个导航部分写的样式，哪怕我们设想的不是这个效果。这意味着我们要么要重构许多代码或者给给后面的 `ul` 新写许多样式来抵消之前的影响。
 
 Your selector’s intent must match that of your reason for styling something;
 ask yourself **‘am I selecting this because it’s a `ul` inside of `.header` or
 because it is my site’s main nav?’**. The answer to this will determine your
 selector.
+你的选择器必须符合你要给这个元素添加样式的原因。思考一下，**「我定位到这个元素，是因为它是 `.header` 下的 `ul`，还是因为它是我的网站导航？」**这个问题的回答将决定你应当如何使用选择器。
 
 Make sure your key selector is never an element/type selector or
 object/abstraction class. You never really want to see selectors like
 `.sidebar ul{}` or `.footer .media{}` in our theme stylesheets.
+确保你的关键选择器不是类选择器，也不是对象或抽象选择器。例如你在我们的 CSS 中肯定找不到诸如 `.sidebar ul{}` 或者 `.footer .media{}` 这样的选择器。
 
 Be explicit; target the element you want to affect, not its parent. Never assume
 that markup won’t change. **Write selectors that target what you want, not what
 happens to be there already.**
+表达清楚：直接找到你要添加样式的元素，而非其亲元素。不要想当然地认为 HTML 不会改变。**用 CSS 直接命中你需要的元素，而非投机取巧。**
 
 For a full write up please see my article
 [Shoot to kill; CSS selector intent](http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/)
+完整内容请参考我的文章 [Shoot to kill; CSS selector intent](http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/)
 
 ## `!important`
 
 It is okay to use `!important` on helper classes only. To add `!important`
 preemptively is fine, e.g. `.error{ color:red!important }`, as you know you will
 **always** want this rule to take precedence.
+只在起辅助作用的 class 上用 `!important`。用 `!important` 提升优先级也可以，例如如果你要让这条样式一直生效的话，可以用 `.error{ color:red!important; }`。
 
 Using `!important` reactively, e.g. to get yourself out of nasty specificity
 situations, is not advised. Rework your CSS and try to combat these issues by
 refactoring your selectors. Keeping your selectors short and avoiding IDs will
 help out here massively.
+被动地使用 `!important`。例如 CSS 写得很复杂时不要用它来取巧，要好好整理并重构之前的部分，保持选择器简短并且避免用 ID 将效果拔群。
 
-## Magic numbers and absolutes
+## Magic numbers and absolutes 魔数以及绝对定位
 
 A magic number is a number which is used because ‘it just works’. These are bad
 because they rarely work for any real reason and are not usually very
 futureproof or flexible/forgiving. They tend to fix symptoms and not problems.
+魔数是指那些「凑巧有效果」的数字，这东西非常不好，因为它们只是治标不治本而且缺乏拓展性。
 
 For example, using `.dropdown-nav li:hover ul{ top:37px; }` to move a dropdown
 to the bottom of the nav on hover is bad, as 37px is a magic number. 37px only
 works here because in this particular scenario the `.dropdown-nav` happens to be
 37px tall.
+例如 `.dropdown-nav li:hover ul{ top:37px; }` 把下拉菜单拖下来并非良策，因为这里的 37px 就是个魔数。37px 会生效的原因是因为这时 `.dropbox-nav` 碰巧高 37px 而已。
 
 Instead you should use `.dropdown-nav li:hover ul{ top:100%; }` which means no
 matter how tall the `.dropdown-nav` gets, the dropdown will always sit 100% from
 the top.
+这时你应该用 `.dropdown-nav li:hover ul{ top:100%; }`，也即无论 `.dropbox-down` 多高，这个下拉菜单都会往下移动 100%。
 
 Every time you hard code a number think twice; if you can avoid it by using
 keywords or ‘aliases’ (i.e. `top:100%` to mean ‘all the way from the top’)
 or&mdash;even better&mdash;no measurements at all then you probably should.
+每当你要在代码中放入数字的时候，请三思而行。如果你能用一个关键字或者 alias（例如  `top:100%` 意即「从上面拉到最下面」），或者有更好的解决方法的刷，就尽量避免直接出现数字。
 
 Every hard-coded measurement you set is a commitment you might not necessarily
 want to keep.
+你在 CSS 中留下的数字，都是你许下而不愿遵守的承诺。
 
-## Conditional stylesheets
+## Conditional stylesheets 带条件判断的样式表
 
 IE stylesheets can, by and large, be totally avoided. The only time an IE
 stylesheet may be required is to circumvent blatant lack of support (e.g. PNG
 fixes).
+Hack IE 用的样式基本上都是可以避免的，唯一需要为 IE 专门处理的是为了处理 IE 不支持的内容—（例如 PNG）。
 
 As a general rule, all layout and box-model rules can and _will_ work without an
 IE stylesheet if you refactor and rework your CSS. This means you never want to
 see `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` or other such
 CSS that is clearly using arbitrary styling to just ‘make stuff work’.
+简而言之，如果你重构 CSS 的话，所有的布局和盒模型都不用额外兼容 IE。也就是说你基本上不用 `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` 或者类似的写法。 
 
 ## Debugging
 
 If you run into a CSS problem **take code away before you start adding more** in
 a bid to fix it. The problem exists in CSS that is already written, more CSS
 isn’t the right answer!
+如果你要解决 CSS 问题的话，**先把旧代码拿掉再写新的**。如果旧的 CSS 中有问题的话，写新代码是解决不了的。
 
 Delete chunks of markup and CSS until your problem goes away, then you can
 determine which part of the code the problem lies in.
+把 CSS 代码和 HTML 部分删掉，直到没有 BUG 为止，然后你就知道问题出在哪里了。
 
 It can be tempting to put an `overflow:hidden;` on something to hide the effects
 of a layout quirk, but overflow was probably never the problem; **fix the
 problem, not its symptoms.**
+有时候写上一个 `overflow:hidden` 或者其它能把问题藏起来的代码的确立竿见影，但是 overflow 可能根本就没问题。所以 **要治本，而不是单纯治标**。
 
-## Preprocessors
+## Preprocessors 预处理器
 
 Sass is my preprocessor of choice. **Use it wisely.** Use Sass to make your CSS
 more powerful but avoid nesting like the plague! Nest only when it would
 actually be necessary in vanilla CSS, e.g.
+我用 Sass。**灵活运用**。用 Sass 可以令你的 CSS 更强大，但是不要嵌套得太复杂。在 Vanilla CSS 中，只在必要的地方用嵌套即可，例如：
 
     .header{}
     .header .site-nav{}
@@ -865,6 +904,7 @@ actually be necessary in vanilla CSS, e.g.
 
 Would be wholly unnecessary in normal CSS, so the following would be **bad**
 Sass:
+这样的写法在普通 CSS 里完全用不到。以下为 **不好的** Sass 写法：
 
     .header{
         .site-nav{
@@ -875,6 +915,7 @@ Sass:
     }
 
 If you were to Sass this up you’d write it as:
+如果你用 Sass 的话，尽量这么写：
 
     .header{}
     .site-nav{
