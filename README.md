@@ -260,7 +260,6 @@ BEM 命名法虽然不太好看，而且相当冗长，但是它使得我们可�
 
 ## 注释
 
-I use a docBlock-esque commenting style which I limit to 80 characters in length:
 我使用行宽不超过 80 字节的块状注释：
 
     /**
@@ -304,7 +303,7 @@ I use a docBlock-esque commenting style which I limit to 80 characters in length
 * 代码标签
 * 继承标记
 
-#### Quasi-qualified selectors 准修饰选择器
+#### 准修饰选择器
 
 你应当避免过分修饰选择器，例如如果你能写 `.nav{}` 就尽量不要写 `ul.nav{}`。过分修饰选择器将影响性能，影响 class 复用性，增加选择器私有度。这些都是你应当竭力避免的。
 
@@ -370,14 +369,10 @@ I use a docBlock-esque commenting style which I limit to 80 characters in length
 
 编写新组件时，要在着手处理 CSS **之前** 写好标记部分。这可以令你准确判断哪些 CSS 属性可以继承，避免重复浪费。
 
-By writing markup first you can focus on data, content and semantics and then
-apply only the relevant classes and CSS _afterwards_.  
 先写标记的话，你就可以关注数据、内容与语义，在这之后再施加需要的 class 和 CSS 样式。
 
 ## 面向对象 CSS
 
-I work in an OOCSS manner; I split components into structure (objects) and
-skin (extensions). As an **analogy** (note, not example) take the following:
 我以面向对象 CSS 的方式写代码。我把组件分成结构（对象）与外观（拓展）。正如以下分析（注意这个只是笔记而非例子）：
 
     .room{}
@@ -441,11 +436,6 @@ skin (extensions). As an **analogy** (note, not example) take the following:
 
 在 HTML 里 ID 可以用于 JS 以及锚点定位，但是在 CSS 里只要用 class，一个 ID 也不要用。
 
-Classes come with the benefit of being reusable (even if we don’t want to, we
-can) and they have a nice, low specificity. Specificity is one of the quickest
-ways to run into difficulties in projects and keeping it low at all times is
-imperative. An ID is **255** times more specific than a class, so never ever use
-them in CSS _ever_.
 Class 的优势在于复用性，而且私有度也并不高。私有度非常容易导致问题，所以将其降低就尤为重要。ID 的私有度是 class 的 **255** 倍，所以在 CSS 中坚决不要使用。
 
 ##  选择器
