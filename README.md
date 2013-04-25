@@ -4,7 +4,8 @@
 
 ## Translations
 
-* [Russian/русский](https://github.com/matmuchrapna/CSS-Guidelines/blob/master/README%20Russian.md)
+* [Russian](https://github.com/matmuchrapna/CSS-Guidelines/blob/master/README%20Russian.md)
+* [Chinese](https://github.com/chadluo/CSS-Guidelines/blob/master/README.md)
 
 ---
 
