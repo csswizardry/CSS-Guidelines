@@ -125,11 +125,11 @@ between each section, thus:
     [Our
     reset
     styles]
-    
-    
-    
-    
-    
+
+
+
+
+
     /*------------------------------------*\
         $FONT-FACE
     \*------------------------------------*/
@@ -166,7 +166,7 @@ For further reading I cannot recommend Jonathan Snook’s
     [selector]{
         [property]:[value];
         [<- Declaration ->]
-    }    
+    }
 
 I have a number of standards when structuring rulesets.
 
@@ -224,8 +224,7 @@ One exception to our multi-line rule might be in cases of the following:
     .t80    { width:80% }
     .t90    { width:90% }
 
-In this example (from [inuit.css’s table grid system](
-https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88))
+In this example (from [inuit.css’s table grid system](https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88))
 it makes more sense to single-line our CSS.
 
 ## Naming conventions
@@ -337,16 +336,16 @@ I use a docBlock-esque commenting style which I limit to 80 characters in length
 
     /**
      * This is a docBlock style comment
-     * 
+     *
      * This is a longer description of the comment, describing the code in more
      * detail. We limit these lines to a maximum of 80 characters in length.
-     * 
+     *
      * We can have markup in the comments, and are encouraged to do so:
-     * 
+     *
        <div class=foo>
            <p>Lorem</p>
        </div>
-     * 
+     *
      * We do not prefix lines of code with an asterisk as to do so would inhibit
      * copy and paste.
      */
@@ -404,7 +403,7 @@ a comment above it, for example:
      * ^navigation ^lists
      */
     .nav{}
-    
+
     /**
      * ^grids ^lists ^tables
      */
@@ -463,7 +462,7 @@ I work in an OOCSS manner; I split components into structure (objects) and
 skin (extensions). As an **analogy** (note, not example) take the following:
 
     .room{}
-    
+
     .room--kitchen{}
     .room--bedroom{}
     .room--bathroom{}
@@ -492,7 +491,7 @@ treatments.
 All components you build should be left totally free of widths; they should
 always remain fluid and their widths should be governed by a parent/grid system.
 
-Heights should **never** be be applied to elements. Heights should only be 
+Heights should **never** be be applied to elements. Heights should only be
 applied to things which had dimensions _before_ they entered the site (i.e.
 images and sprites). Never ever set heights on `p`s, `ul`s, `div`s, anything.
 You can often achieve the desired effect with `line-height` which is far more
