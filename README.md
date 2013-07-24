@@ -569,10 +569,8 @@ classes for styling. You don’t want to see a single ID in any stylesheets!
 Classes come with the benefit of being reusable (even if we don’t want to, we
 can) and they have a nice, low specificity. Specificity is one of the quickest
 ways to run into difficulties in projects and keeping it low at all times is
-imperative. An ID is, at least, **255** times more specific than a class
-(this works for Internet Explorer and Firefox while Chrome and Opera will
-require even more specificty to beat an ID - you can try on [this pen](http://codepen.io/chriscoyier/pen/lzjqh)),
-so never ever use them in CSS _ever_.
+imperative. An ID is **255** times more specific than a class, so never ever use
+them in CSS _ever_.
 
 ## Selectors
 
@@ -738,9 +736,3 @@ If you were to Sass this up you’d write it as:
         li{}
         a{}
     }
-
-This would output the following vanilla css, with correct selector specificity:
-
-    .header{}
-    .site-nav li{}
-    .site-nav a{}
