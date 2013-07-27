@@ -14,56 +14,60 @@
 
 ## 內容大綱
 
-* 剖析 CSS 文件
-  * 總覽
-  * 單一檔案與多檔案
-  * 目錄大綱
-  * 區段標題
-* 樣式載入順序
-* 規則解析
-* 命名規範
-  * HTML 中的 class 屬性
-  * JS 鉤子 (JS hooks)
-  * i18n
-* 註解
-  * 編寫註解的技巧
-    * 使用看似合法的選取器 (Quasi-qualified selectors)
-    * 替樣式加上特殊的標籤 (Tagging code)
-    * 用物件繼承的方式註記 (Object/extension pointers)
-* 撰寫 CSS
-* 建構新組件 (Building new components)
-* 物件導向 CSS (OOCSS)
-* 版面配置
-* 調整 UI 的尺寸
-  * 字級大小
-* 簡寫
-* 關於 ID 的使用
-* 選取器
-  * 過修飾選取器
-  * 選取器效能
-* 選取器繼承
-* `!important`
-* 魔數與絕對比例
-* 條件式註解
-* 偵錯(Debugging)
-* 前置處理器
+* [剖析 CSS 文件](#css-document-anatomy)
+  * [總覽](#general)
+  * [單一檔案與多檔案](#one-file-vs-many-files)
+  * [目錄大綱](#table-of-contents)
+  * [區段標題](#section-titles)
+* [樣式載入順序](#source-order)
+* [規則解析](#anatomy-of-rulesets)
+* [命名規範](#naming-conventions)
+  * [HTML 中的 class 屬性](#class-in-html)
+  * [JS 鉤子 (JS hooks)](#js-hooks)
+  * [i18n](#internationalisation)
+* [註解](#comments)
+  * [編寫註解的技巧](#comments-on-steroids)
+    * [使用看似合法的選取器 (Quasi-qualified selectors)](#quasi-qualified-selectors)
+    * [替樣式加上特殊的標籤 (Tagging code)](#tagging-code)
+    * [用物件繼承的方式註記 (Object/extension pointers)](#objectextension-pointers)
+* [撰寫 CSS](#writing-css)
+* [建構新組件 (Building new components)](#building-new-components)
+* [物件導向 CSS (OOCSS)](#oocss)
+* [版面配置](#layout)
+* [調整 UI 的尺寸](#sizing-uis)
+  * [字級大小](#font-sizing)
+* [簡寫](#shorthand)
+* [關於 ID 的使用](#ids)
+* [選取器](#selectors)
+  * [過修飾選取器](#over-qualified-selectors)
+  * [選取器效能](#selector-performance)
+* [使用 CSS 選取器的目的](#css-selector-intent)
+* [`!important`](#important)
+* [魔數與絕對比例](#magic-numbers-and-absolutes)
+* [條件式註解](#conditional-stylesheets)
+* [偵錯(Debugging)](#debugging)
+* [前置處理器](#preprocessors)
 
 ---
 
+<a name="css-document-anatomy"></a>
 ## 剖析 CSS 文件
 
 無論撰寫什麼文件，我們都應該盡量維持一致的風格，包括一致的註解、一致的語法與一致的命名規範。
 
+<a name="general"></a>
 ### 總則
 
 盡量將每行寬度控制在 80 個字元以下。漸變（gradient）相關的語法與註解中的 URL 等可以當作例外，畢竟這部分我們也無能為力。
 
 我傾向於用 4 個空白字元來縮排，而非使用 Tab 字元，並且習慣將不同的樣式拆分成多行。
 
+<a name="one-file-vs-many-files"></a>
 ### 單檔案與多檔案
 
 有些人喜歡將樣式表寫在一個很大的檔案裡，這還不錯，而且如果你按照下文的規則來撰寫的話，也不會遇到什麼問題。我在轉換到 Sass 之後，開始將樣式拆分成許多小檔案，這其實也是個不錯的選擇。但無論你採用什麼方式，下文所描述的規則，也依然適用。這兩種寫法僅僅在目錄以及區段標題上有所差異而已。
 
+<a name="table-of-contents"></a>
 ### 目錄大綱 (註解)
 
 在 CSS 檔案的開頭，我會寫一份目錄 (以註解形式撰寫)，例如：
@@ -81,6 +85,7 @@
 
 如果你在維護一份規模較大的 CSS 樣式表檔案，對應的區塊也會在同一個檔案裡。如果你在維護的是一份小型的 CSS 檔案，那麼目錄中的每一項，也應該要有相對應的 @include 語句。
 
+<a name="section-titles"></a>
 ### 區段標題 (註解)
 
 從目錄大綱對應的區塊標題，其範例如下：
@@ -99,11 +104,11 @@
     [Our
     reset
     styles]
-    
-    
-    
-    
-    
+
+
+
+
+
     /*------------------------------------*\
         $FONT-FACE
     \*------------------------------------*/
@@ -112,6 +117,7 @@
 
 如果你在維護多份以 @include 連接的 CSS 樣式表，那麼在每個檔案的檔頭加上區段標題即可，不必像這樣額外空行。
 
+<a name="source-order"></a>
 ## 樣式編寫順序
 
 盡量按照特定順序編寫樣式規則，這可確保你充分發揮 CSS 縮寫中第一個字母 <i>C</i> 的意義：Cascade〔串聯〕。
@@ -128,6 +134,7 @@
 
 關於這方面的更多訊息，強烈推薦 Jonathan Snook 的 [SMACSS](http://smacss.com)。
 
+<a name="anatomy-of-rulesets"></a>
 ## 解剖 CSS 規則集
 
     [選取器] {
@@ -187,6 +194,7 @@
 
 在這個例子（來自[inuit.css's table grid system](https://github.com/csswizardry/inuit.css/blob/master/inuit.css/partials/base/_tables.scss#L88)），你可以發現把這些樣式規則擺在一行內是比較清楚的。
 
+<a name="naming-conventions"></a>
 ## 命名規範
 
 一般情況下我都是以減號（-）連接 class 的名字（例如 `.foo-bar` 而非 `.foo_bar` 或 `.fooBar`），不過在某些情況下，我會用 BEM（Block, Element, Modifier）表示法。
@@ -223,6 +231,7 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 無論你是否使用 BEM 表示法，你都應該確保 class 命名得當，確保一字不多、一字不少，也確保類別樣式的命名抽象一點，以提高複用性（例如 `.ui-list`，`.media`）。那些因為特定目而設計的樣式，在命名時則要盡量精準（例如 `.user-avatar-link`），你不用擔心類別名稱的數量太多或字串長度過長，因為 gzip 壓縮演算法會很驚人的幫你把重複的文字進行壓縮。
 
+<a name="class-in-html"></a>
 ### HTML 中的 class 屬性
 
 為了確保可讀性，建議在 HTML 標籤的 class 屬性中，使用 2 個空白字元間隔不同的 class 名稱，例如：
@@ -231,6 +240,7 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 增加的空白字元應該可以讓你在閱讀一個 class 屬性中的類別名稱時，更易於閱讀。
 
+<a name="js-hooks"></a>
 ### JS hooks
 
 **千萬不要把 CSS 樣式當成 JS hooks 來用。**我們在寫 jQuery 的時候，經常會自訂一些 class 樣式類別名稱，以方便我們透過 jQuery 的選取器選中這個元素。除此之外，有時候我們也會自訂一些 HTML 屬性，讓 HTML 擁有一些特殊的行為，這些都算是 JS hooks 的應用，如果你把 JS 的行為與樣式綁在一起時，代表我們套用的樣式與 JavaScript 行為無法區分開來，這對可維護性來說也蠻傷的。
@@ -242,6 +252,7 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 上面的這個 th 標籤有兩個 class，你可以用 is-sortable 這個類別來定義這個表格的樣式，而用另一個 js-is-sortable 來套用排序功能。
 
+<a name="internationalisation"></a>
 ### i18n
 
 雖然我（該 CSS Guideline 文件原作者 Harry Roberts）是個英國人，而且我一向把 **顏色** 拼寫成 <i>colour</i> 而非 <i>color</i>，但是為了命名的一致性，我認為在 CSS 中使用美式英語的拼法更好。CSS 以及其它多數語言都是以美式英語的拼法寫成，所以如果在 `.colour-picker{}` 中寫 `color:red` 就缺乏一致性。我以前主張同時用兩種拼法，例如：
@@ -254,6 +265,7 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 所以為了一致性，把所有的 class 與變數都以你參與的專案的慣用拼法命名即可。
 
+<a name="comments"></a>
 ## 註解
 
 我使用每行寬度不超過 80 個字元的區塊註解：
@@ -275,6 +287,7 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 在註解中應該盡量詳細描述你的語法，因為對你來說清晰易懂的內容，對其他人可能並非如此。所以，建議每寫一部分樣式後，就要立刻編寫註解。
 
+<a name="comments-on-steroids"></a>
 ### 編寫註解的技巧
 
 註解其實有許多先進的用法，例如：
@@ -283,6 +296,7 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 * 替樣式加上特殊的標籤 (Tagging code)
 * 用物件繼承的方式註記 (Object/extension pointers)
 
+<a name="quasi-qualified-selectors"></a>
 #### 使用看似合法的選取器 (Quasi-qualified selectors)
 
 你應該避免過分修飾選取器，例如如果你能寫 `.nav{}` 就盡量不要寫 `ul.nav{}`。過分修飾選取器會影響網頁效能，影響 class 的複用性，也會增加選取器的權重 (Specificity)，這些都是你應該竭力避免的。
@@ -303,6 +317,7 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 這樣我們就就可清楚地了解到這些樣式實際的套用範圍，而不用擔心它會不會套用到其他元素上。
 
+<a name="tagging-code"></a>
 #### 替樣式加上特殊的標籤 (Tagging code)
 
 如果你寫了一個新的樣式規則，可以在它前面套用一些標籤(Tag)，例如：
@@ -311,7 +326,7 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
      * ^navigation ^lists
      */
     .nav{}
-    
+
     /**
      * ^grids ^lists ^tables
      */
@@ -319,6 +334,7 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 這些標籤可以使得其他網頁開發人員快速找到相關樣式。如果一個網頁開發人員需要搜尋和列表相關的部分，他只要搜尋 `^lists` 就能快速定位到 `.nav`，`.matrix` 以及其它相關部分。
 
+<a name="objectextension-pointers"></a>
 #### 用物件繼承的方式註記 (Object/extension pointers)
 
 當物件導向的觀念用在 CSS 的時候，你經常能找到兩段相關的 CSS 樣式定義分散在不同地方（可能其中一個為基底樣式，另一個則為擴充樣式），我們可以用物件繼承的方式註記該樣式與原本樣式之間的關聯。這些在註解中的寫法如下：
@@ -341,22 +357,25 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 ---
 
+<a name="writing-css"></a>
 ## 撰寫 CSS
 
 之前的章節主要探討如何組織我們的 CSS 樣式，這些都是非常量化的規則。接下來我們要探討更理論的東西，也將探討我們的見解與方法論。
 
+<a name="building-new-components"></a>
 ## 建構新元件 (Building new components)
 
 建構新元件時，必須要在撰寫 CSS **之前** 先寫好 HTML 部分。這可以幫助你準確判斷哪些 CSS 屬性可以繼承，避免重複套用多餘的樣式。
 
 優先撰寫 HTML 可以讓你專注在資料、內容與語意上，而在這之後才新增相關的 class 和 CSS 樣式。
 
+<a name="oocss"></a>
 ## 物件導向 CSS (OOCSS)
 
 我都是以物件導向的方式撰寫 CSS，我把元件區分成結構（物件）與外觀（擴充）。正如以下想法（注意這個只是想法而非例子）：
 
     .room{}
-    
+
     .room--kitchen{}
     .room--bedroom{}
     .room--bathroom{}
@@ -367,6 +386,7 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 當你要撰寫一個新元件時，先將其拆解成結構和外觀。撰寫結構的部分時，使用通用的 class 以確保這個元件的複用性，撰寫外觀時則使用更具體的 class 來點綴這些視覺上的設計。
 
+<a name="layout"></a>
 ## 版面配置
 
 所有元件都不應該定義寬度，保持其流動性(fluid)，盡量由上層元素或 **網格系統** (Grid systems) 來決定其寬度。
@@ -377,6 +397,7 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 你不應該套用任何樣式在網格系統上，他們單純的只為了版面配置之用。記得要在網格系統內套用樣式到內容上。記得：無論在任何情境下，永遠不要在網格系統的任何一格裡，套用任何 box-model 屬性(margin, padding, border)。
 
+<a name="sizing-uis"></a>
 ## 調整 UI 的尺寸
 
 我會用各種方法設定 UI 尺寸，包括百分比 (`%`)、`px`、`em`、`rem` ("root em")，如此而已。
@@ -392,14 +413,16 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 我只會在已經使用固定尺寸的元素上使用 px，包括已經使用 `px` 定義過並自動繼承的圖片或 CSS Sprite。
 
+<a name="font-sizing"></a>
 ### 字級大小
 
 我會定義一些與網格系統原理類似的 class 來定義字級大小，這些 classes 可以在 double stranded heading hierarchy 的結構下設定字級。關於 double stranded heading hierarchy 的詳細解釋，請參閱 [Pragmatic, practical font-sizing in CSS](http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css) 文章。
 
+<a name="shorthand"></a>
 ## 簡寫
 
 **使用簡寫的 CSS 語法應該要特別注意。**
-    
+
 或許你會嘗試撰寫像 `background:red;` 這樣的屬性，或許你這樣寫的背後真正意思是 `background-image:none; background-position:top left; background-repeat: repeat; background-color:red;` 這樣的語法，雖然這樣寫通常不會出什麼問題，但是哪怕只出一次問題就值得考慮要不要放棄簡寫了，在這個例子裡，你應該將其改寫為 `background-color:red;` 比較洽當。
 
 類似的情況，像 `margin:0;` 這樣的宣告的確清楚明瞭，但是還是應該 **盡量寫清楚**，如果你只是想修改底部的 `margin`，最好具體一點，寫成 `margin-bottom:0;` 會來的好很多。
@@ -408,6 +431,7 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 簡寫雖然是好東西，但是切忌濫用。
 
+<a name="ids"></a>
 ## 關於 ID 的使用
 
 在我們開始撰寫選取器之前，牢記這句話：
@@ -418,6 +442,7 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 使用 class 宣告的好處在於複用性，而且權重也並不高。樣式的權重太高很容易導致問題，所以減少樣式的權重是非常重要的。每個 ID 的權重是 class 的 **255** 倍，所以在 CSS 中請千萬不要使用這種寫法。
 
+<a name="selectors"></a>
 ##  選取器
 
 請維持選取器簡短、有效率與可攜性。
@@ -432,6 +457,7 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 **請記得：** class 無所謂是否語意化的問題；你應該關注它們是否合理，不要刻意強調 class 名稱要符合語意，而要注重使用的合理性與未來性。
 
+<a name="over-qualified-selectors"></a>
 ### 過度修飾的選取器
 
 由前文所述，過度修飾的選取器並不理想。
@@ -440,10 +466,12 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 再舉一個修飾過度的選取器例子，`ul.nav li a{}`。如前文所說，我們馬上就可以刪掉 `ul` 因為我們知道 `.nav` 是個列表，然後我們就可以發現 `a` 一定在 `li` 中，所以我們就能將這個選取器改寫成 `.nav a{}`，這樣就可以減少一個層級，增加 CSS 的顯示速度。
 
+<a name="selector-performance"></a>
 ### 選取器效能
 
 雖然瀏覽器效能日益提升，顯示 CSS 的速度也越來越快，但是你還是應該關注 CSS 的顯示效能。使用簡短、沒有巢狀的選取器，不要使用全域選取器（`*{}`）作為主要的選取器，避免使用更複雜的 CSS3 選取器，都可以讓你避免選取器效能的問題。
 
+<a name="css-selector-intent"></a>
 ## 使用 CSS 選取器的目的
 
 比起運用選取器定位到某元素，更好的辦法則是直接在你想要新增樣式的元素上新增一個 class，我們以 `.header ul{}` 這樣一個選取器為例。
@@ -458,12 +486,14 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 完整內容請參考我的文章 [Shoot to kill; CSS selector intent](http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/)
 
+<a name="important"></a>
 ## `!important`
 
 你只應該在一些輔助類別(helper classes)上使用 `!important` 修飾子。用 `!important` 提升優先級也可以，例如如果你要讓某條規則 **一直** 生效的話，可以用 `.error{ color:red!important; }`。
 
 避免主動使用 `!important` 修飾子。例如當你的 CSS 寫得很複雜的時候，不要因為想偷懶而使用 `!important` 來取巧，建議重寫你之前寫好的樣式，並重構選取系的使用方式。記得：維持選取器的簡短並且避免用 ID，將可有效幫助你寫好 CSS。
 
+<a name="magic-numbers-and-absolutes"></a>
 ## 魔數與絕對定位
 
 魔數（Magic Number）是指那些「剛好有效果」的數字，這東西非常不好，因為它們只是治標不治本，而且缺乏延展性。
@@ -476,12 +506,14 @@ BEM 表示法雖然有點醜，而且有點囉嗦，但是它使得我們可以�
 
 你在 CSS 中留下的每一個數字，都好像在告訴別人說：「這個數字我不是真的很需要」，這是一種不負責任的表現。
 
+<a name="conditional-stylesheets"></a>
 ## 條件式註解
 
 IE 專屬的樣式定義，基本上都應該避免使用，唯一可以用的時機點就是為了處理舊版 IE 不支援的內容（例如 PNG fixes 的問題）。
 
-一個基本原則是，所有的版面配置與 box-model 的樣式都不需要用到 IE 專屬的樣式。也就是說，你在重構樣式之後，你應該不會想看到 `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` 或其他類似的語法。 
+一個基本原則是，所有的版面配置與 box-model 的樣式都不需要用到 IE 專屬的樣式。也就是說，你在重構樣式之後，你應該不會想看到 `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` 或其他類似的語法。
 
+<a name="debugging"></a>
 ## CSS 偵錯(Debugging)
 
 如果你遇到 CSS 問題的時候， **請先把舊的、有問題的樣式移除後再寫新的** 。如果舊的 CSS 樣式有問題的話，寫再多的新樣式是解決不了問題的。
@@ -490,6 +522,7 @@ IE 專屬的樣式定義，基本上都應該避免使用，唯一可以用的�
 
 有時候你可能會寫上一個 `overflow:hidden` 把一些破版的問題給隱藏起來，但也許問題根本不出在 overflow 這部分。所以還是切記： **要治本，而不是單純治標而已**。
 
+<a name="preprocessors"></a>
 ## 前置處理器
 
 我選擇 Sass 當成我撰寫 CSS 時的前置處理器，請 **靈活運用** 這類前置處理器。用 Sass 可以令你的 CSS 更強大，但是不要用的太複雜。例如在 [Vanilla CSS](http://www.vanillacss.com/) 裡面，只需在必要的地方套用樣式層級即可：
