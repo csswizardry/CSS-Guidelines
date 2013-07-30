@@ -284,7 +284,7 @@ classes; gzip will compress well written code _incredibly_ well.
 
 ### Classes in HTML
 
-In a bid to make things easier to read, separate classes is your HTML with two
+In a bid to make things easier to read, separate classes in your HTML with two
 (2) spaces, thus:
 
     <div class="foo--bar  bar__baz">
