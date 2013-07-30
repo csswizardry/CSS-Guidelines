@@ -30,7 +30,7 @@
     * [使用看似合法的選取器 (Quasi-qualified selectors)](#quasi-qualified-selectors)
     * [替樣式加上特殊的標籤 (Tagging code)](#tagging-code)
     * [用物件繼承的方式註記 (Object/extension pointers)](#objectextension-pointers)
-* [撰寫 CSS](#writing-css)
+* [撰寫 CSS 的技巧](#writing-css)
 * [建構新組件 (Building new components)](#building-new-components)
 * [物件導向 CSS (OOCSS)](#oocss)
 * [版面配置](#layout)
