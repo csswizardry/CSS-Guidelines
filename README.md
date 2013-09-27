@@ -435,7 +435,7 @@ In your theme stylesheet:
     /**
      * Extends `.foo` in base.css
      */
-     .bar{}
+     .foo{}
 
 Here we have established a concrete relationship between two very separate
 pieces of code.
