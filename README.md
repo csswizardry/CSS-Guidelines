@@ -167,8 +167,8 @@ For further reading I cannot recommend Jonathan Snook’s
 ## Anatomy of rulesets
 
     [selector]{
-        [property]:[value];
-        [<- Declaration ->]
+        [property]: [value];
+        [<- Declaration -->]
     }
 
 I have a number of standards when structuring rulesets.
@@ -185,21 +185,21 @@ I have a number of standards when structuring rulesets.
 A brief example:
 
     .widget{
-        padding:10px;
-        border:1px solid #BADA55;
-        background-color:#C0FFEE;
-        -webkit-border-radius:4px;
-           -moz-border-radius:4px;
-                border-radius:4px;
+        padding: 10px;
+        border: 1px solid #BADA55;
+        background-color: #C0FFEE;
+        -webkit-border-radius: 4px;
+           -moz-border-radius: 4px;
+                border-radius: 4px;
     }
         .widget-heading{
-            font-size:1.5rem;
-            line-height:1;
-            font-weight:bold;
-            color:#BADA55;
-            margin-right:-10px;
+            font-size: 1.5rem;
+            line-height: 1;
+            font-weight: bold;
+            color: #BADA55;
+            margin-right: -10px;
             margin-left: -10px;
-            padding:0.25em;
+            padding: 0.25em;
         }
 
 Here we can see that `.widget-heading` must be a child of `.widget` as we have
@@ -213,19 +213,19 @@ text rules, followed by everything else.
 
 One exception to our multi-line rule might be in cases of the following:
 
-    .t10    { width:10% }
-    .t20    { width:20% }
-    .t25    { width:25% }       /* 1/4 */
-    .t30    { width:30% }
-    .t33    { width:33.333% }   /* 1/3 */
-    .t40    { width:40% }
-    .t50    { width:50% }       /* 1/2 */
-    .t60    { width:60% }
-    .t66    { width:66.666% }   /* 2/3 */
-    .t70    { width:70% }
-    .t75    { width:75% }       /* 3/4*/
-    .t80    { width:80% }
-    .t90    { width:90% }
+    .t10    { width: 10% }
+    .t20    { width: 20% }
+    .t25    { width: 25% }       /* 1/4 */
+    .t30    { width: 30% }
+    .t33    { width: 33.333% }   /* 1/3 */
+    .t40    { width: 40% }
+    .t50    { width: 50% }       /* 1/2 */
+    .t60    { width: 60% }
+    .t66    { width: 66.666% }   /* 2/3 */
+    .t70    { width: 70% }
+    .t75    { width: 75% }       /* 3/4*/
+    .t80    { width: 80% }
+    .t90    { width: 90% }
 
 In this example (from [inuit.css’s table grid system](https://github.com/csswizardry/inuit.css/blob/master/base/_tables.scss#L96))
 it makes more sense to single-line our CSS.
@@ -317,7 +317,7 @@ functionality.
 Despite being a British developer—and spending all my life writing <i>colour</i>
 instead of <i>color</i>—I feel that, for the sake of consistency, it is better
 to always use US-English in CSS. CSS, as with most (if not all) other languages,
-is written in US-English, so to mix syntax like `color:red;` with classes like
+is written in US-English, so to mix syntax like `color: red;` with classes like
 `.colour-picker{}` lacks consistency. I have previously suggested and advocated
 writing bilingual classes, for example:
 
@@ -525,8 +525,8 @@ work out a rem and pixel fallback for you (assuming you set your base font
 size in a variable somewhere):
 
     @mixin font-size($font-size){
-        font-size:$font-size +px;
-        font-size:$font-size / $base-font-size +rem;
+        font-size: $font-size +px;
+        font-size: $font-size / $base-font-size +rem;
     }
 
 I only use pixels for items whose dimensions were defined before the came into
@@ -544,19 +544,19 @@ full explanation of how this works please refer to my article
 
 **Shorthand CSS needs to be used with caution.**
 
-It might be tempting to use declarations like `background:red;` but in doing so
+It might be tempting to use declarations like `background: red;` but in doing so
 what you are actually saying is ‘I want no image to scroll, aligned top-left,
 repeating X and Y, and a background colour of red’. Nine times out of ten this
 won’t cause any issues but that one time it does is annoying enough to warrant
-not using such shorthand. Instead use `background-color:red;`.
+not using such shorthand. Instead use `background-color: red;`.
 
-Similarly, declarations like `margin:0;` are nice and short, but
+Similarly, declarations like `margin: 0;` are nice and short, but
 **be explicit**. If you actually only really want to affect the margin on
-the bottom of an element then it is more appropriate to use `margin-bottom:0;`.
+the bottom of an element then it is more appropriate to use `margin-bottom: 0;`.
 
 Be explicit in which properties you set and take care to not inadvertently unset
 others with shorthand. E.g. if you only want to remove the bottom margin on an
-element then there is no sense in setting all margins to zero with `margin:0;`.
+element then there is no sense in setting all margins to zero with `margin: 0;`.
 
 Shorthand is good, but easily misused.
 
@@ -607,7 +607,7 @@ An over-qualified selector is one like `div.promo`. You could probably get the
 same effect from just using `.promo`. Of course sometimes you will _want_ to
 qualify a class with an element (e.g. if you have a generic `.error` class that
 needs to look different when applied to different elements (e.g.
-`.error{ color:red; }` `div.error{ padding:14px; }`)), but generally avoid it
+`.error{ color: red; }` `div.error{ padding: 14px; }`)), but generally avoid it
 where possible.
 
 Another example of an over-qualified selector might be `ul.nav li a{}`. As
@@ -656,7 +656,7 @@ For a full write up please see my article
 ## `!important`
 
 It is okay to use `!important` on helper classes only. To add `!important`
-preemptively is fine, e.g. `.error{ color:red!important }`, as you know you will
+preemptively is fine, e.g. `.error{ color: red !important }`, as you know you will
 **always** want this rule to take precedence.
 
 Using `!important` reactively, e.g. to get yourself out of nasty specificity
@@ -670,17 +670,17 @@ A magic number is a number which is used because ‘it just works’. These are 
 because they rarely work for any real reason and are not usually very
 futureproof or flexible/forgiving. They tend to fix symptoms and not problems.
 
-For example, using `.dropdown-nav li:hover ul{ top:37px; }` to move a dropdown
+For example, using `.dropdown-nav li:hover ul{ top: 37px; }` to move a dropdown
 to the bottom of the nav on hover is bad, as 37px is a magic number. 37px only
 works here because in this particular scenario the `.dropdown-nav` happens to be
 37px tall.
 
-Instead you should use `.dropdown-nav li:hover ul{ top:100%; }` which means no
+Instead you should use `.dropdown-nav li:hover ul{ top: 100%; }` which means no
 matter how tall the `.dropdown-nav` gets, the dropdown will always sit 100% from
 the top.
 
 Every time you hard code a number think twice; if you can avoid it by using
-keywords or ‘aliases’ (i.e. `top:100%` to mean ‘all the way from the top’)
+keywords or ‘aliases’ (i.e. `top: 100%` to mean ‘all the way from the top’)
 or&mdash;even better&mdash;no measurements at all then you probably should.
 
 Every hard-coded measurement you set is a commitment you might not necessarily
@@ -694,7 +694,7 @@ fixes).
 
 As a general rule, all layout and box-model rules can and _will_ work without an
 IE stylesheet if you refactor and rework your CSS. This means you never want to
-see `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` or other such
+see `<!--[if IE 7]> element{ margin-left: -9px; } < ![endif]-->` or other such
 CSS that is clearly using arbitrary styling to just ‘make stuff work’.
 
 ## Debugging
@@ -706,7 +706,7 @@ isn’t the right answer!
 Delete chunks of markup and CSS until your problem goes away, then you can
 determine which part of the code the problem lies in.
 
-It can be tempting to put an `overflow:hidden;` on something to hide the effects
+It can be tempting to put an `overflow: hidden;` on something to hide the effects
 of a layout quirk, but overflow was probably never the problem; **fix the
 problem, not its symptoms.**
 
