@@ -23,9 +23,9 @@ important that we all work in a unified way in order to, among other things:
 There are a variety of techniques we must employ in order to satisfy these
 goals.
 
-The first part of this document will deal with syntax, formatting and CSS
-anatomy, the second part will deal with approach, mindframe and attitude toward
-writing and architecting CSS. Exciting, huh?
+The first part of this document will deal with syntax, formatting, and CSS
+anatomy; the second part will deal with approach, mindframe, and attitude
+toward writing and architecting CSS. Exciting, huh?
 
 ## Contents
 
@@ -67,7 +67,7 @@ writing and architecting CSS. Exciting, huh?
 ## CSS Document Anatomy
 
 No matter the document, we must always try and keep a common formatting. This
-means consistent commenting, consistent syntax and consistent naming.
+means consistent commenting, consistent syntax and, consistent naming.
 
 ### General
 
@@ -82,8 +82,8 @@ I prefer four (4) space indents over tabs and write multi-line CSS.
 Some people prefer to work with single, large files. This is fine, and by
 sticking to the following guidelines you’ll encounter no problems. Since moving
 to Sass I have started sharding my stylesheets out into lots of tiny includes.
-This too is fine… Whichever method you choose, the following rules and
-guidelines apply. The only notable difference is with regards our table of
+This, too, is fine… Whichever method you choose, the following rules and
+guidelines apply. The only notable difference is with regards to our table of
 contents and our section titles. Read on for further explanation…
 
 ### Table of contents
@@ -103,8 +103,8 @@ sections contained in the document, for example:
 This will tell the next developer(s) exactly what they can expect to find in
 this file. Each item in the table of contents maps directly to a section title.
 
-If you are working in one big stylesheet, the corresponding section will also be
-in that file. If you are working across multiple files then each item in the
+If you are working in one big stylesheet, the corresponding section will also
+be in that file. If you are working across multiple files then each item in the
 table of contents will map to an include which pulls that section in.
 
 ### Section titles
@@ -140,15 +140,15 @@ between each section, thus:
 This large chunk of whitespace is quickly noticeable when scrolling quickly
 through larger files.
 
-If you are working across multiple, included stylesheets, start each of those
+If you are working across multiple included stylesheets, start each of those
 files with a section title and there is no need for any carriage returns.
 
 ## Source order
 
-Try and write stylesheets in specificity order. This ensures that you take full
-advantage of inheritance and CSS’ first <i>C</i>; the cascade.
+Try and write stylesheets in order of specificity. This ensures that you take
+full advantage of inheritance and CSS’ first <i>C</i>: the cascade.
 
-A well ordered stylesheet will be ordered something like this:
+A well-ordered stylesheet will be ordered something like this:
 
 1. **Reset** – ground zero.
 2. **Elements** – unclassed `h1`, unclassed `ul` etc.
@@ -159,7 +159,7 @@ A well ordered stylesheet will be ordered something like this:
 
 This means that—as you go down the document—each section builds upon and
 inherits sensibly from the previous one(s). There should be less undoing of
-styles, less specificity problems and all-round better architected stylesheets.
+styles, less specificity problems and, all-round better-architected stylesheets.
 
 For further reading I cannot recommend Jonathan Snook’s
 [SMACSS](http://smacss.com) highly enough.
@@ -173,12 +173,12 @@ For further reading I cannot recommend Jonathan Snook’s
 
 I have a number of standards when structuring rulesets.
 
-* Use hyphen delimited class names (except for BEM notation,
+* Use hyphen-delimited class names (except for BEM notation,
   [see below](#naming-conventions))
 * 4 space indented
 * Multi-line
 * Declarations in relevance (NOT alphabetical) order
-* Indent vendor prefixed declarations so that their values are aligned
+* Indent vendor-prefixed declarations so that their values are aligned
 * Indent our rulesets to mirror the DOM
 * Always include the final semi-colon in a ruleset
 
@@ -204,11 +204,11 @@ A brief example:
 
 Here we can see that `.widget-heading` must be a child of `.widget` as we have
 indented the `.widget-heading` ruleset one level deeper than `.widget`. This is
-useful information to developers that can now be gleaned just by a glance at the
-indentation of our rulesets.
+useful information to developers that can now be gleaned just by a glance at
+the indentation of our rulesets.
 
 We can also see that `.widget-heading`’s declarations are ordered by their
-relevance; `.widget-heading` must be a textual element so we begin with our
+relevance: `.widget-heading` must be a textual element, so we begin with our
 text rules, followed by everything else.
 
 One exception to our multi-line rule might be in cases of the following:
@@ -232,12 +232,12 @@ it makes more sense to single-line our CSS.
 
 ## Naming conventions
 
-For the most part I simply use hyphen delimited classes (e.g. `.foo-bar`, not
+For the most part I simply use hyphen-delimited classes (e.g. `.foo-bar`, not
 `.foo_bar` or `.fooBar`), however in certain circumstances I use BEM (Block,
 Element, Modifier) notation.
 
 <abbr title="Block, Element, Modifier">BEM</abbr> is a methodology for naming
-and classifying CSS selectors in a way to make them a lot more strict,
+and classifying CSS selectors in such a way as to make them much more strict,
 transparent and informative.
 
 The naming convention follows this pattern:
@@ -251,7 +251,7 @@ The naming convention follows this pattern:
   as a whole.
 * `.block--modifier` represents a different state or version of `.block`.
 
-An **analogy** of how BEM classes work might be:
+An **analogy** of how BEM classes work:
 
     .person{}
     .person--woman{}
@@ -261,8 +261,8 @@ An **analogy** of how BEM classes work might be:
 
 Here we can see that the basic object we’re describing is a person, and that a
 different type of person might be a woman. We can also see that people have
-hands; these are sub-parts of people, and there are different variations,
-like left and right.
+hands; these are sub-parts of people, and there are different variations (e.g.
+left and right.)
 
 We can now namespace our selectors based on their base objects and we can also
 communicate what job the selector does; is it a sub-component (`__`) or a
@@ -281,9 +281,9 @@ as compression favours/works well with repetition.
 Regardless of whether you need to use BEM or not, always ensure classes are
 sensibly named; keep them as short as possible but as long as necessary. Ensure
 any objects or abstractions are very vaguely named (e.g. `.ui-list`, `.media`)
-to allow for greater reuse. Extensions of objects should be much more explicitly
-named (e.g. `.user-avatar-link`). Don’t worry about the amount or length of
-classes; gzip will compress well written code _incredibly_ well.
+to allow for greater reuse. Extensions of objects should be much more
+explicitly named (e.g. `.user-avatar-link`). Don’t worry about the amount or
+length of classes; gzip will compress well written code _incredibly_ well.
 
 ### Classes in HTML
 
@@ -300,42 +300,43 @@ of multiple classes.
 **Never use a CSS _styling_ class as a JavaScript hook.** Attaching JS behaviour
 to a styling class means that we can never have one without the other.
 
-If you need to bind to some markup use a JS specific CSS class. This is simply a
-class namespaced with `.js-`, e.g. `.js-toggle`, `.js-drag-and-drop`. This means
-that we can attach both JS and CSS to classes in our markup but there will never
-be any troublesome overlap.
+If you need to bind to some markup use a JS specific CSS class. This is simply
+a class namespaced with `.js-`, e.g. `.js-toggle`, `.js-drag-and-drop`. This
+means that we can attach both JS and CSS to classes in our markup but there
+will never be any troublesome overlap.
 
     <th class="is-sortable  js-is-sortable">
     </th>
 
-The above markup holds two classes; one to which you can attach some styling for
-sortable table columns and another which allows you to add the sorting
+The above markup holds two classes; one to which you can attach some styling
+for sortable table columns and another which allows you to add the sorting
 functionality.
 
 ### Internationalisation
 
-Despite being a British developer—and spending all my life writing <i>colour</i>
-instead of <i>color</i>—I feel that, for the sake of consistency, it is better
-to always use US-English in CSS. CSS, as with most (if not all) other languages,
-is written in US-English, so to mix syntax like `color:red;` with classes like
-`.colour-picker{}` lacks consistency. I have previously suggested and advocated
-writing bilingual classes, for example:
+Despite being a British developer—and spending all my life writing
+<i>colour</i> instead of <i>color</i>—I feel that, for the sake of consistency,
+it is better to always use US-English in CSS. CSS, as with most (if not all)
+other computer languages, is written in US-English, so to mix syntax like
+`color:red;` with classes like `.colour-picker{}` lacks consistency. I have
+previously suggested and advocated writing bilingual classes, for example:
 
     .color-picker,
     .colour-picker{
     }
 
 However, having recently worked on a very large Sass project where there were
-dozens of colour variables (e.g. `$brand-color`, `$highlight-color` etc.),
+dozens of colour variables (e.g. `$brand-color`, `$highlight-color`, etc.),
 maintaining two versions of each variable soon became tiresome. It also means
 twice as much work with things like find and replace.
 
-In the interests of consistency, always name classes and variables in the locale
+In the interest of consistency, always name classes and variables in the locale
 of the language you are working with.
 
 ## Comments
 
-I use a docBlock-esque commenting style which I limit to 80 characters in length:
+I use a docBlock-esque commenting style which I limit to 80 characters in
+length:
 
     /**
      * This is a docBlock style comment
@@ -359,7 +360,7 @@ Write a chunk of code then write about it.
 
 ### Comments on steroids
 
-There are a number of more advanced techniques you can employ with regards
+There are a number of more advanced techniques you can employ with regards to
 comments, namely:
 
 * Quasi-qualified selectors
@@ -368,17 +369,17 @@ comments, namely:
 
 #### Quasi-qualified selectors
 
-You should never qualify your selectors; that is to say, we should never write
+You should never qualify your selectors; that is to say, you should never write
 `ul.nav{}` if you can just have `.nav`. Qualifying selectors decreases selector
 performance, inhibits the potential for reusing a class on a different type of
-element and it increases the selector’s specificity. These are all things that
+element, and increases the selector’s specificity. These are all things that
 should be avoided at all costs.
 
 However, sometimes it is useful to communicate to the next developer(s) where
 you intend a class to be used. Let’s take `.product-page` for example; this
 class sounds as though it would be used on a high-level container, perhaps the
-`html` or `body` element, but with `.product-page` alone it is impossible to
-tell.
+`html` or `body` element, but looking at `.product-page` alone it is impossible
+to tell.
 
 By quasi-qualifying this selector (i.e. commenting out the leading type
 selector) we can communicate where we wish to have this class applied, thus:
@@ -422,8 +423,8 @@ When working in an object oriented manner you will often have two chunks of CSS
 (one being the skeleton (the object) and the other being the skin (the
 extension)) that are very closely related, but that live in very different
 places. In order to establish a concrete link between the object and its
-extension with use <i>object/extension pointers</i>. These are simply comments
-which work thus:
+extension use <i>object/extension pointers</i>. These are simply comments which
+work thus:
 
 In your base stylesheet:
 
@@ -447,22 +448,22 @@ pieces of code.
 ## Writing CSS
 
 The previous section dealt with how we structure and form our CSS; they were
-very quantifiable rules. The next section is a little more theoretical and deals
-with our attitude and approach.
+very quantifiable rules. The next section is a little more theoretical and
+deals with our attitude and approach.
 
 ## Building new components
 
-When building a new component write markup **before** CSS. This means you can
+When building a new component, write markup **before** CSS. This means you can
 visually see which CSS properties are naturally inherited and thus avoid
 reapplying redundant styles.
 
-By writing markup first you can focus on data, content and semantics and then
+By writing markup first you can focus on data, content, and semantics, and then
 apply only the relevant classes and CSS _afterwards_.
 
 ## OOCSS
 
-I work in an OOCSS manner; I split components into structure (objects) and
-skin (extensions). As an **analogy** (note, not example) take the following:
+I work in an OOCSS manner; I split components into structure (objects) and skin
+(extensions). As an **analogy** (note, not example) take the following:
 
     .room{}
 
@@ -471,40 +472,42 @@ skin (extensions). As an **analogy** (note, not example) take the following:
     .room--bathroom{}
 
 We have several types of room in a house, but they all share similar traits;
-they all have floors, ceilings, walls and doors. We can share this information
-in an abstracted `.room{}` class. However we have specific types of room that
-are different from the others; a kitchen might have a tiled floor and a bedroom
-might have carpets, a bathroom might not have a window but a bedroom most likely
-will, each room likely has different coloured walls. OOCSS teaches us to
-abstract the shared styles out into a base object and then _extend_ this
-information with more specific classes to add the unique treatment(s).
+they all have floors, ceilings, walls, and doors. We can share this information
+in an abstracted `.room{}` class. However, we have specific types of rooms that
+are different from the others (e.g. a kitchen might have a tiled floor and a
+bedroom might have carpets, a bathroom might not have a window but a bedroom
+most likely will, each room likely has different coloured walls, etc.). OOCSS
+teaches us to abstract the shared styles out into a base object and then
+_extend_ this information with more specific classes to add the unique
+treatment(s).
 
 So, instead of building dozens of unique components, try and spot repeated
 design patterns across them all and abstract them out into reusable classes;
 build these skeletons as base ‘objects’ and then peg classes onto these to
 extend their styling for more unique circumstances.
 
-If you have to build a new component split it into structure and skin; build the
-structure of the component using very generic classes so that we can reuse that
-construct and then use more specific classes to skin it up and add design
+If you have to build a new component split it into structure and skin; build
+the structure of the component using very generic classes so that we can reuse
+that construct and then use more specific classes to skin it up and add design
 treatments.
 
 ## Layout
 
 All components you build should be left totally free of widths; they should
-always remain fluid and their widths should be governed by a parent/grid system.
+always remain fluid and their widths should be governed by a parent/grid
+system.
 
 Heights should **never** be be applied to elements. Heights should only be
 applied to things which had dimensions _before_ they entered the site (i.e.
 images and sprites). Never ever set heights on `p`s, `ul`s, `div`s, anything.
-You can often achieve the desired effect with `line-height` which is far more
+You can often achieve the desired effect with `line-height`, which is far more
 flexible.
 
 Grid systems should be thought of as shelves. They contain content but are not
-content in themselves. You put up your shelves then fill them with your stuff.
-By setting up our grids separately to our components you can move components
-around a lot more easily than if they had dimensions applied to them; this makes
-our front-ends a lot more adaptable and quick to work with.
+content in themselves. You put up your shelves, then fill them with your stuff.
+By setting up our grids separately to our components, we can move components
+around a lot more easily than if they had dimensions applied to them; this
+makes our front-ends a lot more adaptable and quick to work with.
 
 You should never apply any styles to a grid item, they are for layout purposes
 only. Apply styling to content _inside_ a grid item. Never, under _any_
@@ -512,17 +515,17 @@ circumstances, apply box-model properties to a grid item.
 
 ## Sizing UIs
 
-I use a combination of methods for sizing UIs. Percentages, pixels, ems, rems
+I use a combination of methods for sizing UIs. Percentages, pixels, ems, rems,
 and nothing at all.
 
 Grid systems should, ideally, be set in percentages. Because I use grid systems
 to govern widths of columns and pages, I can leave components totally free of
 any dimensions (as discussed above).
 
-Font sizes I set in rems with a pixel fallback. This gives the accessibility
+I set font sizes in rems with a pixel fallback. This gives the accessibility
 benefits of ems with the confidence of pixels. Here is a handy Sass mixin to
-work out a rem and pixel fallback for you (assuming you set your base font
-size in a variable somewhere):
+work out a rem and pixel fallback for you (assuming you set your base font size
+in a variable somewhere):
 
     @mixin font-size($font-size){
         font-size:$font-size +px;
@@ -547,8 +550,8 @@ full explanation of how this works please refer to my article
 It might be tempting to use declarations like `background:red;` but in doing so
 what you are actually saying is ‘I want no image to scroll, aligned top-left,
 repeating X and Y, and a background colour of red’. Nine times out of ten this
-won’t cause any issues but that one time it does is annoying enough to warrant
-not using such shorthand. Instead use `background-color:red;`.
+won’t cause any issues, but that one time it does is annoying enough to warrant
+not using such shorthand. Instead, use `background-color:red;`.
 
 Similarly, declarations like `margin:0;` are nice and short, but
 **be explicit**. If you actually only really want to affect the margin on
@@ -571,18 +574,21 @@ classes for styling. You don’t want to see a single ID in any stylesheets!
 
 Classes come with the benefit of being reusable (even if we don’t want to, we
 can) and they have a nice, low specificity. Specificity is one of the quickest
-ways to run into difficulties in projects and keeping it low at all times is
-imperative. An ID is **255** times more specific than a class, so never ever use
-them in CSS _ever_.
+ways to run into difficulties in projects, so keeping it low at all times is
+imperative. An ID is **255** times more specific than a class, so never ever
+use them in CSS _ever_.
 
 ## Selectors
 
-Keep selectors short, efficient and portable.
+Keep selectors short, efficient, and portable.
 
 Heavily location-based selectors are bad for a number of reasons. For example,
 take `.sidebar h3 span{}`. This selector is too location-based and thus we
 cannot move that `span` outside of a `h3` outside of `.sidebar` and maintain
 styling.
+
+Long rules like this attempting to mirror the DOM can better convey this
+intention through the indentation described [above](#anatomy-of-rulesets).
 
 Selectors which are too long also introduce performance issues; the more checks
 in a selector (e.g. `.sidebar h3 span` has three checks, `.content ul p a` has
@@ -592,8 +598,8 @@ Make sure styles aren’t dependent on location where possible, and make sure
 selectors are nice and short.
 
 Selectors as a whole should be kept short (e.g. one class deep) but the class
-names themselves should be as long as they need to be. A class of `.user-avatar`
-is far nicer than `.usr-avt`.
+names themselves should be as long as they need to be. A class of
+`.user-avatar` is far nicer than `.usr-avt`.
 
 **Remember:** classes are neither semantic or insemantic; they are sensible or
 insensible! Stop stressing about ‘semantic’ class names and pick something
@@ -624,18 +630,18 @@ avoiding more complex CSS3 selectors should help circumvent these problems.
 
 ## CSS selector intent
 
-Instead of using selectors to drill down the DOM to an element, it is often best
-to put a class on the element you explicitly want to style. Let’s take a
+Instead of using selectors to drill down the DOM to an element, it is often
+best to put a class on the element you explicitly want to style. Let’s take a
 specific example with a selector like `.header ul{}`…
 
 Let’s imagine that `ul` is indeed the main navigation for our website. It lives
 in the header as you might expect and is currently the only `ul` in there;
-`.header ul{}` will work, but it’s not ideal or advisable. It’s not very future
-proof and certainly not explicit enough. As soon as we add another `ul` to that
-header it will adopt the styling of our main nav and the the chances are it
-won’t want to. This means we either have to refactor a lot of code _or_ undo a
-lot of styling on subsequent `ul`s in that `.header` to remove the effects of
-the far reaching selector.
+`.header ul{}` will work, but it’s not ideal or advisable. It’s not very
+futureproof and certainly not explicit enough. As soon as we add another `ul`
+to that header it will adopt the styling of our main nav, and the chances are
+we don’t want it to. This means we either have to refactor a lot of code _or_
+undo a lot of styling on subsequent `ul`s in that `.header` to remove the
+effects of the far-reaching selector.
 
 Your selector’s intent must match that of your reason for styling something;
 ask yourself **‘am I selecting this because it’s a `ul` inside of `.header` or
@@ -646,9 +652,9 @@ Make sure your key selector is never an element/type selector or
 object/abstraction class. You never really want to see selectors like
 `.sidebar ul{}` or `.footer .media{}` in our theme stylesheets.
 
-Be explicit; target the element you want to affect, not its parent. Never assume
-that markup won’t change. **Write selectors that target what you want, not what
-happens to be there already.**
+Be explicit; target the element you want to affect, not its parent. Never
+assume that markup won’t change. **Write selectors that target what you want,
+not what happens to be there already.**
 
 For a full write up please see my article
 [Shoot to kill; CSS selector intent](http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/)
@@ -656,8 +662,8 @@ For a full write up please see my article
 ## `!important`
 
 It is okay to use `!important` on helper classes only. To add `!important`
-preemptively is fine, e.g. `.error{ color:red!important }`, as you know you will
-**always** want this rule to take precedence.
+preemptively is fine, e.g. `.error{ color:red!important }`, as you know you
+will **always** want this rule to take precedence.
 
 Using `!important` reactively, e.g. to get yourself out of nasty specificity
 situations, is not advised. Rework your CSS and try to combat these issues by
@@ -672,16 +678,16 @@ futureproof or flexible/forgiving. They tend to fix symptoms and not problems.
 
 For example, using `.dropdown-nav li:hover ul{ top:37px; }` to move a dropdown
 to the bottom of the nav on hover is bad, as 37px is a magic number. 37px only
-works here because in this particular scenario the `.dropdown-nav` happens to be
-37px tall.
+works here because in this particular scenario the `.dropdown-nav` happens to
+be 37px tall.
 
 Instead you should use `.dropdown-nav li:hover ul{ top:100%; }` which means no
-matter how tall the `.dropdown-nav` gets, the dropdown will always sit 100% from
-the top.
+matter how tall the `.dropdown-nav` gets, the dropdown will always sit 100%
+from the top.
 
 Every time you hard code a number think twice; if you can avoid it by using
 keywords or ‘aliases’ (i.e. `top:100%` to mean ‘all the way from the top’)
-or&mdash;even better&mdash;no measurements at all then you probably should.
+or—even better—no measurements at all, you probably should.
 
 Every hard-coded measurement you set is a commitment you might not necessarily
 want to keep.
@@ -692,23 +698,23 @@ IE stylesheets can, by and large, be totally avoided. The only time an IE
 stylesheet may be required is to circumvent blatant lack of support (e.g. PNG
 fixes).
 
-As a general rule, all layout and box-model rules can and _will_ work without an
-IE stylesheet if you refactor and rework your CSS. This means you never want to
-see `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` or other such
-CSS that is clearly using arbitrary styling to just ‘make stuff work’.
+As a general rule, all layout and box-model rules can and _will_ work without
+an IE stylesheet if you refactor and rework your CSS. This means you never want
+to see `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` or other
+such CSS that is clearly using arbitrary styling to just ‘make stuff work’.
 
 ## Debugging
 
-If you run into a CSS problem **take code away before you start adding more** in
-a bid to fix it. The problem exists in CSS that is already written, more CSS
+If you run into a CSS problem **take code away before you start adding more**
+in a bid to fix it. The problem exists in CSS that is already written; more CSS
 isn’t the right answer!
 
 Delete chunks of markup and CSS until your problem goes away, then you can
 determine which part of the code the problem lies in.
 
-It can be tempting to put an `overflow:hidden;` on something to hide the effects
-of a layout quirk, but overflow was probably never the problem; **fix the
-problem, not its symptoms.**
+It can be tempting to put an `overflow:hidden;` on something to hide the
+effects of a layout quirk, but overflow was probably never the problem; **fix
+the problem, not its symptoms.**
 
 ## Preprocessors
 
