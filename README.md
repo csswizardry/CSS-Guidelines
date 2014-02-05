@@ -166,9 +166,9 @@ For further reading I cannot recommend Jonathan Snook’s
 
 ## Anatomy of rulesets
 
-    [selector]{
-        [property]:[value];
-        [<- Declaration ->]
+    [selector] {
+        [property]: [value];
+        [<- Declaration -->]
     }
 
 I have a number of standards when structuring rulesets.
@@ -184,22 +184,22 @@ I have a number of standards when structuring rulesets.
 
 A brief example:
 
-    .widget{
-        padding:10px;
-        border:1px solid #BADA55;
-        background-color:#C0FFEE;
-        -webkit-border-radius:4px;
-           -moz-border-radius:4px;
-                border-radius:4px;
+    .widget {
+        padding: 10px;
+        border: 1px solid #BADA55;
+        background-color: #C0FFEE;
+        -webkit-border-radius: 4px;
+           -moz-border-radius: 4px;
+                border-radius: 4px;
     }
-        .widget-heading{
-            font-size:1.5rem;
-            line-height:1;
-            font-weight:bold;
-            color:#BADA55;
-            margin-right:-10px;
+        .widget-heading {
+            font-size: 1.5rem;
+            line-height: 1;
+            font-weight: bold;
+            color: #BADA55;
+            margin-right: -10px;
             margin-left: -10px;
-            padding:0.25em;
+            padding: 0.25em;
         }
 
 Here we can see that `.widget-heading` must be a child of `.widget` as we have
@@ -213,19 +213,19 @@ text rules, followed by everything else.
 
 One exception to our multi-line rule might be in cases of the following:
 
-    .t10    { width:10% }
-    .t20    { width:20% }
-    .t25    { width:25% }       /* 1/4 */
-    .t30    { width:30% }
-    .t33    { width:33.333% }   /* 1/3 */
-    .t40    { width:40% }
-    .t50    { width:50% }       /* 1/2 */
-    .t60    { width:60% }
-    .t66    { width:66.666% }   /* 2/3 */
-    .t70    { width:70% }
-    .t75    { width:75% }       /* 3/4*/
-    .t80    { width:80% }
-    .t90    { width:90% }
+    .t10    { width: 10% }
+    .t20    { width: 20% }
+    .t25    { width: 25% }       /* 1/4 */
+    .t30    { width: 30% }
+    .t33    { width: 33.333% }   /* 1/3 */
+    .t40    { width: 40% }
+    .t50    { width: 50% }       /* 1/2 */
+    .t60    { width: 60% }
+    .t66    { width: 66.666% }   /* 2/3 */
+    .t70    { width: 70% }
+    .t75    { width: 75% }       /* 3/4*/
+    .t80    { width: 80% }
+    .t90    { width: 90% }
 
 In this example (from [inuit.css’s table grid system](https://github.com/csswizardry/inuit.css/blob/master/base/_tables.scss#L96))
 it makes more sense to single-line our CSS.
@@ -242,9 +242,9 @@ transparent and informative.
 
 The naming convention follows this pattern:
 
-    .block{}
-    .block__element{}
-    .block--modifier{}
+    .block {}
+    .block__element {}
+    .block--modifier {}
 
 * `.block` represents the higher level of an abstraction or component.
 * `.block__element` represents a descendent of `.block` that helps form `.block`
@@ -253,11 +253,11 @@ The naming convention follows this pattern:
 
 An **analogy** of how BEM classes work might be:
 
-    .person{}
-    .person--woman{}
-        .person__hand{}
-        .person__hand--left{}
-        .person__hand--right{}
+    .person {}
+    .person--woman {}
+        .person__hand {}
+        .person__hand--left {}
+        .person__hand--right {}
 
 Here we can see that the basic object we’re describing is a person, and that a
 different type of person might be a woman. We can also see that people have
@@ -317,12 +317,12 @@ functionality.
 Despite being a British developer—and spending all my life writing <i>colour</i>
 instead of <i>color</i>—I feel that, for the sake of consistency, it is better
 to always use US-English in CSS. CSS, as with most (if not all) other languages,
-is written in US-English, so to mix syntax like `color:red;` with classes like
-`.colour-picker{}` lacks consistency. I have previously suggested and advocated
+is written in US-English, so to mix syntax like `color: red;` with classes like
+`.colour-picker {}` lacks consistency. I have previously suggested and advocated
 writing bilingual classes, for example:
 
     .color-picker,
-    .colour-picker{
+    .colour-picker {
     }
 
 However, having recently worked on a very large Sass project where there were
@@ -369,7 +369,7 @@ comments, namely:
 #### Quasi-qualified selectors
 
 You should never qualify your selectors; that is to say, we should never write
-`ul.nav{}` if you can just have `.nav`. Qualifying selectors decreases selector
+`ul.nav {}` if you can just have `.nav`. Qualifying selectors decreases selector
 performance, inhibits the potential for reusing a class on a different type of
 element and it increases the selector’s specificity. These are all things that
 should be avoided at all costs.
@@ -383,16 +383,16 @@ tell.
 By quasi-qualifying this selector (i.e. commenting out the leading type
 selector) we can communicate where we wish to have this class applied, thus:
 
-    /*html*/.product-page{}
+    /*html*/.product-page {}
 
 We can now see exactly where to apply this class but with none of the
 specificity or non-reusability drawbacks.
 
 Other examples might be:
 
-    /*ol*/.breadcrumb{}
-    /*p*/.intro{}
-    /*ul*/.image-thumbs{}
+    /*ol*/.breadcrumb {}
+    /*p*/.intro {}
+    /*ul*/.image-thumbs {}
 
 Here we can see where we intend each of these classes to be applied without
 actually ever impacting the specificity of the selectors.
@@ -405,12 +405,12 @@ a comment above it, for example:
     /**
      * ^navigation ^lists
      */
-    .nav{}
+    .nav {}
 
     /**
      * ^grids ^lists ^tables
      */
-    .matrix{}
+    .matrix {}
 
 These tags allow other developers to find snippets of code by searching for
 function; if a developer needs to work with lists they can run a find for
@@ -430,14 +430,14 @@ In your base stylesheet:
     /**
      * Extend `.foo` in theme.css
      */
-     .foo{}
+     .foo {}
 
 In your theme stylesheet:
 
     /**
      * Extends `.foo` in base.css
      */
-     .bar{}
+     .bar {}
 
 Here we have established a concrete relationship between two very separate
 pieces of code.
@@ -464,15 +464,15 @@ apply only the relevant classes and CSS _afterwards_.
 I work in an OOCSS manner; I split components into structure (objects) and
 skin (extensions). As an **analogy** (note, not example) take the following:
 
-    .room{}
+    .room {}
 
-    .room--kitchen{}
-    .room--bedroom{}
-    .room--bathroom{}
+    .room--kitchen {}
+    .room--bedroom {}
+    .room--bathroom {}
 
 We have several types of room in a house, but they all share similar traits;
 they all have floors, ceilings, walls and doors. We can share this information
-in an abstracted `.room{}` class. However we have specific types of room that
+in an abstracted `.room {}` class. However we have specific types of room that
 are different from the others; a kitchen might have a tiled floor and a bedroom
 might have carpets, a bathroom might not have a window but a bedroom most likely
 will, each room likely has different coloured walls. OOCSS teaches us to
@@ -524,9 +524,9 @@ benefits of ems with the confidence of pixels. Here is a handy Sass mixin to
 work out a rem and pixel fallback for you (assuming you set your base font
 size in a variable somewhere):
 
-    @mixin font-size($font-size){
-        font-size:$font-size +px;
-        font-size:$font-size / $base-font-size +rem;
+    @mixin font-size($font-size) {
+        font-size: $font-size +px;
+        font-size: $font-size / $base-font-size +rem;
     }
 
 I only use pixels for items whose dimensions were defined before the came into
@@ -544,19 +544,19 @@ full explanation of how this works please refer to my article
 
 **Shorthand CSS needs to be used with caution.**
 
-It might be tempting to use declarations like `background:red;` but in doing so
+It might be tempting to use declarations like `background: red;` but in doing so
 what you are actually saying is ‘I want no image to scroll, aligned top-left,
 repeating X and Y, and a background colour of red’. Nine times out of ten this
 won’t cause any issues but that one time it does is annoying enough to warrant
-not using such shorthand. Instead use `background-color:red;`.
+not using such shorthand. Instead use `background-color: red;`.
 
-Similarly, declarations like `margin:0;` are nice and short, but
+Similarly, declarations like `margin: 0;` are nice and short, but
 **be explicit**. If you actually only really want to affect the margin on
-the bottom of an element then it is more appropriate to use `margin-bottom:0;`.
+the bottom of an element then it is more appropriate to use `margin-bottom: 0;`.
 
 Be explicit in which properties you set and take care to not inadvertently unset
 others with shorthand. E.g. if you only want to remove the bottom margin on an
-element then there is no sense in setting all margins to zero with `margin:0;`.
+element then there is no sense in setting all margins to zero with `margin: 0;`.
 
 Shorthand is good, but easily misused.
 
@@ -580,7 +580,7 @@ them in CSS _ever_.
 Keep selectors short, efficient and portable.
 
 Heavily location-based selectors are bad for a number of reasons. For example,
-take `.sidebar h3 span{}`. This selector is too location-based and thus we
+take `.sidebar h3 span {}`. This selector is too location-based and thus we
 cannot move that `span` outside of a `h3` outside of `.sidebar` and maintain
 styling.
 
@@ -607,30 +607,30 @@ An over-qualified selector is one like `div.promo`. You could probably get the
 same effect from just using `.promo`. Of course sometimes you will _want_ to
 qualify a class with an element (e.g. if you have a generic `.error` class that
 needs to look different when applied to different elements (e.g.
-`.error{ color:red; }` `div.error{ padding:14px; }`)), but generally avoid it
+`.error { color: red; }` `div.error { padding: 14px; }`)), but generally avoid it
 where possible.
 
-Another example of an over-qualified selector might be `ul.nav li a{}`. As
+Another example of an over-qualified selector might be `ul.nav li a {}`. As
 above, we can instantly drop the `ul` and because we know `.nav` is a list, we
-therefore know that any `a` _must_ be in an `li`, so we can get `ul.nav li a{}`
-down to just `.nav a{}`.
+therefore know that any `a` _must_ be in an `li`, so we can get `ul.nav li a {}`
+down to just `.nav a {}`.
 
 ### Selector performance
 
 Whilst it is true that browsers will only ever keep getting faster at rendering
 CSS, efficiency is something you could do to keep an eye on. Short, unnested
-selectors, not using the universal (`*{}`) selector as the key selector, and
+selectors, not using the universal (`* {}`) selector as the key selector, and
 avoiding more complex CSS3 selectors should help circumvent these problems.
 
 ## CSS selector intent
 
 Instead of using selectors to drill down the DOM to an element, it is often best
 to put a class on the element you explicitly want to style. Let’s take a
-specific example with a selector like `.header ul{}`…
+specific example with a selector like `.header ul {}`…
 
 Let’s imagine that `ul` is indeed the main navigation for our website. It lives
 in the header as you might expect and is currently the only `ul` in there;
-`.header ul{}` will work, but it’s not ideal or advisable. It’s not very future
+`.header ul {}` will work, but it’s not ideal or advisable. It’s not very future
 proof and certainly not explicit enough. As soon as we add another `ul` to that
 header it will adopt the styling of our main nav and the the chances are it
 won’t want to. This means we either have to refactor a lot of code _or_ undo a
@@ -644,7 +644,7 @@ selector.
 
 Make sure your key selector is never an element/type selector or
 object/abstraction class. You never really want to see selectors like
-`.sidebar ul{}` or `.footer .media{}` in our theme stylesheets.
+`.sidebar ul {}` or `.footer .media {}` in our theme stylesheets.
 
 Be explicit; target the element you want to affect, not its parent. Never assume
 that markup won’t change. **Write selectors that target what you want, not what
@@ -656,7 +656,7 @@ For a full write up please see my article
 ## `!important`
 
 It is okay to use `!important` on helper classes only. To add `!important`
-preemptively is fine, e.g. `.error{ color:red!important }`, as you know you will
+preemptively is fine, e.g. `.error { color: red !important }`, as you know you will
 **always** want this rule to take precedence.
 
 Using `!important` reactively, e.g. to get yourself out of nasty specificity
@@ -670,17 +670,17 @@ A magic number is a number which is used because ‘it just works’. These are 
 because they rarely work for any real reason and are not usually very
 futureproof or flexible/forgiving. They tend to fix symptoms and not problems.
 
-For example, using `.dropdown-nav li:hover ul{ top:37px; }` to move a dropdown
+For example, using `.dropdown-nav li:hover ul { top: 37px; }` to move a dropdown
 to the bottom of the nav on hover is bad, as 37px is a magic number. 37px only
 works here because in this particular scenario the `.dropdown-nav` happens to be
 37px tall.
 
-Instead you should use `.dropdown-nav li:hover ul{ top:100%; }` which means no
+Instead you should use `.dropdown-nav li:hover ul { top: 100%; }` which means no
 matter how tall the `.dropdown-nav` gets, the dropdown will always sit 100% from
 the top.
 
 Every time you hard code a number think twice; if you can avoid it by using
-keywords or ‘aliases’ (i.e. `top:100%` to mean ‘all the way from the top’)
+keywords or ‘aliases’ (i.e. `top: 100%` to mean ‘all the way from the top’)
 or&mdash;even better&mdash;no measurements at all then you probably should.
 
 Every hard-coded measurement you set is a commitment you might not necessarily
@@ -694,7 +694,7 @@ fixes).
 
 As a general rule, all layout and box-model rules can and _will_ work without an
 IE stylesheet if you refactor and rework your CSS. This means you never want to
-see `<!--[if IE 7]> element{ margin-left:-9px; } < ![endif]-->` or other such
+see `<!--[if IE 7]> element { margin-left: -9px; } < ![endif]-->` or other such
 CSS that is clearly using arbitrary styling to just ‘make stuff work’.
 
 ## Debugging
@@ -706,7 +706,7 @@ isn’t the right answer!
 Delete chunks of markup and CSS until your problem goes away, then you can
 determine which part of the code the problem lies in.
 
-It can be tempting to put an `overflow:hidden;` on something to hide the effects
+It can be tempting to put an `overflow: hidden;` on something to hide the effects
 of a layout quirk, but overflow was probably never the problem; **fix the
 problem, not its symptoms.**
 
@@ -716,26 +716,26 @@ Sass is my preprocessor of choice. **Use it wisely.** Use Sass to make your CSS
 more powerful but avoid nesting like the plague! Nest only when it would
 actually be necessary in vanilla CSS, e.g.
 
-    .header{}
-    .header .site-nav{}
-    .header .site-nav li{}
-    .header .site-nav li a{}
+    .header {}
+    .header .site-nav {}
+    .header .site-nav li {}
+    .header .site-nav li a {}
 
 Would be wholly unnecessary in normal CSS, so the following would be **bad**
 Sass:
 
-    .header{
-        .site-nav{
-            li{
-                a{}
+    .header {
+        .site-nav {
+            li {
+                a {}
             }
         }
     }
 
 If you were to Sass this up you’d write it as:
 
-    .header{}
-    .site-nav{
-        li{}
-        a{}
+    .header {}
+    .site-nav {
+        li {}
+        a {}
     }
