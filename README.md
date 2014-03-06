@@ -10,6 +10,7 @@
 * [French](https://github.com/flexbox/CSS-Guidelines/blob/master/README.md)
 * [Japanese](https://github.com/kiwanami/CSS-Guidelines/blob/master/README.ja.md)
 * [Spanish](https://github.com/Wakkos/CSS-Guidelines/blob/master/README.md)
+* [korean](git@github.com:dahyun/CSS-Guidelines.wiki.git)
 
 ---
 
