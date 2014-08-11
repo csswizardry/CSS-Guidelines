@@ -24,6 +24,7 @@
  * BASE
  * Page.................Page-level styles (HTML element).
  * Headings.............Heading styles
+ * Type.................Typographical type selectors.
  * Images...............inuitcss images
  *
  * OBJECTS
@@ -32,7 +33,7 @@
  * Logo.................CSS Guidelines’ logo
  *
  * TRUMPS
- *
+ * Hide.................Accessibly hide text
  */
 
 @import "bower_components/inuit-defaults/settings.defaults";
@@ -53,18 +54,19 @@
 html {
     font-family: Georgia, serif;
     padding: $spacing-unit;
+    background-color: #fafafa;
 }
 
+$inuit-heading-size-1:  48px !default;
+$inuit-heading-size-2:  36px !default;
+$inuit-heading-size-3:  28px !default;
+$inuit-heading-size-4:  24px !default;
+$inuit-heading-size-5:  18px !default;
+$inuit-heading-size-6:  16px !default;
 @import "bower_components/inuit-headings/base.headings";
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: sans-serif;
-}
-
+@import "base.type";
 @import "bower_components/inuit-images/base.images";
 
-a {
-    color: $color-brand;
-}
-
 @import "components.logo";
+
+@import "trumps.hide";

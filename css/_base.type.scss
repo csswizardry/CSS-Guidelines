@@ -1,0 +1,81 @@
+/*------------------------------------*\
+    #TYPE
+\*------------------------------------*/
+
+/**
+ * Page
+ */
+@media screen and (min-width: 720px) {
+    body {
+        @include font-size(18px);
+    }
+}
+
+/**
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetia Neue", Helvetica, sans-serif;
+    color: $color-brand;
+    font-weight: 100;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.1), 0 1px #fff;
+}
+
+/**
+ * Links
+ */
+a {
+    color: $color-brand;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: underline;
+    }
+
+}
+
+/**
+ * Lists
+ */
+li {
+
+    > ul,
+    > ol {
+        margin-bottom: 0;
+    }
+
+}
+
+/**
+ * Code
+ */
+code, kbd, samp {
+    color: #859900;
+    font-family: Inconsolata, Monaco, Consolas, "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+}
+
+pre {
+    white-space: pre;
+    word-wrap: normal;
+    overflow: auto;
+    padding: halve($spacing-unit);
+    background-color: #333;
+    border-radius: 3px;
+
+    &,
+    code, kbd, samp {
+        color: #fff;
+    }
+
+}
+
+/**
+ * Rules
+ */
+hr {
+    border: none;
+    border-top: 5px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: $spacing-unit - 5px;
+}
