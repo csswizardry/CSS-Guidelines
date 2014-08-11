@@ -2,4 +2,834 @@
 layout: default
 ---
 
-<h1>CSS Guidelines</h1>
+<article class="markdown-body entry-content" itemprop="mainContentOfPage"><h1>
+<a name="user-content-general-css-notes-advice-and-guidelines" class="anchor" href="#general-css-notes-advice-and-guidelines" aria-hidden="true"><span class="octicon octicon-link"></span></a>General CSS notes, advice and guidelines</h1>
+
+<hr><h2>
+<a name="user-content-translations" class="anchor" href="#translations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Translations</h2>
+
+<ul class="task-list">
+<li><a href="https://github.com/matmuchrapna/CSS-Guidelines/blob/master/README%20Russian.md">Russian</a></li>
+<li><a href="https://github.com/chadluo/CSS-Guidelines/blob/master/README.md">Simplified Chinese</a></li>
+<li><a href="https://github.com/doggy8088/CSS-Guidelines/blob/master/README.md">Traditional Chinese</a></li>
+<li><a href="https://github.com/flexbox/CSS-Guidelines/blob/master/README.md">French</a></li>
+<li><a href="https://github.com/kiwanami/CSS-Guidelines/blob/master/README.ja.md">Japanese</a></li>
+<li><a href="https://github.com/Wakkos/CSS-Guidelines/blob/master/README.md">Spanish</a></li>
+<li><a href="https://github.com/rnarian/CSS-Guidelines/blob/master/README.md">German</a></li>
+</ul><hr><p>In working on large, long running projects with dozens of developers, it is
+important that we all work in a unified way in order to, among other things:</p>
+
+<ul class="task-list">
+<li>Keep stylesheets maintainable</li>
+<li>Keep code transparent and readable</li>
+<li>Keep stylesheets scalable</li>
+</ul><p>There are a variety of techniques we must employ in order to satisfy these
+goals.</p>
+
+<p>The first part of this document will deal with syntax, formatting and CSS
+anatomy, the second part will deal with approach, mindframe and attitude toward
+writing and architecting CSS. Exciting, huh?</p>
+
+<h2>
+<a name="user-content-contents" class="anchor" href="#contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contents</h2>
+
+<ul class="task-list">
+<li>
+<a href="#css-document-anatomy">CSS document anatomy</a>
+
+<ul class="task-list">
+<li><a href="#general">General</a></li>
+<li><a href="#one-file-vs-many-files">One file vs. many files</a></li>
+<li><a href="#table-of-contents">Table of contents</a></li>
+<li><a href="#section-titles">Section titles</a></li>
+</ul>
+</li>
+<li><a href="#source-order">Source order</a></li>
+<li><a href="#anatomy-of-rulesets">Anatomy of rulesets</a></li>
+<li>
+<a href="#naming-conventions">Naming conventions</a>
+
+<ul class="task-list">
+<li><a href="#js-hooks">JS hooks</a></li>
+<li><a href="#internationalisation">Internationalisation</a></li>
+</ul>
+</li>
+<li>
+<a href="#comments">Comments</a>
+
+<ul class="task-list">
+<li>
+<a href="#comments-on-steroids">Comments on steroids</a>
+
+<ul class="task-list">
+<li><a href="#quasi-qualified-selectors">Quasi-qualified selectors</a></li>
+<li><a href="#tagging-code">Tagging code</a></li>
+<li><a href="#objectextension-pointers">Object/extension pointers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#writing-css">Writing CSS</a></li>
+<li><a href="#building-new-components">Building new components</a></li>
+<li><a href="#oocss">OOCSS</a></li>
+<li><a href="#layout">Layout</a></li>
+<li>
+<a href="#sizing-uis">Sizing UIs</a>
+
+<ul class="task-list">
+<li><a href="#font-sizing">Font sizing</a></li>
+</ul>
+</li>
+<li><a href="#shorthand">Shorthand</a></li>
+<li><a href="#ids">IDs</a></li>
+<li>
+<a href="#selectors">Selectors</a>
+
+<ul class="task-list">
+<li><a href="#over-qualified-selectors">Over qualified selectors</a></li>
+<li><a href="#selector-performance">Selector performance</a></li>
+</ul>
+</li>
+<li><a href="#css-selector-intent">CSS selector intent</a></li>
+<li><a href="#important"><code>!important</code></a></li>
+<li><a href="#magic-numbers-and-absolutes">Magic numbers and absolutes</a></li>
+<li><a href="#conditional-stylesheets">Conditional stylesheets</a></li>
+<li><a href="#debugging">Debugging</a></li>
+<li><a href="#preprocessors">Preprocessors</a></li>
+</ul><hr><h2>
+<a name="user-content-css-document-anatomy" class="anchor" href="#css-document-anatomy" aria-hidden="true"><span class="octicon octicon-link"></span></a>CSS Document Anatomy</h2>
+
+<p>No matter the document, we must always try and keep a common formatting. This
+means consistent commenting, consistent syntax and consistent naming.</p>
+
+<h3>
+<a name="user-content-general" class="anchor" href="#general" aria-hidden="true"><span class="octicon octicon-link"></span></a>General</h3>
+
+<p>Limit your stylesheets to a maximum 80 character width where possible.
+Exceptions may be gradient syntax and URLs in comments. That’s fine, there’s
+nothing we can do about that.</p>
+
+<p>I prefer four (4) space indents over tabs and write multi-line CSS.</p>
+
+<h3>
+<a name="user-content-one-file-vs-many-files" class="anchor" href="#one-file-vs-many-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>One file vs. many files</h3>
+
+<p>Some people prefer to work with single, large files. This is fine, and by
+sticking to the following guidelines you’ll encounter no problems. Since moving
+to Sass I have started sharding my stylesheets out into lots of tiny includes.
+This too is fine… Whichever method you choose, the following rules and
+guidelines apply. The only notable difference is with regards our table of
+contents and our section titles. Read on for further explanation…</p>
+
+<h3>
+<a name="user-content-table-of-contents" class="anchor" href="#table-of-contents" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table of contents</h3>
+
+<p>At the top of stylesheets, I maintain a table of contents which will detail the
+sections contained in the document, for example:</p>
+
+<pre><code>/*------------------------------------*\
+    $CONTENTS
+\*------------------------------------*/
+/**
+ * CONTENTS............You’re reading it!
+ * RESET...............Set our reset defaults
+ * FONT-FACE...........Import brand font files
+ */
+</code></pre>
+
+<p>This will tell the next developer(s) exactly what they can expect to find in
+this file. Each item in the table of contents maps directly to a section title.</p>
+
+<p>If you are working in one big stylesheet, the corresponding section will also be
+in that file. If you are working across multiple files then each item in the
+table of contents will map to an include which pulls that section in.</p>
+
+<h3>
+<a name="user-content-section-titles" class="anchor" href="#section-titles" aria-hidden="true"><span class="octicon octicon-link"></span></a>Section titles</h3>
+
+<p>The table of contents would be of no use unless it had corresponding section
+titles. Denote a section thus:</p>
+
+<pre><code>/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
+</code></pre>
+
+<p>The <code>$</code> prefixing the name of the section allows us to run a find ([Cmd|Ctrl]+F)
+for <code>$[SECTION-NAME]</code> and <strong>limit our search scope to section titles only</strong>.</p>
+
+<p>If you are working in one large stylesheet, you leave five (5) carriage returns
+between each section, thus:</p>
+
+<pre><code>/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
+[Our
+reset
+styles]
+
+
+
+
+
+/*------------------------------------*\
+    $FONT-FACE
+\*------------------------------------*/
+</code></pre>
+
+<p>This large chunk of whitespace is quickly noticeable when scrolling quickly
+through larger files.</p>
+
+<p>If you are working across multiple, included stylesheets, start each of those
+files with a section title and there is no need for any carriage returns.</p>
+
+<h2>
+<a name="user-content-source-order" class="anchor" href="#source-order" aria-hidden="true"><span class="octicon octicon-link"></span></a>Source order</h2>
+
+<p>Try and write stylesheets in specificity order. This ensures that you take full
+advantage of inheritance and CSS’ first <i>C</i>; the cascade.</p>
+
+<p>A well ordered stylesheet will be ordered something like this:</p>
+
+<ol class="task-list">
+<li>
+<strong>Reset</strong> – ground zero.</li>
+<li>
+<strong>Elements</strong> – unclassed <code>h1</code>, unclassed <code>ul</code> etc.</li>
+<li>
+<strong>Objects and abstractions</strong> — generic, underlying design patterns.</li>
+<li>
+<strong>Components</strong> – full components constructed from objects and their
+extensions.</li>
+<li>
+<strong>Style trumps</strong> – error states etc.</li>
+</ol><p>This means that—as you go down the document—each section builds upon and
+inherits sensibly from the previous one(s). There should be less undoing of
+styles, less specificity problems and all-round better architected stylesheets.</p>
+
+<p>For further reading I cannot recommend Jonathan Snook’s
+<a href="http://smacss.com">SMACSS</a> highly enough.</p>
+
+<h2>
+<a name="user-content-anatomy-of-rulesets" class="anchor" href="#anatomy-of-rulesets" aria-hidden="true"><span class="octicon octicon-link"></span></a>Anatomy of rulesets</h2>
+
+<pre><code>[selector] {
+    [property]: [value];
+    [&lt;- Declaration --&gt;]
+}
+</code></pre>
+
+<p>I have a number of standards when structuring rulesets.</p>
+
+<ul class="task-list">
+<li>Use hyphen delimited class names (except for BEM notation,
+<a href="#naming-conventions">see below</a>)</li>
+<li>4 space indented</li>
+<li>Multi-line</li>
+<li>Declarations in relevance (NOT alphabetical) order</li>
+<li>Indent vendor prefixed declarations so that their values are aligned</li>
+<li>Indent our rulesets to mirror the DOM</li>
+<li>Always include the final semi-colon in a ruleset</li>
+</ul><p>A brief example:</p>
+
+<pre><code>.widget {
+    padding: 10px;
+    border: 1px solid #BADA55;
+    background-color: #C0FFEE;
+    -webkit-border-radius: 4px;
+       -moz-border-radius: 4px;
+            border-radius: 4px;
+}
+    .widget-heading {
+        font-size: 1.5rem;
+        line-height: 1;
+        font-weight: bold;
+        color: #BADA55;
+        margin-right: -10px;
+        margin-left: -10px;
+        padding: 0.25em;
+    }
+</code></pre>
+
+<p>Here we can see that <code>.widget-heading</code> must be a child of <code>.widget</code> as we have
+indented the <code>.widget-heading</code> ruleset one level deeper than <code>.widget</code>. This is
+useful information to developers that can now be gleaned just by a glance at the
+indentation of our rulesets.</p>
+
+<p>We can also see that <code>.widget-heading</code>’s declarations are ordered by their
+relevance; <code>.widget-heading</code> must be a textual element so we begin with our
+text rules, followed by everything else.</p>
+
+<p>One exception to our multi-line rule might be in cases of the following:</p>
+
+<pre><code>.t10    { width: 10% }
+.t20    { width: 20% }
+.t25    { width: 25% }       /* 1/4 */
+.t30    { width: 30% }
+.t33    { width: 33.333% }   /* 1/3 */
+.t40    { width: 40% }
+.t50    { width: 50% }       /* 1/2 */
+.t60    { width: 60% }
+.t66    { width: 66.666% }   /* 2/3 */
+.t70    { width: 70% }
+.t75    { width: 75% }       /* 3/4*/
+.t80    { width: 80% }
+.t90    { width: 90% }
+</code></pre>
+
+<p>In this example (from <a href="https://github.com/csswizardry/inuit.css/blob/master/base/_tables.scss#L96">inuit.css’s table grid system</a>)
+it makes more sense to single-line our CSS.</p>
+
+<h2>
+<a name="user-content-naming-conventions" class="anchor" href="#naming-conventions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Naming conventions</h2>
+
+<p>For the most part I simply use hyphen delimited classes (e.g. <code>.foo-bar</code>, not
+<code>.foo_bar</code> or <code>.fooBar</code>), however in certain circumstances I use BEM (Block,
+Element, Modifier) notation.</p>
+
+<p>BEM is a methodology for naming
+and classifying CSS selectors in a way to make them a lot more strict,
+transparent and informative.</p>
+
+<p>The naming convention follows this pattern:</p>
+
+<pre><code>.block {}
+.block__element {}
+.block--modifier {}
+</code></pre>
+
+<ul class="task-list">
+<li>
+<code>.block</code> represents the higher level of an abstraction or component.</li>
+<li>
+<code>.block__element</code> represents a descendent of <code>.block</code> that helps form <code>.block</code>
+as a whole.</li>
+<li>
+<code>.block--modifier</code> represents a different state or version of <code>.block</code>.</li>
+</ul><p>An <strong>analogy</strong> of how BEM classes work might be:</p>
+
+<pre><code>.person {}
+.person--woman {}
+    .person__hand {}
+    .person__hand--left {}
+    .person__hand--right {}
+</code></pre>
+
+<p>Here we can see that the basic object we’re describing is a person, and that a
+different type of person might be a woman. We can also see that people have
+hands; these are sub-parts of people, and there are different variations,
+like left and right.</p>
+
+<p>We can now namespace our selectors based on their base objects and we can also
+communicate what job the selector does; is it a sub-component (<code>__</code>) or a
+variation (<code>--</code>)?</p>
+
+<p>So, <code>.page-wrapper</code> is a standalone selector; it doesn’t form part of an
+abstraction or a component and as such it named correctly. <code>.widget-heading</code>,
+however, <em>is</em> related to a component; it is a child of the <code>.widget</code> construct
+so we would rename this class <code>.widget__heading</code>.</p>
+
+<p>BEM looks a little uglier, and is a lot more verbose, but it grants us a lot of
+power in that we can glean the functions and relationships of elements from
+their classes alone. Also, BEM syntax will typically compress (gzip) very well
+as compression favours/works well with repetition.</p>
+
+<p>Regardless of whether you need to use BEM or not, always ensure classes are
+sensibly named; keep them as short as possible but as long as necessary. Ensure
+any objects or abstractions are very vaguely named (e.g. <code>.ui-list</code>, <code>.media</code>)
+to allow for greater reuse. Extensions of objects should be much more explicitly
+named (e.g. <code>.user-avatar-link</code>). Don’t worry about the amount or length of
+classes; gzip will compress well written code <em>incredibly</em> well.</p>
+
+<h3>
+<a name="user-content-classes-in-html" class="anchor" href="#classes-in-html" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes in HTML</h3>
+
+<p>In a bid to make things easier to read, separate classes in your HTML with two
+(2) spaces, thus:</p>
+
+<pre><code>&lt;div class="foo--bar  bar__baz"&gt;
+</code></pre>
+
+<p>This increased whitespace should hopefully allow for easier spotting and reading
+of multiple classes.</p>
+
+<h3>
+<a name="user-content-js-hooks" class="anchor" href="#js-hooks" aria-hidden="true"><span class="octicon octicon-link"></span></a>JS hooks</h3>
+
+<p><strong>Never use a CSS <em>styling</em> class as a JavaScript hook.</strong> Attaching JS behaviour
+to a styling class means that we can never have one without the other.</p>
+
+<p>If you need to bind to some markup use a JS specific CSS class. This is simply a
+class namespaced with <code>.js-</code>, e.g. <code>.js-toggle</code>, <code>.js-drag-and-drop</code>. This means
+that we can attach both JS and CSS to classes in our markup but there will never
+be any troublesome overlap.</p>
+
+<pre><code>&lt;th class="is-sortable  js-is-sortable"&gt;
+&lt;/th&gt;
+</code></pre>
+
+<p>The above markup holds two classes; one to which you can attach some styling for
+sortable table columns and another which allows you to add the sorting
+functionality.</p>
+
+<h3>
+<a name="user-content-internationalisation" class="anchor" href="#internationalisation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Internationalisation</h3>
+
+<p>Despite being a British developer—and spending all my life writing <i>colour</i>
+instead of <i>color</i>—I feel that, for the sake of consistency, it is better
+to always use US-English in CSS. CSS, as with most (if not all) other languages,
+is written in US-English, so to mix syntax like <code>color: red;</code> with classes like
+<code>.colour-picker {}</code> lacks consistency. I have previously suggested and advocated
+writing bilingual classes, for example:</p>
+
+<pre><code>.color-picker,
+.colour-picker {
+}
+</code></pre>
+
+<p>However, having recently worked on a very large Sass project where there were
+dozens of colour variables (e.g. <code>$brand-color</code>, <code>$highlight-color</code> etc.),
+maintaining two versions of each variable soon became tiresome. It also means
+twice as much work with things like find and replace.</p>
+
+<p>In the interests of consistency, always name classes and variables in the locale
+of the language you are working with.</p>
+
+<h2>
+<a name="user-content-comments" class="anchor" href="#comments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comments</h2>
+
+<p>I use a docBlock-esque commenting style which I limit to 80 characters in length:</p>
+
+<pre><code>/**
+ * This is a docBlock style comment
+ *
+ * This is a longer description of the comment, describing the code in more
+ * detail. We limit these lines to a maximum of 80 characters in length.
+ *
+ * We can have markup in the comments, and are encouraged to do so:
+ *
+   &lt;div class=foo&gt;
+       &lt;p&gt;Lorem&lt;/p&gt;
+   &lt;/div&gt;
+ *
+ * We do not prefix lines of code with an asterisk as to do so would inhibit
+ * copy and paste.
+ */
+</code></pre>
+
+<p>You should document and comment our code as much as you possibly can, what may
+seem or feel transparent and self explanatory to you may not be to another dev.
+Write a chunk of code then write about it.</p>
+
+<h3>
+<a name="user-content-comments-on-steroids" class="anchor" href="#comments-on-steroids" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comments on steroids</h3>
+
+<p>There are a number of more advanced techniques you can employ with regards
+comments, namely:</p>
+
+<ul class="task-list">
+<li>Quasi-qualified selectors</li>
+<li>Tagging code</li>
+<li>Object/extension pointers</li>
+</ul><h4>
+<a name="user-content-quasi-qualified-selectors" class="anchor" href="#quasi-qualified-selectors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quasi-qualified selectors</h4>
+
+<p>You should never qualify your selectors; that is to say, we should never write
+<code>ul.nav {}</code> if you can just have <code>.nav</code>. Qualifying selectors decreases selector
+performance, inhibits the potential for reusing a class on a different type of
+element and it increases the selector’s specificity. These are all things that
+should be avoided at all costs.</p>
+
+<p>However, sometimes it is useful to communicate to the next developer(s) where
+you intend a class to be used. Let’s take <code>.product-page</code> for example; this
+class sounds as though it would be used on a high-level container, perhaps the
+<code>html</code> or <code>body</code> element, but with <code>.product-page</code> alone it is impossible to
+tell.</p>
+
+<p>By quasi-qualifying this selector (i.e. commenting out the leading type
+selector) we can communicate where we wish to have this class applied, thus:</p>
+
+<pre><code>/*html*/.product-page {}
+</code></pre>
+
+<p>We can now see exactly where to apply this class but with none of the
+specificity or non-reusability drawbacks.</p>
+
+<p>Other examples might be:</p>
+
+<pre><code>/*ol*/.breadcrumb {}
+/*p*/.intro {}
+/*ul*/.image-thumbs {}
+</code></pre>
+
+<p>Here we can see where we intend each of these classes to be applied without
+actually ever impacting the specificity of the selectors.</p>
+
+<h4>
+<a name="user-content-tagging-code" class="anchor" href="#tagging-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tagging code</h4>
+
+<p>If you write a new component then leave some tags pertaining to its function in
+a comment above it, for example:</p>
+
+<pre><code>/**
+ * ^navigation ^lists
+ */
+.nav {}
+
+/**
+ * ^grids ^lists ^tables
+ */
+.matrix {}
+</code></pre>
+
+<p>These tags allow other developers to find snippets of code by searching for
+function; if a developer needs to work with lists they can run a find for
+<code>^lists</code> and find the <code>.nav</code> and <code>.matrix</code> objects (and possibly more).</p>
+
+<h4>
+<a name="user-content-objectextension-pointers" class="anchor" href="#objectextension-pointers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object/extension pointers</h4>
+
+<p>When working in an object oriented manner you will often have two chunks of CSS
+(one being the skeleton (the object) and the other being the skin (the
+extension)) that are very closely related, but that live in very different
+places. In order to establish a concrete link between the object and its
+extension with use <i>object/extension pointers</i>. These are simply comments
+which work thus:</p>
+
+<p>In your base stylesheet:</p>
+
+<pre><code>/**
+ * Extend `.foo` in theme.css
+ */
+ .foo {}
+</code></pre>
+
+<p>In your theme stylesheet:</p>
+
+<pre><code>/**
+ * Extends `.foo` in base.css
+ */
+ .bar {}
+</code></pre>
+
+<p>Here we have established a concrete relationship between two very separate
+pieces of code.</p>
+
+<hr><h2>
+<a name="user-content-writing-css" class="anchor" href="#writing-css" aria-hidden="true"><span class="octicon octicon-link"></span></a>Writing CSS</h2>
+
+<p>The previous section dealt with how we structure and form our CSS; they were
+very quantifiable rules. The next section is a little more theoretical and deals
+with our attitude and approach.</p>
+
+<h2>
+<a name="user-content-building-new-components" class="anchor" href="#building-new-components" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building new components</h2>
+
+<p>When building a new component write markup <strong>before</strong> CSS. This means you can
+visually see which CSS properties are naturally inherited and thus avoid
+reapplying redundant styles.</p>
+
+<p>By writing markup first you can focus on data, content and semantics and then
+apply only the relevant classes and CSS <em>afterwards</em>.</p>
+
+<h2>
+<a name="user-content-oocss" class="anchor" href="#oocss" aria-hidden="true"><span class="octicon octicon-link"></span></a>OOCSS</h2>
+
+<p>I work in an OOCSS manner; I split components into structure (objects) and
+skin (extensions). As an <strong>analogy</strong> (note, not example) take the following:</p>
+
+<pre><code>.room {}
+
+.room--kitchen {}
+.room--bedroom {}
+.room--bathroom {}
+</code></pre>
+
+<p>We have several types of room in a house, but they all share similar traits;
+they all have floors, ceilings, walls and doors. We can share this information
+in an abstracted <code>.room {}</code> class. However we have specific types of room that
+are different from the others; a kitchen might have a tiled floor and a bedroom
+might have carpets, a bathroom might not have a window but a bedroom most likely
+will, each room likely has different coloured walls. OOCSS teaches us to
+abstract the shared styles out into a base object and then <em>extend</em> this
+information with more specific classes to add the unique treatment(s).</p>
+
+<p>So, instead of building dozens of unique components, try and spot repeated
+design patterns across them all and abstract them out into reusable classes;
+build these skeletons as base ‘objects’ and then peg classes onto these to
+extend their styling for more unique circumstances.</p>
+
+<p>If you have to build a new component split it into structure and skin; build the
+structure of the component using very generic classes so that we can reuse that
+construct and then use more specific classes to skin it up and add design
+treatments.</p>
+
+<h2>
+<a name="user-content-layout" class="anchor" href="#layout" aria-hidden="true"><span class="octicon octicon-link"></span></a>Layout</h2>
+
+<p>All components you build should be left totally free of widths; they should
+always remain fluid and their widths should be governed by a parent/grid system.</p>
+
+<p>Heights should <strong>never</strong> be be applied to elements. Heights should only be
+applied to things which had dimensions <em>before</em> they entered the site (i.e.
+images and sprites). Never ever set heights on <code>p</code>s, <code>ul</code>s, <code>div</code>s, anything.
+You can often achieve the desired effect with <code>line-height</code> which is far more
+flexible.</p>
+
+<p>Grid systems should be thought of as shelves. They contain content but are not
+content in themselves. You put up your shelves then fill them with your stuff.
+By setting up our grids separately to our components you can move components
+around a lot more easily than if they had dimensions applied to them; this makes
+our front-ends a lot more adaptable and quick to work with.</p>
+
+<p>You should never apply any styles to a grid item, they are for layout purposes
+only. Apply styling to content <em>inside</em> a grid item. Never, under <em>any</em>
+circumstances, apply box-model properties to a grid item.</p>
+
+<h2>
+<a name="user-content-sizing-uis" class="anchor" href="#sizing-uis" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sizing UIs</h2>
+
+<p>I use a combination of methods for sizing UIs. Percentages, pixels, ems, rems
+and nothing at all.</p>
+
+<p>Grid systems should, ideally, be set in percentages. Because I use grid systems
+to govern widths of columns and pages, I can leave components totally free of
+any dimensions (as discussed above).</p>
+
+<p>Font sizes I set in rems with a pixel fallback. This gives the accessibility
+benefits of ems with the confidence of pixels. Here is a handy Sass mixin to
+work out a rem and pixel fallback for you (assuming you set your base font
+size in a variable somewhere):</p>
+
+<pre><code>@mixin font-size($font-size) {
+    font-size: $font-size +px;
+    font-size: $font-size / $base-font-size +rem;
+}
+</code></pre>
+
+<p>I only use pixels for items whose dimensions were defined before the came into
+the site. This includes things like images and sprites whose dimensions are
+inherently set absolutely in pixels.</p>
+
+<h3>
+<a name="user-content-font-sizing" class="anchor" href="#font-sizing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Font sizing</h3>
+
+<p>I define a series of classes akin to a grid system for sizing fonts. These
+classes can be used to style type in a double stranded heading hierarchy. For a
+full explanation of how this works please refer to my article
+<a href="http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css">Pragmatic, practical font-sizing in CSS</a></p>
+
+<h2>
+<a name="user-content-shorthand" class="anchor" href="#shorthand" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shorthand</h2>
+
+<p><strong>Shorthand CSS needs to be used with caution.</strong></p>
+
+<p>It might be tempting to use declarations like <code>background: red;</code> but in doing so
+what you are actually saying is ‘I want no image to scroll, aligned top-left,
+repeating X and Y, and a background colour of red’. Nine times out of ten this
+won’t cause any issues but that one time it does is annoying enough to warrant
+not using such shorthand. Instead use <code>background-color: red;</code>.</p>
+
+<p>Similarly, declarations like <code>margin: 0;</code> are nice and short, but
+<strong>be explicit</strong>. If you actually only really want to affect the margin on
+the bottom of an element then it is more appropriate to use <code>margin-bottom: 0;</code>.</p>
+
+<p>Be explicit in which properties you set and take care to not inadvertently unset
+others with shorthand. E.g. if you only want to remove the bottom margin on an
+element then there is no sense in setting all margins to zero with <code>margin: 0;</code>.</p>
+
+<p>Shorthand is good, but easily misused.</p>
+
+<h2>
+<a name="user-content-ids" class="anchor" href="#ids" aria-hidden="true"><span class="octicon octicon-link"></span></a>IDs</h2>
+
+<p>A quick note on IDs in CSS before we dive into selectors in general.</p>
+
+<p><strong>NEVER use IDs in CSS.</strong></p>
+
+<p>They can be used in your markup for JS and fragment identifiers but use only
+classes for styling. You don’t want to see a single ID in any stylesheets!</p>
+
+<p>Classes come with the benefit of being reusable (even if we don’t want to, we
+can) and they have a nice, low specificity. Specificity is one of the quickest
+ways to run into difficulties in projects and keeping it low at all times is
+imperative. An ID is <strong>255</strong> times more specific than a class, so never ever use
+them in CSS <em>ever</em>.</p>
+
+<h2>
+<a name="user-content-selectors" class="anchor" href="#selectors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Selectors</h2>
+
+<p>Keep selectors short, efficient and portable.</p>
+
+<p>Heavily location-based selectors are bad for a number of reasons. For example,
+take <code>.sidebar h3 span {}</code>. This selector is too location-based and thus we
+cannot move that <code>span</code> outside of a <code>h3</code> outside of <code>.sidebar</code> and maintain
+styling.</p>
+
+<p>Selectors which are too long also introduce performance issues; the more checks
+in a selector (e.g. <code>.sidebar h3 span</code> has three checks, <code>.content ul p a</code> has
+four), the more work the browser has to do.</p>
+
+<p>Make sure styles aren’t dependent on location where possible, and make sure
+selectors are nice and short.</p>
+
+<p>Selectors as a whole should be kept short (e.g. one class deep) but the class
+names themselves should be as long as they need to be. A class of <code>.user-avatar</code>
+is far nicer than <code>.usr-avt</code>.</p>
+
+<p><strong>Remember:</strong> classes are neither semantic or insemantic; they are sensible or
+insensible! Stop stressing about ‘semantic’ class names and pick something
+sensible and futureproof.</p>
+
+<h3>
+<a name="user-content-over-qualified-selectors" class="anchor" href="#over-qualified-selectors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Over-qualified selectors</h3>
+
+<p>As discussed above, qualified selectors are bad news.</p>
+
+<p>An over-qualified selector is one like <code>div.promo</code>. You could probably get the
+same effect from just using <code>.promo</code>. Of course sometimes you will <em>want</em> to
+qualify a class with an element (e.g. if you have a generic <code>.error</code> class that
+needs to look different when applied to different elements (e.g.
+<code>.error { color: red; }</code> <code>div.error { padding: 14px; }</code>)), but generally avoid it
+where possible.</p>
+
+<p>Another example of an over-qualified selector might be <code>ul.nav li a {}</code>. As
+above, we can instantly drop the <code>ul</code> and because we know <code>.nav</code> is a list, we
+therefore know that any <code>a</code> <em>must</em> be in an <code>li</code>, so we can get <code>ul.nav li a {}</code>
+down to just <code>.nav a {}</code>.</p>
+
+<h3>
+<a name="user-content-selector-performance" class="anchor" href="#selector-performance" aria-hidden="true"><span class="octicon octicon-link"></span></a>Selector performance</h3>
+
+<p>Whilst it is true that browsers will only ever keep getting faster at rendering
+CSS, efficiency is something you could do to keep an eye on. Short, unnested
+selectors, not using the universal (<code>* {}</code>) selector as the key selector, and
+avoiding more complex CSS3 selectors should help circumvent these problems.</p>
+
+<h2>
+<a name="user-content-css-selector-intent" class="anchor" href="#css-selector-intent" aria-hidden="true"><span class="octicon octicon-link"></span></a>CSS selector intent</h2>
+
+<p>Instead of using selectors to drill down the DOM to an element, it is often best
+to put a class on the element you explicitly want to style. Let’s take a
+specific example with a selector like <code>.header ul {}</code>…</p>
+
+<p>Let’s imagine that <code>ul</code> is indeed the main navigation for our website. It lives
+in the header as you might expect and is currently the only <code>ul</code> in there;
+<code>.header ul {}</code> will work, but it’s not ideal or advisable. It’s not very future
+proof and certainly not explicit enough. As soon as we add another <code>ul</code> to that
+header it will adopt the styling of our main nav and the the chances are it
+won’t want to. This means we either have to refactor a lot of code <em>or</em> undo a
+lot of styling on subsequent <code>ul</code>s in that <code>.header</code> to remove the effects of
+the far reaching selector.</p>
+
+<p>Your selector’s intent must match that of your reason for styling something;
+ask yourself <strong>‘am I selecting this because it’s a <code>ul</code> inside of <code>.header</code> or
+because it is my site’s main nav?’</strong>. The answer to this will determine your
+selector.</p>
+
+<p>Make sure your key selector is never an element/type selector or
+object/abstraction class. You never really want to see selectors like
+<code>.sidebar ul {}</code> or <code>.footer .media {}</code> in our theme stylesheets.</p>
+
+<p>Be explicit; target the element you want to affect, not its parent. Never assume
+that markup won’t change. <strong>Write selectors that target what you want, not what
+happens to be there already.</strong></p>
+
+<p>For a full write up please see my article
+<a href="http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/">Shoot to kill; CSS selector intent</a></p>
+
+<h2>
+<a name="user-content-important" class="anchor" href="#important" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>!important</code>
+</h2>
+
+<p>It is okay to use <code>!important</code> on helper classes only. To add <code>!important</code>
+preemptively is fine, e.g. <code>.error { color: red !important }</code>, as you know you will
+<strong>always</strong> want this rule to take precedence.</p>
+
+<p>Using <code>!important</code> reactively, e.g. to get yourself out of nasty specificity
+situations, is not advised. Rework your CSS and try to combat these issues by
+refactoring your selectors. Keeping your selectors short and avoiding IDs will
+help out here massively.</p>
+
+<h2>
+<a name="user-content-magic-numbers-and-absolutes" class="anchor" href="#magic-numbers-and-absolutes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Magic numbers and absolutes</h2>
+
+<p>A magic number is a number which is used because ‘it just works’. These are bad
+because they rarely work for any real reason and are not usually very
+futureproof or flexible/forgiving. They tend to fix symptoms and not problems.</p>
+
+<p>For example, using <code>.dropdown-nav li:hover ul { top: 37px; }</code> to move a dropdown
+to the bottom of the nav on hover is bad, as 37px is a magic number. 37px only
+works here because in this particular scenario the <code>.dropdown-nav</code> happens to be
+37px tall.</p>
+
+<p>Instead you should use <code>.dropdown-nav li:hover ul { top: 100%; }</code> which means no
+matter how tall the <code>.dropdown-nav</code> gets, the dropdown will always sit 100% from
+the top.</p>
+
+<p>Every time you hard code a number think twice; if you can avoid it by using
+keywords or ‘aliases’ (i.e. <code>top: 100%</code> to mean ‘all the way from the top’)
+or—even better—no measurements at all then you probably should.</p>
+
+<p>Every hard-coded measurement you set is a commitment you might not necessarily
+want to keep.</p>
+
+<h2>
+<a name="user-content-conditional-stylesheets" class="anchor" href="#conditional-stylesheets" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conditional stylesheets</h2>
+
+<p>IE stylesheets can, by and large, be totally avoided. The only time an IE
+stylesheet may be required is to circumvent blatant lack of support (e.g. PNG
+fixes).</p>
+
+<p>As a general rule, all layout and box-model rules can and <em>will</em> work without an
+IE stylesheet if you refactor and rework your CSS. This means you never want to
+see <code>&lt;!--[if IE 7]&gt; element { margin-left: -9px; } &lt; ![endif]--&gt;</code> or other such
+CSS that is clearly using arbitrary styling to just ‘make stuff work’.</p>
+
+<h2>
+<a name="user-content-debugging" class="anchor" href="#debugging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Debugging</h2>
+
+<p>If you run into a CSS problem <strong>take code away before you start adding more</strong> in
+a bid to fix it. The problem exists in CSS that is already written, more CSS
+isn’t the right answer!</p>
+
+<p>Delete chunks of markup and CSS until your problem goes away, then you can
+determine which part of the code the problem lies in.</p>
+
+<p>It can be tempting to put an <code>overflow: hidden;</code> on something to hide the effects
+of a layout quirk, but overflow was probably never the problem; <strong>fix the
+problem, not its symptoms.</strong></p>
+
+<h2>
+<a name="user-content-preprocessors" class="anchor" href="#preprocessors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preprocessors</h2>
+
+<p>Sass is my preprocessor of choice. <strong>Use it wisely.</strong> Use Sass to make your CSS
+more powerful but avoid nesting like the plague! Nest only when it would
+actually be necessary in vanilla CSS, e.g.</p>
+
+<pre><code>.header {}
+.header .site-nav {}
+.header .site-nav li {}
+.header .site-nav li a {}
+</code></pre>
+
+<p>Would be wholly unnecessary in normal CSS, so the following would be <strong>bad</strong>
+Sass:</p>
+
+<pre><code>.header {
+    .site-nav {
+        li {
+            a {}
+        }
+    }
+}
+</code></pre>
+
+<p>If you were to Sass this up you’d write it as:</p>
+
+<pre><code>.header {}
+.site-nav {
+    li {}
+    a {}
+}
+</code></pre></article>

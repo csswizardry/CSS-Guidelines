@@ -1,0 +1,39 @@
+/*------------------------------------*\
+    #MAIN
+\*------------------------------------*/
+
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ */
+
+@import "bower_components/inuit-defaults/settings.defaults";
+
+@import "bower_components/inuit-functions/tools.functions";
+@import "bower_components/inuit-mixins/tools.mixins";
+@import "tools.aliases";
+
+@import "bower_components/inuit-normalize/generic.normalize";
+@import "bower_components/inuit-reset/generic.reset";
+@import "bower_components/inuit-box-sizing/generic.box-sizing";
+@import "bower_components/inuit-shared/generic.shared";
+
+@import "bower_components/inuit-page/base.page";
+
+html {
+    font-family: Georgia, serif;
+    padding: $spacing-unit;
+}
+
+@import "bower_components/inuit-headings/base.headings";
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: sans-serif;
+}
+
+@import "bower_components/inuit-images/base.images";
+
+a {
+    color: #6897c5;
+}
