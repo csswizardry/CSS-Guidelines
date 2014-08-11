@@ -6,9 +6,38 @@
  * CONTENTS
  *
  * SETTINGS
+ * Default..............inuitcss’ default settings.
+ * Global...............Globally-available variables and settings/config.
+ * Colors...............Manage our color palette in isolation.
+ *
+ * TOOLS
+ * Functions............inuitcss’ default functions.
+ * Mixins...............inuitcss’ default mixins.
+ * Aliases..............Aliases onto longer inuitcss variables and mixins.
+ *
+ * GENERIC
+ * Normalize.css........A level playing field.
+ * Reset................A pared back reset to remove margins.
+ * Box-sizing...........Better default `box-sizing`.
+ * Shared...............Sensibly and tersely share global commonalities.
+ *
+ * BASE
+ * Page.................Page-level styles (HTML element).
+ * Headings.............Heading styles
+ * Images...............inuitcss images
+ *
+ * OBJECTS
+ *
+ * COMPONENTS
+ * Logo.................CSS Guidelines’ logo
+ *
+ * TRUMPS
+ *
  */
 
 @import "bower_components/inuit-defaults/settings.defaults";
+@import "settings.global";
+@import "settings.colors";
 
 @import "bower_components/inuit-functions/tools.functions";
 @import "bower_components/inuit-mixins/tools.mixins";
@@ -35,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
 @import "bower_components/inuit-images/base.images";
 
 a {
-    color: #6897c5;
+    color: $color-brand;
 }
 
 @import "components.logo";

@@ -1,3 +1,7 @@
+/*------------------------------------*\
+    #LOGO
+\*------------------------------------*/
+
 .logo {
     display: block;
     @extend %margin-bottom;
@@ -6,9 +10,9 @@
 }
 
     .logo__character {
-        fill: #6897c5;
+        fill: $color-brand;
     }
 
     .logo__punctuation {
-        fill: #a8bdd2;
+        fill: lighten($color-brand, 25%);
     }
