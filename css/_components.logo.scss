@@ -1,0 +1,14 @@
+.logo {
+    display: block;
+    @extend %margin-bottom;
+    margin-right: auto;
+    margin-left:  auto;
+}
+
+    .logo__character {
+        fill: #6897c5;
+    }
+
+    .logo__punctuation {
+        fill: #a8bdd2;
+    }
