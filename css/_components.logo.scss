@@ -4,15 +4,26 @@
 
 .logo {
     display: block;
-    @extend %margin-bottom;
     margin-right: auto;
     margin-left:  auto;
+    max-width: 480px;
 }
 
     .logo__character {
         fill: $color-brand;
+
+        .page-head & {
+            fill: #fff;
+        }
+
     }
 
     .logo__punctuation {
         fill: lighten($color-brand, 25%);
+
+        .page-head & {
+            opacity: 0.5;
+            fill: #fff;
+        }
+
     }

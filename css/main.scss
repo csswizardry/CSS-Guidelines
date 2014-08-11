@@ -28,8 +28,10 @@
  * Images...............inuitcss images
  *
  * OBJECTS
+ * Wrappers.............Wrapping and constraining elements.
  *
  * COMPONENTS
+ * Page-head............The main page header
  * Logo.................CSS Guidelines’ logo
  *
  * TRUMPS
@@ -53,7 +55,6 @@
 
 html {
     font-family: Georgia, serif;
-    padding: $spacing-unit;
     background-color: #fafafa;
 }
 
@@ -67,6 +68,9 @@ $inuit-heading-size-6:  16px !default;
 @import "base.type";
 @import "bower_components/inuit-images/base.images";
 
+@import "objects.wrappers";
+
+@import "components.page-head";
 @import "components.logo";
 
 @import "trumps.hide";
