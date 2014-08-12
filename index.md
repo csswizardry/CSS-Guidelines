@@ -34,7 +34,18 @@ consider [supporting it](https://gumroad.com/l/JAgjq).
 ## Contents
 
 * [Introduction](#introduction)
+    * [The Importance of a Styleguide](#the-importance-of-a-styleguide)
 * [Syntax and Formatting](#syntax-and-formatting)
+    * [Multiple Files](#multiple-files)
+    * [Table of Contents](#table-of-contents)
+    * [80 Characters Wide](#characters-wide)
+    * [Titling](#titling)
+    * [Anatomy of a Ruleset](#anatomy-of-a-ruleset)
+    * [Multi-line CSS](#multi-line-css)
+    * [Indenting](#indenting)
+        * [Indenting Sass](#indenting-sass)
+        * [Alignment](#alignment)
+    * [Meaningful Whitespace](#meaningful-whitespace)
     * [HTML](#html)
 
 ---
@@ -58,7 +69,7 @@ There are a variety of techniques we must employ in order to satisfy these
 goals, and <cite>CSS Guidelines</cite> is a document of recommendations and
 approaches that will help us to do so.
 
-### Importance of a Styleguide
+### The Importance of a Styleguide
 
 A coding styleguide—note, not a visual styleguide—is a valuable tool for teams
 who
@@ -230,7 +241,7 @@ easier to spot when scrolling through large files:
     .another-selector {
     }
 
-### Anatomy of Rulesets
+### Anatomy of a Ruleset
 
 Before we discuss how we write out our rulesets, let’s first familiarise
 ourselves with the relevant terminology:
@@ -436,7 +447,88 @@ between them. This would be incorrect:
 
 ### HTML
 
-Separate thematic chunks of markup with a blank line.
+Given HTML and CSS’ inherently interconnected nature, it would be remiss of me
+to not cover some syntax and formatting guidelines for markup.
+
+Always quote attributes, even if they would work without. This reduces the
+chance of accidents, and is a more familiar format to the majority of
+developers. For all this would work (and is valid):
+
+    <div class=box>
+
+…this format is preferred:
+
+    <div class="box">
+
+The quotes are not required here, but err on the safe side and include them.
+
+When writing multiple values in a class attribute, separate them with two
+spaces, thus:
+
+    <div class="foo  bar">
+
+When multiple classes are related to each other, consider grouping them in
+square brackets (`[` and `]`), like so:
+
+    <div class="[ box  box--highlight ]  [ bio  bio--long ]">
+
+This is not a firm recommendation, and is something I am still trialling myself,
+but it does carry a number of benefits. Read more in [<cite>Grouping related
+classes in your
+markup</cite>](http://csswizardry.com/2014/05/grouping-related-classes-in-your-markup/).
+
+As with our rulesets, it is possible to use meaningful whitespace in your HTML.
+You can denote thematic breaks in content with five (5) empty lines, for
+example:
+
+    <header class="page-head">
+        ...
+    </header>
+
+
+
+
+
+    <main class="page-content">
+        ...
+    </main>
+
+
+
+
+
+    <footer class="page-foot">
+        ...
+    </footer>
+
+Separate independent but loosely related snippets of markup with a single empty
+line, for example:
+
+    <ul class="primary-nav">
+
+        <li class="primary-nav__item">
+            <a href="/" class="primary-nav__link">Home</a>
+        </li>
+
+        <li class="primary-nav__item  primary-nav__trigger">
+            <a href="/about" class="primary-nav__link">About</a>
+
+            <ul class="primary-nav__sub-nav">
+                <li><a href="/about/products">Products</a></li>
+                <li><a href="/about/company">Company</a></li>
+            </ul>
+
+        </li>
+
+        <li class="primary-nav__item">
+            <a href="/contact" class="primary-nav__link">Contact</a>
+        </li>
+
+    </ul>
+
+This allows developers to spot separate parts of the DOM at a glance, and also
+allows certain text editors—like Vim, for example—to manipulate
+empty-line-delimited blocks of markup.
 
 <!--
 
