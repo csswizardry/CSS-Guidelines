@@ -1,7 +1,7 @@
 # Site settings
 title: CSS Guidelines
 email: harry@csswizardry.com
-description: "High-level advice and guidelines for writing sane, manageable, scalable CSS for large teams and UIs"
+description: "High-level advice and guidelines for writing sane, manageable, scalable CSS"
 baseurl: ""
 url: "http://cssguidelin.es/"
 
