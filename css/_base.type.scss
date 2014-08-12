@@ -36,6 +36,10 @@ a {
 
 }
 
+
+
+
+
 /**
  * Lists
  */
@@ -47,6 +51,10 @@ li {
     }
 
 }
+
+
+
+
 
 /**
  * Code
@@ -71,11 +79,26 @@ pre {
 
 }
 
+
+
+
+
 /**
  * Rules
  */
 hr {
     border: none;
-    border-top: 5px solid rgba(0, 0, 0, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: $spacing-unit - 1px;
+}
+
+.hr-minor {
+    width: 50%;
+    margin-right: auto;
+    margin-left:  auto;
+}
+
+.hr-major {
+    border-top-width: 5px;
     margin-bottom: $spacing-unit - 5px;
 }
