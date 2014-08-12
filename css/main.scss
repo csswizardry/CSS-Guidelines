@@ -31,14 +31,17 @@
  *
  * OBJECTS
  * Wrappers.............Wrapping and constraining elements.
+ * Buttons..............inuitcss button object.
  *
  * COMPONENTS
  * Page-head............The main page header
- * Logo.................CSS Guidelines’ logo
  * Page-foot............The main page footer
+ * Logo.................CSS Guidelines’ logo
+ * Buttons..............Our extension of inuitcss’ buttons
  *
  * TRUMPS
  * Hide.................Accessibly hide text
+ * Text.................Text helpers.
  */
 
 @import "bower_components/inuit-defaults/settings.defaults";
@@ -69,8 +72,14 @@ html {
 
 @import "objects.wrappers";
 
+$inuit-btn-background:   $color-brand;
+$inuit-btn-border-width: 2px;
+@import "bower_components/inuit-buttons/objects.buttons";
+
 @import "components.page-head";
-@import "components.logo";
 @import "components.page-foot";
+@import "components.logo";
+@import "components.buttons";
 
 @import "trumps.hide";
+@import "trumps.text";

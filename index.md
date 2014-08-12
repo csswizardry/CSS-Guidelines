@@ -12,6 +12,11 @@ Roberts](http://csswizardry.com/work/). I am a Consultant Front-end Architect
 from the UK, and I help companies all over the world write and manage better
 quality UIs for their products and teams. I am available for hire.
 
+<p class="text-center">
+<a href="https://twitter.com/csswizardry" class="btn  btn--secondary"><span class="hide-palm">Follow me on </span>Twitter</a>
+or <a href="http://csswizardry.com/work/" class="btn">Hire<span class="hide-palm"> Me</span></a>
+</p>
+
 ---
 
 ## Syntax and Formatting

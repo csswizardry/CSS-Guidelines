@@ -1,0 +1,19 @@
+/*------------------------------------*\
+    #BUTTONS
+\*------------------------------------*/
+
+.btn {
+    font-weight: 700;
+}
+
+.btn--secondary {
+    background: none;
+
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color-brand;
+    }
+
+}
