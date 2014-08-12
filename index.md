@@ -54,6 +54,8 @@ consider [supporting it](https://gumroad.com/l/JAgjq).
         * [More Layers](#more-layers)
         * [Modifying Elements](#modifying-elements)
     * [Naming Conventions in HTML](#naming-conventions-in-html)
+    * [JavaScript Hooks](#javascript-hooks)
+        * [`data-*` Attributes](#data--attributes)
     * [Taking It Further](#taking-it-further)
 
 ---
@@ -745,6 +747,31 @@ a naming convention, however, changes all that:
 Now we can clearly see which classes are and are not related to each other, and
 how; we know what classes we can’t use outside of the scope of this component;
 and we know which classes we may be free to reuse elsewhere.
+
+### JavaScript Hooks
+
+As a rule, it is unwise to bind your CSS and your JS onto the same class in your
+HTML. This is because doing so means you can’t have (or remove) one without
+(removing) the other. It is much cleaner, much more transparent, and much more
+maintainable to bind your JS onto specific classes.
+
+I have know occasions before when trying to refactor some CSS has unwittingly
+removed JS functionality because the two were tied to each other—it was
+impossible to have one without the other.
+
+Typically, these are classes that are prepended with `js-`, for example:
+
+    <input type="submit" class="btn  js-btn" Value='Follow" />
+
+This means that we can have an element elsewhere which can carry with style of
+`.btn {}`, but without the behaviour of `.js-btn {}`.
+
+#### `data-*` Attributes
+
+A common practice is to use `data-*` attributes as JS hooks, but this is
+incorrect. `data-*` attributes, as per the spec, are used <q>**to store custom
+data** private to the page or application</q> (emphasis mine). `data-*`
+attributes are designed to store data, not be bound to.
 
 ### Taking It Further
 
