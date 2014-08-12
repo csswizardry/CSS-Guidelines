@@ -127,6 +127,44 @@ a table of contents up to date, but it is well worth sticking with. An
 up-to-date table of contents provides a team with a single, canonical catalogue
 of what is in a CSS project, what it does, and in what order.  
 
+A simple table of contents will—in order, naturally—simply provide the name of
+the section and a brief summary of what it is and does, for example:
+
+    /**
+     * CONTENTS
+     *
+     * SETTINGS
+     * Global...............Globally-available variables and config.
+     *
+     * TOOLS
+     * Mixins...............Useful mixins.
+     *
+     * GENERIC
+     * Normalize.css........A level playing field.
+     * Box-sizing...........Better default `box-sizing`.
+     *
+     * BASE
+     * Headings.............H1–H6 styles.
+     *
+     * OBJECTS
+     * Wrappers.............Wrapping and constraining elements.
+     *
+     * COMPONENTS
+     * Page-head............The main page header.
+     * Page-foot............The main page footer.
+     * Buttons..............Button elements.
+     *
+     * TRUMPS
+     * Text.................Text helpers.
+     */
+
+Each item maps to a section and/or include.
+
+Naturally, this section would be substantially larger on the majority of
+projects, but hopefully we can see how this section—in the master
+stylesheet—provides developers with a project-wide view of what is being used
+where, and why.
+
 ### 80 Characters Wide
 
 Where possible, limit CSS files’ width to 80 characters. Reasons for this
