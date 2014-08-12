@@ -140,6 +140,8 @@ pre {
     word-wrap: normal;
     overflow: auto;
     padding: halve($spacing-unit);
+    margin-right: halve(-$spacing-unit);
+    margin-left:  halve(-$spacing-unit);
     background-color: #333;
     border-radius: 3px;
 

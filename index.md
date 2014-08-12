@@ -31,6 +31,14 @@ consider [supporting it](https://gumroad.com/l/JAgjq).
 
 ---
 
+## Contents
+
+* [Introduction](#introduction)
+* [Syntax and Formatting](#syntax-and-formatting)
+    * [HTML](#html)
+
+---
+
 ## Introduction
 
 CSS is not a pretty language: for all it is simple to learn and get started
@@ -80,3 +88,329 @@ project which is governed by one, and any deviation must be fully justified.
 contains methodologies, techniques, and tips that I would firmly recommend to my
 clients and teams, but your own tastes and circumstances may well be different.
 Your mileage may vary.
+
+---
+
+## Syntax and Formatting
+
+One of the simplest forms of a styleguide is a set of rules regarding syntax and
+formatting. Having a standard way of writing (_literally_ writing) CSS means
+that code will always look and feel familiar to all members of the team.
+
+Further, code that looks clean _feels_ clean. It is a much nicer environment to
+work in, and prompts other team members to maintain the standard of cleanliness
+that they found. Ugly code sets a bad precedent.
+
+At a very high-level, we want:
+
+* Four (4) space indents. No tabs.
+* 80 character wide columns
+* Multi-line CSS.
+* Meaningful use of whitespace.
+
+### Multiple Files
+
+With the meteoric rise of preprocessors of late, more often is the case that
+developers are splitting CSS across multiple files.
+
+Even if not using a preprocessor, it is a good idea to split discrete chunks of
+code into their own files, which are concatenated during a build step.
+
+If, for whatever reason, you are not working across multiple files, the next
+sections might require some bending to fit your setup.
+
+### Table of Contents
+
+A table of contents is a fairly substantial maintenance overhead, but the
+benefits it brings far outweigh any costs. It takes a diligent developer to keep
+a table of contents up to date, but it is well worth sticking with. An
+up-to-date table of contents provides a team with a single, canonical catalogue
+of what is in a CSS project, what it does, and in what order.  
+
+### 80 Characters Wide
+
+Where possible, limit CSS files’ width to 80 characters. Reasons for this
+include
+
+* the ability to have multiple files open side by side.
+* viewing CSS on sites like GitHub, or in terminal windows.
+* providing a comfortable line length for comments.
+
+<pre><code>/**
+ * I am a long-form comment. I describe, in detail, the CSS that follows. I am
+ * such a long comment that I easily break the 80 cahracter limit, so I am
+ * broken across several lines.
+ */</code></pre>
+
+### Titling
+
+Begin every new major section of a CSS project with a title:
+
+    /*------------------------------------*\
+        #SECTION-TITLE
+    \*------------------------------------*/
+
+    .selector {
+    }
+
+The title of the section is prefixed with a hash (`#`) symbol to allow us to
+perform more targeted searches (e.g. `grep`, etc.): instead of searching for
+just <kbd>SECTION-TITLE</kbd>—which may yield many results—a more scoped search
+of <kbd>#SECTION-TITLE</kbd> should return only the section in question.
+
+Leave a carriage return between this title and the next line of code (be that a
+comment, some Sass, or some CSS).
+
+If you are working on a project where each section is its own file, this title
+should appear at the top of each one. If you are working on a project with
+multiple sections per file, each title should be preceded by five (5) carriage
+returns. This extra whitespace coupled with a title makes new sections much
+easier to spot when scrolling through large files:
+
+    /*------------------------------------*\
+        #A-SECTION
+    \*------------------------------------*/
+
+    .selector {
+    }
+
+
+
+
+
+    /*------------------------------------*\
+        #ANOTHER-SECTION
+    \*------------------------------------*/
+
+    /**
+     * Comment
+     */
+
+    .another-selector {
+    }
+
+### Anatomy of Rulesets
+
+Before we discuss how we write out our rulesets, let’s first familiarise
+ourselves with the relevant terminology:
+
+    [selector] {
+        [property]: [value];
+        [<--declaration--->]
+    }
+
+For example:
+
+    .foo, .foo--bar,
+    .baz {
+        display: block;
+        background-color: green;
+        color: red;
+    }
+
+Here you can see we have
+
+* related selectors on the same line; unrelated selectors on new lines.
+* a space before our opening brace (`{`).
+* properties and values on the same line.
+* a space after our property–value delimiting colon (`:`).
+* each declaration on its own new line.
+* the opening brace (`{`) on the same line as our last selector.
+* our first declaration on a new line after our opening brace (`{`).
+* our closing brace (`}`) on its own new line.
+* each declaration indented by four (4) spaces.
+* a trailing semi-colon (`;`) on our last declaration.
+
+This format seems to be the largely universal standard (except for variations in
+number of spaces, with a lot of developers preferring two (2)).
+
+As such, the following would be incorrect:
+
+    .foo, .foo--bar, .baz
+    {
+    	display:block;
+    	background-color:green;
+    	color:red }
+
+Problems here include
+
+* tabs instead of spaces.
+* unrelated selectors on the same line.
+* the opening brace (`{`) on its own line.
+* the closing brace (`}`) does not sit on its own line.
+* the trailing (and, admittedly, optional) semi-colon (`;`) is missing.
+* no spaces after colons (`:`).
+
+### Multi-line CSS
+
+CSS should be written across multiple lines, except in very specific
+circumstances. There are a number of benefits to this:
+
+* Merge conflicts
+* More realistic `diff`s
+
+### Indenting
+
+As well as intending individual declarations, indent entire related rulesets to
+signal their relation to one another, for example:
+
+    .foo {
+    }
+
+        .foo__bar {
+        }
+
+            .foo__baz {
+            }
+
+By doing this, a developer can see at a glance that `.foo__baz {}` lives inside
+`.foo__bar {}` lives inside `.foo {}`.
+
+This quasi-replication of the DOM tells developers a lot about where classes are
+expected to be used without them having to refer to a snippet of HTML.
+
+#### Indenting Sass
+
+Sass provides nesting functionality. That is to say, by writing this:
+
+    .foo {
+
+        .bar {
+        }
+
+    }
+
+…we will be left with this compiled CSS:
+
+    .foo {}
+    .foo .bar {}
+
+When indenting Sass, we stick to the same four (4) spaces, and we also leave a
+blank line before and after the nested ruleset.
+
+**N.B.** Nesting in Sass should be avoided wherever possible. See [[section]]
+for more details.
+
+#### Alignment
+
+Attempt to align common and related identical strings in declarations, for
+example:
+
+    .foo {
+        -webkit-border-radius: 3px;
+           -moz-border-radius: 3px;
+                border-radius: 3px;
+    }
+
+    .bar {
+        position: absolute;
+        top:    0;
+        right:  0;
+        bottom: 0;
+        left:   0;
+        margin-right: -10px;
+        margin-left:  -10px;
+        padding-right: 10px;
+        padding-left:  10px;
+    }
+
+This makes life a little easier for developers whose text editors support column
+editing, allowing them to change several identical and aligned lines in one go.
+
+### Meaningful Whitespace
+
+As well as indentation, we can provide a lot of information through liberal and
+judicious use of whitespace between rulesets. We use:
+
+* One (1) empty line between closely related rulesets.
+* Two (2) empty lines between loosely related rulesets.
+* Five (5) empty lines between entirely new sections.
+
+For example:
+
+    /*------------------------------------*\
+        #FOO
+    \*------------------------------------*/
+
+    .foo {
+    }
+
+        .foo__bar {
+        }
+
+
+    .foo--baz {
+    }
+
+
+
+
+
+    /*------------------------------------*\
+        #BAR
+    \*------------------------------------*/
+
+    .bar {
+    }
+
+        .bar__baz {
+        }
+
+        .bar__foo {
+        }
+
+There should never be a scenario in which two rulesets do not have an empty line
+between them. This would be incorrect:
+
+    .foo {
+    }
+        .foo__bar {
+        }
+    .foo--baz {
+    }
+
+### HTML
+
+Separate thematic chunks of markup with a blank line.
+
+<!--
+
+---
+
+## Naming Conventions
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor
+sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies
+mi vitae est. Mauris placerat eleifend leo.
+
+---
+
+## CSS Selectors
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor
+sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies
+mi vitae est. Mauris placerat eleifend leo.
+
+### Specificity
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor
+sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies
+mi vitae est. Mauris placerat eleifend leo.
+
+---
+
+## Architecture
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor
+sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies
+mi vitae est. Mauris placerat eleifend leo.
+
+---
+
+## Layout
+
+-->
