@@ -62,13 +62,6 @@ html {
     background-color: #fafafa;
 }
 
-$inuit-heading-size-1:  48px !default;
-$inuit-heading-size-2:  36px !default;
-$inuit-heading-size-3:  28px !default;
-$inuit-heading-size-4:  24px !default;
-$inuit-heading-size-5:  18px !default;
-$inuit-heading-size-6:  16px !default;
-@import "bower_components/inuit-headings/base.headings";
 @import "base.type";
 @import "bower_components/inuit-images/base.images";
 

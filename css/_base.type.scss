@@ -5,11 +5,15 @@
 /**
  * Page
  */
-@media screen and (min-width: 720px) {
+@include media-query(lap-and-up) {
     body {
         @include font-size(18px);
     }
 }
+
+
+
+
 
 /**
  * Headings
@@ -20,6 +24,69 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 200;
     text-shadow: 0 -1px rgba(0, 0, 0, 0.1), 0 1px #fff;
 }
+
+h1,
+.alpha {
+    @include font-size(36px);
+
+    @include media-query(lap-and-up) {
+        @include font-size(64px);
+    }
+
+    @include media-query(desk) {
+        @include font-size(64px);
+    }
+
+}
+
+h2,
+.beta {
+    @include font-size(28px);
+
+    @include media-query(lap-and-up) {
+        @include font-size(36px);
+    }
+
+}
+
+h3,
+.gamma {
+    @include font-size(24px);
+
+    @include media-query(lap-and-up) {
+        @include font-size(28px);
+    }
+
+}
+
+h4,
+.delta {
+    @include font-size(18px);
+
+    @include media-query(lap-and-up) {
+        @include font-size(24px);
+    }
+
+}
+
+h5,
+.epsilon {
+    @include font-size(16px);
+
+    @include media-query(lap-and-up) {
+        @include font-size(18px);
+    }
+
+}
+
+h6,
+.zeta {
+    @include font-size(16px);
+}
+
+
+
+
 
 /**
  * Links
