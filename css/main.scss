@@ -27,6 +27,7 @@
  * Page.................Page-level styles (HTML element).
  * Headings.............Heading styles
  * Type.................Typographical type selectors.
+ * Lists................inuitcss’ lists defaults.
  * Images...............inuitcss images
  *
  * OBJECTS
@@ -68,6 +69,7 @@ html {
 }
 
 @import "base.type";
+@import "bower_components/inuit-lists/base.lists";
 @import "bower_components/inuit-images/base.images";
 
 @import "objects.wrappers";
