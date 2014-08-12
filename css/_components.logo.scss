@@ -18,6 +18,7 @@ $logo-proportion:   75%;
     padding-top: $logo-height / $logo-width * $logo-proportion;
     margin-right: auto;
     margin-left:  auto;
+    overflow: hidden;
 }
 
 .logo {
