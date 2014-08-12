@@ -26,7 +26,7 @@ $0 upward. If <cite>CSS Guidelines</cite> is useful to you or your team, please
 consider [supporting it](https://gumroad.com/l/JAgjq).
 
 <p class="text-center">
-<a href="https://gumroad.com/l/JAgjq" class="btn">Support via Gumroad</a>
+<a href="https://gumroad.com/l/JAgjq" class="btn">Buy the Guidelines</a>
 </p>
 
 ---
