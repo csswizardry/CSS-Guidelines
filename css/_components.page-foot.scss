@@ -1,0 +1,14 @@
+/*------------------------------------*\
+    #PAGE-FOOT
+\*------------------------------------*/
+
+.page-foot {
+    padding-top: 5 * $spacing-unit;
+    text-align: center;
+    @include font-size(12px);
+    font-family: sans-serif;
+}
+
+.version {
+    @include font-size(20px);
+}

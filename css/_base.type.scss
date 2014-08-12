@@ -71,6 +71,10 @@ h6,
     @include font-size(16px);
 }
 
+.site-title {
+    margin-bottom: 3 * $spacing-unit;
+}
+
 
 
 
@@ -155,17 +159,14 @@ pre {
  */
 hr {
     border: none;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    margin-bottom: $spacing-unit - 1px;
+    border-top: 5px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: (3 * $spacing-unit) - 5px;
 }
 
 .hr-minor {
+    border-top-width: 1px;
     width: 50%;
     margin-right: auto;
     margin-left:  auto;
-}
-
-.hr-major {
-    border-top-width: 5px;
-    margin-bottom: $spacing-unit - 5px;
+    margin-bottom: $spacing-unit - 1px;
 }

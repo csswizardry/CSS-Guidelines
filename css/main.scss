@@ -35,6 +35,7 @@
  * COMPONENTS
  * Page-head............The main page header
  * Logo.................CSS Guidelines’ logo
+ * Page-foot............The main page footer
  *
  * TRUMPS
  * Hide.................Accessibly hide text
@@ -70,5 +71,6 @@ html {
 
 @import "components.page-head";
 @import "components.logo";
+@import "components.page-foot";
 
 @import "trumps.hide";
