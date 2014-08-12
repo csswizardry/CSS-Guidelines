@@ -12,7 +12,8 @@
     "inuit-starter-kit": "~0.2.8",
     "inuit-reset": "~0.1.1",
     "inuit-shared": "~0.1.3",
-    "inuit-headings": "~0.2.2",
-    "inuit-images": "~0.3.2"
+    "inuit-images": "~0.3.2",
+    "inuit-responsive-settings": "~0.1.3",
+    "inuit-responsive-tools": "~0.1.2"
   }
 }

@@ -9,10 +9,12 @@
  * Default..............inuitcss’ default settings.
  * Global...............Globally-available variables and settings/config.
  * Colors...............Manage our color palette in isolation.
+ * Responsive...........Set up and name our breakpoints.
  *
  * TOOLS
  * Functions............inuitcss’ default functions.
  * Mixins...............inuitcss’ default mixins.
+ * Responsive...........Responsive tooling (requires responsive settings).
  * Aliases..............Aliases onto longer inuitcss variables and mixins.
  *
  * GENERIC
@@ -41,9 +43,11 @@
 @import "bower_components/inuit-defaults/settings.defaults";
 @import "settings.global";
 @import "settings.colors";
+@import "bower_components/inuit-responsive-settings/settings.responsive";
 
 @import "bower_components/inuit-functions/tools.functions";
 @import "bower_components/inuit-mixins/tools.mixins";
+@import "bower_components/inuit-responsive-tools/tools.responsive";
 @import "tools.aliases";
 
 @import "bower_components/inuit-normalize/generic.normalize";
