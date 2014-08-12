@@ -180,6 +180,9 @@ include
  * broken across several lines.
  */</code></pre>
 
+There will be unavoidable exceptions to this rule—like URLs or gradient
+syntax—which shouldn’t be worried about.
+
 ### Titling
 
 Begin every new major section of a CSS project with a title:
@@ -284,8 +287,32 @@ Problems here include
 CSS should be written across multiple lines, except in very specific
 circumstances. There are a number of benefits to this:
 
-* Merge conflicts
-* More realistic `diff`s
+* A reduced change of merge conflicts, because each piece of functionality
+  exists on its own line.
+* More ‘truthful’ and reliable `diff`s, because one line only ever carries one
+  change.
+
+Exceptions to this rule should be fairly apparent, such as similar rulesets that
+only carry one declaration each, for example:
+
+    .icon {
+        display: inline-block;
+        width:  16px;
+        height: 16px;
+        background-image: url(/img/sprite.svg);
+    }
+
+    .icon--home     { background-position:   0     0  ; }
+    .icon--person   { background-position: -16px   0  ; }
+    .icon--files    { background-position:   0   -16px; }
+    .icon--settings { background-position: -16px -16px; }
+
+These types of ruleset benefit from being single-lined because
+
+* they still conform to the one-reason-to-change-per-line rule.
+* they share enough similarities that they don’t need to be read as thoroughly
+  as other rulesets—there is more benefit in being able to scan their selectors,
+  which are of more interest to us in these cases.
 
 ### Indenting
 
