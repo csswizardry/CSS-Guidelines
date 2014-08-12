@@ -3,19 +3,6 @@
 \*------------------------------------*/
 
 /**
- * Page
- */
-@include media-query(lap-and-up) {
-    body {
-        @include font-size(18px);
-    }
-}
-
-
-
-
-
-/**
  * Headings
  */
 h1, h2, h3, h4, h5, h6 {
@@ -82,6 +69,19 @@ h5,
 h6,
 .zeta {
     @include font-size(16px);
+}
+
+
+
+
+
+/**
+ * Bold elements.
+ */
+a,
+b, strong,
+dt {
+    font-weight: 700;
 }
 
 
