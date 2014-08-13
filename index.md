@@ -49,7 +49,7 @@ consider [supporting it](https://gumroad.com/l/JAgjq).
     * [HTML](#html)
 * [Commenting](#commenting)
     * [High-level](#high-level)
-        * [Object–Extension Pointers](#object-extension-pointers)
+        * [Object–Extension Pointers](#objectextension-pointers)
     * [Low-level](#low-level)
     * [Preprocessor Comments](#preprocessor-comments)
     * [Removing Comments](#removing-comments)
