@@ -135,6 +135,8 @@ At a very high-level, we want:
 * Multi-line CSS.
 * Meaningful use of whitespace.
 
+But, as with anything, the specifics are somewhat irrelevant—consistency is key.
+
 ### Multiple Files
 
 With the meteoric rise of preprocessors of late, more often is the case that
