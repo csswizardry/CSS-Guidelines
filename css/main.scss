@@ -25,23 +25,26 @@
  *
  * BASE
  * Page.................Page-level styles (HTML element).
- * Headings.............Heading styles
+ * Headings.............Heading styles.
  * Type.................Typographical type selectors.
  * Lists................inuitcss’ lists defaults.
- * Images...............inuitcss images
+ * Images...............inuitcss images.
  *
  * OBJECTS
  * Wrappers.............Wrapping and constraining elements.
  * Buttons..............inuitcss button object.
+ * Box..................inuitcss box object.
  *
  * COMPONENTS
- * Page-head............The main page header
- * Page-foot............The main page footer
- * Logo.................CSS Guidelines’ logo
- * Buttons..............Our extension of inuitcss’ buttons
+ * Page-head............The main page header.
+ * Page-foot............The main page footer.
+ * Logo.................CSS Guidelines’ logo.
+ * Buttons..............Our extension of inuitcss’ buttons.
+ * Boxes................Our extension of inuitcss’ box object.
  *
  * TRUMPS
- * Hide.................Accessibly hide text
+ * Clearfix.............Simple clearfix helper.
+ * Hide.................Accessibly hide text.
  * Text.................Text helpers.
  */
 
@@ -78,10 +81,14 @@ $inuit-btn-background:   $color-brand;
 $inuit-btn-border-width: 2px;
 @import "bower_components/inuit-buttons/objects.buttons";
 
+@import "bower_components/inuit-box/objects.box";
+
 @import "components.page-head";
 @import "components.page-foot";
 @import "components.logo";
 @import "components.buttons";
+@import "components.boxes";
 
+@import "bower_components/inuit-clearfix/trumps.clearfix";
 @import "trumps.hide";
 @import "trumps.text";

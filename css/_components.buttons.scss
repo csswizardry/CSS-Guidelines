@@ -17,3 +17,16 @@
     }
 
 }
+
+.btn--tertiary {
+    background: none;
+
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+        color: #fff;
+        border-color: inherit;
+    }
+
+}

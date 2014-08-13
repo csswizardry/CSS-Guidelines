@@ -204,6 +204,10 @@ include
 There will be unavoidable exceptions to this rule—like URLs or gradient
 syntax—which shouldn’t be worried about.
 
+<div class="box  box--promo  box--outdent">
+    <p>Enjoying it so far? <span class="hide-palm">You can </span><a href="http://csswizardry.com/work/" class="btn  btn--tertiary">hire me</a></p>
+</div>
+
 ### Titling
 
 Begin every new major section of a CSS project with a title:
@@ -755,7 +759,7 @@ HTML. This is because doing so means you can’t have (or remove) one without
 (removing) the other. It is much cleaner, much more transparent, and much more
 maintainable to bind your JS onto specific classes.
 
-I have know occasions before when trying to refactor some CSS has unwittingly
+I have known occasions before when trying to refactor some CSS has unwittingly
 removed JS functionality because the two were tied to each other—it was
 impossible to have one without the other.
 

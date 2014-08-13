@@ -16,6 +16,7 @@
     "inuit-responsive-settings": "~0.1.3",
     "inuit-responsive-tools": "~0.1.2",
     "inuit-buttons": "~0.4.1",
-    "inuit-lists": "~0.1.0"
+    "inuit-lists": "~0.1.0",
+    "inuit-box": "~0.4.2"
   }
 }

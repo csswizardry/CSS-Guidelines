@@ -1,0 +1,28 @@
+/*------------------------------------*\
+    #BOXES
+\*------------------------------------*/
+
+/**
+ * Extends inuitcss’ Box object.
+ */
+
+.box {
+    border-radius: 3px;
+}
+
+.box--outdent {
+    margin-right: halve(-$spacing-unit);
+    margin-left:  halve(-$spacing-unit);
+
+    @include media-query(desk) {
+        margin-right: -$spacing-unit;
+        margin-left:  -$spacing-unit;
+    }
+
+}
+
+.box--promo {
+    color: #fff;
+    background-color: $color-brand;
+    @extend %margin-bottom;
+}

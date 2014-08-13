@@ -130,6 +130,12 @@ pre {
     border-radius: 3px;
     -webkit-overflow-scrolling: touch;
 
+    @include media-query(desk) {
+        margin-right: -$spacing-unit;
+        margin-left:  -$spacing-unit;
+        padding:       $spacing-unit;
+    }
+
     &,
     code, kbd, samp {
         color: #fff;
