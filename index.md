@@ -207,7 +207,7 @@ include
  * broken across several lines.
  */</code></pre>
 
-There will be unavoidable exceptions to this rule—like URLs or gradient
+There will be unavoidable exceptions to this rule—such as URLs, or gradient
 syntax—which shouldn’t be worried about.
 
 {% include promo-hire.html %}
