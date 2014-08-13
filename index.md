@@ -204,9 +204,7 @@ include
 There will be unavoidable exceptions to this rule—like URLs or gradient
 syntax—which shouldn’t be worried about.
 
-<div class="box  box--promo  box--outdent">
-    <p>Enjoying it so far? <span class="hide-palm">You can </span><a href="http://csswizardry.com/work/" class="btn  btn--tertiary">hire me</a></p>
-</div>
+{% include promo-hire.html %}
 
 ### Titling
 
@@ -661,6 +659,8 @@ Incorrect notation for this would be:
 
 It is important to know when BEM scope starts and stops. As a rule, BEM applies
 to self-contained, discrete parts of the UI.
+
+{% include promo-buy.html %}
 
 #### More Layers
 

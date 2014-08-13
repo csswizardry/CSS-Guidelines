@@ -77,8 +77,9 @@ html {
 
 @import "objects.wrappers";
 
-$inuit-btn-background:   $color-brand;
-$inuit-btn-border-width: 2px;
+$inuit-enable-btn--full:    true;
+$inuit-btn-background:      $color-brand;
+$inuit-btn-border-width:    2px;
 @import "bower_components/inuit-buttons/objects.buttons";
 
 @import "bower_components/inuit-box/objects.box";
