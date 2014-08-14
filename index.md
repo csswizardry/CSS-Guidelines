@@ -828,8 +828,8 @@ If we did want to denote a `.person {}` inside a `.room {}`, it is more correct
 to use a selector like `.room .person {}` than it is to increase the scope of
 Blocks and Elements.
 
-A more realistic example might look something like this, where each chunk of
-code represents its own Block:
+A more realistic example of properly scoped blocks might look something like
+this, where each chunk of code represents its own Block:
 
     .page {}
 
@@ -842,6 +842,8 @@ code represents its own Block:
 
     .footer {}
 
+        .footer__copyright {}
+
 Incorrect notation for this would be:
 
     .page {}
@@ -852,6 +854,8 @@ Incorrect notation for this would be:
 
         .page__footer {}
 
+            .page__copyright {}
+
 It is important to know when BEM scope starts and stops. As a rule, BEM applies
 to self-contained, discrete parts of the UI.
 
@@ -860,8 +864,8 @@ to self-contained, discrete parts of the UI.
 #### More Layers
 
 If we were to add another Element—called, let’s say, `.person__eye {}`—to this
-component, we would not need to step through every layer of the DOM. That is to
-say, the correct notation would be `.person__eye {}`, and not
+`.person {}` component, we would not need to step through every layer of the
+DOM. That is to say, the correct notation would be `.person__eye {}`, and not
 `.person__head__eye {}`. Your classes do not relefct the full paper-trail of the
 DOM.
 
