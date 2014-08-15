@@ -917,6 +917,10 @@ aren’t spread throughout the file. This is general good practice when dealing
 with nested code: keep all of your context (e.g. all `.person__face {}` code)
 encapsulated in one location.
 
+#### Further Reading
+
+* [<cite>MindBEMding – getting your head ’round BEM syntax</cite>](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
+
 ### Naming Conventions in HTML
 
 As I previously hinted at, naming conventions aren’t necessarily all that useful
