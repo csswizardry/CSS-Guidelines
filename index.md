@@ -19,14 +19,14 @@ or <a href="http://csswizardry.com/work/" class="btn">Hire<span class="hide-palm
 
 ---
 
-## Buy the Guidelines
+## Support the Guidelines
 
 <cite>CSS Guidelines</cite> is provided through a pay-what-you-like model—from
 $0 upward. If <cite>CSS Guidelines</cite> is useful to you or your team, please
 consider [supporting it](https://gumroad.com/l/JAgjq).
 
 <p class="text-center">
-<a href="https://gumroad.com/l/JAgjq" class="btn">Buy the Guidelines</a>
+<a href="https://gumroad.com/l/JAgjq" class="btn">Support the Guidelines</a>
 </p>
 
 ---
