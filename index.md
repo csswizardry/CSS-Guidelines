@@ -298,11 +298,14 @@ number of spaces, with a lot of developers preferring two (2)).
 
 As such, the following would be incorrect:
 
-    .foo, .foo--bar, .baz
-    {
-    	display:block;
-    	background-color:green;
-    	color:red }
+~~~
+.foo, .foo--bar, .baz
+{
+    display:block;
+    background-color:green;
+    color:red }
+~~~
+{: .incorrect}
 
 Problems here include
 
@@ -460,12 +463,15 @@ For example:
 There should never be a scenario in which two rulesets do not have an empty line
 between them. This would be incorrect:
 
+~~~
     .foo {
     }
         .foo__bar {
         }
     .foo--baz {
     }
+~~~
+{: .incorrect}
 
 ### HTML
 
@@ -760,20 +766,26 @@ development; they really come into their own when viewed in HTML.
 
 All strings in classes are delimited with a hyphen (`-`), like so:
 
+~~~
     .page-head {
     }
 
     .sub-content {
     }
+~~~
+{: .correct}
 
 Camel case and underscores are not used for regular classes; the following are
 incorrect:
 
+~~~
     .pageHead {
     }
 
     .sub_content {
     }
+~~~
+{: .incorrect}
 
 ### BEM-like Naming
 
@@ -831,6 +843,7 @@ Blocks and Elements.
 A more realistic example of properly scoped blocks might look something like
 this, where each chunk of code represents its own Block:
 
+~~~
     .page {}
 
 
@@ -843,9 +856,12 @@ this, where each chunk of code represents its own Block:
     .footer {}
 
         .footer__copyright {}
+~~~
+{: .correct}
 
 Incorrect notation for this would be:
 
+~~~
     .page {}
 
         .page__content {}
@@ -855,6 +871,8 @@ Incorrect notation for this would be:
         .page__footer {}
 
             .page__copyright {}
+~~~
+{: .incorrect}
 
 It is important to know when BEM scope starts and stops. As a rule, BEM applies
 to self-contained, discrete parts of the UI.
