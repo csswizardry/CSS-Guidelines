@@ -1163,7 +1163,7 @@ scale or be easily put to use by other developers.</q>
 That is to say, we should use sensible names—classes like `.border` or `.red`
 are never advisable—but we should avoid using classes which describe the exact
 nature of the content and/or its use cases. **Using a class name to describe
-content is redundant: content describes itself.**
+content is redundant because content describes itself.**
 
 The debate surrounding semantics has raged for years, but it is important that
 we adopt a more pragmatic, sensible approach to naming things in order to work
