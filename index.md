@@ -140,6 +140,10 @@ contains methodologies, techniques, and tips that I would firmly recommend to my
 clients and teams, but your own tastes and circumstances may well be different.
 Your mileage may vary.
 
+These guidelines are opinionated, but they have been repeatedly tried, tested,
+stressed, refined, broken, reworked, and revisited over a number of years on
+projects of all sizes.
+
 ---
 
 ## Syntax and Formatting
