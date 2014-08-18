@@ -1135,7 +1135,7 @@ Here we can see that the `.nav` class is meant to be used on a `ul` element, and
 not on a `nav`. By using <i>quasi-qualified selectors</i> we can still provide
 that information without actually qualifying the selector:
 
-    /*html*/ul.nav {}
+    /*ul*/.nav {}
 
 By commenting out the trailing element, we can still leave it to be read, but
 avoid qualifying and increasing the specificity of the selector.
