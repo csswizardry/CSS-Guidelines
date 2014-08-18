@@ -29,7 +29,7 @@ consider [supporting it](https://gumroad.com/l/JAgjq).
 <a href="https://gumroad.com/l/JAgjq" class="btn">Support the Guidelines</a>
 </p>
 
-Get updates about changes, additions, and new and upcoming section by following
+Get updates about changes, additions, and new and upcoming sections by following
 [@cssguidelines](https://twitter.com/cssguidelines) on Twitter.
 
 ---
