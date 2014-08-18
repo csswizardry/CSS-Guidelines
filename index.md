@@ -596,7 +596,7 @@ a paper-trail, it is often hard to discern—from looking at the CSS alone—
 This doesn’t even take into account some of CSS’ many quirks—such as various
 sates of `overflow` triggering block formatting context, or certain transform
 properties triggering hardware acceleration—that make it even more baffling to
-developers inheriting project.
+developers inheriting projects.
 
 As a result of CSS not telling its own story very well, it is a language that
 really does benefit from being heavily commented.
@@ -842,8 +842,8 @@ have separate Blocks, like so:
         .person__head {}
 
 If we did want to denote a `.person {}` inside a `.room {}`, it is more correct
-to use a selector like `.room .person {}` than it is to increase the scope of
-Blocks and Elements.
+to use a selector like `.room .person {}` which bridges two Blocks than it is to
+increase the scope of existing Blocks and Elements.
 
 A more realistic example of properly scoped blocks might look something like
 this, where each chunk of code represents its own Block:
