@@ -236,7 +236,7 @@ include
 
 <pre><code>/**
  * I am a long-form comment. I describe, in detail, the CSS that follows. I am
- * such a long comment that I easily break the 80 cahracter limit, so I am
+ * such a long comment that I easily break the 80 character limit, so I am
  * broken across several lines.
  */</code></pre>
 
