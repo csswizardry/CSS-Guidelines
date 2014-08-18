@@ -1137,7 +1137,7 @@ that information without actually qualifying the selector:
 
     /*ul*/.nav {}
 
-By commenting out the trailing element, we can still leave it to be read, but
+By commenting out the leading element, we can still leave it to be read, but
 avoid qualifying and increasing the specificity of the selector.
 
 ### Naming
