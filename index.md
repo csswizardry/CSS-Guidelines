@@ -79,13 +79,13 @@ consider [supporting it](https://gumroad.com/l/JAgjq).
 
 ## Introduction
 
-CSS is not a pretty language: for all it is simple to learn and get started
-with, it soon becomes problematic at any reasonable scale. There isn’t much we
-can do to change how CSS works, but we can make changes to the way we author and
+CSS is not a pretty language While it is simple to learn and get started with,
+it soon becomes problematic at any reasonable scale. There isn’t much we can do
+to change how CSS works, but we can make changes to the way we author and
 structure it.
 
 In working on large, long-running projects, with dozens of developers of
-different specialisms and abilities, it is important that we all work in a
+differing specialities and abilities, it is important that we all work in a
 unified way in order to—among other things—
 
 * keep stylesheets maintainable;
@@ -862,7 +862,7 @@ to self-contained, discrete parts of the UI.
 If we were to add another Element—called, let’s say, `.person__eye {}`—to this
 `.person {}` component, we would not need to step through every layer of the
 DOM. That is to say, the correct notation would be `.person__eye {}`, and not
-`.person__head__eye {}`. Your classes do not relefct the full paper-trail of the
+`.person__head__eye {}`. Your classes do not reflect the full paper-trail of the
 DOM.
 
 #### Modifying Elements
