@@ -233,8 +233,6 @@ include
 There will be unavoidable exceptions to this rule—such as URLs, or gradient
 syntax—which shouldn’t be worried about.
 
-{% include promo-hire.html %}
-
 ### Titling
 
 Begin every new major section of a CSS project with a title:
@@ -278,6 +276,8 @@ easier to spot when scrolling through large files:
      */
 
     .another-selector {}
+
+{% include promo-buy.html %}
 
 ### Anatomy of a Ruleset
 
@@ -528,6 +528,8 @@ example:
     <footer class="page-foot">
         ...
     </footer>
+
+{% include promo-hire.html %}
 
 Separate independent but loosely related snippets of markup with a single empty
 line, for example:
@@ -781,6 +783,8 @@ incorrect:
 
     .sub_content {}
 
+{% include promo-buy.html %}
+
 ### BEM-like Naming
 
 For larger, more interrelated pieces of UI that require a number of classes, we
@@ -864,8 +868,6 @@ Incorrect notation for this would be:
 
 It is important to know when BEM scope starts and stops. As a rule, BEM applies
 to self-contained, discrete parts of the UI.
-
-{% include promo-buy.html %}
 
 #### More Layers
 
@@ -1073,6 +1075,8 @@ carry its correct styling. As a result of a better selector, this piece of UI is
 more portable, more recyclable, doesn’t have any dependencies, and has much
 better Selector Intent. **A component shouldn’t have to live in a certain place
 to look a certain way.**
+
+{% include promo-hire.html %}
 
 ### Portability
 
