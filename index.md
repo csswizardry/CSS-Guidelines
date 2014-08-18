@@ -35,6 +35,7 @@ consider [supporting it](https://gumroad.com/l/JAgjq).
 
 * [Introduction](#introduction)
     * [The Importance of a Styleguide](#the-importance-of-a-styleguide)
+    * [Disclaimers](#disclaimers)
 * [Syntax and Formatting](#syntax-and-formatting)
     * [Multiple Files](#multiple-files)
     * [Table of Contents](#table-of-contents)
@@ -132,7 +133,9 @@ A good styleguide, when well followed, will
 Styleguides should be learned, understood, and implemented at all times on a
 project which is governed by one, and any deviation must be fully justified.
 
-<cite>CSS Guidelines</cite> is *a* styleguide; it is not *the* styleguide. It
+### Disclaimers
+
+<cite>CSS Guidelines</cite> is _a_ styleguide; it is not _the_ styleguide. It
 contains methodologies, techniques, and tips that I would firmly recommend to my
 clients and teams, but your own tastes and circumstances may well be different.
 Your mileage may vary.
