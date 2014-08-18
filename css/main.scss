@@ -48,9 +48,12 @@
  * Text.................Text helpers.
  */
 
-@import "bower_components/inuit-defaults/settings.defaults";
 @import "settings.global";
 @import "settings.colors";
+
+$inuit-base-background-color:   $color-background;
+$inuit-base-text-color:         $color-text;
+@import "bower_components/inuit-defaults/settings.defaults";
 @import "bower_components/inuit-responsive-settings/settings.responsive";
 
 @import "bower_components/inuit-functions/tools.functions";
