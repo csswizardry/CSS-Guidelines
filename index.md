@@ -75,7 +75,8 @@ consider [supporting it](https://gumroad.com/l/JAgjq).
         * [The Key Selector](#the-key-selector)
     * [General Rules](#general-rules)
 
-<!--
+### Up Next
+
 * Specificity
 * Architecture
 * Preprocessors
@@ -83,7 +84,6 @@ consider [supporting it](https://gumroad.com/l/JAgjq).
 * Performance
 * Code Smells
 * Legacy, Hacks, and Technical Debt
--->
 
 ---
 
