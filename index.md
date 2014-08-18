@@ -1258,7 +1258,7 @@ inhibit your and your team’s ability to recycle and reuse CSS.**
 
 ### Selector Performance
 
-A topic which is—with the quality of today’s browsers—more interesting that it
+A topic which is—with the quality of today’s browsers—more interesting than it
 is important, is selector performance. That is to say, how quickly a browser can
 match the selectors your write in CSS up with the nodes it finds in the DOM.
 
