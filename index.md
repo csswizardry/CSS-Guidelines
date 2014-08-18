@@ -1041,7 +1041,7 @@ something.**
 ### Reusability
 
 With a move toward a more component-based approach to constructing UIs, the idea
-of reusability is paramount. We want to option to be able to move, recycle,
+of reusability is paramount. We want the option to be able to move, recycle,
 duplicate, and syndicate components across our projects.
 
 To this end, we make heavy use of classes. IDs, as well as being hugely
@@ -1082,7 +1082,7 @@ to look a certain way.**
 
 Reducing, or, ideally, removing, location dependence means that we can move
 components around our markup more freely, but how about improving our ability to
-move selectors around components? On a much lower level, there are changes we
+move classes around components? On a much lower level, there are changes we
 can make to our selectors that make the selectors themselves—as opposed to the
 components they create—more portable. Take the following example:
 
@@ -1159,8 +1159,8 @@ avoid qualifying and increasing the specificity of the selector.
 As Phil Karlton once said, <q>There are only two hard things in Computer
 Science: cache invalidation and naming things.</q>
 
-I can’t speak much on the former claim, but the latter has plagued me for years.
-My advice with regard to naming things in CSS is to pick a name that is
+I won’t comment on the former claim here, but the latter has plagued me for
+years.  My advice with regard to naming things in CSS is to pick a name that is
 sensible, but somewhat ambiguous: aim for high reusability. For example, instead
 of a class like `.site-nav`, choose something like `.primary-nav`; rather than
 `.footer-links`, favour a class like `.sub-links`.
