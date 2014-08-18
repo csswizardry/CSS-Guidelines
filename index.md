@@ -1340,6 +1340,7 @@ work with on changing and long-running projects.
 ### Further Reading
 
 * [<cite>Shoot to kill; CSS selector intent</cite>](http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/)
+* [<cite>‘Scope’ in CSS</cite>](http://csswizardry.com/2013/05/scope-in-css/)
 * [<cite>Keep your CSS selectors short</cite>](http://csswizardry.com/2012/05/keep-your-css-selectors-short/)
 * [<cite>About HTML semantics and front-end architecture</cite>](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/)
 * [<cite>Naming UI components in OOCSS</cite>](http://csswizardry.com/2014/03/naming-ui-components-in-oocss/)
