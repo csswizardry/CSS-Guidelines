@@ -75,6 +75,16 @@ consider [supporting it](https://gumroad.com/l/JAgjq).
         * [The Key Selector](#the-key-selector)
     * [General Rules](#general-rules)
 
+<!--
+* Specificity
+* Architecture
+* Preprocessors
+* Layout
+* Performance
+* Code Smells
+* Legacy, Hacks, and Technical Debt
+-->
+
 ---
 
 ## Introduction
