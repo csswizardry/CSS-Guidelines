@@ -186,3 +186,16 @@ hr {
     margin-left:  auto;
     margin-bottom: $spacing-unit - 1px;
 }
+
+
+
+
+
+/**
+ * Highlight
+ */
+mark,
+.highlight:target {
+    background-color: yellow;
+    color: black;
+}
