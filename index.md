@@ -412,8 +412,8 @@ Sass provides nesting functionality. That is to say, by writing this:
 When indenting Sass, we stick to the same four (4) spaces, and we also leave a
 blank line before and after the nested ruleset.
 
-**N.B.** Nesting in Sass should be avoided wherever possible. See [[section]]
-for more details.
+**N.B.** Nesting in Sass should be avoided wherever possible. See the
+Specificity section for more details.
 
 #### Alignment
 
