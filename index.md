@@ -980,7 +980,7 @@ impossible to have one without the other.
 
 Typically, these are classes that are prepended with `js-`, for example:
 
-    <input type="submit" class="btn  js-btn" Value='Follow" />
+    <input type="submit" class="btn  js-btn" value="Follow" />
 
 This means that we can have an element elsewhere which can carry with style of
 `.btn {}`, but without the behaviour of `.js-btn`.
