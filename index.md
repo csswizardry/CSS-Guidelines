@@ -166,7 +166,7 @@ At a very high-level, we want
 * Multi-line CSS;
 * Meaningful use of whitespace.
 
-<span class="highlight" id="Did you see this bit?">But, as with anything, the
+<span class="highlight" id="Did-you-see-this-bit?">But, as with anything, the
 specifics are somewhat irrelevant—consistency is key.</span>
 
 ### Multiple Files
