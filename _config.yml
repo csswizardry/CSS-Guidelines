@@ -4,7 +4,7 @@ email: harry@csswizardry.com
 description: "High-level advice and guidelines for writing sane, manageable, scalable CSS"
 baseurl: ""
 url: "http://cssguidelin.es"
-version: 2.0.13
+version: 2.0.14
 
 # Build settings
 markdown: kramdown

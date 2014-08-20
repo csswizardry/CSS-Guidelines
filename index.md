@@ -78,10 +78,14 @@ Get updates about changes, additions, and new and upcoming sections by following
     * [Selector Performance](#selector-performance)
         * [The Key Selector](#the-key-selector)
     * [General Rules](#general-rules)
+* [Specificity](#specificity)
+    * [IDs in CSS](#ids-in-css)
+    * [Nesting](#nesting)
+    * [`!important`](#important)
+    * [Hacking Specificity](#hacking-specificity)
 
 ### Up Next
 
-* Specificity
 * Architecture
 * Preprocessors
 * Layout
@@ -166,7 +170,7 @@ At a very high-level, we want
 * Multi-line CSS;
 * Meaningful use of whitespace.
 
-<span class="highlight" id="Did-you-see-this-bit?">But, as with anything, the
+<span class="highlight" id="did-you-see-this-bit">But, as with anything, the
 specifics are somewhat irrelevant—consistency is key.</span>
 
 ### Multiple Files
@@ -1372,3 +1376,45 @@ work with on changing and long-running projects.
 * [<cite>Writing efficient CSS selectors</cite>](http://csswizardry.com/2011/09/writing-efficient-css-selectors/)
 
 ---
+
+## Specificity
+
+As we’ve seen, CSS isn’t the most friendly of languages: globally operating,
+very leaky, dependent on location, hard to encapsulate, based on inheritance…
+But! None of that even comes close to the nightmare that is specificity.
+
+No matter how well considered your naming, regardless of how perfect your source
+order and cascade are managed, and how well you’ve scoped your rulesets, just
+one overly-specific selector can undo everything.
+
+**Specificity takes some understanding, but it is safer just to avoid it
+entirely.**
+
+### Keep It Low at All Times
+
+* Don’t introduce any wildcards.
+
+### IDs in CSS
+
+* Honestly, don’t even bother.
+
+### Nesting
+
+* If it will work without it, avoid it.
+
+#### Scope
+
+* It does provide a scope at least (e.g. `.foo .bar {}`), but…
+* So does `.foo__bar`, but with no drawbacks.
+
+* [<cite>‘Scope’ in CSS</cite>](http://csswizardry.com/2013/05/scope-in-css/)
+
+### `!important`
+
+* Proactively, not reactively.
+
+### Hacking Specificity
+
+* Sometimes you gotta…
+    * `[id="foo"] {}`
+    * `.btn.btn {}`
