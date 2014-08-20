@@ -1181,9 +1181,11 @@ a very specific use case: they can only be used as the site’s navigation or th
 footer’s links respectively. By using slightly more ambiguous names, we can
 increase our ability to reuse these components in different circumstances.
 
-To quote Nicolas Gallagher: <q>Tying your class name semantics tightly to the
-nature of the content has already reduced the ability of your architecture to
-scale or be easily put to use by other developers.</q>
+To quote Nicolas Gallagher:
+
+> Tying your class name semantics tightly to the nature of the content has already
+> reduced the ability of your architecture to scale or be easily put to use by
+> other developers.
 
 That is to say, we should use sensible names—classes like `.border` or `.red`
 are never advisable—but we should avoid using classes which describe the exact

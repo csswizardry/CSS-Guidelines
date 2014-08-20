@@ -170,6 +170,30 @@ q {
 
 
 /**
+ * Blockquotes
+ */
+blockquote {
+    color: #666;
+    font-style: italic;
+    padding-right: $spacing-unit;
+    padding-left:  $spacing-unit;
+
+    p {
+        margin-bottom: 0;
+
+        + p {
+            text-indent: $spacing-unit;
+        }
+
+    }
+
+}
+
+
+
+
+
+/**
  * Rules
  */
 hr {
