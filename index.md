@@ -1482,6 +1482,9 @@ are, comparatively, much, _much_ higher.
 In fact, to highlight the severity of this difference, see how _one thousand_
 chained classes cannot override the specificity of a single ID:
 [jsfiddle.net/0yb7rque](http://jsfiddle.net/csswizardry/0yb7rque/).
+<small>(Please note that in Firefox you may see the text rendering in blue: this
+is a [known bug](https://twitter.com/codepo8/status/505004085398224896), and an
+ID will be overridden by 256 chained classes.)</small>
 
 <small>**N.B.** It is still perfectly okay to use IDs in HTML and JavaScript; it
 is only in CSS that they prove troublesome.</small>
