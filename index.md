@@ -1541,9 +1541,7 @@ where is actually to be avoided wherever possible**.
 
 Generally speaking, each part in a compound selector adds specificity. Ergo, the
 fewer parts to a compound selector then the lower its overall specificity, and
-we always want to keep specificity low.
-
-To quote Jonathan Snook:
+we always want to keep specificity low. To quote Jonathan Snook:
 
 > …whenever declaring your styles, **use the least number of selectors required
 > to style an element.**
@@ -1560,7 +1558,7 @@ Let’s look at an example:
 
 To style an element with a class of `.widget__title`, we have a selector that is
 twice as specific as it needs to be. That means that if we want to make any
-modifications to `.widget__title`, we’ll need another, equally specific
+modifications to `.widget__title`, we’ll need another at-least-equally specific
 selector:
 
     .widget { ... }
@@ -1576,7 +1574,7 @@ selector that is literally double the specificity it needs to be. We used 200%
 of the specificity actually required. And not only _that_, but this also leads
 to needless verbosity in our code—more to send over the wire.
 
-As a rule, **if a selector will work without it being nested, then do not nest
+As a rule, **if a selector will work without it being nested then do not nest
 it**.
 
 #### Scope
