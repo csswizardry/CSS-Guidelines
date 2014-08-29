@@ -292,8 +292,6 @@ easier to spot when scrolling through large files:
 
     .another-selector {}
 
-{% include promo-buy.html %}
-
 ### Anatomy of a Ruleset
 
 Before we discuss how we write out our rulesets, let’s first familiarise
@@ -445,6 +443,8 @@ example:
 This makes life a little easier for developers whose text editors support column
 editing, allowing them to change several identical and aligned lines in one go.
 
+{% include promo-buy.html %}
+
 ### Meaningful Whitespace
 
 As well as indentation, we can provide a lot of information through liberal and
@@ -543,8 +543,6 @@ example:
     <footer class="page-foot">
         ...
     </footer>
-
-{% include promo-hire.html %}
 
 Separate independent but loosely related snippets of markup with a single empty
 line, for example:
@@ -798,8 +796,6 @@ incorrect:
 
     .sub_content {}
 
-{% include promo-buy.html %}
-
 ### BEM-like Naming
 
 For larger, more interrelated pieces of UI that require a number of classes, we
@@ -883,6 +879,8 @@ Incorrect notation for this would be:
 
 It is important to know when BEM scope starts and stops. As a rule, BEM applies
 to self-contained, discrete parts of the UI.
+
+{% include promo-hire.html %}
 
 #### More Layers
 
@@ -1091,8 +1089,6 @@ more portable, more recyclable, doesn’t have any dependencies, and has much
 better Selector Intent. **A component shouldn’t have to live in a certain place
 to look a certain way.**
 
-{% include promo-hire.html %}
-
 ### Portability
 
 Reducing, or, ideally, removing, location dependence means that we can move
@@ -1272,6 +1268,8 @@ Or namespaced:
 The implementation is largely personal preference, but the concept still
 remains: **Add any useful or specific meaning via a mechanism that will not
 inhibit your and your team’s ability to recycle and reuse CSS.**
+
+{% include promo-buy.html %}
 
 ### Selector Performance
 
@@ -1730,3 +1728,5 @@ no better alternative.
 * [<cite>Hacks for dealing with specificity</cite>](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/)
 
 ---
+
+{% include promo-hire.html %}
