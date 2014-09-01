@@ -4,197 +4,161 @@ permalink: /fr/
 ---
 
 <h1 class="hide">{{ site.title }}</h1>
-<h2 class="alpha  site-title">{{ site.description }}</h2>
+<h2 class="alpha  site-title">{{ site.description_fr }}</h2>
 
-## About the Author
+## À propos de l'auteur
 
-<cite>CSS Guidelines</cite> is a document by me, [Harry
-Roberts](http://csswizardry.com/work/). I am a Consultant Front-end Architect
-from the UK, and I help companies all over the world write and manage better
-quality UIs for their products and teams. I am available for hire.
+<cite>CSS Guidelines</cite> est écrit par votre serviteur, [Harry Roberts](http://csswizardry.com/work/). Je suis Consultant en Architecture Front-end originaire du Royaume-Uni, mais j'aide des entreprises à l'international à développer et maintenir des interfaces de qualité. Je suis d'ailleurs disponible.
 
 <p class="text-center">
-<a href="https://twitter.com/csswizardry" class="btn  btn--secondary"><span class="hide-palm">Follow me on </span>Twitter</a>
-or <a href="http://csswizardry.com/work/" class="btn">Hire<span class="hide-palm"> Me</span></a>
+<a href="https://twitter.com/csswizardry" class="btn  btn--secondary"><span class="hide-palm">Suivez-moi sur </span>Twitter</a>
+ou <a href="http://csswizardry.com/work/" class="btn">Embauchez<span class="hide-palm"> moi</span></a>
 </p>
 
 ---
 
-## Support the Guidelines
+## Soutenez CSS Guidelines
 
-<cite>CSS Guidelines</cite> is provided through a pay-what-you-like model—from
-$0 upward. If <cite>CSS Guidelines</cite> is useful to you or your team, please
-consider [supporting it](https://gumroad.com/l/JAgjq).
+<cite>CSS Guidelines</cite> fonctionne sous le modèle *payez-ce-que-vous-voulez*, à partir de 0$. Si <cide>CSS Guidelines</cide> vous plait et vous est utile, envisagez de [soutenir le projet](https://gumroad.com/l/JAgjq).
 
 <p class="text-center">
-<a href="https://gumroad.com/l/JAgjq" class="btn">Support the Guidelines</a>
+<a href="https://gumroad.com/l/JAgjq" class="btn">Soutenez CSS Guidelines</a>
 </p>
 
-Get updates about changes, additions, and new and upcoming sections by following
-[@cssguidelines](https://twitter.com/cssguidelines) on Twitter.
+Soyez au courant de tous les changements, mises à jour et nouvelles sections en suivant [@cssguidelines](https://twitter.com/cssguidelines) sur Twitter.
 
 ---
 
 ## Contents
 
 * [Introduction](#introduction)
-    * [The Importance of a Styleguide](#the-importance-of-a-styleguide)
-    * [Disclaimers](#disclaimers)
-* [Syntax and Formatting](#syntax-and-formatting)
-    * [Multiple Files](#multiple-files)
-    * [Table of Contents](#table-of-contents)
-    * [80 Characters Wide](#characters-wide)
-    * [Titling](#titling)
-    * [Anatomy of a Ruleset](#anatomy-of-a-ruleset)
-    * [Multi-line CSS](#multi-line-css)
-    * [Indenting](#indenting)
-        * [Indenting Sass](#indenting-sass)
-        * [Alignment](#alignment)
-    * [Meaningful Whitespace](#meaningful-whitespace)
+    * [De l'importance d'un styleguide](#de-limportance-dun-styleguide)
+    * [Avertissement](#avertissement)
+* [Syntaxe et formatage](#syntaxe-et-formatage)
+    * [Multiples fichiers](#multiples-fichiers)
+    * [Table des matières](#table-des-matires)
+    * [Limite de 80 caractères](#des-lignes-de-80-caractres)
+    * [Titres](#titres)
+    * [Anatomie d'une règle CSS](#anatomie-dune-rgle-css)
+    * [CSS multi-lignes](#css-multi-lignes)
+    * [Indentation](#indentation)
+        * [Indentation avec Sass](#indentation-sass)
+        * [Alignement](#alignement)
+    * [De l'intérêt des espaces](#gestion-des-espaces)
     * [HTML](#html)
-* [Commenting](#commenting)
-    * [High-level](#high-level)
-        * [Object–Extension Pointers](#objectextension-pointers)
-    * [Low-level](#low-level)
-    * [Preprocessor Comments](#preprocessor-comments)
-    * [Removing Comments](#removing-comments)
-* [Naming Conventions](#naming-conventions)
-    * [Hyphen Delimited](#hyphen-delimited)
-    * [BEM-like Naming](#bem-like-naming)
-        * [Starting Context](#starting-context)
-        * [More Layers](#more-layers)
-        * [Modifying Elements](#modifying-elements)
-    * [Naming Conventions in HTML](#naming-conventions-in-html)
-    * [JavaScript Hooks](#javascript-hooks)
-        * [`data-*` Attributes](#data--attributes)
-    * [Taking It Further](#taking-it-further)
-* [CSS Selectors](#css-selectors)
-    * [Selector Intent](#selector-intent)
-    * [Reusability](#reusability)
-    * [Location Independence](#location-independence)
-    * [Portability](#portability)
-        * [Quasi-Qualified Selectors](#quasi-qualified-selectors)
-    * [Naming](#naming)
-        * [Naming UI Components](#naming-ui-components)
-    * [Selector Performance](#selector-performance)
-        * [The Key Selector](#the-key-selector)
-    * [General Rules](#general-rules)
-* [Specificity](#specificity)
-    * [IDs in CSS](#ids-in-css)
-    * [Nesting](#nesting)
+* [Commentaire](#commentaires)
+    * [Général](#gnral)
+        * [Pointeur Objet–Extension](#pointeur-objet-extension)
+    * [Spécifique](#spcifique)
+    * [Commentaires de pré-processeurs](#commentaires-de-pr-processeur)
+    * [Retirer les commentaires](#retrait-des-commentaires)
+* [Conventions de nommage](#conventions-de-nommage)
+    * [Séparation par traits d'union](#sparation-par-traits-dunion)
+    * [Notation BEM-like](#notation-bem-like)
+        * [Contexte de départ](#contexte-de-dpart)
+        * [Davantage de niveaux](#davantage-de-niveaux)
+        * [Modifier les éléments](#modifier-les-lments)
+    * [Conventions de nommage en HTML](#conventions-de-nommage-en-html)
+    * [Ancres JavaScript](#ancres-javascript)
+        * [Attributs `data-*`](#attributs-data-)
+    * [Aller plus loin](#pour-aller-plus-loin-1)
+* [Sélecteurs CSS](#slecteurs-css)
+    * [Intention](#intention)
+    * [Réutilisation](#rutilisation)
+    * [Indépendance](#indpendance)
+    * [Portabilité](#portabilit)
+        * [Sélecteurs quasi-qualifié](#slecteurs-quasi-qualifis)
+    * [Nommage](#nommage)
+        * [Nommage des composants d'interface](#nommage-des-composants-dinterface)
+    * [Performance des sélecteurs](#performance-des-slecteurs)
+        * [Le sélecteur clé](#le-slecteur-cl)
+    * [Règles générales](#rgles-gnrales)
+* [Spécifité](#spcificit)
+    * [Les IDs en CSS](#les-ids-en-css)
+    * [Imbrication](#imbrication)
     * [`!important`](#important)
-    * [Hacking Specificity](#hacking-specificity)
+    * [Contourner les problèmes de spécificités](#contourner-les-problmes-de-spcificit)
 
-### Up Next
+
+### À venir
 
 * Architecture
-* Preprocessors
+* Pré-processeurs
 * Layout
 * Performance
-* Code Smells
-* Legacy, Hacks, and Technical Debt
+* Code déplorable
+* Code obsolète, hacks et dette technique
 
 ---
 
 ## Introduction
 
-CSS is not a pretty language. While it is simple to learn and get started with,
-it soon becomes problematic at any reasonable scale. There isn’t much we can do
-to change how CSS works, but we can make changes to the way we author and
-structure it.
+CSS n'est pas un langage terrible. Bien qu'il soit simple de s'y mettre et d'apprendre à s'en servir, plus on écrit de CSS, plus la maintenance devient problématique. On ne peut pas changer la façon dont CSS fonctionne, mais on peut adapter la façon dont on l'utilise.
 
-In working on large, long-running projects, with dozens of developers of
-differing specialities and abilities, it is important that we all work in a
-unified way in order to—among other things—
+Quand on travaille sur des projets à grande échelle, qui durent, avec des dizaines de développeurs aux compétences différentes, il est important de travailler tous de la même manière afin de (entre autres) :
 
-* keep stylesheets maintainable;
-* keep code transparent, sane, and readable;
-* keep stylesheets scalable.
+* garder des feuilles de styles maitenables ;
+* garder un code clair et lisible ;
+* faire en sorte que les feuilles de styles restent les plus légères possibles, quelle que soit la taille du projet.
 
-There are a variety of techniques we must employ in order to satisfy these
-goals, and <cite>CSS Guidelines</cite> is a document of recommendations and
-approaches that will help us to do so.
+Il y a un certain nombre de choses que l'on peut faire pour atteindre ces objectifs, et <cite>CSS Guidelines</cite> a justement pour but de nous aider à en arriver là.
 
-### The Importance of a Styleguide
+### De l'importance d'un styleguide
 
-A coding styleguide (note, not a visual styleguide) is a valuable tool for teams
-who
+Adopter des lignes de conduites en matière de code (on ne parle pas là d'un styleguide visuel donc) est primordiable pour les équipes qui :
 
-* build and maintain products for a reasonable length of time;
-* have developers of differing abilities and specialisms;
-* have a number of different developers working on a product at any given time;
-* on-board new staff regularly;
-* have a number of codebases that developers dip in and out of.
+* conçoivent et maintiennent des produits sur une durée raisonnable ;
+* sont constituées de développeurs de multiples horizons et aux capacités variées ;
+* sont constrituées de plusieurs développeurs travaillant sur un même projet à un moment donné ;
+* accueillent de nouvelles têtes régulièrement.
 
-Whilst styleguides are typically more suited to product teams—large codebases on
-long-lived and evolving projects, with multiple developers contributing over
-prolonged periods of time—all developers should strive for a degree of
-standardisation in their code.
+Bien que ce genre de lignes de conduite soit généralement dédié aux équipes plus ou moins grandes sur des projets plus ou moins importants s'étalant sur des durées plus ou moins longues, tout développeur se doit de standardiser un minimum son code.
 
-A good styleguide, when well followed, will
+De bonnes lignes de conduites, quand suivies, permettront de :
 
-* set the standard for code quality across a codebase;
-* promote consistency across codebases;
-* give developers a feeling of familiarity across codebases;
-* increase productivity.
+* mettre en place un certain standard de qualité ;
+* s'assurer de la cohérence du code ;
+* offrir aux développeurs un sentiment de familiarité ;
+* améliorer la productivité.
 
-Styleguides should be learned, understood, and implemented at all times on a
-project which is governed by one, and any deviation must be fully justified.
+Les lignes de conduites doivent être apprises, comprises et mises en pratique en tout temps sur un projet qui en a, et toute dérogation doit être soigneusement justifiée.
 
-### Disclaimers
+### Avertissement
 
-<cite>CSS Guidelines</cite> is _a_ styleguide; it is not _the_ styleguide. It
-contains methodologies, techniques, and tips that I would firmly recommend to my
-clients and teams, but your own tastes and circumstances may well be different.
-Your mileage may vary.
+<cite>CSS Guidelines</cite> est *un* styleguide et non pas *le* styleguide. Ces lignes de conduites contiennent de la méthodologie, des techniques et des conseils que je recommande fortement mais vos préférences et surtout le contexte de votre projet peuvent en décider autrement.
 
-These guidelines are opinionated, but they have been repeatedly tried, tested,
-stressed, refined, broken, reworked, and revisited over a number of years on
-projects of all sizes.
+Ce styleguide a un avis très arrêté sur un certain nombre de choses, mais sachez qu'il a été essayé, testé, amélioré, poli, peaufiné et revisité au cours des années, sur des projets de toutes tailles.
 
 ---
 
-## Syntax and Formatting
+## Syntaxe et formatage
 
-One of the simplest forms of a styleguide is a set of rules regarding syntax and
-formatting. Having a standard way of writing (_literally_ writing) CSS means
-that code will always look and feel familiar to all members of the team.
+Une des formes les plus simples de styleguide est tout simplement un ensemble de règles à propos de la syntaxe et du formatage du code. Avoir une façon bien standardisée d'écrire du code CSS, c'est s'assurer que n'importe quel développeur le comprenne et se sente en confiance avec celui-ci.
 
-Further, code that looks clean _feels_ clean. It is a much nicer environment to
-work in, and prompts other team members to maintain the standard of cleanliness
-that they found. Ugly code sets a bad precedent.
+De plus, la propreté encourage la propreté. Du code propre constitue un environnement sain dans lequel travailler, qui encourage les développeurs à maintenir cette propreté. A l'inverse, du code de mauvaise qualité ne peut être que néfaste pour la maintenance.
 
-At a very high-level, we want
+De manière très schématique, on désire :
 
-* Four (4) space indents. No tabs;
-* 80 character wide columns;
-* Multi-line CSS;
-* Meaningful use of whitespace.
+* Une indentation à quatre (4) espaces, pas de tabulation ;
+* Pas plus de 80 caractères par ligne ;
+* Du CSS écrit sur plusieurs lignes ;
+* Une utilisation efficace des lignes vides.
 
-<span class="highlight" id="did-you-see-this-bit">But, as with anything, the
-specifics are somewhat irrelevant—consistency is key.</span>
+<span class="highlight" id="Did-you-see-this-bit?">Mais, comme pour tout, l'essentiel est surtout d'être cohérent du début à la fin.</span>
 
-### Multiple Files
+### Multiples fichiers
 
-With the meteoric rise of preprocessors of late, more often is the case that
-developers are splitting CSS across multiple files.
+Grâce aux pré-processeurs toujours plus utilisés, les développeurs divisent de plus en plus souvent le code CSS dans de multiples fichiers.
 
-Even if not using a preprocessor, it is a good idea to split discrete chunks of
-code into their own files, which are concatenated during a build step.
+Même dans le cas où l'on n'utilise pas de pré-processeur CSS, c'est une bonne idée de diviser le code en morceaux distincts, qui seront par la suite concaténés durant le processus de déploiement.
 
-If, for whatever reason, you are not working across multiple files, the next
-sections might require some bending to fit your setup.
+Si pour une raison ou pour une autre, vous ne divisez pas votre code CSS dans plusieurs fichiers, la section suivante risque de perdre de son intérêt.
 
-### Table of Contents
+### Table des matières
 
-A table of contents is a fairly substantial maintenance overhead, but the
-benefits it brings far outweigh any costs. It takes a diligent developer to keep
-a table of contents up to date, but it is well worth sticking with. An
-up-to-date table of contents provides a team with a single, canonical catalogue
-of what is in a CSS project, what it does, and in what order.  
+Une table des matières est assez pénible à maintenir, mais elle vaut définitivement le coût. Tenir une table des matières à jour demande un développeur consciencieux mais c'est un atout considérable pour la maintenance du code. Une table à jour confère un accès unique et complet sur tout ce qui se trouve en matière de CSS dans le projet, dans quel ordre et pour quoi faire.
 
-A simple table of contents will—in order, naturally—simply provide the name of
-the section and a brief summary of what it is and does, for example:
+Une table des matières donne l'intitulé des sections ainsi qu'une description de celles-ci, dans l'ordre. Par exemple :
 
     /**
      * CONTENTS
@@ -224,57 +188,44 @@ the section and a brief summary of what it is and does, for example:
      * Text.................Text helpers.
      */
 
-Each item maps to a section and/or include.
+Chaque élément de la table des matières est associé à une section et/ou à l'inclusion d'un fichier.
 
-Naturally, this section would be substantially larger on the majority of
-projects, but hopefully we can see how this section—in the master
-stylesheet—provides developers with a project-wide view of what is being used
-where, and why.
+Naturellement, cette section serait bien plus imposante dans la majorité des projets, mais elle a le mérite de donner un bon aperçu de la façon dont est constitué le projet, et comment faire pour le maintenir.
 
-### 80 Characters Wide
+### Des lignes de 80 caractères
 
-Where possible, limit CSS files’ width to 80 characters. Reasons for this
-include
+Quand c'est possible, essayez de limiter la longueur des lignes à 80 caractères. Entre autres, pour les raisons suivantes :
 
-* the ability to have multiple files open side by side;
-* viewing CSS on sites like GitHub, or in terminal windows;
-* providing a comfortable line length for comments.
+* pouvoir ouvrir plusieurs fichiers côte à côte sans retour à la ligne ;
+* pouvoir lire confortablement sur GitHub ou dans le terminal ;
+* conférer une longueur de ligne confortable pour les commentaires.
 
 <pre><code>/**
- * I am a long-form comment. I describe, in detail, the CSS that follows. I am
- * such a long comment that I easily break the 80 character limit, so I am
- * broken across several lines.
+ * Je suis un long commentaire. Je décris, en détails, les CSS qui suivent. Je
+ * suis si long que je dépasse largement la limite des 80 caractères aussi je
+ * suis divisé sur plusieurs lignes.
  */</code></pre>
 
-There will be unavoidable exceptions to this rule—such as URLs, or gradient
-syntax—which shouldn’t be worried about.
+Il y aura nécessairement des exceptions à cette règle, notamment les URLs, les dégradés, et autres mais dans la mesure du possible on s'y tiendra.
 
-### Titling
+### Titres
 
-Begin every new major section of a CSS project with a title:
+Débutez chacune des sections principales du projet avec un titre :
 
     /*------------------------------------*\
-        #SECTION-TITLE
+        #TITRE-DE-SECTION
     \*------------------------------------*/
 
     .selector {}
 
-The title of the section is prefixed with a hash (`#`) symbol to allow us to
-perform more targeted searches (e.g. `grep`, etc.): instead of searching for
-just <kbd>SECTION-TITLE</kbd>—which may yield many results—a more scoped search
-of <kbd>#SECTION-TITLE</kbd> should return only the section in question.
+Le titre de la section est préfixé par un dièze (`#`) afin de faciliter les recherches ciblées (telles que `grep`) : au lieu de chercher <kbd>SECTION-TITLE</kbd> qui peut retourner un certain nombre de résultats, on peut chercher <kbd>#SECTION-TITLE</kbd>, qui ne devrait en retourner qu'un seul.
 
-Leave a carriage return between this title and the next line of code (be that a
-comment, some Sass, or some CSS).
+Pensez à laisser une ligne vide entre le titre et la prochaine ligne de code, quelle qu'elle soit (commentaire, sélecteur, variable...).
 
-If you are working on a project where each section is its own file, this title
-should appear at the top of each one. If you are working on a project with
-multiple sections per file, each title should be preceded by five (5) carriage
-returns. This extra whitespace coupled with a title makes new sections much
-easier to spot when scrolling through large files:
+Dans le cas où vous travaillez sur un projet où chaque section est dans son propre fichier, le titre doit se trouver tout en haut de celui-ci. Si plusieurs sections se trouvent dans le même fichier, chaque titre doit être précédé de cinq (5) lignes vides. Cet espace vide couplé au titre permet de bien repérer le début d'une nouvelle section lors du défilement.
 
     /*------------------------------------*\
-        #A-SECTION
+        #UNE-SECTION
     \*------------------------------------*/
 
     .selector {}
@@ -284,7 +235,7 @@ easier to spot when scrolling through large files:
 
 
     /*------------------------------------*\
-        #ANOTHER-SECTION
+        #UNE-AUTRE-SECTION
     \*------------------------------------*/
 
     /**
@@ -293,17 +244,18 @@ easier to spot when scrolling through large files:
 
     .another-selector {}
 
-### Anatomy of a Ruleset
+{% include promo-buy.html %}
 
-Before we discuss how we write out our rulesets, let’s first familiarise
-ourselves with the relevant terminology:
+### Anatomie d'une règle CSS
+
+Avant que l'on aille plus loin sur la façon dont on écrit nos règles, familiarisons-nous déjà avec la terminologie :
 
     [selector] {
         [property]: [value];
         [<--declaration--->]
     }
 
-For example:
+Par exemple :
 
     .foo, .foo--bar,
     .baz {
@@ -312,51 +264,44 @@ For example:
         color: red;
     }
 
-Here you can see we have
+Nous avons donc :
 
-* related selectors on the same line; unrelated selectors on new lines;
-* a space before our opening brace (`{`);
-* properties and values on the same line;
-* a space after our property–value delimiting colon (`:`);
-* each declaration on its own new line;
-* the opening brace (`{`) on the same line as our last selector;
-* our first declaration on a new line after our opening brace (`{`);
-* our closing brace (`}`) on its own new line;
-* each declaration indented by four (4) spaces;
-* a trailing semi-colon (`;`) on our last declaration.
+* les sélecteurs liés sur la même ligne, sinon sur une ligne différente ;
+* un espace avant l'accolade ouvrante (`{`) ;
+* l'accolade ouvrante (`{`) sur la ligne du dernier sélecteur ;
+* chaque déclaration sur une même ligne ;
+* chaque déclaration indentée de 4 espaces ;
+* un espace après le deux-points (`:`) ;
+* un point-virgule (`;`) à la dernière déclaration également ;
+* l'accolade fermante (`}`) sur sa propre ligne.
 
-This format seems to be the largely universal standard (except for variations in
-number of spaces, with a lot of developers preferring two (2)).
+Ce formatage est somme toute assez traditionel (à l'exception de l'indentation qui varie selon les développeurs).
 
-As such, the following would be incorrect:
+De fait, le code suivant est considéré incorrect :
 
     .foo, .foo--bar, .baz
     {
-    	display:block;
-    	background-color:green;
-    	color:red }
+      display:block;
+      background-color:green;
+      color:red }
 
-Problems here include
+On dénote les problèmes suivants :
 
-* tabs instead of spaces;
-* unrelated selectors on the same line;
-* the opening brace (`{`) on its own line;
-* the closing brace (`}`) does not sit on its own line;
-* the trailing (and, admittedly, optional) semi-colon (`;`) is missing;
-* no spaces after colons (`:`).
+* des tabulations au lieu d'espaces ;
+* des sélecteurs non liés sur la même ligne ;
+* l'accolade ouvrante (`{`) sur sa propre ligne ;
+* l'accolade fermante (`}`) pas sur sa propre ligne ;
+* le dernier point-virgule (`;`) manquant ;
+* pas d'espace après les deux-points (`:`).
 
-### Multi-line CSS
+### CSS multi-lignes
 
-CSS should be written across multiple lines, except in very specific
-circumstances. There are a number of benefits to this:
+Le code CSS doit être écrit sur plusieurs lignes, sauf en des circonstances bien particulières. L'intérêt d'utiliser plusieurs lignes est de :
 
-* A reduced chance of merge conflicts, because each piece of functionality
-  exists on its own line.
-* More ‘truthful’ and reliable `diff`s, because one line only ever carries one
-  change.
+* réduire les chances de conflits de merge (Git) car chaque fonctionnalité est contenue sur sa propre ligne ;
+* des `diff`s (Git) plus fiables car une ligne ne subira jamais plus d'un changement.
 
-Exceptions to this rule should be fairly apparent, such as similar rulesets that
-only carry one declaration each, for example:
+Les exceptions à cette règle sont assez évidentes, notamment lorsqu'il y a de multiples règles successives qui ne contiennent qu'une déclaration. Par exemple :
 
     .icon {
         display: inline-block;
@@ -370,17 +315,14 @@ only carry one declaration each, for example:
     .icon--files    { background-position:   0   -16px; }
     .icon--settings { background-position: -16px -16px; }
 
-These types of ruleset benefit from being single-lined because
+Ces règles sont mieux sur une seule ligne car :
 
-* they still conform to the one-reason-to-change-per-line rule;
-* they share enough similarities that they don’t need to be read as thoroughly
-  as other rulesets—there is more benefit in being able to scan their selectors,
-  which are of more interest to us in these cases.
+* elles sont toujours conformes au précepte un-changement-par-ligne ;
+* elles sont suffisamment similaires pour être plus simples à lire de cette façon, surtout s'il s'agit de scanner visuellement les sélecteurs.
 
-### Indenting
+### Indentation
 
-As well as intending individual declarations, indent entire related rulesets to
-signal their relation to one another, for example:
+De la même manière que l'on indente les déclarations, on indente également les règles entières pour signaler leur relation avec d'autres. Par exemple :
 
     .foo {}
 
@@ -388,15 +330,13 @@ signal their relation to one another, for example:
 
             .foo__baz {}
 
-By doing this, a developer can see at a glance that `.foo__baz {}` lives inside
-`.foo__bar {}` lives inside `.foo {}`.
+En faisant ça, un développeur peut voir d'un simple coup d'oeil que `.foo__baz` se trouve à l'intérieur de `.foo__bar` qui se trouve à l'intérieur de `.foo`.
 
-This quasi-replication of the DOM tells developers a lot about where classes are
-expected to be used without them having to refer to a snippet of HTML.
+Cette pseudo-réplication du DOM permet de savoir où sont supposées se trouver les classes sans avoir le HTML sous les yeux.
 
-#### Indenting Sass
+#### Indentation Sass
 
-Sass provides nesting functionality. That is to say, by writing this:
+Sass permet d'imbriquer les sélecteurs les uns dans les autres. Par exemple, le code suivant :
 
     .foo {
         color: red;
@@ -407,21 +347,18 @@ Sass provides nesting functionality. That is to say, by writing this:
 
     }
 
-…we will be left with this compiled CSS:
+…va être compilé comme suit :
 
     .foo { color: red; }
     .foo .bar { color: blue; }
 
-When indenting Sass, we stick to the same four (4) spaces, and we also leave a
-blank line before and after the nested ruleset.
+Même dans le cas de Sass, on s'en tient à quatre (4) espaces pour l'indentation. On laisse également une ligne vide avant et après la règle imbriquée.
 
-**N.B.** Nesting in Sass should be avoided wherever possible. See [the
-Specificity section](#specificity) for more details.
+***N.B.** L'imbrication des sélecteurs doit être évitée autant que faire se peut. Référez vous à [la section dédiée à la Spécificité](#spcificit) pour davantage de détails.
 
-#### Alignment
+#### Alignement
 
-Attempt to align common and related identical strings in declarations, for
-example:
+Essayez de grouper et d'aligner les déclarations liées. Par exemple :
 
     .foo {
         -webkit-border-radius: 3px;
@@ -441,21 +378,17 @@ example:
         padding-left:  10px;
     }
 
-This makes life a little easier for developers whose text editors support column
-editing, allowing them to change several identical and aligned lines in one go.
+Ceci rend la vie légèrement plus simple pour les développeurs dont les éditeurs de texte supportent l'édition en colonne, leur permettant de changer plusieurs valeurs identiques en une fois.
 
-{% include promo-buy.html %}
+### Gestion des espaces
 
-### Meaningful Whitespace
+Comme pour l'indentation, on peut donner beaucoup d'informations en utilisant judicieusement les espaces entre les règles. Or donc :
 
-As well as indentation, we can provide a lot of information through liberal and
-judicious use of whitespace between rulesets. We use:
+* une (1) ligne vide entre les règles fortement liées ;
+* deux (2) lignes vides entre les règles plus ou moins liées ;
+* cinq (5) lignes vides entre les sections.
 
-* One (1) empty line between closely related rulesets.
-* Two (2) empty lines between loosely related rulesets.
-* Five (5) empty lines between entirely new sections.
-
-For example:
+Par exemple :
 
     /*------------------------------------*\
         #FOO
@@ -482,8 +415,7 @@ For example:
 
         .bar__foo {}
 
-There should never be a scenario in which two rulesets do not have an empty line
-between them. This would be incorrect:
+Il ne devrait jamais y avoir de cas où deux règles sont juxtaposées sans ligne vide entre elles. En outre, ce code serait incorrect :
 
     .foo {}
         .foo__bar {}
@@ -491,39 +423,29 @@ between them. This would be incorrect:
 
 ### HTML
 
-Given HTML and CSS’ inherently interconnected nature, it would be remiss of me
-to not cover some syntax and formatting guidelines for markup.
+Dans la mesure où HTML et CSS sont intimement liés, je me dois de présenter également quelques règles de syntaxe et de formatage pour le markup.
 
-Always quote attributes, even if they would work without. This reduces the
-chance of accidents, and is a more familiar format to the majority of
-developers. For all this would work (and is valid):
+Mettez systématiquement les valeurs de vos attributs entre guillemets, même si ceux-ci sont optionnels. Ceci afin de réduire les risques d'accidents, d'autant que c'est généralement plus lisible. Donc bien que le code suivant fonctionne :
 
     <div class=box>
 
-…this format is preferred:
+…on préférera :
 
     <div class="box">
 
-The quotes are not required here, but err on the safe side and include them.
+Les guillemets ne sont pas obligatoires, mais il est préférable de les ajouter.
 
-When writing multiple values in a class attribute, separate them with two
-spaces, thus:
+Lorsque vous renseignez plusieurs valeurs à l'attribut `class`, séparez-les par deux espaces comme ceci :
 
     <div class="foo  bar">
 
-When multiple classes are related to each other, consider grouping them in
-square brackets (`[` and `]`), like so:
+Quand plusieurs classes sont liées les unes aux autres, envisagez de les grouper avec des crochets (`[` et `]`) comme ceci :
 
     <div class="[ box  box--highlight ]  [ bio  bio--long ]">
 
-This is not a firm recommendation, and is something I am still trialling myself,
-but it does carry a number of benefits. Read more in [<cite>Grouping related
-classes in your
-markup</cite>](http://csswizardry.com/2014/05/grouping-related-classes-in-your-markup/).
+Gardez à l'esprit que ce n'est pas une règle gravée dans le marbre et que c'est quelque chose que j'expérimente encore moi-même mais je dois dire qu'elle apporte un certain nombre d'avantages. Je vous invite à lire sur ce sujet dans mon article [<cite>Grouping related classes in your markup</cite>](http://csswizardry.com/2014/05/grouping-related-classes-in-your-markup/).
 
-As with our rulesets, it is possible to use meaningful whitespace in your HTML.
-You can denote thematic breaks in content with five (5) empty lines, for
-example:
+Comme pour le code CSS, il est possible d'utiliser les sauts de ligne dans notre HTML également. On peut donc dénoter clairement des changements de section en insérant cinq (5) lignes vides, comme suit :
 
     <header class="page-head">
         ...
@@ -545,8 +467,9 @@ example:
         ...
     </footer>
 
-Separate independent but loosely related snippets of markup with a single empty
-line, for example:
+{% include promo-hire.html %}
+
+Pensez à séparer les blocs indépendants mais liés avec une simple ligne vide pour améliorer la lisibilité :
 
     <ul class="primary-nav">
 
@@ -570,57 +493,39 @@ line, for example:
 
     </ul>
 
-This allows developers to spot separate parts of the DOM at a glance, and also
-allows certain text editors—like Vim, for example—to manipulate
-empty-line-delimited blocks of markup.
+Ceci permet aux développeurs de repérer les différentes parties du DOM au premier coup d'oeil, et également aux éditeurs tels que Vim par exemple de manipuler des blocs délimités par des lignes vides.
 
-### Further Reading
+### Pour aller plus loin
 
 * [<cite>Grouping related classes in your markup</cite>](http://csswizardry.com/2014/05/grouping-related-classes-in-your-markup/)
 
 ---
 
-## Commenting
+## Commentaires
 
-The cognitive overhead of working with CSS is huge. With so much to be aware of,
-and so many project-specific nuances to remember, the worst situation most
-developers find themselves in is being the-person-who-didn’t-write-this-code.
-Remembering your own classes, rules, objects, and helpers is manageable _to an
-extent_, but anyone inheriting CSS barely stands a chance.
+Un projet CSS a tellement de spécificités qui lui sont propres que bien souvent, les développeurs se retrouvent dans le scénario cauchemar du *je-n'ai-pas-écrit-ce-code*. Autant il est possible de se souvenir de ses propres sélecteurs, objets, outils, et classes dans une moindre mesure, autant se souvenir de ceux de tous les acteurs du projet est à la limite de l'impossible.
 
-**CSS needs more comments.**
+**C'est pourquoi il faut impérativement commenter le code CSS.**
 
-As CSS is something of a declarative language that doesn’t really leave much of
-a paper-trail, it is often hard to discern—from looking at the CSS alone—
+Parce que CSS est un langage déclaratif, il est parfois difficile de savoir, en se contentant de lire une feuille de styles :
 
-* whether some CSS relies on other code elsewhere;
-* what effect changing some code will have elsewhere;
-* where else some CSS might be used;
-* what styles something might inherit (intentionally or otherwise);
-* what styles something might pass on (intentionally or otherwise);
-* where the author intended a piece of CSS to be used.
+* si une règle dépend d'autres règles définies ailleurs ;
+* si les changements d'une règle auront des répercussions ailleurs ;
+* si une règle est belle et bien utilisée ;
+* de quels styles héritent une règle (de manière intentionnelle ou non) ;
+* si l'auteur s'attendait à ce qu'une règle soit utilisée.
 
-This doesn’t even take into account some of CSS’ many quirks—such as various
-sates of `overflow` triggering block formatting context, or certain transform
-properties triggering hardware acceleration—that make it even more baffling to
-developers inheriting projects.
+Et encore, on ne parle pas là des multiples excentricité de CSS comme les différentes valeurs de `overflow` qui déclenchent des contextes de formatage, ou certaines transformations qui forcent l'accélération matérielle. Bien des cas qui ne peuvent qu'étonner des développeurs arrivant sur le projet.
 
-As a result of CSS not telling its own story very well, it is a language that
-really does benefit from being heavily commented.
+Donc dans la mesure où CSS est plutôt déplorable quand il s'agit d'être explicite, le langage bénéficie grandement de la présence de commentaires.
 
-As a rule, you should comment anything that isn’t immediately obvious from the
-code alone. That is to say, there is no need to tell someone that `color: red;`
-will make something red, but if you’re using `overflow: hidden;` to clear
-floats—as opposed to clipping an element’s overflow—this is probably something
-worth documenting.
+De fait, vous devriez commenter tout ce qui ne saute pas aux yeux immédiatement. Évidemment, il n'y a aucun intérêt à expliquer que `color: red` change la couleur du texte en rouge. Mais si vous utilisez `overflow: hidden` pour *clear* les *floats* et non pas pour empêcher l'affichage d'éventuels débordements, c'est probablement intéressant de le documenter.
 
-### High-level
+### Général
 
-For large comments that document entire sections or components, we use a
-DocBlock-esque multi-line comment which adheres to our 80 column width.
+Pour les longs commentaires qui documentent une section entière, on utilise un type DocBlock sur plusieurs lignes qui s'en tient à notre règle des 80 caractères par ligne.
 
-Here is a real-life example from the CSS which styles the page header on [CSS
-Wizardry](http://csswizardry.com/):
+Voilà un exemple tiré de la feuille de styles traitant de l'entête du site [CSS Wizardry](http://csswizardry.com/) :
 
     /**
      * The site’s main page-head can have two different states:
@@ -634,43 +539,35 @@ Wizardry](http://csswizardry.com/):
      * slightly intermingled dependency with the wrapper that lives inside it.
      */
 
-This level of detail should be the norm for all non-trivial code—descriptions of
-states, permutations, conditions, and treatments.
+Ce niveau de détail devrait être la norme pour n'importe quelle description non-triviale.
 
-#### Object–Extension Pointers
+#### Pointeur Objet-Extension
 
-When working across multiple partials, or in an OOCSS manner, you will often
-find that rulesets that can work in conjunction with each other are not always
-in the same file or location. For example, you may have a generic button
-object—which provides purely structural styles—which is to be extended in a
-component-level partial which will add cosmetics. We document this relationship
-across files with simple <i>object–extension pointers</i>. In the object file:
+En travaillant sur de multiples fichiers, par exemple dans le cas d'une approche OOCSS, il arrive souvent que des règles qui sont pourtant liées d'une manière ou d'une autre ne se trouvent pas dans le même fichier. Par exemple, on peut avoir un objet bouton très générique qui ne s'occupe que de la structure. Celui-ci est par la suite étendu par un composant qui va ajouter la partie cosmétique. On documente ce genre de relations avec ce que l'on appelle un *pointeur objet-extension*.
+
+Par exemple, dans le fichier de l'objet :
 
     /**
-     * Extend `.btn {}` in _components.buttons.scss.
+     * Étend `.btn {}` dans _components.buttons.scss.
      */
 
     .btn {}
 
-And in your theme file:
+Et dans le thème :
 
     /**
-     * These rules extend `.btn {}` in _objects.buttons.scss.
+     * Ces règles étendent `.btn {}` dans _objects.buttons.scss.
      */
 
     .btn--positive {}
 
     .btn--negative {}
 
-This simple, low effort commenting can make a lot of difference to developers
-who are unaware of relationships across projects, or who are wanting to know
-how, why, and where other styles might be being inherited from.
+Ce commentaire si simple peut vraiment faire la différence pour les développeurs qui ne sont pas familiarisés avec les différentes relations qui existent entre les composants du projet. Même chose quand il s'agit de comprendre pourquoi et comment des règles sont héritées par un objet.
 
-### Low-level
+### Spécifique
 
-Oftentimes we want to comment on specific declarations (i.e. lines) in a
-ruleset. To do this we use a kind of reverse footnote. Here is a more complex
-comment detailing the larger site headers mentioned above:
+Souvent, il est question de commenter une déclaration bien spécifique. Pour se faire, on utilise une sorte de note de pied-de-page inversée. Voila un commentaire un peu plus complexe détaillant la large entête de site mentionnée plus haut :
 
     /**
      * Large site headers act more like mastheads. They have a faux-fluid-height
@@ -725,133 +622,109 @@ comment detailing the larger site headers mentioned above:
 
     }
 
-These types of comment allow us to keep all of our documentation in one place
-whilst referring to the parts of the ruleset to which they belong.
+Ce genre de commentaires nous permet de conserver toute la documentation d'une règle à un seul endroit tout en référant à des lignes bien spécifiques de ladite règle.
 
-### Preprocessor Comments
+### Commentaires de pré-processeur
 
-With most—if not all—preprocessors, we have the option to write comments that
-will not get compiled out into our resulting CSS file. As a rule, use these
-comments to document code that would not get written out to that CSS file
-either. If you are documenting code which will get compiled, use comments that
-will compile also. For example, this is correct:
+Avec la plupart, si ce n'est tous les pré-processeurs, on peut écrire des commentaires qui ne seront pas compilés dans la feuille de styles finale. La règle est d'utiliser ces commentaires pour ne documenter que des éléments qui ne sont pas compilés en CSS non plus, c'est à dire de la syntaxe spécifique au pré-processeur. Pour documenter du code qui est compilé, on utilise des commentaires CSS traditionnels.
 
-    // Dimensions of the @2x image sprite:
+Par exemple, ceci est correct :
+
+    // Dimensions de l'image sprite @2x:
     $sprite-width:  920px;
     $sprite-height: 212px;
-    
+
     /**
-     * 1. Default icon size is 16px.
-     * 2. Squash down the retina sprite to display at the correct size.
+     * 1. La taille par défaut de l'icône est 16px.
+     * 2. Redimensionne la sprite retina pour l'afficher à la bonne taille.
      */
     .sprite {
         width:  16px; /* [1] */
         height: 16px; /* [1] */
         background-image: url(/img/sprites/main.png);
-        background-size: ($sprite-width / 2 ) ($sprite-height / 2); /* [2] */
+        background-size: ($sprite-width / 2) ($sprite-height / 2); /* [2] */
     }
 
-We have documented variables—code which will not get compiled into our CSS
-file—with preprocessor comments, whereas our CSS—code which will get compiled
-into our CSS file—is documented using CSS comments. This means that we have only
-the correct and relevant information available to us when debugging our compiled
-stylesheets.
+Ici, on documente des variables &mdash;donc du code qui n'est pas compilé en CSS&mdash; avec des commentaires de pré-processeur, alors que le code CSS &mdash;qui est lui compilé dans le fichier final&mdash; est commenté avec des commentaires CSS.
 
-### Removing Comments
+Cela signifie que l'on aura dans la feuille de styles uniquement les commentaires porteurs d'information vis à vis du code compilé.
 
-It should go without saying that no comments should make their way into
-production environments—all CSS should be minified, resulting in loss of
-comments, before being deployed.
+### Retrait des commentaires
+
+Cela va sans dire qu'aucun commentaire ne devrait se trouver dans un fichier CSS généré pour un environnement de production. Les feuilles de style doivent être minifiées et dépouillées de tout commentaire avant d'être déployées.
 
 ---
 
-## Naming Conventions
+## Conventions de nommage
 
-Naming conventions in CSS are hugely useful in making your code more
-strict, more transparent, and more informative.
+Respecter des conventions de nommage en CSS est très utile pour rendre le code plus strict, et par la même occasion plus transparent.
 
-A good naming convention will tell you and your team
+De bonnes conventions de nommage permettent de savoir :
 
-* what type of thing a class does;
-* where a class can be used;
-* what (else) a class might be related to.
+* ce que fait une classe ;
+* où une classe peut être utilisée ;
+* à quoi une classe peut être liée.
 
-The naming convention I follow is very simple: hyphen (`-`) delimited strings,
-with BEM-like naming for more complex pieces of code.
+Les conventions de nommage que je suggère sont très simples : des chaînes séparées par des traits d'union (`-`), avec une approche BEM-like pour des cas plus complexes.
 
-It’s worth noting that a naming convention is not normally useful CSS-side of
-development; they really come into their own when viewed in HTML.
+Il est bon de préciser que ces conventions de nommage sont bien plus utiles en HTML qu'en CSS en réalité.
 
-### Hyphen Delimited
+### Séparation par traits d'union
 
-All strings in classes are delimited with a hyphen (`-`), like so:
+Toutes les chaînes de caractères dans les classes sont délimitées par des traits d'union (`-`), comme ceci :
 
     .page-head {}
 
     .sub-content {}
 
-Camel case and underscores are not used for regular classes; the following are
-incorrect:
+La notation *camel case* et l'utilisation des underscores (`_`) sont proscrites pour les classes communes. De fait, ceci est incorrect :
 
     .pageHead {}
 
     .sub_content {}
 
-### BEM-like Naming
+{% include promo-buy.html %}
 
-For larger, more interrelated pieces of UI that require a number of classes, we
-use a BEM-like naming convention.
+### Notation BEM-like
 
-<cite>BEM</cite>, meaning <i>Block</i>, <i>Element</i>, <i>Modifier</i>, is a
-front-end methodology coined by developers working at Yandex. Whilst BEM is a
-complete methodology, here we are only concerned with its naming convention.
-Further, the naming convention here only is BEM-*like*; the principles are
-exactly the same, but the actual syntax differs slightly.
+Pour les cas plus complexes où des morceaux d'interface sont corrélés les uns aux autres, on utilise une notation dite *BEM-like*.
 
-BEM splits components’ classes into three groups:
+<cite>BEM</cite>, acronyme pour <i>Block Element Modifier</i>, est une méthodologie front-end mise au point par les développeurs de Yandex. BEM est une méthodologie complète à laquelle on emprunte uniquement ses conventions de nommage. De plus, on parle de BEM-*like* car bien que les principes soient exactement les mêmes, la syntaxe varie légèrement.
 
-* Block: The sole root of the component.
-* Element: A component part of the Block.
-* Modifier: A variant or extension of the Block.
+BEM divise les composents en trois groupes :
 
-To take an analogy (note, not an example):
+* Block : la racine d'un composant ;
+* Element : un composant faisant partie de Block ;
+* Modifier : une variante ou une extension de Block.
 
-    .person {}
-    .person__head {}
-    .person--tall {}
+Pour faire une analogie (à défaut d'un exemple) :
 
-Elements are delimited with two (2) underscores (`__`), and Modifiers are
-delimited by two (2) hyphens (`--`).
+    .personne {}
+    .personne__tete {}
+    .personne--grande {}
 
-Here we can see that `.person {}` is the Block; it is the sole root of a
-discrete entity. `.person__head {}` is an Element; it is a smaller part of the
-`.person {}` Block. Finally, `.person--tall {}` is a Modifier; it is a specific
-variant of the `.person {}` Block.
+Les éléments (Element) sont délimités par deux underscores (`__`) et les modificateurs (Modifier) sont délimités par deux traits d'union (`--`).
 
-#### Starting Context
+Ici, on voit que `.personne` est le block (Block); c'est la racine d'une entité distincte. `.personne__tete` est un élément (Element); c'est une sous-partie du bloc `.personne`. Enfin, `.personne--grande` est un modificateur (Modifier); c'est une variante spécifique du bloc `.personne`.
 
-Your Block context starts at the most logical, self-contained, discrete
-location. To continue with our person-based analogy, we’d not have a class like
-`.room__person {}`, as the room is another, much higher context. We’d probably
-have separate Blocks, like so:
+#### Contexte de départ
 
-    .room {}
+Un contexte de bloc (Block) débute généralement à l'endroit indépendant le plus logique. Pour poursuivre sur notre analogie, on n'aurait pas `.piece__personne` parce qu'une pièce est un tout autre contexte, bien plus grand qui plus est. On va donc séparer les blocs de cette façon :
 
-        .room__door {}
+    .piece {}
 
-    .room--kitchen {}
+        .piece__porte {}
+
+    .piece--cuisine {}
 
 
-    .person {}
+    .personne {}
 
-        .person__head {}
+        .personne__tete {}
 
-If we did want to denote a `.person {}` inside a `.room {}`, it is more correct
-to use a selector like `.room .person {}` which bridges two Blocks than it is to
-increase the scope of existing Blocks and Elements.
+Si on veut cibler une personne (`.personne`) au sein d'une pièce (`.piece`), il serait plus correct d'utiliser un sélecteur tel que `.piece .personne`.
 
-A more realistic example of properly scoped blocks might look something like
-this, where each chunk of code represents its own Block:
+Un exemple plus réaliste pourrait ressembler à cela, où chaque bout de code représente son propre bloc (Block) :
 
     .page {}
 
@@ -866,7 +739,7 @@ this, where each chunk of code represents its own Block:
 
         .footer__copyright {}
 
-Incorrect notation for this would be:
+Une notation comme suit serait dont incorrecte :
 
     .page {}
 
@@ -878,69 +751,47 @@ Incorrect notation for this would be:
 
             .page__copyright {}
 
-It is important to know when BEM scope starts and stops. As a rule, BEM applies
-to self-contained, discrete parts of the UI.
+Il est important de comprendre quand démarre et se termine un bloc BEM. La règle, c'est que BEM s'applique à une partie bien distincte de l'interface.
 
-{% include promo-hire.html %}
+#### Davantage de niveaux
 
-#### More Layers
+Si l'on veut ajouter un nouvel élément (Element) &mdash;par exemple, `.personne__oeil {}`&mdash; à notre composant `.personne`, on ne doit pas traverser tout le chemin du DOM. C'est à dire que la notation correcte est `.personne_°oeil {}` et non pas `.personne__tete__oeil {}`. Les classes n'ont pas pour vocation de représenter le DOM.
 
-If we were to add another Element—called, let’s say, `.person__eye {}`—to this
-`.person {}` component, we would not need to step through every layer of the
-DOM. That is to say, the correct notation would be `.person__eye {}`, and not
-`.person__head__eye {}`. Your classes do not reflect the full paper-trail of the
-DOM.
+#### Modifier les éléments
 
-#### Modifying Elements
+Il est possible d'avoir des variantes de certains éléments, et celles-ci peuvent être écrites de bien des manières selon comment et pourquoi l'élément est modifié. Pour continuer avec l'exemple d'une personne, un oeil bleu peut être représenté ainsi :
 
-You can have variants of Elements, and these can be denoted in a number of ways
-depending on how and why they are being modified. Carrying on with our person
-example, a blue eye might look like this:
+    .personne__oeil--bleu {}
 
-    .person__eye--blue {}
+Dans ce cas, on modifie directement l'élément (Element) oeil de la personne.
 
-Here we can see we’re directly modifying the eye Element.
+Cependant, les choses peuvent rapidement gagner en complexité. Pardonnez-moi d'avance l'analogie un peu terre-à-terre, et considérez que l'on ait un visage qui soit splendide. Ce n'est pas la personne en elle-même qui est splendide, mais son visage : un visage splendide sur une personne standard. Auquel cas on écrit :
 
-Things can get more complex, however. Please excuse the crude analogy, and let’s
-imagine we have a face Element that is handsome. The person themselves isn’t
-that handsome, so we modify the face Element directly—a handsome face on a
-regular person:
+    .personne__visage--splendud {}
 
-    .person__face--handsome {}
+En revanche si la personne *est* splendide, et que l'on veut styler son visage à cause de ce trait physique, on a un visage normal sur une personne splendide. Du coup :
 
-But what if that person _is_ handsome, and we want to style their face because
-of that fact? A regular face on a handsome person:
+    .personne--splendide .personne__visage {}
 
-    .person--handsome .person__face {}
+C'est là une occasion pour laquelle on utiliserait un sélecteur descendant pour modifier un élément (Element) en fonction d'un modification (Modifier) du bloc (Block).
 
-Here is one of a few occasions where we’d use a descendant selector to modify
-an Element based on a Modifier on the Block.
+Avec Sass, on écrirait :
 
-If using Sass, we would likely write this like so:
+    .personne {}
 
-    .person {}
+        .personne__visage {
 
-        .person__face {
-
-            .person--handsome & {}
+            .personne--splendide & {}
 
         }
 
-    .person--handsome {}
+    .personne--splendide {}
 
-Note that we do not nest a new instance of `.person__face {}` inside of
-`.person--handsome {}`; instead, we make use of Sass’ parent selectors to
-prepend `.person--handsome` onto the existing `.person__face {}` selector. This
-means that all of our `.person__face {}`-related rules exist in once place, and
-aren’t spread throughout the file. This is general good practice when dealing
-with nested code: keep all of your context (e.g. all `.person__face {}` code)
-encapsulated in one location.
+Remarquez que l'on n'a pas besoin d'ajouter `.personne__visage` devant `.personne--splendide {}` car on utilise l'imbrication des règles. Cela permet d'avoir toutes les règles à propos de `.personne__visage {}` au même endroit, ce qui est généralement une bonne pratique quand on imbrique les règles. Conservez tout votre contexte (ici `.personne__visage`) à un seul endroit.
 
-### Naming Conventions in HTML
+### Conventions de nommage en HTML
 
-As I previously hinted at, naming conventions aren’t necessarily all that useful
-in your CSS. Where naming conventions’ power really lies is in your markup. Take
-the following, non-naming-conventioned HTML:
+Comme je l'ai dit précédemment, les conventions de nommage ne sont pas si utiles que ça en CSS. C'est surtout dans le markup qu'elles deviennent vitales. Prenez par exemple le HTML suivant ne respectant aucune convention spécifique :
 
     <div class="box  profile  pro-user">
 
@@ -950,13 +801,9 @@ the following, non-naming-conventioned HTML:
 
     </div>
 
-How are the classes `box` and `profile` related to each other? How are the
-classes `profile` and `avatar` related to each other? Are they related at all?
-Should you be using `pro-user` alongside `bio`? Will the classes `image` and
-`profile` live in the same part of the CSS? Can you use `avatar` anywhere else?
+Dans quelle mesure les classes `box` et `profile` sont elles liées ? Dans quelle mesure les classes `profile` et `avatar` sont elles liées ? Sont-elles seulement liées ? Les classes `bio` et `pro-user` doivent-elles être au même niveau ? Les classes `image` et `profile` sont elles destinées à faire partie d'un même ensemble ? Peut-on utiliser `avatar` ailleurs ?
 
-From that markup alone, it is very hard to answer any of those questions. Using
-a naming convention, however, changes all that:
+En se contentant de ce markup, il est très difficile de répondre à toutes ses questions. Maintenant si l'on applique nos conventions de nommage, ça change tout :
 
     <div class="box  profile  profile--is-pro-user">
 
@@ -966,154 +813,98 @@ a naming convention, however, changes all that:
 
     </div>
 
-Now we can clearly see which classes are and are not related to each other, and
-how; we know what classes we can’t use outside of the scope of this component;
-and we know which classes we may be free to reuse elsewhere.
+Là nous pouvons clairement voir quelles sont les classes qui sont liées et comment. On voit également quelles sont les classes que l'on ne peut pas utiliser hors d'un certain périmètre, et on voit quelles sont celles qui sont parfaitement recyclables partout.
 
-### JavaScript Hooks
+### Ancres Javascript
 
-As a rule, it is unwise to bind your CSS and your JS onto the same class in your
-HTML. This is because doing so means you can’t have (or remove) one without
-(removing) the other. It is much cleaner, much more transparent, and much more
-maintainable to bind your JS onto specific classes.
+Il est généralement déconseillé d'attacher simultanément des CSS et du JavaScript à une même classe HTML. Et pour cause, il devient impossible d'en retirer un sans retirer l'autre. C'est bien plus propre et transparent d'appliquer des écouteurs JavaScript sur des classes dédiées à cela.
 
-I have known occasions before when trying to refactor some CSS has unwittingly
-removed JS functionality because the two were tied to each other—it was
-impossible to have one without the other.
+Il m'est arrivé par le passé de faire du ménage dans du code CSS, pour me rendre compte que des fonctionnalités JavaScript avaient disparu parce qu'elles étaient liées à des classes sur lesquelles des styles étaient appliqués. Impossible d'avoir l'un sans l'autre en somme.
 
-Typically, these are classes that are prepended with `js-`, for example:
+Typiquement, on va donc préfixer les classes dédiées au JavaScript par `js-`, par exemple :
 
     <input type="submit" class="btn  js-btn" value="Follow" />
 
-This means that we can have an element elsewhere which can carry with style of
-`.btn {}`, but without the behaviour of `.js-btn`.
+Cela signifie qu'on peut tout à fait balader les styles `.btn` sans forcément le comportement lié à `.js-btn`.
 
-#### `data-*` Attributes
+#### Attributs `data-*`
 
-A common practice is to use `data-*` attributes as JS hooks, but this is
-incorrect. `data-*` attributes, as per the spec, are used <q>**to store custom
-data** private to the page or application</q> (emphasis mine). `data-*`
-attributes are designed to store data, not be bound to.
+Une pratique commune est d'utiliser les attributs `data-*` comme ancres pour le JavaScript, mais c'est inapproprié. Selon les spécifications, ces attributs sont destinés à <q>**stocker des données personnalisées** spécifiques à la page ou l'application</q>. Les attributs sont donc faits pour stocker des données, pas pour être ciblés comme ancres.
 
-### Taking It Further
+### Pour aller plus loin
 
-As previously mentioned, these are very simple naming conventions, and ones that
-don’t do much more than denote three distinct groups of class.
+Comme on l'a dit précédemment, les conventions sont finalement assez simples, et se divisent en trois groupes de classes.
 
-I would encourage you to read up on and further look in to your naming
-convention in order to provide more functionality—I know it’s something I’m keen
-to research and investigate further.
+Je ne peux que vous encourager à pousser vos conventions de nommage plus loin pour intégrer davantage de fonctionnalités. C'est personnellement quelque chose que j'affectionne beaucoup.
 
-### Further Reading
+### A lire
 
 * [<cite>MindBEMding – getting your head ’round BEM syntax</cite>](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
 
 ---
 
-## CSS Selectors
+## Sélecteurs CSS
 
-Perhaps somewhat surprisingly, one of the most fundamental, critical aspects of
-writing maintainable and scalable CSS is selectors. Their specificity, their
-portability, and their reusability all have a direct impact on the mileage we
-will get out of our CSS, and the headaches it might bring us.
+Au risque de vous surprendre, les sélecteurs constituent l'aspect le plus fondamental et le plus critique quand il s'agit de maintenir du code CSS. Leur spécificité, portabilité et capacité de réutilisation ont un impact direct sur la façon dont la feuille de styles est utilisée, et sur les éventuels problèmes que l'on peut rencontrer.
 
-### Selector Intent
+### Intention
 
-It is important when writing CSS that we scope our selectors correctly, and that
-we’re selecting the right things for the right reasons. <i>Selector Intent</i>
-is the process of deciding and defining what you want to style and how you
-will go about selecting it. For example, if you are wanting to style your
-website’s main navigation menu, a selector like this would be incredibly unwise:
+Quand on écrit du code CSS, il est important d'écrire des sélecteurs corrects, et de sélectionner les bons éléments pour les bonnes raisons. L'<i>intention</i> d'un sélecteur, c'est le fait de se décider sur ce que vous désirez styler, et comment vous aller vous y prendre pour sélectionner l'élément à styler. Par exemple, si vous désirez appliquer des styles au menu principal de votre site, un sélecteur comme celui-ci serait très imprudent :
 
     header ul {}
 
-This selector’s intent is to style any `ul` inside any `header` element, whereas
-_our_ intent was to style the site’s main navigation. This is poor Selector
-Intent: you can have any number of `header` elements on a page, and they in turn
-can house any number of `ul`s, so a selector like this runs the risk of applying
-very specific styling to a very wide number of elements. This will result in
-having to write more CSS to undo the greedy nature of such a selector.
+L'intention de ce sélecteur est de cibler les éléments `ul` dans un élément `header`, alors que le besoin est de cibler le menu principal. On a donc là une intention incorrecte : on peut avoir autant de `header` que l'on veut sur une page, et eux-mêmes peuvent contenir un nombre indeterminés de `ul` aussi un sélecteur comme celui-ci risque d'appliquer des styles bien spécifiques à un grand nombre d'éléments. Suite à cela, on devra donc écrire encore plus de CSS pour défaire les méfaits de ce sélecteur.
 
-A better approach would be a selector like:
+Une approche plus sage serait de faire :
 
-    .site-nav {}
+     .site-nav {}
 
-An unambiguous, explicit selector with good Selector Intent. We are explicitly
-selecting the right thing for exactly the right reason.
+C'est un sélecteur non ambigü, explicite avec une intention claire. On cible le bon élément pour la bonne raison.
 
-Poor Selector Intent is one of the biggest reasons for headaches on CSS
-projects. Writing rules that are far too greedy—and that apply very specific
-treatments via very far reaching selectors—causes unexpected side effects and
-leads to very tangled stylesheets, with selectors overstepping their intentions
-and impacting and interfering with otherwise unrelated rulesets.
+Les problèmes de sélecteurs constituent les plus grosses sources de problèmes au sein des projets CSS. Les sélecteurs trop gourmands qui appliquent des règles bien spécifiques à de vastes collections d'éléments causent des effets de bord indésirables et mènent à des feuilles de styles bancales, où les sélecteurs entrent en conflit les uns avec les autres.
 
-CSS cannot be encapsulated, it is inherently leaky, but we can mitigate some of
-these effects by not writing such globally-operating selectors: **your selectors
-should be as explicit and well reasoned as your reason for wanting to select
-something.**
+CSS ne peut pas être contenu ou encapsulé, mais on peut mitiger les fuites en évitant d'écrire des sélecteurs trop larges : **les sélecteurs doivent être explicites et sensés pour ne cibler que ce qui doit être ciblé**.
 
-### Reusability
+### Réutilisation
 
-With a move toward a more component-based approach to constructing UIs, the idea
-of reusability is paramount. We want the option to be able to move, recycle,
-duplicate, and syndicate components across our projects.
+Lorsque l'on construit des interfaces en matière de composants, la notion de réutilisation est capitale. On veut pouvoir déplacer, recycler, dupliquer et éditer les objets de manière transversale sur les projets.
 
-To this end, we make heavy use of classes. IDs, as well as being hugely
-over-specific, cannot be used more than once on any given page, whereas classes
-can be reused an infinite amount of times. Everything you choose, from the type
-of selector to its name, should lend itself toward being reused.
+Pour cela, on utilise quasiment exclusivement des classes. Les IDs, au delà d'être extrêmement spécifiques, ne peuvent être utilisées qu'une seule fois par document, contrairement aux classes qui peuvent être dupliquées à l'infini. Tous vos choix doivent être effectués dans l'optique de maintenir du code réutilisable.
 
-### Location Independence
+### Indépendance
 
-Given the ever-changing nature of most UI projects, and the move to more
-component-based architectures, it is in our interests not to style things based
-on where they are, but on _what_ they are. That is to say, our components’
-styling should not be reliant upon where we place them—they should remain
-entirely location independent.
+De par la nature versatile des interfaces et de la notion même de composant, il est préférable de styler les éléments en fonction de ce qu'ils sont, et non pas d'où ils sont. Les composants ne doivent pas être stylés en fonction de leur position, d'où la notion d'indépendance.
 
-Let’s take an example of a call-to-action button that we have chosen to style
-via the following selector:
+Prenons comme un exemple un bouton dit *call-to-action* que l'on habille via le sélecteur suivant :
 
     .promo a {}
 
-Not only does this have poor Selector Intent—it will greedily style any and
-every link inside of a `.promo` to look like a button—it is also pretty wasteful
-as a result of being so locationally dependent: we can’t reuse that button with
-its correct styling outside of `.promo` because it is explicitly tied to that
-location. A far better selector would have been:
+Tout d'abord on note là une intention incorrecte : tous les liens au sein d'un élément `.promo` sont stylés comme des boutons, ce qui ne satisfait pas la demande. De plus, ce sélecteur n'est pas indépendant dans la mesure où on ne peut pas réutiliser ce bouton hors d'un élément affublé de la classe `.promo` car il est explicitement lié à cet endroit.
+
+Un bien meilleur sélecteur serait :
 
     .btn {}
 
-This single class can be reused anywhere outside of `.promo` and will always
-carry its correct styling. As a result of a better selector, this piece of UI is
-more portable, more recyclable, doesn’t have any dependencies, and has much
-better Selector Intent. **A component shouldn’t have to live in a certain place
-to look a certain way.**
+Cette classe seule peut être réutilisée à l'extérieur d'un bloc `.promo` et portera toujours les styles cohérents. C'est un meilleur sélecteur parce qu'il est portable, recyclable, n'a aucune dépendance et fait preuve d'une meilleure intention. **Un composant ne doit pas avoir à vivre un certain endroit pour avoir une certaine apparence.**
 
-### Portability
+{% include promo-hire.html %}
 
-Reducing, or, ideally, removing, location dependence means that we can move
-components around our markup more freely, but how about improving our ability to
-move classes around components? On a much lower level, there are changes we
-can make to our selectors that make the selectors themselves—as opposed to the
-components they create—more portable. Take the following example:
+### Portabilité
+
+Réduire ou même retirer complètement les dépendances liées au positionnement permet de pouvoir placer les composants de manière plus libre, mais qu'en est-il de la possibilité de balader certaines classes au sein des composants ?
+
+En effet, il est possible d'agir à un niveau beaucoup plus bas afin que rendre certains sélecteurs portables, au delà de simples composants. Par exemple :
 
     input.btn {}
 
-This is a <i>qualified</i> selector; the leading `input` ties this ruleset to
-only being able to work on `input` elements. By omitting this qualification, we
-allow ourselves to reuse the `.btn` class on any element we choose, like an `a`,
-for example, or a `button`.
+Ceci est un sélecteur <i>qualifié</i> ; la chaîne `input` lie la classe aux éléments de type `input` de sorte que seuls ceux-ci soient éligibles. En omettant ce qualificatif, on fait en sorte de pouvoir réutiliser cette classe `.btn` sur d'autres éléments comme `a` ou `button`.
 
-Qualified selectors do not lend themselves well to being reused, and every
-selector we write should be authored with reuse in mind.
+De par leur nature même, les sélecteurs qualifiés sont difficiles à réutiliser or chaque sélecteur que l'on écrit devrait pouvoir l'être autant que faire se peut.
 
-Of course, there are times when you may want to legitimately qualify a
-selector—you might need to apply some very specific styling to a particular
-element when it carries a certain class, for example:
+Bien sur, il y a des circonstances autour desquelles vous voulez légitimement qualifier un sélecteur, comme pour appliquer des styles spécifiques à un sélecteur s'il porte une certaine classe. Par exemple :
 
     /**
-     * Embolden and colour any element with a class of `.error`.
+     * Met un élément avec la classe `.error` en emphase.
      */
     .error {
         color: red;
@@ -1121,18 +912,17 @@ element when it carries a certain class, for example:
     }
 
     /**
-     * If the element is a `div`, also give it some box-like styling.
+     * Si l'élement est une `div`, applique des styles de boîte.
      */
     div.error {
         padding: 10px;
         border: 1px solid;
     }
 
-This is one example where a qualified selector might be justifiable, but I would
-still recommend an approach more like:
+C'est là un exemple où un sélecteur qualifié est tout à fait justifié, mais je recommanderais malgré tout l'approche suivante :
 
     /**
-     * Text-level errors.
+     * Erreurs au niveau d'un contenu textuel.
      */
     .error-text {
         color: red;
@@ -1140,234 +930,154 @@ still recommend an approach more like:
     }
 
     /**
-     * Elements that contain errors.
+     * Éléments qui contiennent des erreurs.
      */
     .error-box {
         padding: 10px;
         border: 1px solid;
     }
 
-This means that we can apply `.error-box` to any element, and not just a
-`div`—it is more reusable than a qualified selector.
+Ceci permet d'appliquer `.error-box` à n'importe quel élément, et pas uniquement à une `div`. C'est toujours plus réutilisable qu'un sélecteur qualifié.
 
-#### Quasi-Qualified Selectors
+#### Sélecteurs quasi-qualifiés
 
-One thing that qualified selectors can be useful for is signalling where a class
-might be expected or intended to be used, for example:
+Ce qui est bien avec les sélecteurs qualifiés, c'est qu'ils signalent sur quel type d'élément une classe est supposée se trouver. Par exemple :
 
     ul.nav {}
 
-Here we can see that the `.nav` class is meant to be used on a `ul` element, and
-not on a `nav`. By using <i>quasi-qualified selectors</i> we can still provide
-that information without actually qualifying the selector:
+Ici, on voit que la classe `.nav` est supposée être utiliée sur un élément `ul`, et non pas sur un élément `nav` (ou autre). En utilisant un <i>sélecteur quasi-qualifié</i>, on peut continuer de garder cette information sans pour autant qualifier le sélecteur de manière explicite :
 
     /*ul*/.nav {}
 
-By commenting out the leading element, we can still leave it to be read, but
-avoid qualifying and increasing the specificity of the selector.
+En commentant le qualificatif, il reste lisible mais évite d'accroitre la spécificité du sélecteur.
 
-### Naming
+### Nommage
 
-As Phil Karlton once said, <q>There are only two hard things in Computer
-Science: cache invalidation and naming things.</q>
+Comme l'a si bien dit Phil Karlton, <q>il n'y a que deux choses difficiles en informatique : l'invalidation du cache, et le nommage des choses</q>.
 
-I won’t comment on the former claim here, but the latter has plagued me for
-years.  My advice with regard to naming things in CSS is to pick a name that is
-sensible, but somewhat ambiguous: aim for high reusability. For example, instead
-of a class like `.site-nav`, choose something like `.primary-nav`; rather than
-`.footer-links`, favour a class like `.sub-links`.
+Je ne dirai rien sur la première de ces deux disciplines, mais la seconde m'a donné du fil à retordre des années durant. Mon conseil quand il s'agit de nommer les éléments en CSS serait de choisir quelque chose de sensé, mais en même temps d'un tantinet ambigü : pensez toujours "réutilisation". Par exemple, au lieu de choisir une classe comme `.site-nav`, optez plutôt pour `.primary-nav` ; plutôt que `.footer-links`, préférez `.sub-links`.
 
-The differences in these names is that the first of each two examples is tied to
-a very specific use case: they can only be used as the site’s navigation or the
-footer’s links respectively. By using slightly more ambiguous names, we can
-increase our ability to reuse these components in different circumstances.
+La différence entre ces noms, c'est que le premier de chaque example est lié à un cas d'usage : on ne peut les utiliser que comme navigation du site, et liens du pied-de-page respectivement. En utilisant un nommage légèrement plus ambigü, on rend ces composants portables dans d'autres circonstances.
 
-To quote Nicolas Gallagher:
+Pour citer Nicolas Gallagher, <q>lier le nommage directement au contenu rend l'architecture difficile à maintenir et les composants peu réutilisables par les autres développeurs</q>.
 
-> Tying your class name semantics tightly to the nature of the content has already
-> reduced the ability of your architecture to scale or be easily put to use by
-> other developers.
+En somme on doit choisir des noms sensés &mdash;des classes comme `.border` ou `.red` sont bien évidemment à proscrire&mdash; mais en même temps on devrait éviter de décrire la nature exacte du contenu et/ou ses cas d'utilisation. **Utiliser une classe pour décrire le contenu est redondant puisque le contenu est déjà supposé se décrire lui-même**.
 
-That is to say, we should use sensible names—classes like `.border` or `.red`
-are never advisable—but we should avoid using classes which describe the exact
-nature of the content and/or its use cases. **Using a class name to describe
-content is redundant because content describes itself.**
+Le débat autour du nommage sémantique des classes a fait rage pendant des années, aussi il est important d'adopter une approche plus pragmatique quand il s'agit de nommer les éléments de manière efficace. Au lieu de se focaliser sur la "sémantique", on s'efforce de s'attacher davantage à la longévité des sélecteurs. On nomme avant tout pour faciliter la maintenance, pas pour le plaisir de donner un nom.
 
-The debate surrounding semantics has raged for years, but it is important that
-we adopt a more pragmatic, sensible approach to naming things in order to work
-more efficiently and effectively. Instead of focussing on ‘semantics’, look more
-closely at sensibility and longevity—choose names based on ease of maintenance,
-not for their perceived meaning.
-
-Name things for people; they’re the only things that actually _read_ your
-classes (everything else merely matches them). Once again, it is better to
-strive for reusable, recyclable classes rather than writing for specific use
-cases. Let’s take an example:
+On nomme pour les développeurs qui passeront après, ce sont les seuls qui vont *lire* lesdites classes. Encore une fois, il est préférable de trouver des noms réutilisables et recyclables plutôt que des intitulés n'autorisant qu'un cas d'usage unique. Prenons un exemple :
 
     /**
-     * Runs the risk of becoming out of date; not very maintainable.
+     * Risque d'être obsolète ; peu maintenable.
      */
     .blue {
         color: blue;
     }
 
     /**
-     * Depends on location in order to be rendered properly.
+     * Dépend de la position.
      */
     .header span {
         color: blue;
     }
 
     /**
-     * Too specific; limits our ability to reuse.
+     * Trop spécifique ; peu réutilisable.
      */
     .header-color {
         color: blue;
     }
 
     /**
-     * Nicely abstracted, very portable, doesn’t risk becoming out of date.
+     * Correctement abstrait, peu de chances de devenir obsolète et facilement réutilisable.
      */
     .highlight-color {
         color: blue;
     }
 
-It is important to strike a balance between names that do not literally describe
-the style that the class brings, but also ones that do not explicitly describe
-specific use cases. Instead of `.home-page-panel`, choose `.masthead`; instead
-of `.site-nav`, favour `.primary-nav`; instead of `.btn-login`, opt for
-`.btn-primary`.
+Il faut parvenir à trouver le juste milieu entre la description non-explicite des styles appliqués et la description non-spécifique du sens. Au lieu de `.home-page-panel`, on peut envisager `.masthead`. Au lieu de `.site-nav`, on favorise `.primary-nav`. Au lieu de `.btn-login`, on utilise `.btn-primary`.
 
-#### Naming UI Components
+#### Nommage des composants d'interface
 
-Naming components with agnosticism and reusability in mind really helps
-developers construct and modify UIs much more quickly, and with far less waste.
-However, it can sometimes be beneficial to provide more specific or meaningful
-naming alongside the more ambiguous class, particularly when several agnostic
-classes come together to form a more complex and specific component that might
-benefit from having a more meaningful name. In this scenario, we augment the
-classes with a  `data-ui-component` attribute which houses a more specific name,
-for example:
+Nommer les composants de manière agnostique et réutilisable aide les développeurs à construire et maintenir des interfaces plus rapidement et plus facilement. Cependant, il peut parfois être intéressant de spécifier des noms plus explicites à côté des classes parfois ambigües, surtout quand un certain nombre de classes très agnostiques viennent se grouper pour former un composant. Dans ce cas, avoir un nom éloquent s'avère utile.
+
+Dans ce scénario, on accompagne les classes d'un attribut `data-ui-component` qui contient un nom plus spécifique. Par exemple :
 
     <ul class="tabbed-nav" data-ui-component="Main Nav">
 
-Here we have the benefits of a highly reusable class name which does not
-describe—and, therefore, tie itself to—a specific use case, and added meaning
-via our `data-ui-component` attribute. The `data-ui-component`’s value can take
-any format you wish, like title case:
+On a donc les avantages d'une classe hautement réutilisable qui ne décrit pas de manière explicite le composant, et à la fois un nom plus parlant grâce à l'attribut `data-ui-component`. La valeur de ce dernier peut prendre n'importe quel format, comme celui d'un titre :
 
     <ul class="tabbed-nav" data-ui-component="Main Nav">
 
-Or class-like:
+D'une classe :
 
     <ul class="tabbed-nav" data-ui-component="main-nav">
 
-Or namespaced:
+Ou d'un namespace :
 
     <ul class="tabbed-nav" data-ui-component="nav-main">
 
-The implementation is largely personal preference, but the concept still
-remains: **Add any useful or specific meaning via a mechanism that will not
-inhibit your and your team’s ability to recycle and reuse CSS.**
+L'implémentation est essentiellement guidée par les préférences de chacun, mais le concept reste le même : **on ajoute du sens via un mécanisme qui n'entrave pas le caractère réutilisable des composants**.
 
-{% include promo-buy.html %}
+### Performance des sélecteurs
 
-### Selector Performance
+Un sujet qui se trouve être plus intéressant qu'important compte tenu de la puissance des navigateurs d'aujourd'hui est celui de la performance des sélecteurs. C'est-à-dire la vitesse à laquelle le navigateur est capable de cibler les éléments du DOM à partir d'un sélecteur CSS.
 
-A topic which is—with the quality of today’s browsers—more interesting than it
-is important, is selector performance. That is to say, how quickly a browser can
-match the selectors your write in CSS up with the nodes it finds in the DOM.
-
-Generally speaking, the longer a selector is (i.e. the more component parts) the
-slower it is, for example:
+De manière très générale, plus un sélecteur est long (comprendre plus il est fait de petits composants), plus il est lent. Par exemple :
 
     body.home div.header ul {}
 
-…is a far less efficient selector than:
+…est bien moins efficace que :
 
     .primary-nav {}
 
-This is because browsers read CSS selectors **right-to-left**. A browser will
-read the first selector as
+Cela vient du fait que les navigateurs lisent les sélecteurs **de droite à gauche**. Un navigateur va donc lire le premier sélecteur de la façon suivante :
 
-* find all `ul` elements in the DOM;
-* now check if they live anywhere inside an element with a class of `.header`;
-* next check that `.header` class exists on a `div` element;
-* now check that that all lives anywhere inside any elements with a class of
-  `.home`;
-* finally, check that `.home` exists on a `body` element.
+* trouver tous les `ul` du DOM ;
+* puis tester s'ils se trouvent à l'intérieur d'un élément avec la classe `.header` ;
+* puis tester que cette classe `.header` se trouve sur un élément de type `div` ;
+* puis tester s'ils se trouvent à l'intérieur d'un élément avec la classe `.home` ;
+* puis tester que cette classe `.home` se trouve sur un élément de type `body`.
 
-The second, in contrast, is simply a case of the browser reading
+Le deuxième sélecteur par contre :
 
-* find all the elements with a class of `.primary-nav`.
+* trouver tous les éléments qui ont la classe `.primary-nav`.
 
-To further compound the problem, we are using descendant selectors (e.g. `.foo
-.bar {}`). The upshot of this is that a browser is required to start with the
-rightmost part of the selector (i.e. `.bar`) and keep looking up the DOM
-indefinitely until it finds the next part (i.e. `.foo`). This could mean
-stepping up the DOM dozens of times until a match is found.
+En d'autres termes, lorsque que l'on utilise des sélecteurs descendants (ex : `.foo .bar {}`), le navigateur commence par chercher la partie la plus à droite (`.bar`), puis remonte le DOM jusqu'à trouver la partie la plus à gauche (`.foo`). Cela peut impliquer de parcourir le DOM des dizaines de fois avant qu'un élément soit trouvé.
 
-This is just one reason why **nesting with preprocessors is often a false
-economy**; as well as making selectors unnecessarily more specific, and creating
-location dependency, it also creates more work for the browser.
+C'est une des raisons pour laquelle **imbriquer les sélecteurs avec un pré-processeur n'est pas une bonne idée**. Au delà de rendre les sélecteurs inutilement spécifiques, et de créer des dépendances de lieu, cela complique également le travail du navigateur.
 
-By using a child selector (e.g. `.foo > .bar {}`) we can make the process much
-more efficient, because this only requires the browser to look one level higher
-in the DOM, and it will stop regardless of whether or not it found a match.
+En utilisant un sélecteur de descendance directe  (ex : `.foo > .bar {}`), on peut rendre le processus bien plus efficace car cela ne demande plus qu'un seul niveau de recherche pour le navigateur. Qu'il ait trouvé des éléments correspondants ou non, il cessera la recherche aussitôt le niveau du parent analysé.
 
-#### The Key Selector
+#### Le sélecteur-clé
 
-Because browsers read selectors right-to-left, the rightmost selector is often
-critical in defining a selector’s performance: this is called the <i>key
-selector</i>.
+Parce que les navigateurs lisent les sélecteurs de droite à gauche, la partie la plus à droite d'un sélecteur est la plus critique vis à vis de la performance du sélecteur: c'est ce que l'on appelle le <i>sélecteur-clé</i>.
 
-The following selector might appear to be highly performant at first glance. It
-uses an ID which is nice and fast, and there can only ever be one on a page, so
-surely this will be a nice and speedy lookup—just find that one ID and then
-style everything inside of it:
+Le sélecteur suivant semble être extrêmement performant au premier coup d'oeil. Il utilise une ID, qui se trouve être très rapide, et dans la mesure où il ne peut y avoir qu'une occurrence par page, on est en droit d'estimer une exécution rapide. Après tout, il suffit de cibler l'élément avec l'ID recherchée et de styler tous ses enfants :
 
     #foo * {}
 
-The problem with this selector is that the key selector (`*`) is very, _very_
-far reaching. What this selector actually does is finds _every single_ node in
-the DOM (even `<title>`, `<link>`, and `<head>` elements; _everything_) and then
-looks to see if it lives anywhere at any level within `#foo`. This is a very,
-_very_ expensive selector, and should most likely be avoided or rewritten.
+Le problème de ce sélecteur est que le sélecteur-clé (`*`) est très *très* gourmand. En réalité, ce sélecteur cible *tous les noeuds* du DOM (y compris `<title>`, `<link>`, `<head>`... absolument *tout*) puis teste s'ils font partie d'un élément avec l'ID `foo`. C'est donc un sélecteur *excessivement* coûteux qui devrait être évité dans la mesure du possible.
 
-Thankfully, by writing selectors with good [Selector Intent](#selector-intent),
-we are probably avoiding inefficient selectors by default; we are very unlikely
-to have greedy key selectors if we’re targeting the right things for the right
-reason.
+Heureusement, en écrivant des sélecteurs qui ont une [intention correcte](#intention), on évite justement ce genre de sélecteurs. On a rarement si ce n'est jamais de sélecteurs aussi gourmands, parce que l'on cible spécifiquement le(s) bon(s) élément(s) pour la bonne raison.
 
-That said, however, CSS selector performance should be fairly low on your list
-of things to optimise; browsers are fast, and are only ever getting faster, and
-it is only on notable edge cases that inefficient selectors would be likely to
-pose a problem.
+Ceci étant dit, la performance des sélecteurs devrait être le moindre de vos soucis en matière d'optimisation. Les navigateurs sont rapides, et ça va en s'arrangeant, aussi les cas où la performance d'un sélecteur se fait sentir sont exceptionnellement rares.
 
-As well as their own specific issues, nesting, qualifying, and poor Selector
-Intent all contribute to less efficient selectors.
+J'en profite pour rappeler qu'en plus des autres soucis qui leurs sont liés, l'imbrication, la qualification et les mauvaises intentions de sélecteurs contribuent aux éventuels problèmes de performance des sélecteurs.
 
-### General Rules
+### Règles générales
 
-Your selectors are fundamental to writing good CSS. To very briefly sum up the
-above sections:
+Vos sélecteurs constituent donc un critère fondamental dans l'écriture de code CSS efficace. Pour résumer très brièvement les sections précédentes :
 
-* **Select what you want explicitly**, rather than relying on circumstance or
-  coincidence. Good Selector Intent will rein in the reach and leak of your
-  styles.
-* **Write selectors for reusability**, so that you can work more efficiently and
-  reduce waste and repetition.
-* **Do not nest selectors unnecessarily**, because this will increase
-  specificity and affect where else you can use your styles.
-* **Do not qualify selectors unnecessarily**, as this will impact the number of
-  different elements you can apply styles to.
-* **Keep selectors as short as possible**, in order to keep specificity down and
-  performance up.
+* **On sélectionne explicitement ce que l'on veut** plutôt que de se baser sur des circonstances et la coïncidence. Maîtrise l'intention des sélecteurs est capitale.
+* **On écrit des sélecteurs pour la réutilisation**, afin de limiter les pertes et la répétition.
+* **On imbrique les sélecteurs que si ça fait sens**, car ça augmente la spécificité et entrave la réutilisation.
+* **On évite la qualification des sélecteurs**, car là encore, cela vient empiéter sur la réutilisation des styles.
+* **On essaye de garder des sélecteurs aussi courts que possible**, afin de limiter la spécificité et d'améliorer les performances.
 
-Focussing on these points will keep your selectors a lot more sane and easy to
-work with on changing and long-running projects.
+Se focaliser sur tous ces points a pour effet de garder des sélecteurs sains et avec lesquels il est facile de travailler, y compris sur un projet à long terme.
 
-### Further Reading
+### A lire pour aller plus loin
 
 * [<cite>Shoot to kill; CSS selector intent</cite>](http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/)
 * [<cite>‘Scope’ in CSS</cite>](http://csswizardry.com/2013/05/scope-in-css/)
@@ -1378,135 +1088,87 @@ work with on changing and long-running projects.
 
 ---
 
-## Specificity
+## Spécificité
 
-As we’ve seen, CSS isn’t the most friendly of languages: globally operating,
-very leaky, dependent on location, hard to encapsulate, based on inheritance…
-But! None of that even comes close to the horrors of specificity.
+Comme nous l'avons vu, CSS n'est pas le langage le plus agréable : un namespace global, des fuites un peu partout, d'éventuelles dépendances de lieu, le tout difficile à encapsuler, et basé sur de l'héritage parfois difficile à appréhender… Mais, tout cela n'est rien en comparaison de l'horreur qu'est la spécificité.
 
-No matter how well considered your naming, regardless of how perfect your source
-order and cascade are managed, and how well you’ve scoped your rulesets, just
-one overly-specific selector can undo everything. It is a gigantic curveball,
-and undermines CSS’ very nature of the cascade, inheritance, and source order.
+Peu importe que votre nommage soit bon, que l'ordre de la source soit impeccable, que la cascade soit parfaitement gérée et que vous ayez correctement écrit vos règles : il suffit d'une règle trop spécifique pour tout briser. C'est un concept qui est susceptible d'ébranler facilement les autres concepts propres à CSS : cascade, héritage et ordre de la source.
 
-The problem with specificity is that it sets precedents and trumps that cannot
-_simply_ be undone. If we take a real example that I was responsible for some
-years ago:
+Le problème avec la spécificité c'est qu'elle force des choses qui peuvent être très pénible à défaire. Si on prend un véritable exemple dont j'ai été l'auteur il y a quelques années :
 
     #content table {}
 
-Not only does this exhibit poor [Selector Intent](#selector-intent)—I didn’t
-actually want every `table` in the `#content` area, I wanted a specific type of
-`table` that just happened to live there—it is a hugely over-specific selector.
-This became apparent a number of weeks later, when I needed a second type of
-`table`:
+Non seulement ceci est [un sélecteur de piètre intention](#intention) &mdash;je ne voulais pas cibler toutes les `table` de la zone `#content`, je vous une table bien spécifique qui se trouvait là&mdash; c'est un sélecteur bien trop spécifique. Ce fut apparent quelques semaines plus tard, quand j'ai une besoin d'un autre type de `table` :
 
     #content table {}
 
     /**
-     * Uh oh! My styles get overwritten by `#content table {}`.
+     * Oh-oh! Mes styles sont écrasés par `#content table {}`.
      */
     .my-new-table {}
 
-The first selector was trumping the specificity of the one defined _after_ it,
-working against CSS’ source-order based application of styles. In order to
-remedy this, I had two main options. I could
+Le premier sélecteur dépassait largement la spécificité de celui défini *plus bas*, allant donc à l'encontre de l'ordre de la source. Pour corriger le souci, j'avais deux options :
 
-1. refactor my CSS and HTML to remove that ID;
-2. write a more specific selector to override it.
+1. refactoriser le CSS et le HTML pour retirer cette ID ;
+2. écrire un sélecteur plus spécifique pour l'écraser.
 
-Unfortunately, refactoring would have taken a long time; it was a mature product
-and the knock-on effects of removing this ID would have been a more substantial
-business cost than the second option: just write a more specific selector.
+Malheureusement, refactoriser aurait pris trop de temps ; c'était un projet mur et les effets qu'aurait pu engendrer le retrait de cet ID auraient coûté davantage de la seconde option : écrire un sélecteur plus spécifique que le premier.
 
     #content table {}
 
     #content .my-new-table {}
 
-Now I have a selector that is _even more specific still!_ And if I ever want to
-override this one, I will need another selector of at least the same specificity
-defined after it. I’ve started on a downward spiral.
+Maintenant, on a un sélecteur *encore plus spécifique* que celui que l'on jugeait trop spécifique. Et si on veut pouvoir écraser ces styles, il faudra un sélecteur avec une spécifité égale ou plus grande. C'est l'entrée de la spirale infernale.
 
-Specificity can, among other things,
+La spécificité peut, entre autres :
 
-* limit your ability to extend and manipulate a codebase;
-* interrupt and undo CSS’ cascading, inheriting nature;
-* cause avoidable verbosity in your project;
-* prevent things from working as expected when moved into different
-  environments;
-* lead to serious developer frustration.
+* limiter la portabilité et réutilisation du code ;
+* interrompre et aller à l'encontre de la nature d'héritage de la cascade ;
+* causer de la verbosité inutile au sein du projet ;
+* empêcher le fonctionnement normal lors d'un changement d'environnement ;
+* sérieusement frustrer les développeurs.
 
-All of these issues are greatly magnified when working on a larger project with
-a number of developers contributing code.
+Ceci est d'autant plus vrai lorsqu'il s'agit de gros projets avec de nombreux développeurs contribuant au code.
 
-### Keep It Low at All Times
+### Toujours la plus basse possible
 
-The problem with specificity isn’t necessarily that it’s high or low; it’s the
-fact it is so variant and that it cannot be opted out of: the only way to deal
-with it is to get progressively more specific—the notorious <i>specificity
-wars</i> we looked at above.
+Le problème avec la spécificité n'est pas tellement qu'elle soit haute ou basse ; c'est le fait qu'elle varie sans pouvoir être amoindrie ou annulée. Le seul moyen de lutter est d'être de plus en plus spécifique &mdash;d'où la notion de <i>specificity war</i> dont on a vu un cas classique plus haut.
 
-One of the single, simplest tips for an easier life when writing
-CSS—particularly at any reasonable scale—is to keep always try and keep
-specificity as low as possible at all times. Try to make sure there isn’t a lot
-of variance between selectors in your codebase, and that all selectors strive
-for as low a specificity as possible.
+Un des conseils plus simples que je puisse vous donner pour vous faciliter la vie quand vous écrivez du code CSS, surtout dans le cas d'un projet d'une taille raisonnable, est de toujours essayer de garder la spécificité la plus petite possible. Assurez-vous qu'il n'y ait pas de grosses variations de spécificité entre les différents sélecteurs du projet, et qu'ils se trouvent tous avec la spécificité la plus basse possible.
 
-Doing so will instantly help you tame and manage your project, meaning that no
-overly-specific selectors are likely to impact or affect anything of a lower
-specificity elsewhere. It also means you’re less likely to need to fight your
-way out of specificity corners, and you’ll probably also be writing much smaller
-stylesheets.
+En faisant ça, vous vous assurez de ne pas avoir de sélecteurs très spécifiques qui viennent impacter des sélecteurs moins spécifiques ailleurs, ce qui vous aidera grandement dans la maintenance de vos projets, cela va sans dire. Cela signifie aussi que vous réduisez grandement les choses de vous battre avec la notion de spécificité, rendant par la même occasion vos feuilles de styles plus légères.
 
-Simple changes to the way we work include, but are not limited to,
+Voici une liste non-exhaustive des changements que l'on peut faire pour aller dans ce sens :
 
-* not using IDs in your CSS;
-* not nesting selectors;
-* not qualifying classes;
-* not chaining selectors.
+* ne pas utiliser d'IDs en CSS ;
+* ne pas imbriquer les sélecteurs ;
+* ne pas qualifier les classes ;
+* ne pas chaîner les sélecteurs.
 
-**Specificity can be wrangled and understood, but it is safer just to avoid it
-entirely.**
+**La spécificité peut être comprise et maîtrisée, mais il est simplement plus sage de l'éviter complètement.**
 
-### IDs in CSS
+### Les IDs en CSS
 
-If we want to keep specificity low, which we do, we have one really quick-win,
-simple, easy-to-follow rule that we can employ to help us: avoid using IDs in CSS.
+Si l'on souhaite réduire la spécificité de nos sélecteurs de manière générale, il y a une méthode simple et rapide à mettre en place : ne pas utiliser d'IDs en CSS.
 
-Not only are IDs inherently non-reusable, they are also vastly more specific
-than any other selector, and therefore become specificity anomalies. Where the
-rest of your selectors are relatively low specificity, your ID-based selectors
-are, comparatively, much, _much_ higher.
+Non seulement les IDs ne sont pas réutilisables de par leur nature même, mais elles sont également plus spécifiques que n'importe quel autre sélecteur, ce qui entraîne d'éventuels soucis de spécificité. Quand le reste de vos sélecteurs partage une spécificité relativement basse, les sélecteurs basés sur des IDs sont comparativement extrêmement élevés.
 
-In fact, to highlight the severity of this difference, see how _one thousand_
-chained classes cannot override the specificity of a single ID:
-[jsfiddle.net/0yb7rque](http://jsfiddle.net/csswizardry/0yb7rque/).
-<small>(Please note that in Firefox you may see the text rendering in blue: this
-is a [known bug](https://twitter.com/codepo8/status/505004085398224896), and an
-ID will be overridden by 256 chained classes.)</small>
+En fait, pour illustrer combien la différence est sévère, voyez comment *1000 classes* chaînées ne peuvent pas surpasser la spécificité d'une simple ID :
+[jsfiddle.net/0yb7rque](http://jsfiddle.net/csswizardry/0yb7rque/). <small>(Notez cependant que sur Firefox, vous devriez voir le texte en bleu : c'est un [bug connu](https://twitter.com/codepo8/status/505004085398224896) selon lequel une ID peut être écrasée par 256 classes chaînées.)</small>
 
-<small>**N.B.** It is still perfectly okay to use IDs in HTML and JavaScript; it
-is only in CSS that they prove troublesome.</small>
+<small>**N.B.** Il est bien évidemment tout à fait correct d'utiliser des IDs en HTML et en JavaScript ; c'est uniquement dans le domaine des CSS qu'elles s'avèrent problématiques.</small>
 
-It is often suggested that developers who choose not to use IDs in CSS merely
-<q>don’t understand how specificity works</q>. This is as incorrect as it is
-offensive: no matter how experienced a developer you are, this behaviour cannot
-be circumvented; no amount of knowledge will make an ID less specific.
+Il est souvent décrié que les développeurs qui choisissent délibérement de ne pas utiliser d'ID en CSS <q>ne comprennent pas comment la spécificité fonctionne</q>. C'est aussi incorrect qu'offensant : peu importe l'expérience, ce comportement ne peut pas être défait, et ce n'est pas un niveau avancé qui va rendre une ID moins spécifique.
 
-Opting into this way of working only introduces the chance of problems occurring
-further down the line, and—particularly when working at scale—all efforts should
-be made to _avoid_ the potential for problems to arise. In a sentence:
+Choisir d'abandonner les IDs en CSS, c'est réduire les chances de rencontrer des problèmes de spécificité, surtout dans le cas de gros projets. Tous les efforts devraient être faits afin *d'éviter* d'éventuels soucis. En d'autres termes :
 
-**It is just not worth introducing the risk.**
+**Ca ne vaut pas le coup.**
 
-### Nesting
+### Imbrication
 
-We’ve already looked at how nesting can lead to location dependent and
-potentially inefficient code, but now it’s time to take a look at another of its
-pitfalls: it makes selectors more specific.
+Nous avons déjà vu que l'imbrication des règles les unes dans les autres peut engendrer des dépendances de contexte et par là même du code inefficace, mais il est temps de s'attacher à un autre inconvénient : elle rend les sélecteurs plus spécifiques.
 
-When we talk about nesting, we don’t necessarily mean preprocessor nesting, like
-so:
+Par imbrication, on ne parle pas nécessairement de l'imbrication des pré-processeurs comme ceci :
 
     .foo {
 
@@ -1514,41 +1176,33 @@ so:
 
     }
 
-We’re actually talking about _descendant_ or _child_ selectors; selectors which
-rely on a thing within a thing. That could look like any one of the following:
+On parle également des sélecteurs descendants ou enfants ; sélecteurs qui se basent sur l'idée d'avoir un élément dans un autre. Cela peut donc concerner n'importe lequel des exemples suivants :
 
     /**
-     * An element with a class of `.bar` anywhere inside an element with a class of
-     * `.foo`.
+     * Un élément avec la classe `.bar` dans un élément avec la classe `.foo`.
      */
     .foo .bar {}
 
 
     /**
-     * An element with a class of `.module-title` directly inside an element with a
-     * class of `.module`.
+     * Un élément avec la classe `.module-title`
+     * directement dans un élément avec la classe `.module`.
      */
     .module > .module-title {}
 
 
     /**
-     * Any `li` element anywhere inside a `ul` element anywhere inside a `nav`
-     * element
+     * Un élément `li` dans un élément `ul` dans un élément `nav`.
      */
     nav ul li {}
 
-Whether you arrive at this CSS via a preprocessor or not isn’t particularly
-important, but it is worth noting that **preprocessors tout this as a feature,
-where is actually to be avoided wherever possible**.
+Que vous obteniez ces sélecteurs via un pré-processeur ou non n'est pas particulièrement important, mais il est bon de noter que **les pré-processeurs vendent cela comme une fonctionnalité, alors qu'il vaut mieux l'éviter autant que faire se peut**.
 
-Generally speaking, each part in a compound selector adds specificity. Ergo, the
-fewer parts to a compound selector then the lower its overall specificity, and
-we always want to keep specificity low. To quote Jonathan Snook:
+De manière générale, chaque morceau d'un sélecteur composé ajoute de la spécificité. Par conséquent, moins il y a de parties dans un sélecteur, moins sa spécificité sera haute, or nous ne voulais pas d'une grande spécificité. Pour citer Jonathan Snook :
 
-> …whenever declaring your styles, **use the least number of selectors required
-> to style an element.**
+> …quand vous déclarez vos règles, **utilisez le minimum de sélecteurs possible pour styler un élément.**
 
-Let’s look at an example:
+Prenons un exemple :
 
     .widget {
         padding: 10px;
@@ -1558,10 +1212,7 @@ Let’s look at an example:
             color: red;
         }
 
-To style an element with a class of `.widget__title`, we have a selector that is
-twice as specific as it needs to be. That means that if we want to make any
-modifications to `.widget__title`, we’ll need another at-least-equally specific
-selector:
+Pour styler un élément avec une classe `.widget__title`, nous avons un sélecteur deux fois plus spécifique qu'il devrait l'être. Cela signifie que si l'on souhaite appliquer des modifications à `.widget__title`, on va avoir besoin d'un autre sélecteur au moins aussi spécifique, si ce n'est plus :
 
     .widget { ... }
 
@@ -1571,60 +1222,37 @@ selector:
             color: blue;
         }
 
-Not only is this entirely avoidable—we caused this problem ourselves—we have a
-selector that is literally double the specificity it needs to be. We used 200%
-of the specificity actually required. And not only _that_, but this also leads
-to needless verbosity in our code—more to send over the wire.
+Non seulement c'est facilement évitable &mdash;on s'est imposé ce problème soi-même&mdash; mais en plus on se retrouve avec un sélecteur deux fois trop spécifique. On a utilisé 200% de la spécificité requise. En plus de *ça*, on introduit de la verbosité inutile dans notre code.
 
-As a rule, **if a selector will work without it being nested then do not nest
-it**.
+La règle à retenir : **si un sélecteur fonctionne sans être imbriqué, alors on ne l'imbrique pas**.
 
 #### Scope
 
-One possible advantage of nesting—which, unfortunately, does not outweigh the
-disadvantages of increased specificity—is that it provides us with a namespace
-of sorts. A selector like `.widget .title` scopes the styling of `.title` to
-an element that only exists inside of an element carrying a class of `.widget`.
+Un avantage de l'imbrication &mdash;qui malheureusement ne suffit pas à contre-balancer tous les inconvénients d'une sur-spécificité&mdash; est qu'elle confère une sorte de namespace. Un sélecteur comme `.widget .title` encapsule les styles de `.title` dans un contexte `.widget`.
 
-This goes some way to providing our CSS with scope and encapsulation, but does
-still mean that our selectors are twice as specific as they need to be. A better
-way of providing this scope would be via a namespace—which we already have in
-the form of [BEM-like Naming](#bem-like-naming)—which does not lead to an
-unnecessary increase in specificity.
+C'est une idée pour fournir à CSS un mécanisme de scope et d'encapsulation, mais ça rend quand même nos sélecteurs deux fois trop spécifiques. Une meilleure approche pour gérer le scope est d'inclure le namespace dans le nommage, ce que l'on fait déjà via le [nommage BEM-like](#notation-bem-like), qui a l'avantage de ne pas accroîte inutilement la spécificité des sélecteurs.
 
-Now we have better scoped CSS with minimal specificity—the best of both worlds.
+Ainsi nous avons des CSS scopés avec la plus petite spécificité possible ; le must.
 
-##### Further Reading
+##### Pour aller plus loin
 
 * [<cite>‘Scope’ in CSS</cite>](http://csswizardry.com/2013/05/scope-in-css/)
 
 ### `!important`
 
-The word `!important` sends shivers down the spines of almost all front-end
-developers. `!important` is a direct manifestation of problems with specificity;
-it is a way of cheating your way out of specificity wars, but usually comes at a
-heavy price. It is often viewed as a last resort—a desperate, defeated stab at
-patching over the symptoms of a much bigger problem with your code.
+Le terme `!important` provoque des frissons dans le dos de presque tous les développeurs front-end. `!important` est une manifestation directe des problèmes de spécificité ; c'est une sorte de joker dans la guerre des spécificités, qui vient généralement au prix fort. C'est souvent vu comme la technique de la dernière chance &mdash; la tentative désespérée de correction d'énormes problèmes dans le code.
 
-The general rule is that `!important` is always a bad thing, but, to quote Jamie
-Mason:
+D'ordre général, `!important` est toujours une mauvaise idée mais vous connaissez l'adage :
 
-> Rules are the children of principles.
+> Il y a l'exception qui confirme la règle.
 
-That is to say, a single rule is a simple, black-and-white way of adhering to a
-much larger principle. When you’re starting out, the rule <q>never use
-`!important`</q> is a good one.
+Quand on démarre, la règle de <q>ne jamais utiliser `!important`</q> est une bonne règle.
 
-However, once you begin to grow and mature as a developer, you begin to
-understand that the principle behind that rule is simply about keeping
-specificity low. You’ll also learn when and where the rules can be bent…
+Ceci étant dit, quand on commence à grandir en temps que développeur, on commence à comprendre que l'idée derrière cette règle est simplement de garder une spécificité aussi basse que possible. On apprend alors qu'il y a des cas où les règles sont faites pour être outrepassées.
 
-`!important` does have a place in CSS projects, but only if used sparingly and
-proactively.
+`!important` a quand même une place dans les projets CSS, mais c'est somme toute rare et doit être fait de manière proactive.
 
-Proactive use of `!important` is when it is used _before_ you’ve encountered any
-specificity problems; when it is used as a guarantee rather than as a fix. For
-example:
+Une utilisation proactive de `!important` signifie que ce soit être utilisé *avant* de se retrouver face à des problèmes de spécificité ; quand on l'utilise comme une garantie et non pas comme un correctif. Par exemple :
 
     .one-half {
         width: 50% !important;
@@ -1634,25 +1262,17 @@ example:
         display: none !important;
     }
 
-These two helper, or <i>utility</i>, classes are very specific in their
-intentions: you would only use them if you wanted something to be rendered at
-50% width or not rendered at all. If you didn’t want this behaviour, you would
-not use these classes, therefore whenever you do use them you will definitely
-want them to win.
+Ces deux classes *helpers*, ou <i>utilitaires</i>, sont très explicites dans leurs intentions : donner une largeur de moitié à un élément ou le cacher complètement. Si on ne veut pas nécessairement ce comportement, on n'applique pas ces classes. De fait quand on les applique on veut impérativement l'effet escompté.
 
-Here we proactively apply `!important` to ensure that these styles always win.
-This is correct use of `!important` to guarantee that these trumps always work,
-and don’t accidentally get overridden by something else more specific.
+Ici on utilise `!important` de manière proactive pour s'assurer que ces styles soient toujours effectifs. C'est un usage correct d'`important!` pour garantir un comportement bien particulier, afin qu'il ne soit pas surchargé par quelque chose de plus spécifique.
 
-Incorrect, <i>reactive</i> use of `!important` is when it is used to combat
-specificity problems after the fact: applying `!important` to declarations
-because of poorly architected CSS. For example, let’s imagine we have this HTML:
+Une utilisation incorrecte et <i>reactive</i> de `!important` serait de combattre les soucis de spécificités : appliquer `!important` à des déclarations CSS mal conçues. Par exemple, imaginons cette structure HTML :
 
     <div class="content">
         <h2 class="heading-sub">...</h2>
     </div>
 
-…and this CSS:
+…et ces CSS:
 
     .content h2 {
         font-size: 2em;
@@ -1662,69 +1282,45 @@ because of poorly architected CSS. For example, let’s imagine we have this HTM
         font-size: 1.5em !important;
     }
 
-Here we can see how we’ve used `!important` to force our `.heading-sub {}`
-styles to reactively override our `.content h2 {}` selector. This could have
-been circumvented by any number of things, including using better Selector
-Intent, or avoiding nesting.
+Dans ce cas présent, on se rend compte que l'on a utilisé `!important` pour forcer certains styles de `.heading-sub` à écraser ceux de `.content h2`. Ce pourrait être évité de bien des façons, comme utiliser un meilleur sélecteur ou éviter l'imbrication.
 
-In these situations, it is preferable that you investigate and refactor any
-offending rulesets to try and bring specificity down across the board, as
-opposed to introducing such specificity heavyweights.
+Dans ces situations, il est préférable d'investiguer et de refactoriser les règles qui posent problème en réduisant la spécificité générale plutôt que de tomber dans la facilité en surchargeant la spécificité.
 
-**Only use `!important` proactively, not reactively.**
+**N'utilisez `!important` que de manière proactive, jamais reactive.**
 
-### Hacking Specificity
+### Contourner les problèmes de spécificité
 
-With all that said on the topic of specificity, and keeping it low, it is
-inevitable that we will encounter problems. No matter how hard we try, and how
-conscientious we are, there will always be times that we need to hack and
-wrangle specificity.
+Avec tout ce que l'on vient de se dire au sujet de la spécificité, comme quoi il faut la garder basse autant que possible, il est de toutes façons inévitable que l'on rencontre des soucis un jour ou l'autre. Peu importe combien on se veut consciencieux, il y aura forcément un moment où on va devoir contourner un souci de spécificité.
 
-When these situations do arise, it is important that we handle the hacks as
-safely and elegantly as possible.
+Quand cette situation arrive, il est important de trouver une solution aussi fiable et élégante que possible.
 
-In the event that you need to increase the specificity of a class selector,
-there are a number of options. We could nest the class inside something else to
-bring its specificity up. For example, we could use `.header .site-nav {}` to
-bring up the specificity of a simple `.site-nav {}` selector.
+Dans le cas où vous devez accroître la spécificité d'une classe, il y a plusieurs options. On peut imbriquer celle-ci dans un autre sélecteur pour augmenter la spécificité. Par exemple, on peut utiliser `.header .site-nav` pour gonfler la spécificité de `.site-nav`.
 
-The problem with this, as we’ve discussed, is that it introduces location
-dependency: these styles will only work when the `.site-nav` component is in the
-`.header` component.
+Le problème avec ça, et on en a déjà parlé, c'est qu'on introduit une dépendance de contexte : ces styles ne fonctionneront que si `.site-nav` se trouvent dans un composant `.header`.
 
-Instead, we can use a much safer hack that will not impact this component’s
-portability: we can chain that class with itself:
+Un hack bien plus fiable qui n'impacte pas la portabilité du composant serait de doubler la classe comme ceci :
 
     .site-nav.site-nav {}
 
-This chaining doubles the specificity of the selector, but does not introduce
-any dependency on location.
+Ce procédé double la spécificité du sélecteur sans introduire de dépendance d'aucune sorte.
 
-In the event that we do, for whatever reason, have an ID in our markup that we
-cannot replace with a class, select it via an attribute selector as opposed to
-an ID selector. For example, let’s imagine we have embedded a third-party widget
-on our page. We can style the widget via the markup that it outputs, but we have
-no ability to edit that markup ourselves:
+Dans le cas où on a, pour quelque raison que ce soit, une ID dans le markup que l'on ne peut pas remplacer avec une classe, on la cible via un sélecteur d'attribut plutôt qu'un sélecteur d'ID. Par exemple, imaginons que nous avons un widget externe inclus dans notre page. Nous pouvons styler le widget mais pas changer son markup nous-même :
 
     <div id="third-party-widget">
         ...
     </div>
 
-Even though we know not to use IDs in CSS, what other option do we have? We want
-to style this HTML but have no access to it, and all it has on it is an ID.
+Nous savons pertinemment que nous ne devons pas utiliser d'ID en CSS mais avons-nous seulement le choix ? Nous devons styler cet élément, sans autre type d'accroche qu'une ID.
 
-We do this:
+On peut faire :
 
     [id="third-party-widget"] {}
 
-Here we are selecting based on an attribute rather than an ID, and attribute
-selectors have the same specificity as a class. This allows us to style based on
-an ID, but without introducing its specificity.
+Ici, on cible l'élément en se basant sur un sélecteur d'attribut plutôt qu'une ID, dans la mesure où un sélecteur d'attribut a la même spécificité qu'une classe. Ceci nous permet de styler un élément possédant une ID sans pour autant introduire une haute spécificité.
 
-Do keep in mind that these _are_ hacks, and should not be used unless you have
-no better alternative.
+Gardez à l'esprit que ces astuces *sont* des hacks, qui ne doivent être utilisés qu'en dernier recours.
 
-#### Further Reading
+#### Pour aller plus loin
 
 * [<cite>Hacks for dealing with specificity</cite>](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/)
 

@@ -2,6 +2,7 @@
 title: CSS Guidelines
 email: harry@csswizardry.com
 description: "High-level advice and guidelines for writing sane, manageable, scalable CSS"
+description_fr: "Conseils et styleguide de haute voltige pour des CSS sains, maintenables et ajustables"
 baseurl: ""
 url: "http://cssguidelin.es"
 version: 2.1.3
