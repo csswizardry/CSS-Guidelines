@@ -165,10 +165,10 @@ that they found. Ugly code sets a bad precedent.
 
 At a very high-level, we want
 
-* Four (4) space indents. No tabs;
+* four (4) space indents, no tabs;
 * 80 character wide columns;
-* Multi-line CSS;
-* Meaningful use of whitespace.
+* multi-line CSS;
+* meaningful use of whitespace.
 
 <span class="highlight" id="did-you-see-this-bit">But, as with anything, the
 specifics are somewhat irrelevant—consistency is key.</span>
