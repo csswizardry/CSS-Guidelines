@@ -2177,8 +2177,8 @@ particularly considering the move toward component-based UIs. It will mean you
 can more easily recycle and reuse functionality, as well rapidly construct
 larger parts of UI from a known set of composable objects. Think back to our
 error message example in the [Single Responsibility
-Principle](#single-responsibility-principle) section; we created a complete UI
-component by composing a number of much smaller and unrelated objects.
+Principle](#the-single-responsibility-principle) section; we created a complete
+UI component by composing a number of much smaller and unrelated objects.
 
 ### The Separation of Concerns
 
