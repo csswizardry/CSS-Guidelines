@@ -1880,7 +1880,7 @@ thing and one thing only. More formally:
 > function, variable, etc.) should have a single responsibility, and that
 > responsibility should be entirely encapsulated by the context.
 
-What this means for us is that our CSS should be be composed of a series of much
+What this means for us is that our CSS should be composed of a series of much
 smaller classes that focus on providing very specific and limited functionality.
 This means that we need to decompose UIs into their smallest component pieces
 that each serve a single responsibility; they all do just one job, but can be
