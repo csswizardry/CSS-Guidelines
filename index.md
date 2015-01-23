@@ -5,6 +5,8 @@ layout: default
 <h1 class="hide">{{ site.title }}</h1>
 <h2 class="alpha  site-title">{{ site.description }}</h2>
 
+<script async src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=cssguidelines" id="_carbonads_js"></script>
+
 ## About the Author
 
 <cite>CSS Guidelines</cite> is a document by me, [Harry

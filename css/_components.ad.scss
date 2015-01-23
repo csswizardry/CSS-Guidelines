@@ -1,0 +1,44 @@
+/*------------------------------------*\
+    #AD
+\*------------------------------------*/
+
+[id="carbonads"] {
+    @extend %margin-bottom;
+    @include font-size(12px, false);
+    padding: halve($spacing-unit);
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #f2f2f2;
+    border-radius: 3px;
+    border: 1px solid #e6e6e6;
+
+    &,
+    a {
+        color: #999;
+    }
+
+}
+
+    .carbon-wrap {
+        @extend %clearfix;
+        display: block;
+    }
+
+        .carbon-img {
+            display: block;
+            padding-bottom: halve($spacing-unit);
+        }
+
+        .carbon-text {
+            display: block;
+            overflow: hidden;
+
+            .carbon-img:hover + & {
+                text-decoration: underline;
+            }
+
+        }
+
+        .carbon-poweredby {
+            font-weight: normal;
+        }

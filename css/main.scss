@@ -41,6 +41,7 @@
  * Logo.................CSS Guidelines’ logo.
  * Buttons..............Our extension of inuitcss’ buttons.
  * Boxes................Our extension of inuitcss’ box object.
+ * Ad...................Carbon Ads.
  *
  * TRUMPS
  * Clearfix.............Simple clearfix helper.
@@ -92,6 +93,7 @@ $inuit-btn-border-width:    2px;
 @import "components.logo";
 @import "components.buttons";
 @import "components.boxes";
+@import "components.ad";
 
 @import "bower_components/inuit-clearfix/trumps.clearfix";
 @import "trumps.hide";
