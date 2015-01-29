@@ -354,7 +354,7 @@ I use a docBlock-esque commenting style which I limit to 80 characters in length
      * copy and paste.
      */
 
-You should document and comment our code as much as you possibly can, what may
+You should document and comment your code as much as you possibly can, what may
 seem or feel transparent and self explanatory to you may not be to another dev.
 Write a chunk of code then write about it.
 
