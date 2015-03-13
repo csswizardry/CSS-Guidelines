@@ -389,7 +389,7 @@ These types of ruleset benefit from being single-lined because
 
 ### Indenting
 
-As well as intending individual declarations, indent entire related rulesets to
+As well as indenting individual declarations, indent entire related rulesets to
 signal their relation to one another, for example:
 
     .foo {}
