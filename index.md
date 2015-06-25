@@ -1339,7 +1339,7 @@ style everything inside of it:
     #foo * {}
 
 The problem with this selector is that the key selector (`*`) is very, _very_
-far reaching. What this selector actually does is finds _every single_ node in
+far reaching. What this selector actually does is find _every single_ node in
 the DOM (even `<title>`, `<link>`, and `<head>` elements; _everything_) and then
 looks to see if it lives anywhere at any level within `#foo`. This is a very,
 _very_ expensive selector, and should most likely be avoided or rewritten.
@@ -2148,7 +2148,7 @@ Our mixin:
         }
 
 Now the two declarations only exist once, meaning we’re not repeating ourselves.
-If we ever switch out our web-font, or move to a `font-weight: regular;`
+If we ever switch out our web-font, or move to a `font-weight: normal;`
 version, we only need to make that change in one place.
 
 In short, only DRY code that is actually, thematically related. Do not try to
