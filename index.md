@@ -270,7 +270,7 @@ Begin every new major section of a CSS project with a title:
   #SECTION-TITLE
 \*------------------------------------*/
 
-.selector {}
+.selector { }
 ```
 
 The title of the section is prefixed with a hash (`#`) symbol to allow us to
@@ -292,7 +292,7 @@ easier to spot when scrolling through large files:
   #A-SECTION
 \*------------------------------------*/
 
-.selector {}
+.selector { }
 
 
 
@@ -306,7 +306,7 @@ easier to spot when scrolling through large files:
  * Comment
  */
 
-.another-selector {}
+.another-selector { }
 ```
 
 ### Anatomy of a Ruleset
@@ -407,11 +407,11 @@ As well as indenting individual declarations, indent entire related rulesets to
 signal their relation to one another, for example:
 
 ```
-.foo {}
+.foo { }
 
-  .foo__bar {}
+  .foo__bar { }
 
-    .foo__baz {}
+    .foo__baz { }
 ```
 
 By doing this, a developer can see at a glance that `.foo__baz {}` lives inside
@@ -494,12 +494,12 @@ For example:
   #FOO
 \*------------------------------------*/
 
-.foo {}
+.foo { }
 
-  .foo__bar {}
+  .foo__bar { }
 
 
-.foo--baz {}
+.foo--baz { }
 
 
 
@@ -509,20 +509,20 @@ For example:
   #BAR
 \*------------------------------------*/
 
-.bar {}
+.bar { }
 
-  .bar__baz {}
+  .bar__baz { }
 
-  .bar__foo {}
+  .bar__foo { }
 ```
 
 There should never be a scenario in which two rulesets do not have an empty line
 between them. This would be incorrect:
 
 ```
-.foo {}
-  .foo__bar {}
-.foo--baz {}
+.foo { }
+  .foo__bar { }
+.foo--baz { }
 ```
 
 ### HTML
@@ -701,7 +701,7 @@ across files with simple <i>object–extension pointers</i>. In the object file:
  * Extend `.btn {}` in _components.buttons.scss.
  */
 
-.btn {}
+.btn { }
 ```
 
 And in your theme file:
@@ -711,9 +711,9 @@ And in your theme file:
  * These rules extend `.btn {}` in _objects.buttons.scss.
  */
 
-.btn--positive {}
+.btn--positive { }
 
-.btn--negative {}
+.btn--negative { }
 ```
 
 This simple, low effort commenting can make a lot of difference to developers
@@ -845,18 +845,18 @@ development; they really come into their own when viewed in HTML.
 All strings in classes are delimited with a hyphen (`-`), like so:
 
 ```
-.page-head {}
+.page-head { }
 
-.sub-content {}
+.sub-content { }
 ```
 
 Camel case and underscores are not used for regular classes; the following are
 incorrect:
 
 ```
-.pageHead {}
+.pageHead { }
 
-.sub_content {}
+.sub_content { }
 ```
 
 ### BEM-like Naming
@@ -879,9 +879,9 @@ BEM splits components’ classes into three groups:
 To take an analogy (note, not an example):
 
 ```
-.person {}
-.person__head {}
-.person--tall {}
+.person { }
+.person__head { }
+.person--tall { }
 ```
 
 Elements are delimited with two (2) underscores (`__`), and Modifiers are
@@ -900,16 +900,16 @@ location. To continue with our person-based analogy, we’d not have a class lik
 have separate Blocks, like so:
 
 ```
-.room {}
+.room { }
 
-  .room__door {}
+  .room__door { }
 
-.room--kitchen {}
+.room--kitchen { }
 
 
-.person {}
+.person { }
 
-  .person__head {}
+  .person__head { }
 ```
 
 If we did want to denote a `.person {}` inside a `.room {}`, it is more correct
@@ -920,32 +920,32 @@ A more realistic example of properly scoped blocks might look something like
 this, where each chunk of code represents its own Block:
 
 ```
-.page {}
+.page { }
 
 
-.content {}
+.content { }
 
 
-.sub-content {}
+.sub-content { }
 
 
-.footer {}
+.footer { }
 
-  .footer__copyright {}
+  .footer__copyright { }
 ```
 
 Incorrect notation for this would be:
 
 ```
-.page {}
+.page { }
 
-  .page__content {}
+  .page__content { }
 
-  .page__sub-content {}
+  .page__sub-content { }
 
-  .page__footer {}
+  .page__footer { }
 
-    .page__copyright {}
+    .page__copyright { }
 ```
 
 It is important to know when BEM scope starts and stops. As a rule, BEM applies
@@ -968,7 +968,7 @@ depending on how and why they are being modified. Carrying on with our person
 example, a blue eye might look like this:
 
 ```
-.person__eye--blue {}
+.person__eye--blue { }
 ```
 
 Here we can see we’re directly modifying the eye Element.
@@ -979,14 +979,14 @@ that handsome, so we modify the face Element directly—a handsome face on a
 regular person:
 
 ```
-.person__face--handsome {}
+.person__face--handsome { }
 ```
 
 But what if that person _is_ handsome, and we want to style their face because
 of that fact? A regular face on a handsome person:
 
 ```
-.person--handsome .person__face {}
+.person--handsome .person__face { }
 ```
 
 Here is one of a few occasions where we’d use a descendant selector to modify
@@ -995,15 +995,15 @@ an Element based on a Modifier on the Block.
 If using Sass, we would likely write this like so:
 
 ```
-.person {}
+.person { }
 
   .person__face {
 
-    .person--handsome & {}
+    .person--handsome & { }
 
   }
 
-.person--handsome {}
+.person--handsome { }
 ```
 
 Note that we do not nest a new instance of `.person__face {}` inside of
@@ -1110,7 +1110,7 @@ will go about selecting it. For example, if you are wanting to style your
 website’s main navigation menu, a selector like this would be incredibly unwise:
 
 ```
-header ul {}
+header ul { }
 ```
 
 This selector’s intent is to style any `ul` inside any `header` element, whereas
@@ -1123,7 +1123,7 @@ having to write more CSS to undo the greedy nature of such a selector.
 A better approach would be a selector like:
 
 ```
-.site-nav {}
+.site-nav { }
 ```
 
 An unambiguous, explicit selector with good Selector Intent. We are explicitly
@@ -1163,7 +1163,7 @@ Let’s take an example of a call-to-action button that we have chosen to style
 via the following selector:
 
 ```
-.promo a {}
+.promo a { }
 ```
 
 Not only does this have poor Selector Intent—it will greedily style any and
@@ -1173,7 +1173,7 @@ its correct styling outside of `.promo` because it is explicitly tied to that
 location. A far better selector would have been:
 
 ```
-.btn {}
+.btn { }
 ```
 
 This single class can be reused anywhere outside of `.promo` and will always
@@ -1191,7 +1191,7 @@ can make to our selectors that make the selectors themselves—as opposed to the
 components they create—more portable. Take the following example:
 
 ```
-input.btn {}
+input.btn { }
 ```
 
 This is a <i>qualified</i> selector; the leading `input` ties this ruleset to
@@ -1254,7 +1254,7 @@ One thing that qualified selectors can be useful for is signalling where a class
 might be expected or intended to be used, for example:
 
 ```
-ul.nav {}
+ul.nav { }
 ```
 
 Here we can see that the `.nav` class is meant to be used on a `ul` element, and
@@ -1262,7 +1262,7 @@ not on a `nav`. By using <i>quasi-qualified selectors</i> we can still provide
 that information without actually qualifying the selector:
 
 ```
-/*ul*/.nav {}
+/*ul*/.nav { }
 ```
 
 By commenting out the leading element, we can still leave it to be read, but
@@ -1394,13 +1394,13 @@ Generally speaking, the longer a selector is (i.e. the more component parts) the
 slower it is, for example:
 
 ```
-body.home div.header ul {}
+body.home div.header ul { }
 ```
 
 …is a far less efficient selector than:
 
 ```
-.primary-nav {}
+.primary-nav { }
 ```
 
 This is because browsers read CSS selectors **right-to-left**. A browser will
@@ -1443,7 +1443,7 @@ surely this will be a nice and speedy lookup—just find that one ID and then
 style everything inside of it:
 
 ```
-#foo * {}
+#foo * { }
 ```
 
 The problem with this selector is that the key selector (`*`) is very, _very_
@@ -1512,7 +1512,7 @@ _simply_ be undone. If we take a real example that I was responsible for some
 years ago:
 
 ```
-#content table {}
+#content table { }
 ```
 
 Not only does this exhibit poor [Selector Intent](#selector-intent)—I didn’t
@@ -1522,12 +1522,12 @@ This became apparent a number of weeks later, when I needed a second type of
 `table`:
 
 ```
-#content table {}
+#content table { }
 
 /**
  * Uh oh! My styles get overwritten by `#content table {}`.
  */
-.my-new-table {}
+.my-new-table { }
 ```
 
 The first selector was trumping the specificity of the one defined _after_ it,
@@ -1542,9 +1542,9 @@ and the knock-on effects of removing this ID would have been a more substantial
 business cost than the second option: just write a more specific selector.
 
 ```
-#content table {}
+#content table { }
 
-#content .my-new-table {}
+#content .my-new-table { }
 ```
 
 Now I have a selector that is _even more specific still!_ And if I ever want to
@@ -1635,7 +1635,7 @@ so:
 ```
 .foo {
 
-  .bar {}
+  .bar { }
 
 }
 ```
@@ -1648,21 +1648,21 @@ rely on a thing within a thing. That could look like any one of the following:
  * An element with a class of `.bar` anywhere inside an element with a class of
  * `.foo`.
  */
-.foo .bar {}
+.foo .bar { }
 
 
 /**
  * An element with a class of `.module-title` directly inside an element with a
  * class of `.module`.
  */
-.module > .module-title {}
+.module > .module-title { }
 
 
 /**
  * Any `li` element anywhere inside a `ul` element anywhere inside a `nav`
  * element
  */
-nav ul li {}
+nav ul li { }
 ```
 
 Whether you arrive at this CSS via a preprocessor or not isn’t particularly
@@ -1834,7 +1834,7 @@ Instead, we can use a much safer hack that will not impact this component’s
 portability: we can chain that class with itself:
 
 ```
-.site-nav.site-nav {}
+.site-nav.site-nav { }
 ```
 
 This chaining doubles the specificity of the selector, but does not introduce
@@ -1858,7 +1858,7 @@ to style this HTML but have no access to it, and all it has on it is an ID.
 We do this:
 
 ```
-[id="third-party-widget"] {}
+[id="third-party-widget"] { }
 ```
 
 Here we are selecting based on an attribute rather than an ID, and attribute
