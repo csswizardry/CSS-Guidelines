@@ -176,7 +176,7 @@ that they found. Ugly code sets a bad precedent.
 
 At a very high-level, we want
 
-* four (4) space indents, no tabs;
+* two (2) space indents, no tabs;
 * 80 character wide columns;
 * multi-line CSS;
 * meaningful use of whitespace.
@@ -206,33 +206,35 @@ of what is in a CSS project, what it does, and in what order.
 A simple table of contents will—in order, naturally—simply provide the name of
 the section and a brief summary of what it is and does, for example:
 
-    /**
-     * CONTENTS
-     *
-     * SETTINGS
-     * Global...............Globally-available variables and config.
-     *
-     * TOOLS
-     * Mixins...............Useful mixins.
-     *
-     * GENERIC
-     * Normalize.css........A level playing field.
-     * Box-sizing...........Better default `box-sizing`.
-     *
-     * BASE
-     * Headings.............H1–H6 styles.
-     *
-     * OBJECTS
-     * Wrappers.............Wrapping and constraining elements.
-     *
-     * COMPONENTS
-     * Page-head............The main page header.
-     * Page-foot............The main page footer.
-     * Buttons..............Button elements.
-     *
-     * TRUMPS
-     * Text.................Text helpers.
-     */
+```
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Global...............Globally-available variables and config.
+ *
+ * TOOLS
+ * Mixins...............Useful mixins.
+ *
+ * GENERIC
+ * Normalize.css........A level playing field.
+ * Box-sizing...........Better default `box-sizing`.
+ *
+ * BASE
+ * Headings.............H1–H6 styles.
+ *
+ * OBJECTS
+ * Wrappers.............Wrapping and constraining elements.
+ *
+ * COMPONENTS
+ * Page-head............The main page header.
+ * Page-foot............The main page footer.
+ * Buttons..............Button elements.
+ *
+ * TRUMPS
+ * Text.................Text helpers.
+ */
+```
 
 Each item maps to a section and/or include.
 
@@ -263,11 +265,13 @@ syntax—which shouldn’t be worried about.
 
 Begin every new major section of a CSS project with a title:
 
-    /*------------------------------------*\
-        #SECTION-TITLE
-    \*------------------------------------*/
+```
+/*------------------------------------*\
+  #SECTION-TITLE
+\*------------------------------------*/
 
-    .selector {}
+.selector {}
+```
 
 The title of the section is prefixed with a hash (`#`) symbol to allow us to
 perform more targeted searches (e.g. `grep`, etc.): instead of searching for
@@ -283,44 +287,50 @@ multiple sections per file, each title should be preceded by five (5) carriage
 returns. This extra whitespace coupled with a title makes new sections much
 easier to spot when scrolling through large files:
 
-    /*------------------------------------*\
-        #A-SECTION
-    \*------------------------------------*/
+```
+/*------------------------------------*\
+  #A-SECTION
+\*------------------------------------*/
 
-    .selector {}
-
-
-
+.selector {}
 
 
-    /*------------------------------------*\
-        #ANOTHER-SECTION
-    \*------------------------------------*/
 
-    /**
-     * Comment
-     */
 
-    .another-selector {}
+
+/*------------------------------------*\
+  #ANOTHER-SECTION
+\*------------------------------------*/
+
+/**
+ * Comment
+ */
+
+.another-selector {}
+```
 
 ### Anatomy of a Ruleset
 
 Before we discuss how we write out our rulesets, let’s first familiarise
 ourselves with the relevant terminology:
 
-    [selector] {
-        [property]: [value];
-        [<--declaration--->]
-    }
+```
+[selector] {
+  [property]: [value];
+  [<--declaration--->]
+}
+```
 
 For example:
 
-    .foo, .foo--bar,
-    .baz {
-        display: block;
-        background-color: green;
-        color: red;
-    }
+```
+.foo, .foo--bar,
+.baz {
+  display: block;
+  background-color: green;
+  color: red;
+}
+```
 
 Here you can see we have
 
@@ -332,7 +342,7 @@ Here you can see we have
 * the opening brace (`{`) on the same line as our last selector;
 * our first declaration on a new line after our opening brace (`{`);
 * our closing brace (`}`) on its own new line;
-* each declaration indented by four (4) spaces;
+* each declaration indented by two (2) spaces;
 * a trailing semi-colon (`;`) on our last declaration.
 
 This format seems to be the largely universal standard (except for variations in
@@ -340,11 +350,13 @@ number of spaces, with a lot of developers preferring two (2)).
 
 As such, the following would be incorrect:
 
-    .foo, .foo--bar, .baz
-    {
-    	display:block;
-    	background-color:green;
-    	color:red }
+```
+.foo, .foo--bar, .baz
+{
+	display:block;
+	background-color:green;
+	color:red }
+```
 
 Problems here include
 
@@ -368,17 +380,19 @@ circumstances. There are a number of benefits to this:
 Exceptions to this rule should be fairly apparent, such as similar rulesets that
 only carry one declaration each, for example:
 
-    .icon {
-        display: inline-block;
-        width:  16px;
-        height: 16px;
-        background-image: url(/img/sprite.svg);
-    }
+```
+.icon {
+  display: inline-block;
+  width:  16px;
+  height: 16px;
+  background-image: url(/img/sprite.svg);
+}
 
-    .icon--home     { background-position:   0     0  ; }
-    .icon--person   { background-position: -16px   0  ; }
-    .icon--files    { background-position:   0   -16px; }
-    .icon--settings { background-position: -16px -16px; }
+.icon--home     { background-position:   0     0  ; }
+.icon--person   { background-position: -16px   0  ; }
+.icon--files    { background-position:   0   -16px; }
+.icon--settings { background-position: -16px -16px; }
+```
 
 These types of ruleset benefit from being single-lined because
 
@@ -392,11 +406,13 @@ These types of ruleset benefit from being single-lined because
 As well as indenting individual declarations, indent entire related rulesets to
 signal their relation to one another, for example:
 
-    .foo {}
+```
+.foo {}
 
-        .foo__bar {}
+  .foo__bar {}
 
-            .foo__baz {}
+    .foo__baz {}
+```
 
 By doing this, a developer can see at a glance that `.foo__baz {}` lives inside
 `.foo__bar {}` lives inside `.foo {}`.
@@ -408,21 +424,25 @@ expected to be used without them having to refer to a snippet of HTML.
 
 Sass provides nesting functionality. That is to say, by writing this:
 
-    .foo {
-        color: red;
+```
+.foo {
+  color: red;
 
-        .bar {
-            color: blue;
-        }
+  .bar {
+    color: blue;
+  }
 
-    }
+}
+```
 
 …we will be left with this compiled CSS:
 
-    .foo { color: red; }
-    .foo .bar { color: blue; }
+```
+.foo { color: red; }
+.foo .bar { color: blue; }
+```
 
-When indenting Sass, we stick to the same four (4) spaces, and we also leave a
+When indenting Sass, we stick to the same two (2) spaces, and we also leave a
 blank line before and after the nested ruleset.
 
 **N.B.** Nesting in Sass should be avoided wherever possible. See [the
@@ -433,23 +453,25 @@ Specificity section](#specificity) for more details.
 Attempt to align common and related identical strings in declarations, for
 example:
 
-    .foo {
-        -webkit-border-radius: 3px;
-           -moz-border-radius: 3px;
-                border-radius: 3px;
-    }
+```
+.foo {
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
 
-    .bar {
-        position: absolute;
-        top:    0;
-        right:  0;
-        bottom: 0;
-        left:   0;
-        margin-right: -10px;
-        margin-left:  -10px;
-        padding-right: 10px;
-        padding-left:  10px;
-    }
+.bar {
+  position: absolute;
+  top:    0;
+  right:  0;
+  bottom: 0;
+  left:   0;
+  margin-right: -10px;
+  margin-left:  -10px;
+  padding-right: 10px;
+  padding-left:  10px;
+}
+```
 
 This makes life a little easier for developers whose text editors support column
 editing, allowing them to change several identical and aligned lines in one go.
@@ -467,37 +489,41 @@ judicious use of whitespace between rulesets. We use:
 
 For example:
 
-    /*------------------------------------*\
-        #FOO
-    \*------------------------------------*/
+```
+/*------------------------------------*\
+  #FOO
+\*------------------------------------*/
 
-    .foo {}
+.foo {}
 
-        .foo__bar {}
-
-
-    .foo--baz {}
+  .foo__bar {}
 
 
+.foo--baz {}
 
 
 
-    /*------------------------------------*\
-        #BAR
-    \*------------------------------------*/
 
-    .bar {}
 
-        .bar__baz {}
+/*------------------------------------*\
+  #BAR
+\*------------------------------------*/
 
-        .bar__foo {}
+.bar {}
+
+  .bar__baz {}
+
+  .bar__foo {}
+```
 
 There should never be a scenario in which two rulesets do not have an empty line
 between them. This would be incorrect:
 
-    .foo {}
-        .foo__bar {}
-    .foo--baz {}
+```
+.foo {}
+  .foo__bar {}
+.foo--baz {}
+```
 
 ### HTML
 
@@ -508,23 +534,31 @@ Always quote attributes, even if they would work without. This reduces the
 chance of accidents, and is a more familiar format to the majority of
 developers. For all this would work (and is valid):
 
-    <div class=box>
+```
+<div class=box>
+```
 
 …this format is preferred:
 
-    <div class="box">
+```
+<div class="box">
+```
 
 The quotes are not required here, but err on the safe side and include them.
 
 When writing multiple values in a class attribute, separate them with two
 spaces, thus:
 
-    <div class="foo  bar">
+```
+<div class="foo  bar">
+```
 
 When multiple classes are related to each other, consider grouping them in
 square brackets (`[` and `]`), like so:
 
-    <div class="[ box  box--highlight ]  [ bio  bio--long ]">
+```
+<div class="[ box  box--highlight ]  [ bio  bio--long ]">
+```
 
 This is not a firm recommendation, and is something I am still trialling myself,
 but it does carry a number of benefits. Read more in [<cite>Grouping related
@@ -535,50 +569,54 @@ As with our rulesets, it is possible to use meaningful whitespace in your HTML.
 You can denote thematic breaks in content with five (5) empty lines, for
 example:
 
-    <header class="page-head">
-        ...
-    </header>
+```
+<header class="page-head">
+  ...
+</header>
 
 
 
 
 
-    <main class="page-content">
-        ...
-    </main>
+<main class="page-content">
+  ...
+</main>
 
 
 
 
 
-    <footer class="page-foot">
-        ...
-    </footer>
+<footer class="page-foot">
+  ...
+</footer>
+```
 
 Separate independent but loosely related snippets of markup with a single empty
 line, for example:
 
-    <ul class="primary-nav">
+```
+<ul class="primary-nav">
 
-        <li class="primary-nav__item">
-            <a href="/" class="primary-nav__link">Home</a>
-        </li>
+  <li class="primary-nav__item">
+    <a href="/" class="primary-nav__link">Home</a>
+  </li>
 
-        <li class="primary-nav__item  primary-nav__trigger">
-            <a href="/about" class="primary-nav__link">About</a>
+  <li class="primary-nav__item  primary-nav__trigger">
+    <a href="/about" class="primary-nav__link">About</a>
 
-            <ul class="primary-nav__sub-nav">
-                <li><a href="/about/products">Products</a></li>
-                <li><a href="/about/company">Company</a></li>
-            </ul>
-
-        </li>
-
-        <li class="primary-nav__item">
-            <a href="/contact" class="primary-nav__link">Contact</a>
-        </li>
-
+    <ul class="primary-nav__sub-nav">
+      <li><a href="/about/products">Products</a></li>
+      <li><a href="/about/company">Company</a></li>
     </ul>
+
+  </li>
+
+  <li class="primary-nav__item">
+    <a href="/contact" class="primary-nav__link">Contact</a>
+  </li>
+
+</ul>
+```
 
 This allows developers to spot separate parts of the DOM at a glance, and also
 allows certain text editors—like Vim, for example—to manipulate
@@ -632,17 +670,19 @@ DocBlock-esque multi-line comment which adheres to our 80 column width.
 Here is a real-life example from the CSS which styles the page header on [CSS
 Wizardry](http://csswizardry.com/):
 
-    /**
-     * The site’s main page-head can have two different states:
-     *
-     * 1) Regular page-head with no backgrounds or extra treatments; it just
-     *    contains the logo and nav.
-     * 2) A masthead that has a fluid-height (becoming fixed after a certain point)
-     *    which has a large background image, and some supporting text.
-     *
-     * The regular page-head is incredibly simple, but the masthead version has some
-     * slightly intermingled dependency with the wrapper that lives inside it.
-     */
+```
+/**
+ * The site’s main page-head can have two different states:
+ *
+ * 1) Regular page-head with no backgrounds or extra treatments; it just
+ *    contains the logo and nav.
+ * 2) A masthead that has a fluid-height (becoming fixed after a certain point)
+ *    which has a large background image, and some supporting text.
+ *
+ * The regular page-head is incredibly simple, but the masthead version has some
+ * slightly intermingled dependency with the wrapper that lives inside it.
+ */
+```
 
 This level of detail should be the norm for all non-trivial code—descriptions of
 states, permutations, conditions, and treatments.
@@ -656,21 +696,25 @@ object—which provides purely structural styles—which is to be extended in a
 component-level partial which will add cosmetics. We document this relationship
 across files with simple <i>object–extension pointers</i>. In the object file:
 
-    /**
-     * Extend `.btn {}` in _components.buttons.scss.
-     */
+```
+/**
+ * Extend `.btn {}` in _components.buttons.scss.
+ */
 
-    .btn {}
+.btn {}
+```
 
 And in your theme file:
 
-    /**
-     * These rules extend `.btn {}` in _objects.buttons.scss.
-     */
+```
+/**
+ * These rules extend `.btn {}` in _objects.buttons.scss.
+ */
 
-    .btn--positive {}
+.btn--positive {}
 
-    .btn--negative {}
+.btn--negative {}
+```
 
 This simple, low effort commenting can make a lot of difference to developers
 who are unaware of relationships across projects, or who are wanting to know
@@ -682,58 +726,60 @@ Oftentimes we want to comment on specific declarations (i.e. lines) in a
 ruleset. To do this we use a kind of reverse footnote. Here is a more complex
 comment detailing the larger site headers mentioned above:
 
-    /**
-     * Large site headers act more like mastheads. They have a faux-fluid-height
-     * which is controlled by the wrapping element inside it.
-     *
-     * 1. Mastheads will typically have dark backgrounds, so we need to make sure
-     *    the contrast is okay. This value is subject to change as the background
-     *    image changes.
-     * 2. We need to delegate a lot of the masthead’s layout to its wrapper element
-     *    rather than the masthead itself: it is to this wrapper that most things
-     *    are positioned.
-     * 3. The wrapper needs positioning context for us to lay our nav and masthead
-     *    text in.
-     * 4. Faux-fluid-height technique: simply create the illusion of fluid height by
-     *    creating space via a percentage padding, and then position everything over
-     *    the top of that. This percentage gives us a 16:9 ratio.
-     * 5. When the viewport is at 758px wide, our 16:9 ratio means that the masthead
-     *    is currently rendered at 480px high. Let’s…
-     * 6. …seamlessly snip off the fluid feature at this height, and…
-     * 7. …fix the height at 480px. This means that we should see no jumps in height
-     *    as the masthead moves from fluid to fixed. This actual value takes into
-     *    account the padding and the top border on the header itself.
-     */
+```
+/**
+ * Large site headers act more like mastheads. They have a faux-fluid-height
+ * which is controlled by the wrapping element inside it.
+ *
+ * 1. Mastheads will typically have dark backgrounds, so we need to make sure
+ *    the contrast is okay. This value is subject to change as the background
+ *    image changes.
+ * 2. We need to delegate a lot of the masthead’s layout to its wrapper element
+ *    rather than the masthead itself: it is to this wrapper that most things
+ *    are positioned.
+ * 3. The wrapper needs positioning context for us to lay our nav and masthead
+ *    text in.
+ * 4. Faux-fluid-height technique: simply create the illusion of fluid height by
+ *    creating space via a percentage padding, and then position everything over
+ *    the top of that. This percentage gives us a 16:9 ratio.
+ * 5. When the viewport is at 758px wide, our 16:9 ratio means that the masthead
+ *    is currently rendered at 480px high. Let’s…
+ * 6. …seamlessly snip off the fluid feature at this height, and…
+ * 7. …fix the height at 480px. This means that we should see no jumps in height
+ *    as the masthead moves from fluid to fixed. This actual value takes into
+ *    account the padding and the top border on the header itself.
+ */
 
-    .page-head--masthead {
-        margin-bottom: 0;
-        background: url(/img/css/masthead.jpg) center center #2e2620;
-        @include vendor(background-size, cover);
-        color: $color-masthead; /* [1] */
-        border-top-color: $color-masthead;
-        border-bottom-width: 0;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) inset;
+.page-head--masthead {
+  margin-bottom: 0;
+  background: url(/img/css/masthead.jpg) center center #2e2620;
+  @include vendor(background-size, cover);
+  color: $color-masthead; /* [1] */
+  border-top-color: $color-masthead;
+  border-bottom-width: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) inset;
 
-        @include media-query(lap-and-up) {
-            background-image: url(/img/css/masthead-medium.jpg);
-        }
+  @include media-query(lap-and-up) {
+    background-image: url(/img/css/masthead-medium.jpg);
+  }
 
-        @include media-query(desk) {
-            background-image: url(/img/css/masthead-large.jpg);
-        }
+  @include media-query(desk) {
+    background-image: url(/img/css/masthead-large.jpg);
+  }
 
-        > .wrapper { /* [2] */
-            position: relative; /* [3] */
-            padding-top: 56.25%; /* [4] */
+  > .wrapper { /* [2] */
+    position: relative; /* [3] */
+    padding-top: 56.25%; /* [4] */
 
-            @media screen and (min-width: 758px) { /* [5] */
-                padding-top: 0; /* [6] */
-                height: $header-max-height - double($spacing-unit) - $header-border-width; /* [7] */
-            }
-
-        }
-
+    @media screen and (min-width: 758px) { /* [5] */
+      padding-top: 0; /* [6] */
+      height: $header-max-height - double($spacing-unit) - $header-border-width; /* [7] */
     }
+
+  }
+
+}
+```
 
 These types of comment allow us to keep all of our documentation in one place
 whilst referring to the parts of the ruleset to which they belong.
@@ -746,20 +792,22 @@ comments to document code that would not get written out to that CSS file
 either. If you are documenting code which will get compiled, use comments that
 will compile also. For example, this is correct:
 
-    // Dimensions of the @2x image sprite:
-    $sprite-width:  920px;
-    $sprite-height: 212px;
-    
-    /**
-     * 1. Default icon size is 16px.
-     * 2. Squash down the retina sprite to display at the correct size.
-     */
-    .sprite {
-        width:  16px; /* [1] */
-        height: 16px; /* [1] */
-        background-image: url(/img/sprites/main.png);
-        background-size: ($sprite-width / 2 ) ($sprite-height / 2); /* [2] */
-    }
+```
+// Dimensions of the @2x image sprite:
+$sprite-width:  920px;
+$sprite-height: 212px;
+
+/**
+ * 1. Default icon size is 16px.
+ * 2. Squash down the retina sprite to display at the correct size.
+ */
+.sprite {
+  width:  16px; /* [1] */
+  height: 16px; /* [1] */
+  background-image: url(/img/sprites/main.png);
+  background-size: ($sprite-width / 2 ) ($sprite-height / 2); /* [2] */
+}
+```
 
 We have documented variables—code which will not get compiled into our CSS
 file—with preprocessor comments, whereas our CSS—code which will get compiled
@@ -796,16 +844,20 @@ development; they really come into their own when viewed in HTML.
 
 All strings in classes are delimited with a hyphen (`-`), like so:
 
-    .page-head {}
+```
+.page-head {}
 
-    .sub-content {}
+.sub-content {}
+```
 
 Camel case and underscores are not used for regular classes; the following are
 incorrect:
 
-    .pageHead {}
+```
+.pageHead {}
 
-    .sub_content {}
+.sub_content {}
+```
 
 ### BEM-like Naming
 
@@ -826,9 +878,11 @@ BEM splits components’ classes into three groups:
 
 To take an analogy (note, not an example):
 
-    .person {}
-    .person__head {}
-    .person--tall {}
+```
+.person {}
+.person__head {}
+.person--tall {}
+```
 
 Elements are delimited with two (2) underscores (`__`), and Modifiers are
 delimited by two (2) hyphens (`--`).
@@ -845,16 +899,18 @@ location. To continue with our person-based analogy, we’d not have a class lik
 `.room__person {}`, as the room is another, much higher context. We’d probably
 have separate Blocks, like so:
 
-    .room {}
+```
+.room {}
 
-        .room__door {}
+  .room__door {}
 
-    .room--kitchen {}
+.room--kitchen {}
 
 
-    .person {}
+.person {}
 
-        .person__head {}
+  .person__head {}
+```
 
 If we did want to denote a `.person {}` inside a `.room {}`, it is more correct
 to use a selector like `.room .person {}` which bridges two Blocks than it is to
@@ -863,30 +919,34 @@ increase the scope of existing Blocks and Elements.
 A more realistic example of properly scoped blocks might look something like
 this, where each chunk of code represents its own Block:
 
-    .page {}
+```
+.page {}
 
 
-    .content {}
+.content {}
 
 
-    .sub-content {}
+.sub-content {}
 
 
-    .footer {}
+.footer {}
 
-        .footer__copyright {}
+  .footer__copyright {}
+```
 
 Incorrect notation for this would be:
 
-    .page {}
+```
+.page {}
 
-        .page__content {}
+  .page__content {}
 
-        .page__sub-content {}
+  .page__sub-content {}
 
-        .page__footer {}
+  .page__footer {}
 
-            .page__copyright {}
+    .page__copyright {}
+```
 
 It is important to know when BEM scope starts and stops. As a rule, BEM applies
 to self-contained, discrete parts of the UI.
@@ -907,7 +967,9 @@ You can have variants of Elements, and these can be denoted in a number of ways
 depending on how and why they are being modified. Carrying on with our person
 example, a blue eye might look like this:
 
-    .person__eye--blue {}
+```
+.person__eye--blue {}
+```
 
 Here we can see we’re directly modifying the eye Element.
 
@@ -916,27 +978,33 @@ imagine we have a face Element that is handsome. The person themselves isn’t
 that handsome, so we modify the face Element directly—a handsome face on a
 regular person:
 
-    .person__face--handsome {}
+```
+.person__face--handsome {}
+```
 
 But what if that person _is_ handsome, and we want to style their face because
 of that fact? A regular face on a handsome person:
 
-    .person--handsome .person__face {}
+```
+.person--handsome .person__face {}
+```
 
 Here is one of a few occasions where we’d use a descendant selector to modify
 an Element based on a Modifier on the Block.
 
 If using Sass, we would likely write this like so:
 
-    .person {}
+```
+.person {}
 
-        .person__face {
+  .person__face {
 
-            .person--handsome & {}
+    .person--handsome & {}
 
-        }
+  }
 
-    .person--handsome {}
+.person--handsome {}
+```
 
 Note that we do not nest a new instance of `.person__face {}` inside of
 `.person--handsome {}`; instead, we make use of Sass’ parent selectors to
@@ -952,13 +1020,15 @@ As I previously hinted at, naming conventions aren’t necessarily all that usef
 in your CSS. Where naming conventions’ power really lies is in your markup. Take
 the following, non-naming-conventioned HTML:
 
-    <div class="box  profile  pro-user">
+```
+<div class="box  profile  pro-user">
 
-        <img class="avatar  image" />
+  <img class="avatar  image" />
 
-        <p class="bio">...</p>
+  <p class="bio">...</p>
 
-    </div>
+</div>
+```
 
 How are the classes `box` and `profile` related to each other? How are the
 classes `profile` and `avatar` related to each other? Are they related at all?
@@ -968,13 +1038,15 @@ Should you be using `pro-user` alongside `bio`? Will the classes `image` and
 From that markup alone, it is very hard to answer any of those questions. Using
 a naming convention, however, changes all that:
 
-    <div class="box  profile  profile--is-pro-user">
+```
+<div class="box  profile  profile--is-pro-user">
 
-        <img class="avatar  profile__image" />
+  <img class="avatar  profile__image" />
 
-        <p class="profile__bio">...</p>
+  <p class="profile__bio">...</p>
 
-    </div>
+</div>
+```
 
 Now we can clearly see which classes are and are not related to each other, and
 how; we know what classes we can’t use outside of the scope of this component;
@@ -993,7 +1065,9 @@ impossible to have one without the other.
 
 Typically, these are classes that are prepended with `js-`, for example:
 
-    <input type="submit" class="btn  js-btn" value="Follow" />
+```
+<input type="submit" class="btn  js-btn" value="Follow" />
+```
 
 This means that we can have an element elsewhere which can carry with style of
 `.btn {}`, but without the behaviour of `.js-btn`.
@@ -1035,7 +1109,9 @@ is the process of deciding and defining what you want to style and how you
 will go about selecting it. For example, if you are wanting to style your
 website’s main navigation menu, a selector like this would be incredibly unwise:
 
-    header ul {}
+```
+header ul {}
+```
 
 This selector’s intent is to style any `ul` inside any `header` element, whereas
 _our_ intent was to style the site’s main navigation. This is poor Selector
@@ -1046,7 +1122,9 @@ having to write more CSS to undo the greedy nature of such a selector.
 
 A better approach would be a selector like:
 
-    .site-nav {}
+```
+.site-nav {}
+```
 
 An unambiguous, explicit selector with good Selector Intent. We are explicitly
 selecting the right thing for exactly the right reason.
@@ -1084,7 +1162,9 @@ entirely location independent.
 Let’s take an example of a call-to-action button that we have chosen to style
 via the following selector:
 
-    .promo a {}
+```
+.promo a {}
+```
 
 Not only does this have poor Selector Intent—it will greedily style any and
 every link inside of a `.promo` to look like a button—it is also pretty wasteful
@@ -1092,7 +1172,9 @@ as a result of being so locationally dependent: we can’t reuse that button wit
 its correct styling outside of `.promo` because it is explicitly tied to that
 location. A far better selector would have been:
 
-    .btn {}
+```
+.btn {}
+```
 
 This single class can be reused anywhere outside of `.promo` and will always
 carry its correct styling. As a result of a better selector, this piece of UI is
@@ -1108,7 +1190,9 @@ move classes around components? On a much lower level, there are changes we
 can make to our selectors that make the selectors themselves—as opposed to the
 components they create—more portable. Take the following example:
 
-    input.btn {}
+```
+input.btn {}
+```
 
 This is a <i>qualified</i> selector; the leading `input` ties this ruleset to
 only being able to work on `input` elements. By omitting this qualification, we
@@ -1122,40 +1206,44 @@ Of course, there are times when you may want to legitimately qualify a
 selector—you might need to apply some very specific styling to a particular
 element when it carries a certain class, for example:
 
-    /**
-     * Embolden and colour any element with a class of `.error`.
-     */
-    .error {
-        color: red;
-        font-weight: bold;
-    }
+```
+/**
+ * Embolden and colour any element with a class of `.error`.
+ */
+.error {
+  color: red;
+  font-weight: bold;
+}
 
-    /**
-     * If the element is a `div`, also give it some box-like styling.
-     */
-    div.error {
-        padding: 10px;
-        border: 1px solid;
-    }
+/**
+ * If the element is a `div`, also give it some box-like styling.
+ */
+div.error {
+  padding: 10px;
+  border: 1px solid;
+}
+```
 
 This is one example where a qualified selector might be justifiable, but I would
 still recommend an approach more like:
 
-    /**
-     * Text-level errors.
-     */
-    .error-text {
-        color: red;
-        font-weight: bold;
-    }
+```
+/**
+ * Text-level errors.
+ */
+.error-text {
+  color: red;
+  font-weight: bold;
+}
 
-    /**
-     * Elements that contain errors.
-     */
-    .error-box {
-        padding: 10px;
-        border: 1px solid;
-    }
+/**
+ * Elements that contain errors.
+ */
+.error-box {
+  padding: 10px;
+  border: 1px solid;
+}
+```
 
 This means that we can apply `.error-box` to any element, and not just a
 `div`—it is more reusable than a qualified selector.
@@ -1165,13 +1253,17 @@ This means that we can apply `.error-box` to any element, and not just a
 One thing that qualified selectors can be useful for is signalling where a class
 might be expected or intended to be used, for example:
 
-    ul.nav {}
+```
+ul.nav {}
+```
 
 Here we can see that the `.nav` class is meant to be used on a `ul` element, and
 not on a `nav`. By using <i>quasi-qualified selectors</i> we can still provide
 that information without actually qualifying the selector:
 
-    /*ul*/.nav {}
+```
+/*ul*/.nav {}
+```
 
 By commenting out the leading element, we can still leave it to be read, but
 avoid qualifying and increasing the specificity of the selector.
@@ -1214,33 +1306,35 @@ classes (everything else merely matches them). Once again, it is better to
 strive for reusable, recyclable classes rather than writing for specific use
 cases. Let’s take an example:
 
-    /**
-     * Runs the risk of becoming out of date; not very maintainable.
-     */
-    .blue {
-        color: blue;
-    }
+```
+/**
+ * Runs the risk of becoming out of date; not very maintainable.
+ */
+.blue {
+  color: blue;
+}
 
-    /**
-     * Depends on location in order to be rendered properly.
-     */
-    .header span {
-        color: blue;
-    }
+/**
+ * Depends on location in order to be rendered properly.
+ */
+.header span {
+  color: blue;
+}
 
-    /**
-     * Too specific; limits our ability to reuse.
-     */
-    .header-color {
-        color: blue;
-    }
+/**
+ * Too specific; limits our ability to reuse.
+ */
+.header-color {
+  color: blue;
+}
 
-    /**
-     * Nicely abstracted, very portable, doesn’t risk becoming out of date.
-     */
-    .highlight-color {
-        color: blue;
-    }
+/**
+ * Nicely abstracted, very portable, doesn’t risk becoming out of date.
+ */
+.highlight-color {
+  color: blue;
+}
+```
 
 It is important to strike a balance between names that do not literally describe
 the style that the class brings, but also ones that do not explicitly describe
@@ -1259,22 +1353,30 @@ benefit from having a more meaningful name. In this scenario, we augment the
 classes with a  `data-ui-component` attribute which houses a more specific name,
 for example:
 
-    <ul class="tabbed-nav" data-ui-component="Main Nav">
+```
+<ul class="tabbed-nav" data-ui-component="Main Nav">
+```
 
 Here we have the benefits of a highly reusable class name which does not
 describe—and, therefore, tie itself to—a specific use case, and added meaning
 via our `data-ui-component` attribute. The `data-ui-component`’s value can take
 any format you wish, like title case:
 
-    <ul class="tabbed-nav" data-ui-component="Main Nav">
+```
+<ul class="tabbed-nav" data-ui-component="Main Nav">
+```
 
 Or class-like:
 
-    <ul class="tabbed-nav" data-ui-component="main-nav">
+```
+<ul class="tabbed-nav" data-ui-component="main-nav">
+```
 
 Or namespaced:
 
-    <ul class="tabbed-nav" data-ui-component="nav-main">
+```
+<ul class="tabbed-nav" data-ui-component="nav-main">
+```
 
 The implementation is largely personal preference, but the concept still
 remains: **Add any useful or specific meaning via a mechanism that will not
@@ -1291,11 +1393,15 @@ match the selectors your write in CSS up with the nodes it finds in the DOM.
 Generally speaking, the longer a selector is (i.e. the more component parts) the
 slower it is, for example:
 
-    body.home div.header ul {}
+```
+body.home div.header ul {}
+```
 
 …is a far less efficient selector than:
 
-    .primary-nav {}
+```
+.primary-nav {}
+```
 
 This is because browsers read CSS selectors **right-to-left**. A browser will
 read the first selector as
@@ -1336,7 +1442,9 @@ uses an ID which is nice and fast, and there can only ever be one on a page, so
 surely this will be a nice and speedy lookup—just find that one ID and then
 style everything inside of it:
 
-    #foo * {}
+```
+#foo * {}
+```
 
 The problem with this selector is that the key selector (`*`) is very, _very_
 far reaching. What this selector actually does is find _every single_ node in
@@ -1403,7 +1511,9 @@ The problem with specificity is that it sets precedents and trumps that cannot
 _simply_ be undone. If we take a real example that I was responsible for some
 years ago:
 
-    #content table {}
+```
+#content table {}
+```
 
 Not only does this exhibit poor [Selector Intent](#selector-intent)—I didn’t
 actually want every `table` in the `#content` area, I wanted a specific type of
@@ -1411,12 +1521,14 @@ actually want every `table` in the `#content` area, I wanted a specific type of
 This became apparent a number of weeks later, when I needed a second type of
 `table`:
 
-    #content table {}
+```
+#content table {}
 
-    /**
-     * Uh oh! My styles get overwritten by `#content table {}`.
-     */
-    .my-new-table {}
+/**
+ * Uh oh! My styles get overwritten by `#content table {}`.
+ */
+.my-new-table {}
+```
 
 The first selector was trumping the specificity of the one defined _after_ it,
 working against CSS’ source-order based application of styles. In order to
@@ -1429,9 +1541,11 @@ Unfortunately, refactoring would have taken a long time; it was a mature product
 and the knock-on effects of removing this ID would have been a more substantial
 business cost than the second option: just write a more specific selector.
 
-    #content table {}
+```
+#content table {}
 
-    #content .my-new-table {}
+#content .my-new-table {}
+```
 
 Now I have a selector that is _even more specific still!_ And if I ever want to
 override this one, I will need another selector of at least the same specificity
@@ -1518,34 +1632,38 @@ pitfalls: it makes selectors more specific.
 When we talk about nesting, we don’t necessarily mean preprocessor nesting, like
 so:
 
-    .foo {
+```
+.foo {
 
-        .bar {}
+  .bar {}
 
-    }
+}
+```
 
 We’re actually talking about _descendant_ or _child_ selectors; selectors which
 rely on a thing within a thing. That could look like any one of the following:
 
-    /**
-     * An element with a class of `.bar` anywhere inside an element with a class of
-     * `.foo`.
-     */
-    .foo .bar {}
+```
+/**
+ * An element with a class of `.bar` anywhere inside an element with a class of
+ * `.foo`.
+ */
+.foo .bar {}
 
 
-    /**
-     * An element with a class of `.module-title` directly inside an element with a
-     * class of `.module`.
-     */
-    .module > .module-title {}
+/**
+ * An element with a class of `.module-title` directly inside an element with a
+ * class of `.module`.
+ */
+.module > .module-title {}
 
 
-    /**
-     * Any `li` element anywhere inside a `ul` element anywhere inside a `nav`
-     * element
-     */
-    nav ul li {}
+/**
+ * Any `li` element anywhere inside a `ul` element anywhere inside a `nav`
+ * element
+ */
+nav ul li {}
+```
 
 Whether you arrive at this CSS via a preprocessor or not isn’t particularly
 important, but it is worth noting that **preprocessors tout this as a feature,
@@ -1560,26 +1678,30 @@ we always want to keep specificity low. To quote Jonathan Snook:
 
 Let’s look at an example:
 
-    .widget {
-        padding: 10px;
-    }
+```
+.widget {
+  padding: 10px;
+}
 
-        .widget > .widget__title {
-            color: red;
-        }
+  .widget > .widget__title {
+    color: red;
+  }
+```
 
 To style an element with a class of `.widget__title`, we have a selector that is
 twice as specific as it needs to be. That means that if we want to make any
 modifications to `.widget__title`, we’ll need another at-least-equally specific
 selector:
 
-    .widget { ... }
+```
+.widget { ... }
 
-        .widget > .widget__title { ... }
+  .widget > .widget__title { ... }
 
-        .widget > .widget__title--sub {
-            color: blue;
-        }
+  .widget > .widget__title--sub {
+    color: blue;
+  }
+```
 
 Not only is this entirely avoidable—we caused this problem ourselves—we have a
 selector that is literally double the specificity it needs to be. We used 200%
@@ -1636,13 +1758,15 @@ Proactive use of `!important` is when it is used _before_ you’ve encountered a
 specificity problems; when it is used as a guarantee rather than as a fix. For
 example:
 
-    .one-half {
-        width: 50% !important;
-    }
+```
+.one-half {
+  width: 50% !important;
+}
 
-    .hidden {
-        display: none !important;
-    }
+.hidden {
+  display: none !important;
+}
+```
 
 These two helper, or <i>utility</i>, classes are very specific in their
 intentions: you would only use them if you wanted something to be rendered at
@@ -1658,19 +1782,23 @@ Incorrect, <i>reactive</i> use of `!important` is when it is used to combat
 specificity problems after the fact: applying `!important` to declarations
 because of poorly architected CSS. For example, let’s imagine we have this HTML:
 
-    <div class="content">
-        <h2 class="heading-sub">...</h2>
-    </div>
+```
+<div class="content">
+  <h2 class="heading-sub">...</h2>
+</div>
+```
 
 …and this CSS:
 
-    .content h2 {
-        font-size: 2em;
-    }
+```
+.content h2 {
+  font-size: 2em;
+}
 
-    .heading-sub {
-        font-size: 1.5em !important;
-    }
+.heading-sub {
+  font-size: 1.5em !important;
+}
+```
 
 Here we can see how we’ve used `!important` to force our `.heading-sub {}`
 styles to reactively override our `.content h2 {}` selector. This could have
@@ -1705,7 +1833,9 @@ dependency: these styles will only work when the `.site-nav` component is in the
 Instead, we can use a much safer hack that will not impact this component’s
 portability: we can chain that class with itself:
 
-    .site-nav.site-nav {}
+```
+.site-nav.site-nav {}
+```
 
 This chaining doubles the specificity of the selector, but does not introduce
 any dependency on location.
@@ -1716,16 +1846,20 @@ an ID selector. For example, let’s imagine we have embedded a third-party widg
 on our page. We can style the widget via the markup that it outputs, but we have
 no ability to edit that markup ourselves:
 
-    <div id="third-party-widget">
-        ...
-    </div>
+```
+<div id="third-party-widget">
+  ...
+</div>
+```
 
 Even though we know not to use IDs in CSS, what other option do we have? We want
 to style this HTML but have no access to it, and all it has on it is an ID.
 
 We do this:
 
-    [id="third-party-widget"] {}
+```
+[id="third-party-widget"] {}
+```
 
 Here we are selecting based on an attribute rather than an ID, and attribute
 selectors have the same specificity as a class. This allows us to style based on
@@ -1824,9 +1958,9 @@ objects and abstractions a specific look-and-feel. Let’s look at an example:
      * class.
      */
     .btn {
-        display: inline-block;
-        padding: 1em 2em;
-        vertical-align: middle;
+      display: inline-block;
+      padding: 1em 2em;
+      vertical-align: middle;
     }
 
 
@@ -1834,16 +1968,16 @@ objects and abstractions a specific look-and-feel. Let’s look at an example:
      * Positive buttons’ skin. Extends `.btn`.
      */
     .btn--positive {
-        background-color: green;
-        color: white;
+      background-color: green;
+      color: white;
     }
 
     /**
      * Negative buttons’ skin. Extends `.btn`.
      */
     .btn--negative {
-        background-color: red;
-        color: white;
+      background-color: red;
+      color: white;
     }
 
 Above, we can see how the `.btn {}` class simply provides structural styling to
@@ -1851,7 +1985,9 @@ an element, and doesn’t concern itself with any cosmetics. We supplement the
 `.btn {}` object with a second class, such as `.btn--negative {}` in order to
 give that DOM node specific cosmetics:
 
-    <button class="btn  btn--negative">Delete</button>
+```
+<button class="btn  btn--negative">Delete</button>
+```
 
 Favour the multiple-class approach over using something like `@extend`: using
 multiple classes in your markup—as opposed to wrapping the classes up into one
@@ -1890,25 +2026,27 @@ very easily combined and composed to make much more versatile and complex
 constructs. Let’s take some example CSS that does not adhere to the single
 responsibility principle:
 
-    .error-message {
-        display: block;
-        padding: 10px;
-        border-top: 1px solid #f00;
-        border-bottom: 1px solid #f00;
-        background-color: #fee;
-        color: #f00;
-        font-weight: bold;
-    }
+```
+.error-message {
+  display: block;
+  padding: 10px;
+  border-top: 1px solid #f00;
+  border-bottom: 1px solid #f00;
+  background-color: #fee;
+  color: #f00;
+  font-weight: bold;
+}
 
-    .success-message {
-        display: block;
-        padding: 10px;
-        border-top: 1px solid #0f0;
-        border-bottom: 1px solid #0f0;
-        background-color: #efe;
-        color: #0f0;
-        font-weight: bold;
-    }
+.success-message {
+  display: block;
+  padding: 10px;
+  border-top: 1px solid #0f0;
+  border-bottom: 1px solid #0f0;
+  background-color: #efe;
+  color: #0f0;
+  font-weight: bold;
+}
+```
 
 Here we can see that—despite being named after one very specific use-case—these
 classes are handling quite a lot: layout, structure, and cosmetics. We also have
@@ -1917,27 +2055,29 @@ shared objects (OOCSS) and bring it more inline with the single responsibility
 principle. We can break these two classes out into four much smaller
 responsibilities:
 
-    .box {
-        display: block;
-        padding: 10px;
-    }
+```
+.box {
+  display: block;
+  padding: 10px;
+}
 
 
-    .message {
-        border-style: solid;
-        border-width: 1px 0;
-        font-weight: bold;
-    }
+.message {
+  border-style: solid;
+  border-width: 1px 0;
+  font-weight: bold;
+}
 
-    .message--error {
-        background-color: #fee;
-        color: #f00;
-    }
+.message--error {
+  background-color: #fee;
+  color: #f00;
+}
 
-    .message--success {
-        background-color: #efe;
-        color: #0f0;
-    }
+.message--success {
+  background-color: #efe;
+  color: #0f0;
+}
+```
 
 Now we have a general abstraction for boxes which can live, and be used,
 completely separately from our message component, and we have a base message
@@ -1978,14 +2118,16 @@ of it can be made very easily by extending it.
 
 Let’s take an example:
 
-    .box {
-        display: block;
-        padding: 10px;
-    }
+```
+.box {
+  display: block;
+  padding: 10px;
+}
 
-    .box--large {
-        padding: 20px;
-    }
+.box--large {
+  padding: 20px;
+}
+```
 
 Here we can see that the `.box {}` object is incredibly simple: we’ve stripped
 it right back into one very small and very focussed responsibility. To modify
@@ -1994,14 +2136,16 @@ class is closed to modification, but open to being extended.
 
 An incorrect way of achieving the same might look like this:
 
-    .box {
-        display: block;
-        padding: 10px;
-    }
+```
+.box {
+  display: block;
+  padding: 10px;
+}
 
-    .content .box {
-        padding: 20px;
-    }
+.content .box {
+  padding: 20px;
+}
+```
 
 Not only is this overly specific, locationally dependent, and potentially
 displaying poor Selector Intent, we are modifying the `.box {}` directly. We
@@ -2053,27 +2197,29 @@ _meaningful_ repetition. If two things happen to share the same declarations
 coincidentally, then we needn’t DRY anything out; that repetition is purely
 circumstantial and cannot be shared or abstracted. For example:
 
-    .btn {
-        display: inline-block;
-        padding: 1em 2em;
-        font-weight: bold;
-    }
+```
+.btn {
+  display: inline-block;
+  padding: 1em 2em;
+  font-weight: bold;
+}
 
-    [...]
+[...]
 
-    .page-title {
-        font-size: 3rem;
-        line-height: 1.4;
-        font-weight: bold;
-    }
+.page-title {
+  font-size: 3rem;
+  line-height: 1.4;
+  font-weight: bold;
+}
 
-    [...]
+[...]
 
-        .user-profile__title {
-            font-size: 1.2rem;
-            line-height: 1.5;
-            font-weight: bold;
-        }
+  .user-profile__title {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    font-weight: bold;
+  }
+```
 
 From the above code, we can reasonably deduce that the `font-weight: bold;`
 declaration appears three times purely coincidentally. To try and create an
@@ -2084,30 +2230,32 @@ circumstance.
 However, imagine we’re using a web-font that requires `font-weight: bold;` to be
 declared every time the `font-family` is:
 
-    .btn {
-        display: inline-block;
-        padding: 1em 2em;
-        font-family: "My Web Font", sans-serif;
-        font-weight: bold;
-    }
+```
+.btn {
+  display: inline-block;
+  padding: 1em 2em;
+  font-family: "My Web Font", sans-serif;
+  font-weight: bold;
+}
 
-    [...]
+[...]
 
-    .page-title {
-        font-size: 3rem;
-        line-height: 1.4;
-        font-family: "My Web Font", sans-serif;
-        font-weight: bold;
-    }
+.page-title {
+  font-size: 3rem;
+  line-height: 1.4;
+  font-family: "My Web Font", sans-serif;
+  font-weight: bold;
+}
 
-    [...]
+[...]
 
-        .user-profile__title {
-            font-size: 1.2rem;
-            line-height: 1.5;
-            font-family: "My Web Font", sans-serif;
-            font-weight: bold;
-        }
+  .user-profile__title {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    font-family: "My Web Font", sans-serif;
+    font-weight: bold;
+  }
+```
 
 Here we’re repeating a more meaningful snippet of CSS; these two declarations
 have to always be declared together. In this instance, we probably would DRY
@@ -2120,32 +2268,34 @@ these unrelated rulesets together in our CSS, thus making the unrelated related.
 
 Our mixin:
 
-    @mixin my-web-font() {
-        font-family: "My Web Font", sans-serif;
-        font-weight: bold;
-    }
+```
+@mixin my-web-font() {
+  font-family: "My Web Font", sans-serif;
+  font-weight: bold;
+}
 
-    .btn {
-        display: inline-block;
-        padding: 1em 2em;
-        @include my-web-font();
-    }
+.btn {
+  display: inline-block;
+  padding: 1em 2em;
+  @include my-web-font();
+}
 
-    [...]
+[...]
 
-    .page-title {
-        font-size: 3rem;
-        line-height: 1.4;
-        @include my-web-font();
-    }
+.page-title {
+  font-size: 3rem;
+  line-height: 1.4;
+  @include my-web-font();
+}
 
-    [...]
+[...]
 
-        .user-profile__title {
-            font-size: 1.2rem;
-            line-height: 1.5;
-            @include my-web-font();
-        }
+  .user-profile__title {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    @include my-web-font();
+  }
+```
 
 Now the two declarations only exist once, meaning we’re not repeating ourselves.
 If we ever switch out our web-font, or move to a `font-weight: normal;`
@@ -2227,34 +2377,38 @@ A great example is layout. If you are using a grid system, all of the code
 pertaining to layout should exist on its own, without including anything else.
 You’ve written code that handles layout, and that’s it:
 
-    <div class="layout">
+```
+<div class="layout">
 
-        <div class="layout__item  two-thirds">
-        </div>
+  <div class="layout__item  two-thirds">
+  </div>
 
-        <div class="layout__item  one-third">
-        </div>
+  <div class="layout__item  one-third">
+  </div>
 
-    </div>
+</div>
+```
 
 You will now need to write new, separate code to handle what lives inside of
 that layout:
 
-    <div class="layout">
+```
+<div class="layout">
 
-        <div class="layout__item  two-thirds">
-            <section class="content">
-                ...
-            </section>
-        </div>
+  <div class="layout__item  two-thirds">
+    <section class="content">
+      ...
+    </section>
+  </div>
 
-        <div class="layout__item  one-third">
-            <section class="sub-content">
-                ...
-            </section>
-        </div>
+  <div class="layout__item  one-third">
+    <section class="sub-content">
+      ...
+    </section>
+  </div>
 
-    </div>
+</div>
+```
 
 The separation of concerns allows you to keep code self-sufficient, ignorant,
 and ultimately a lot more maintainable. Code which adheres to the separation of
@@ -2296,8 +2450,10 @@ information in your markup</q>.
 So, in a bid to circumvent this, people adopt selectors that might look a little
 like this:
 
-    body > header:first-of-type > nav > ul > li > a {
-    }
+```
+body > header:first-of-type > nav > ul > li > a {
+}
+```
 
 This CSS—presumably to style our site’s main nav—has the usual problems of
 location dependency, poor Selector Intent, and high specificity, but it also
