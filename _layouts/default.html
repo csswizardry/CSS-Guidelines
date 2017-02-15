@@ -4,14 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0">
 
+<link rel="preconnect" href="https://font.googleapis.com">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:200%7CMerriweather:300italic,300,700,700italic" />
+
+<style>
+  {% include css/main.min.css %}
+</style>
+
 <title>{{ site.title }} ({{ site.version }}) – {{ site.description }}</title>
 
 <meta name="description" content="{{ site.description }}">
 
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-
-<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Titillium+Web:200%7CMerriweather:300italic,300,700,700italic" />
-<link rel="stylesheet" href="css/main.min.css" />
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@cssguidelines">
