@@ -48,6 +48,7 @@
  * Clearfix.............Simple clearfix helper.
  * Hide.................Accessibly hide text.
  * Text.................Text helpers.
+ * Print................Make the Guidelines printable.
  */
 
 @import "settings.global";
@@ -99,3 +100,4 @@ $inuit-btn-border-width:    2px;
 @import "bower_components/inuit-clearfix/trumps.clearfix";
 @import "trumps.hide";
 @import "trumps.text";
+@import "utilities.print";
