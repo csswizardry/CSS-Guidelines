@@ -5,18 +5,18 @@ layout: default
 <h1 class="hide">{{ site.title }}</h1>
 <h2 class="alpha  site-title">{{ site.description }}</h2>
 
-<script src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=cssguidelines" defer id="_carbonads_js"></script>
+<script src="https://cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=cssguidelines" defer id="_carbonads_js"></script>
 
 ## About the Author
 
 <cite>CSS Guidelines</cite> is a document by me, [Harry
-Roberts](http://csswizardry.com/work/). I am a Consultant Front-end Architect
+Roberts](https://csswizardry.com/work/). I am a Consultant Front-end Architect
 from the UK, and I help companies all over the world write and manage better
 quality UIs for their products and teams. I am available for hire.
 
 <p class="text-center">
 <a href="https://twitter.com/csswizardry" class="btn  btn--secondary"><span class="hide-palm">Follow me on </span>Twitter</a>
-or <a href="http://csswizardry.com/work/" class="btn">Hire<span class="hide-palm"> Me</span></a>
+or <a href="https://csswizardry.com/work/" class="btn">Hire<span class="hide-palm"> Me</span></a>
 </p>
 
 ---
@@ -563,7 +563,7 @@ square brackets (`[` and `]`), like so:
 This is not a firm recommendation, and is something I am still trialling myself,
 but it does carry a number of benefits. Read more in [<cite>Grouping related
 classes in your
-markup</cite>](http://csswizardry.com/2014/05/grouping-related-classes-in-your-markup/).
+markup</cite>](https://csswizardry.com/2014/05/grouping-related-classes-in-your-markup/).
 
 As with our rulesets, it is possible to use meaningful whitespace in your HTML.
 You can denote thematic breaks in content with five (5) empty lines, for
@@ -624,7 +624,7 @@ empty-line-delimited blocks of markup.
 
 ### Further Reading
 
-* [<cite>Grouping related classes in your markup</cite>](http://csswizardry.com/2014/05/grouping-related-classes-in-your-markup/)
+* [<cite>Grouping related classes in your markup</cite>](https://csswizardry.com/2014/05/grouping-related-classes-in-your-markup/)
 
 ---
 
@@ -668,7 +668,7 @@ For large comments that document entire sections or components, we use a
 DocBlock-esque multi-line comment which adheres to our 80 column width.
 
 Here is a real-life example from the CSS which styles the page header on [CSS
-Wizardry](http://csswizardry.com/):
+Wizardry](https://csswizardry.com/):
 
 ```
 /**
@@ -1090,7 +1090,7 @@ to research and investigate further.
 
 ### Further Reading
 
-* [<cite>MindBEMding – getting your head ’round BEM syntax</cite>](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
+* [<cite>MindBEMding – getting your head ’round BEM syntax</cite>](https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
 
 ---
 
@@ -1487,12 +1487,12 @@ work with on changing and long-running projects.
 
 ### Further Reading
 
-* [<cite>Shoot to kill; CSS selector intent</cite>](http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/)
-* [<cite>‘Scope’ in CSS</cite>](http://csswizardry.com/2013/05/scope-in-css/)
-* [<cite>Keep your CSS selectors short</cite>](http://csswizardry.com/2012/05/keep-your-css-selectors-short/)
-* [<cite>About HTML semantics and front-end architecture</cite>](http://nicolasgallagher.com/about-html-semantics-front-end-architecture/)
-* [<cite>Naming UI components in OOCSS</cite>](http://csswizardry.com/2014/03/naming-ui-components-in-oocss/)
-* [<cite>Writing efficient CSS selectors</cite>](http://csswizardry.com/2011/09/writing-efficient-css-selectors/)
+* [<cite>Shoot to kill; CSS selector intent</cite>](https://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/)
+* [<cite>‘Scope’ in CSS</cite>](https://csswizardry.com/2013/05/scope-in-css/)
+* [<cite>Keep your CSS selectors short</cite>](https://csswizardry.com/2012/05/keep-your-css-selectors-short/)
+* [<cite>About HTML semantics and front-end architecture</cite>](https://nicolasgallagher.com/about-html-semantics-front-end-architecture/)
+* [<cite>Naming UI components in OOCSS</cite>](https://csswizardry.com/2014/03/naming-ui-components-in-oocss/)
+* [<cite>Writing efficient CSS selectors</cite>](https://csswizardry.com/2011/09/writing-efficient-css-selectors/)
 
 ---
 
@@ -1728,7 +1728,7 @@ Now we have better scoped CSS with minimal specificity—the best of both worlds
 
 ##### Further Reading
 
-* [<cite>‘Scope’ in CSS</cite>](http://csswizardry.com/2013/05/scope-in-css/)
+* [<cite>‘Scope’ in CSS</cite>](https://csswizardry.com/2013/05/scope-in-css/)
 
 ### `!important`
 
@@ -1870,7 +1870,7 @@ no better alternative.
 
 #### Further Reading
 
-* [<cite>Hacks for dealing with specificity</cite>](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/)
+* [<cite>Hacks for dealing with specificity</cite>](https://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/)
 
 ---
 
@@ -2005,8 +2005,8 @@ skin (colours, typefaces, etc.).
 #### Further Reading
 
 * [The media object saves hundreds of lines of code](http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/)
-* [The flag object](http://csswizardry.com/2013/05/the-flag-object/)
-* [Naming UI components in OOCSS](http://csswizardry.com/2014/03/naming-ui-components-in-oocss/)
+* [The flag object](https://csswizardry.com/2013/05/the-flag-object/)
+* [Naming UI components in OOCSS](https://csswizardry.com/2014/03/naming-ui-components-in-oocss/)
 
 ### The Single Responsibility Principle
 
@@ -2092,7 +2092,7 @@ sticking to the <i>open/closed principle</i>, which we’re going to look at nex
 
 #### Further Reading
 
-* [The single responsibility principle applied to CSS](http://csswizardry.com/2012/04/the-single-responsibility-principle-applied-to-css/)
+* [The single responsibility principle applied to CSS](https://csswizardry.com/2012/04/the-single-responsibility-principle-applied-to-css/)
 
 ### The Open/Closed Principle
 
@@ -2176,7 +2176,7 @@ should modify code. Remember: **open for extension; closed for modification**.
 
 #### Further Reading
 
-* [The open/closed principle applied to CSS](http://csswizardry.com/2012/06/the-open-closed-principle-applied-to-css/)
+* [The open/closed principle applied to CSS](https://csswizardry.com/2012/06/the-open-closed-principle-applied-to-css/)
 
 ### DRY
 
@@ -2307,7 +2307,7 @@ abstraction**.
 
 #### Further Reading
 
-* [Writing DRYer vanilla CSS](http://csswizardry.com/2013/07/writing-dryer-vanilla-css/)
+* [Writing DRYer vanilla CSS](https://csswizardry.com/2013/07/writing-dryer-vanilla-css/)
 
 ### Composition over Inheritance
 
