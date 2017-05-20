@@ -67,6 +67,20 @@
 </div>
 
 <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js').then(function(registration) {
+        // Successfully registered the Service Worker
+        //console.log('Service Worker registration successful with scope: ', registration.scope);
+      }).catch(function(err) {
+        // Failed to register the Service Worker
+        //console.log('Service Worker registration failed: ', err);
+      });
+    });
+  }
+</script>
+
+<script>
 
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
