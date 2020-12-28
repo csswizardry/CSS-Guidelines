@@ -1009,7 +1009,7 @@ If using Sass, we would likely write this like so:
 Note that we do not nest a new instance of `.person__face {}` inside of
 `.person--handsome {}`; instead, we make use of Sass’ parent selectors to
 prepend `.person--handsome` onto the existing `.person__face {}` selector. This
-means that all of our `.person__face {}`-related rules exist in once place, and
+means that all of our `.person__face {}`-related rules exist in one place, and
 aren’t spread throughout the file. This is general good practice when dealing
 with nested code: keep all of your context (e.g. all `.person__face {}` code)
 encapsulated in one location.
