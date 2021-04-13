@@ -126,7 +126,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
   * a trailing semi-colon ( <a>;</a> ) on our last declaration. [stylelint/declaration-block-trailing-semicolon](https://stylelint.io/user-guide/rules/declaration-block-trailing-semicolon)
 
   As such, the following would be incorrect:
-
+  <div style="color:red;">
   ```css
     .foo, .foo--bar, .baz
     {
@@ -134,6 +134,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
       background-color:green;
       color:red }
   ```
+  </div>
 
   Problems here include
 
