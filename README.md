@@ -55,13 +55,13 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   But, as with anything, the specifics are somewhat irrelevant — consistency is key.
 
-## Multiple Files
+### Multiple Files
 
   Split discrete chunks of code into their own files, which are concatenated during a build step.
 
   We encourage splitting each components' styles to a separate file.
 
-## 80 Characters Wide Comments
+### 80 Characters Wide Comments
 
   [stylelint/max-line-length](https://stylelint.io/user-guide/rules/max-line-length)
 
@@ -130,7 +130,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
   * the trailing (and, admittedly, optional) semi-colon ( <a>;</a> ) is missing;
   * no spaces after colons ( <a>:</a> ).
 
-## Multi-line CSS
+### Multi-line CSS
 
   CSS should be written across multiple lines. There are a number of benefits to this:
 
@@ -148,43 +148,20 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
   }
   ```
 
-## Indenting
+### Indenting
 
   Do not indent same level declaration blocks differently:
 
-  ```css
-  .foo { }
+```scss
+.foo { }
 
-  .foo__bar { }
+.foo__bar { }
 
-  .foo__baz { }
-  ```
-
-## TODO: Indenting Sass
-
-  Sass provides nesting functionality. That is to say, by writing this:
-
-  ```scss
-    .foo {
-      color: red;
-
-      .bar {
-        color: blue;
-      }
-
-    }
-  ```
-
-  …we will be left with this compiled CSS:
-
-  ```css
-    .foo { color: red; }
-    .foo .bar { color: blue; }
-  ```
-
-  When indenting Sass, we stick to the same two (2) spaces, and we also leave a blank line before and after the nested ruleset.
-
-  <b>N.B.</b> Nesting in Sass should be avoided wherever possible. See [the Specificity section](#specificity) for more details.
+// indent nested Sass rulesets the same way, with four (4) spaces
+.foo__baz {
+    .foo--top & {}
+}
+```
 
 ## Meaningful Whitespace
 
@@ -213,92 +190,6 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
     .foo__bar { }
     .foo--baz { }
   ```
-
-## TODO: HTML
-
-  Given HTML and CSS’ inherently interconnected nature, it would be remiss of me to not cover some syntax and formatting guidelines for markup.
-
-  Always quote attributes, even if they would work without. This reduces the chance of accidents, and is a more familiar format to the majority of developers. For all this would work (and is valid):
-
-  ```html
-    <div class=box>
-  ```
-
-  …this format is preferred:
-
-  ```html
-    <div class="box">
-  ```
-
-  The quotes are not required here, but err on the safe side and include them.
-
-  When writing multiple values in a class attribute, separate them with two spaces, thus:
-
-  ```html
-    <div class="foo  bar">
-  ```
-
-  When multiple classes are related to each other, consider grouping them in square brackets ([ and ]), like so:
-
-  ```html
-    <div class="[ box  box--highlight ]  [ bio  bio--long ]">
-  ```
-
-  This is not a firm recommendation, and is something I am still trialling myself, but it does carry a number of benefits. Read more in <a href="https://csswizardry.com/2014/05/grouping-related-classes-in-your-markup/">Grouping related classes in your markup.</a>
-
-  As with our rulesets, it is possible to use meaningful whitespace in your HTML. You can denote thematic breaks in content with five (5) empty lines, for example:
-
-  ```html
-    <header class="page-head">
-      ...
-    </header>
-
-
-
-
-
-    <main class="page-content">
-      ...
-    </main>
-
-
-
-
-
-    <footer class="page-foot">
-      ...
-    </footer>
-  ```
-
-  Separate independent but loosely related snippets of markup with a single empty line, for example:
-
-  ```html
-    <ul class="primary-nav">
-
-      <li class="primary-nav__item">
-        <a href="/" class="primary-nav__link">Home</a>
-      </li>
-
-      <li class="primary-nav__item  primary-nav__trigger">
-        <a href="/about" class="primary-nav__link">About</a>
-
-        <ul class="primary-nav__sub-nav">
-          <li><a href="/about/products">Products</a></li>
-          <li><a href="/about/company">Company</a></li>
-        </ul>
-
-      </li>
-
-      <li class="primary-nav__item">
-        <a href="/contact" class="primary-nav__link">Contact</a>
-      </li>
-
-    </ul>
-  ```
-
-  This allows developers to spot separate parts of the DOM at a glance, and also allows certain text editors—like Vim, for example—to manipulate empty-line-delimited blocks of markup.
-
-  **[⬆ back to top](#contents)**
 
 ## Commenting
 
@@ -390,11 +281,11 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
   * where a class can be used;
   * what (else) a class might be related to.
 
-  The naming convention I follow is very simple: hyphen (-) delimited strings, with BEM-like naming for more complex pieces of code.
+  The naming convention we follow is very simple: hyphen (-) delimited strings, with [BEM](http://getbem.com/)-like naming for more complex pieces of code.
 
   It’s worth noting that a naming convention is not normally useful CSS-side of development; they really come into their own when viewed in HTML.
 
-## Hyphen Delimited
+### Hyphen Delimited
 
   All strings in classes are delimited with a hyphen (-), like so:
 
@@ -412,7 +303,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
     .sub_content { }
   ```
 
-## BEM-like Naming
+### BEM-like Naming
 
   For larger, more interrelated pieces of UI that require a number of classes, we use a BEM-like naming convention.
 
@@ -422,8 +313,8 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   ```css
     .person { }
-    .person__head { }
     .person--tall { }
+    .person__head { }
   ```
 
   Elements are delimited with two (2) underscores (__), and Modifiers are delimited by two (2) hyphens (--).
@@ -437,33 +328,29 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
   ```css
     .room { }
 
-      .room__door { }
-
     .room--kitchen { }
 
+    .room__door { }
 
     .person { }
 
-      .person__head { }
+    .person__head { }
   ```
 
-  If we did want to denote a <a>.person {}</a> inside a <a>.room {}</a>, it is more correct to use a selector like <a>.room</a> <a>.person {}</a> which bridges two Blocks than it is to increase the scope of existing Blocks and Elements.
+  If we did want to denote a <a>.person {}</a> inside a <a>.room {}</a>, it is more correct to use a selector like <a>.room__human {}</a> which bridges two Blocks than it is to increase the scope of existing Blocks and Elements. Keep in mind when "adopting" a child as parent's element, the element name does not have to correspond to the adopted block, rather it's element name should be relevant in the context.
 
   A more realistic example of properly scoped blocks might look something like this, where each chunk of code represents its own Block:
 
   ```css
-  .page { }
-
+    .page { }
 
     .content { }
 
-
     .sub-content { }
-
 
     .footer { }
 
-      .footer__copyright { }
+    .footer__copyright { }
   ```
 
   Incorrect notation for this would be:
@@ -471,22 +358,22 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
   ```css
     .page { }
 
-      .page__content { }
+    .page__content { }
 
-      .page__sub-content { }
+    .page__sub-content { }
 
-      .page__footer { }
+    .page__footer { }
 
-        .page__copyright { }
+    .page__copyright { }
   ```
 
   It is important to know when BEM scope starts and stops. As a rule, BEM applies to self-contained, discrete parts of the UI.
 
-## More Layers
+### More Layers
 
   If we were to add another Element—called, let’s say, <a>.person__eye {}</a>—to this <a>.person {}</a> component, we would not need to step through every layer of the DOM. That is to say, the correct notation would be <a>.person__eye {}</a>, and not <a>.person__head__eye {}</a>. Your classes do not reflect the full paper-trail of the DOM.
 
-## Modifying Elements
+### Modifying Elements
 
   You can have variants of Elements, and these can be denoted in a number of ways depending on how and why they are being modified. Carrying on with our person example, a blue eye might look like this:
 
@@ -515,25 +402,23 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
   ```scss
     .person { }
 
-      .person__face {
-
-        .person--handsome & { }
-
-      }
-
     .person--handsome { }
+
+    .person__face {
+        .person--handsome & { }
+    }
   ```
 
   Note that we do not nest a new instance of <a>.person__face {}</a> inside of <a>.person--handsome {}</a>; instead, we make use of Sass’ parent selectors to prepend <a>.person--handsome</a> onto the existing <a>.person__face {}</a> selector. This means that all of our <a>.person__face {}</a>-related rules exist in once place, and aren’t spread throughout the file. This is general good practice when dealing with nested code: keep all of your context (e.g. all <a>.person__face {}</a> code) encapsulated in one location.
 
-## Naming Conventions in HTML
+### Naming Conventions in HTML
 
   As I previously hinted at, naming conventions aren’t necessarily all that useful in your CSS. Where naming conventions’ power really lies is in your markup. Take the following, non-naming-conventioned HTML:
 
   ```html
-  <div class="box  profile  pro-user">
+  <div class="box profile pro-user">
 
-    <img class="avatar  image" />
+    <img class="avatar image" />
 
     <p class="bio">...</p>
 
@@ -545,9 +430,9 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
   From that markup alone, it is very hard to answer any of those questions. Using a naming convention, however, changes all that:
 
   ```html
-    <div class="box  profile  profile--is-pro-user">
+    <div class="box profile profile--is-pro-user">
 
-      <img class="avatar  profile__image" />
+      <img class="avatar profile__image" />
 
       <p class="profile__bio">...</p>
 
@@ -556,37 +441,35 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   Now we can clearly see which classes are and are not related to each other, and how; we know what classes we can’t use outside of the scope of this component; and we know which classes we may be free to reuse elsewhere.
 
-## JavaScript Hooks
+### JavaScript Hooks
 
-  As a rule, it is unwise to bind your CSS and your JS onto the same class in your HTML. This is because doing so means you can’t have (or remove) one without (removing) the other. It is much cleaner, much more transparent, and much more maintainable to bind your JS onto specific classes.
+  As a general rule, hook your JS to the same class used for styling. This is because your styles, HTML and JS functionality are very tightly coupled.
 
-  I have known occasions before when trying to refactor some CSS has unwittingly removed JS functionality because the two were tied to each other—it was impossible to have one without the other.
-
-  Typically, these are classes that are prepended with js-, for example:
+  If the JS functionality is optional, however, it is recommended to use an optional class that is prefixed with `js-`, for example:
 
   ```html
-    <input type="submit" class="btn  js-btn" value="Follow" />
+    <a href="#next-section" class="btn js-scroll-to">Scroll to next section</a>
   ```
 
-  This means that we can have an element elsewhere which can carry with style of .btn {}, but without the behaviour of <a>.js-btn</a>.
+  This means that we can have an element elsewhere which can carry with style of `.btn {}`, but without the behaviour of `.js-scroll-to`.
 
-  ## <b>data-</b> Attributes
+  #### <b>data-</b> Attributes
 
   A common practice is to use <a>data-*</a> attributes as JS hooks, but this is incorrect. <a>data-*</a> attributes, as per the spec, are used <b>to store custom data</b> private to the page or application (emphasis mine). <a>data-*</a> attributes are designed to store data, not be bound to.
 
-## Taking It Further
+  Third party plugins are exempt from this rule.
+
+### Taking It Further
 
   As previously mentioned, these are very simple naming conventions, and ones that don’t do much more than denote three distinct groups of class.
 
   I would encourage you to read up on and further look in to your naming convention in order to provide more functionality—I know it’s something I’m keen to research and investigate further.
 
-  **[⬆ back to top](#contents)**
-
 ## CSS Selectors
 
   Perhaps somewhat surprisingly, one of the most fundamental, critical aspects of writing maintainable and scalable CSS is selectors. Their specificity, their portability, and their reusability all have a direct impact on the mileage we will get out of our CSS, and the headaches it might bring us.
 
-## Selector Intent
+### Selector Intent
 
   It is important when writing CSS that we scope our selectors correctly, and that we’re selecting the right things for the right reasons. Selector Intent is the process of deciding and defining what you want to style and how you will go about selecting it. For example, if you are wanting to style your website’s main navigation menu, a selector like this would be incredibly unwise:
 
@@ -608,13 +491,13 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   CSS cannot be encapsulated, it is inherently leaky, but we can mitigate some of these effects by not writing such globally-operating selectors: <b>your selectors should be as explicit and well reasoned as your reason for wanting to select something.</b>
 
-## Reusability
+### Reusability
 
   With a move toward a more component-based approach to constructing UIs, the idea of reusability is paramount. We want the option to be able to move, recycle, duplicate, and syndicate components across our projects.
 
   To this end, we make heavy use of classes. IDs, as well as being hugely over-specific, cannot be used more than once on any given page, whereas classes can be reused an infinite amount of times. Everything you choose, from the type of selector to its name, should lend itself toward being reused.
 
-## Location Independence
+### Location Independence
 
   Given the ever-changing nature of most UI projects, and the move to more component-based architectures, it is in our interests not to style things based on where they are, but on what they are. That is to say, our components’ styling should not be reliant upon where we place them—they should remain entirely location independent.
 
@@ -632,13 +515,13 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   This single class can be reused anywhere outside of <a>.promo</a> and will always carry its correct styling. As a result of a better selector, this piece of UI is more portable, more recyclable, doesn’t have any dependencies, and has much better Selector Intent. <b>A component shouldn’t have to live in a certain place to look a certain way.</b>
 
-## Portability
+### Portability
 
   Reducing, or, ideally, removing, location dependence means that we can move components around our markup more freely, but how about improving our ability to move classes around components? On a much lower level, there are changes we can make to our selectors that make the selectors themselves—as opposed to the components they create—more portable. Take the following example:
 
-  ```css
+```css
     input.btn { }
-  ```
+```
 
   This is a qualified selector; the leading <a>input</a> ties this ruleset to only being able to work on <a>input</a> elements. By omitting this qualification, we allow ourselves to reuse the <a>.btn</a> class on any element we choose, like an <a>a</a>, for example, or a <a>button</a>.
 
@@ -647,68 +530,44 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
   Of course, there are times when you may want to legitimately qualify a selector—you might need to apply some very specific styling to a particular element when it carries a certain class, for example:
 
 
-```css
-  /**
-   * Embolden and colour any element with a class of `.error`.
-   */
-  .error {
+```scss
+// Embolden and colour any element with a class of `.card`.
+.card {
     color: red;
     font-weight: bold;
-  }
+}
 
-    /**
-     * If the element is a `div`, also give it some box-like styling.
-     */
-    div.error {
-      padding: 10px;
-      border: 1px solid;
+// If the element is a `a`, also give it some hover styling.
+a.card {
+    &:hover {
+        transform: translateY(-6px);
     }
+}
 ```
 
   This is one example where a qualified selector might be justifiable, but I would still recommend an approach more like:
 
-  ```css
-    /**
-     * Text-level errors.
-     */
-    .error-text {
-      color: red;
-      font-weight: bold;
+```scss
+.card {
+    color: red;
+    font-weight: bold;
+}
+
+.card--link {
+    &:hover {
+        transform: translateY(-6px);
     }
+}
+```
 
-    /**
-     * Elements that contain errors.
-     */
-    .error-box {
-      padding: 10px;
-      border: 1px solid;
-    }
-  ```
+  This means that we can apply `.card--link` to any element, and not just an a—it is more reusable than a qualified selector.
 
-  This means that we can apply <a>.error-box</a> to any element, and not just a div—it is more reusable than a qualified selector.
-
-## Quasi-Qualified Selectors
-
-  One thing that qualified selectors can be useful for is signalling where a class might be expected or intended to be used, for example:
-
-  ```css
-    ul.nav { }
-  ```
-
-  Here we can see that the <a>.nav</a> class is meant to be used on a <a>ul</a> element, and not on a <a>nav.</a> By using quasi-qualified selectors we can still provide that information without actually qualifying the selector:
-
-  ```css
-    /*ul*/.nav { }
-  ```
-
-  By commenting out the leading element, we can still leave it to be read, but avoid qualifying and increasing the specificity of the selector.
-
-## Naming
+### Naming
 
   As Phil Karlton once said,
   > There are only two hard things in Computer Science: cache invalidation and naming things.
 
-  I won’t comment on the former claim here, but the latter has plagued me for years. My advice with regard to naming things in CSS is to pick a name that is sensible, but somewhat ambiguous: aim for high reusability. For example, instead of a class like <a>.site-nav</a>, choose something like <a>.primary-nav</a>; rather than <a>.footer-links</a>, favour a class like <a>.sub-links</a>.
+  We won’t comment on the former claim here, but the latter has plagued me for years. Our advice with regard to naming things in CSS is to pick a name that is sensible, but somewhat ambiguous: aim for high reusability. For example, instead of a class like <a>.site-nav</a>, choose something like <a>.primary-nav</a>; rather than <a>.footer-links</a>, favour a class like <a>.sub-links</a>.
 
   The differences in these names is that the first of each two examples is tied to a very specific use case: they can only be used as the site’s navigation or the footer’s links respectively. By using slightly more ambiguous names, we can increase our ability to reuse these components in different circumstances.
 
@@ -752,89 +611,9 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
     }
   ```
 
-  It is important to strike a balance between names that do not literally describe the style that the class brings, but also ones that do not explicitly describe specific use cases. Instead of <a>.home-page-panel</a>, choose <a>.masthead</a>; instead of <a>.site-nav</a>, favour <a>.primary-nav</a>; instead of <a>.btn-login</a>, opt for <a>.btn-primary</a>.
+  It is important to strike a balance between names that do not literally describe the style that the class brings, but also ones that do not explicitly describe specific use cases. Instead of <a>.home-page-panel</a>, choose <a>.hero</a>; instead of <a>.site-nav</a>, favour <a>.primary-nav</a>; instead of <a>.btn-login</a>, opt for <a>.btn-primary</a>.
 
-## Naming UI Components
-
-  Naming components with agnosticism and reusability in mind really helps developers construct and modify UIs much more quickly, and with far less waste. However, it can sometimes be beneficial to provide more specific or meaningful naming alongside the more ambiguous class, particularly when several agnostic classes come together to form a more complex and specific component that might benefit from having a more meaningful name. In this scenario, we augment the classes with a <a>data-ui-component</a> attribute which houses a more specific name, for example:
-
-  ```html
-    <ul class="tabbed-nav" data-ui-component="Main Nav">
-  ```
-
-  Here we have the benefits of a highly reusable class name which does not describe—and, therefore, tie itself to—a specific use case, and added meaning via our <a>data-ui-component</a> attribute. The <a>data-ui-component</a>’s value can take any format you wish, like title case:
-
-  ```html
-    <ul class="tabbed-nav" data-ui-component="Main Nav">
-  ```
-
-  Or class-like:
-
-  ```html
-    <ul class="tabbed-nav" data-ui-component="main-nav">
-  ```
-
-  Or namespaced:
-
-  ```html
-    <ul class="tabbed-nav" data-ui-component="nav-main">
-  ```
-
-  The implementation is largely personal preference, but the concept still remains: <b>Add any useful or specific meaning via a mechanism that will not inhibit your and your team’s ability to recycle and reuse CSS.</b>
-
-## Selector Performance
-
-  A topic which is—with the quality of today’s browsers—more interesting than it is important, is selector performance. That is to say, how quickly a browser can match the selectors your write in CSS up with the nodes it finds in the DOM.
-
-  Generally speaking, the longer a selector is (i.e. the more component parts) the slower it is, for example:
-
-  ```css
-    body.home div.header ul { }
-  ```
-
-  …is a far less efficient selector than:
-
-  ```css
-    .primary-nav { }
-  ```
-
-  This is because browsers read CSS selectors right-to-left. A browser will read the first selector as
-
-  * find all <a>ul</a> elements in the DOM;
-  * now check if they live anywhere inside an element with a class of <a>.header</a>;
-  * next check that <a>.header</a> class exists on a <a>div</a> element;
-  * now check that that all lives anywhere inside any elements with a class of <a>.home</a>;
-  * finally, check that <a>.home</a> exists on a body element.
-
-  The second, in contrast, is simply a case of the browser reading
-
-  * find all the elements with a class of <a>.primary-nav</a>.
-
-  To further compound the problem, we are using descendant selectors (e.g. <a>.foo .bar {}</a>). The upshot of this is that a browser is required to start with the rightmost part of the selector (i.e. .bar) and keep looking up the DOM indefinitely until it finds the next part (i.e. <a>.foo</a>). This could mean stepping up the DOM dozens of times until a match is found.
-
-  This is just one reason why <b>nesting with preprocessors is often a false economy</b>; as well as making selectors unnecessarily more specific, and creating location dependency, it also creates more work for the browser.
-
-  By using a child selector (e.g. <a>.foo > .bar {}</a>) we can make the process much more efficient, because this only requires the browser to look one level higher in the DOM, and it will stop regardless of whether or not it found a match.
-
-## The Key Selector
-
-  Because browsers read selectors right-to-left, the rightmost selector is often critical in defining a selector’s performance: this is called the key selector.
-
-  The following selector might appear to be highly performant at first glance. It uses an ID which is nice and fast, and there can only ever be one on a page, so surely this will be a nice and speedy lookup—just find that one ID and then style everything inside of it:
-
-  ```css
-    #foo * { }
-  ```
-
-  The problem with this selector is that the key selector (*) is very, very far reaching. What this selector actually does is find every single node in the DOM (even <a><title\></a>, <a><link\></a>, and <a><head\></a> elements; everything) and then looks to see if it lives anywhere at any level within #foo. This is a very, very expensive selector, and should most likely be avoided or rewritten.
-
-  Thankfully, by writing selectors with good <a><b>Selector Intent</b></a>, we are probably avoiding inefficient selectors by default; we are very unlikely to have greedy key selectors if we’re targeting the right things for the right reason.
-
-  That said, however, CSS selector performance should be fairly low on your list of things to optimise; browsers are fast, and are only ever getting faster, and it is only on notable edge cases that inefficient selectors would be likely to pose a problem.
-
-  As well as their own specific issues, nesting, qualifying, and poor Selector Intent all contribute to less efficient selectors.
-
-## General Rules
+### General Rules
 
   Your selectors are fundamental to writing good CSS. To very briefly sum up the above sections:
 
@@ -846,9 +625,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   Focussing on these points will keep your selectors a lot more sane and easy to work with on changing and long-running projects.
 
-  **[⬆ back to top](#contents)**
-
-## Specificity
+### Specificity
 
   As we’ve seen, CSS isn’t the most friendly of languages: globally operating, very leaky, dependent on location, hard to encapsulate, based on inheritance… But! None of that even comes close to the horrors of specificity.
 
@@ -896,7 +673,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   All of these issues are greatly magnified when working on a larger project with a number of developers contributing code.
 
-## Keep It Low at All Times
+#### Keep It Low at All Times
 
   The problem with specificity isn’t necessarily that it’s high or low; it’s the fact it is so variant and that it cannot be opted out of: the only way to deal with it is to get progressively more specific—the notorious specificity wars we looked at above.
 
@@ -913,7 +690,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   <b>Specificity can be wrangled and understood, but it is safer just to avoid it entirely.</b>
 
-## IDs in CSS
+#### IDs in CSS
 
   If we want to keep specificity low, which we do, we have one really quick-win, simple, easy-to-follow rule that we can employ to help us: avoid using IDs in CSS.
 
@@ -929,7 +706,9 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   <b>It is just not worth introducing the risk.</b>
 
-## Nesting
+  As an exception, IDs can be used in CSS when there is a need to override a third party style that also uses IDs for styling.
+
+### Nesting
 
   We’ve already looked at how nesting can lead to location dependent and potentially inefficient code, but now it’s time to take a look at another of its pitfalls: it makes selectors more specific.
 
@@ -977,35 +756,47 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   ```css
     .widget {
-      padding: 10px;
+        padding: 10px;
     }
 
-      .widget > .widget__title {
+    .widget > .widget__title {
         color: red;
-      }
+    }
   ```
 
   To style an element with a class of <a>.widget__title</a>, we have a selector that is twice as specific as it needs to be. That means that if we want to make any modifications to <a>.widget__title</a>, we’ll need another at-least-equally specific selector:
 
   ```css
-    .widget { ... }
+    .widget { }
 
-      .widget > .widget__title { ... }
+    .widget > .widget__title { }
 
-      .widget > .widget__title--sub {
+    .widget > .widget__title--sub {
         color: blue;
-      }
+    }
   ```
 
   Not only is this entirely avoidable—we caused this problem ourselves—we have a selector that is literally double the specificity it needs to be. We used 200% of the specificity actually required. And not only that, but this also leads to needless verbosity in our code—more to send over the wire.
 
   As a rule, <b>if a selector will work without it being nested then do not nest it</b>.
 
+  Nesting and raising specificity is necessary when using state classes on a block (that need to override all possible modifiers) and when modifying an element based on block modifier.
+
+```scss
+    .widget {
+        &.is-open { }
+    }
+
+    .widget__title {
+        .widget--primary & { }
+    }
+```
+
 ## Scope
 
   One possible advantage of nesting—which, unfortunately, does not outweigh the disadvantages of increased specificity—is that it provides us with a namespace of sorts. A selector like <a>.widget</a> <a>.title</a> scopes the styling of <a>.title</a> to an element that only exists inside of an element carrying a class of <a>.widget</a>.
 
-  This goes some way to providing our CSS with scope and encapsulation, but does still mean that our selectors are twice as specific as they need to be. A better way of providing this scope would be via a namespace—which we already have in the form of <a href="https://cssguidelin.es/#bem-like-naming"><b>BEM-like Naming</b></a>—which does not lead to an unnecessary increase in specificity.
+  This goes some way to providing our CSS with scope and encapsulation, but does still mean that our selectors are twice as specific as they need to be. A better way of providing this scope would be via a namespace—which we already have in the form of <a href="#bem-like-naming"><b>BEM-like Naming</b></a>—which does not lead to an unnecessary increase in specificity.
 
   Now we have better scoped CSS with minimal specificity—the best of both worlds.
 
@@ -1026,16 +817,12 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
   Proactive use of <a>!important</a> is when it is used before you’ve encountered any specificity problems; when it is used as a guarantee rather than as a fix. For example:
 
   ```css
-    .one-half {
-      width: 50% !important;
-    }
-
     .hidden {
-      display: none !important;
+        display: none !important;
     }
   ```
 
-  These two helper, or <i>utility</i>, classes are very specific in their intentions: you would only use them if you wanted something to be rendered at 50% width or not rendered at all. If you didn’t want this behaviour, you would not use these classes, therefore whenever you do use them you will definitely want them to win.
+  This helper, or <i>utility</i>, class is very specific in their intentions: you would only use it if you wanted something to be not rendered at all. If you didn’t want this behaviour, you would not use this class, therefore whenever you do use it you will definitely want them to win.
 
   Here we proactively apply <a>!important</a> to ensure that these styles always win. This is correct use of <a>!important</a> to guarantee that these trumps always work, and don’t accidentally get overridden by something else more specific.
 
@@ -1064,6 +851,8 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
   In these situations, it is preferable that you investigate and refactor any offending rulesets to try and bring specificity down across the board, as opposed to introducing such specificity heavyweights.
 
   <b>Only use <a>!important</a> proactively, not reactively.</b>
+
+  As an exception, `!important` can be used reactively when there is a need to override a third party styles that are too specific.
 
 ## Hacking Specificity
 
@@ -1103,8 +892,6 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   Do keep in mind that these are hacks, and should not be used unless you have no better alternative.
 
-  **[⬆ back to top](#contents)**
-
 ## Architectural Principles
 
   You would be forgiven for thinking that an architecture for CSS is a somewhat grandiose and unnecessary concept: why would something so simple, so straightforward, need something as complex or considered as an architecture?!
@@ -1119,7 +906,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   In this section, we’ll take a look at some of these design patterns and paradigms, and how we can use them to reduce code—and increase code reuse—in our CSS projects.
 
-## High-level Overview
+### High-level Overview
 
   At a very high-level, your architecture should help you
 
@@ -1131,7 +918,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   Typically, this will mean a class-based and componentised architecture, split up into manageable modules, probably using a preprocessor. Of course, there is far more to an architecture than that, so let’s look at some principles…
 
-## Object-orientation
+### Object-orientation
 
   Object-orientation is a programming paradigm that breaks larger programs up into smaller, in(ter)dependent objects that all have their own roles and responsibilities. From Wikipedia:
 
@@ -1147,37 +934,34 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   ```css
     /**
-     * A simple, design-free button object. Extend this object with a `.btn--*` skin
+     * A simple, design-free alert object. Extend this object with a `.alert--*` skin
      * class.
      */
-    .btn {
-      display: inline-block;
-      padding: 1em 2em;
-      vertical-align: middle;
-    }
-
-
-    /**
-     * Positive buttons’ skin. Extends `.btn`.
-     */
-    .btn--positive {
-      background-color: green;
-      color: white;
+    .alert {
+        display: flex;
+        align-items: flex-start;
+        padding: 12px 16px;
     }
 
     /**
-     * Negative buttons’ skin. Extends `.btn`.
+     * Success alerts skin. Extends `.alert`.
      */
-    .btn--negative {
-      background-color: red;
-      color: white;
+    .alert--success {
+        background-color: green;
+    }
+
+    /**
+     * Error alerts' skin. Extends `.alert`.
+     */
+    .alert--error {
+        background-color: red;
     }
   ```
 
-  Above, we can see how the <a>.btn {}</a> class simply provides structural styling to an element, and doesn’t concern itself with any cosmetics. We supplement the <a>.btn {}</a> object with a second class, such as <a>.btn--negative {}</a> in order to give that DOM node specific cosmetics:
+  Above, we can see how the <a>.alert {}</a> class simply provides structural styling to an element, and doesn’t concern itself with any cosmetics. We supplement the <a>.alert {}</a> object with a second class, such as <a>.alert--negative {}</a> in order to give that DOM node specific cosmetics:
 
   ```html
-    <button class="btn  btn--negative">Delete</button>
+    <div class="alert alert--success">Success!</div>
   ```
 
   Favour the multiple-class approach over using something like <a>@extend</a>: using multiple classes in your markup—as opposed to wrapping the classes up into one using a preprocessor—
@@ -1187,7 +971,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   Whenever you are building a UI component, try and see if you can break it into two parts: one for structural styles (paddings, layout, etc.) and another for skin (colours, typefaces, etc.).
 
-## The Single Responsibility Principle
+### The Single Responsibility Principle
 
   The single responsibility principle is a paradigm that, very loosely, states that all pieces of code (in our case, classes) should focus on doing one thing and one thing only. More formally:
 
@@ -1204,6 +988,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
       background-color: #fee;
       color: #f00;
       font-weight: bold;
+      text-align: right;
     }
 
     .success-message {
@@ -1214,40 +999,49 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
       background-color: #efe;
       color: #0f0;
       font-weight: bold;
+      text-align: center;
     }
   ```
 
   Here we can see that—despite being named after one very specific use-case—these classes are handling quite a lot: layout, structure, and cosmetics. We also have a lot of repetition. We need to refactor this in order to abstract out some shared objects (OOCSS) and bring it more inline with the single responsibility principle. We can break these two classes out into four much smaller responsibilities:
 
   ```css
-    .box {
-      display: block;
-      padding: 10px;
-    }
-
-
     .message {
       border-style: solid;
       border-width: 1px 0;
       font-weight: bold;
     }
 
-    .message--error {
+    /*
+     * Theme variations
+     */
+    .message--color-error {
       background-color: #fee;
       color: #f00;
     }
 
-    .message--success {
+    .message--color-success {
       background-color: #efe;
       color: #0f0;
     }
+
+    /*
+     * Alignment variations
+     */
+    .message--align-center {
+        text-align: center;
+    }
+
+    .message--align-right {
+        text-align: right;
+    }
   ```
 
-  Now we have a general abstraction for boxes which can live, and be used, completely separately from our message component, and we have a base message component that can be extended by a number of smaller responsibility classes. The amount of repetition has been greatly reduced, and our ability to extend and compose our CSS has been greatly increased. This is a great example of OOCSS and the single responsibility principle working in tandem.
+  Now we have a base message component that can be extended by a number of smaller responsibility classes. The amount of repetition has been greatly reduced, and our ability to extend and compose our CSS has been greatly increased. This is a great example of OOCSS and the single responsibility principle working in tandem.
 
   By focussing on single responsibilities, we can give our code much more flexibility, and extending components’ functions becomes very simple when sticking to the open/closed principle, which we’re going to look at next.
 
-## The Open/Closed Principle
+### The Open/Closed Principle
 
   The open/closed principle, in my opinion, is rather poorly named. It is poorly named because 50% of the vital information is omitted from its title. The open/closed principle states that
 
@@ -1298,11 +1092,11 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   Exceptions may present themselves when it transpires that a root object does need a rewrite or refactor, but it is only in these specific cases that you should modify code. Remember: <b>open for extension; closed for modification.</b>
 
-## DRY
+### DRY
 
   DRY, which stands for Don’t Repeat Repeat Yourself, is a micro-principle used in software development which aims to keep the repetition of key information to a minimum. Its formal definition is that
 
-  > [e]very piece of knowledge must have a single, unambiguous, authoritative representation within a system.
+  > [E]very piece of knowledge must have a single, unambiguous, authoritative representation within a system.
 
   Although a very simple principle—in principle—DRY is often misinterpreted as the necessity to never repeat the exact same thing twice at all in a project. This is impractical and usually counterproductive, and can lead to forced abstractions, over-thought and -engineered code, and unusual dependencies.
 
@@ -1365,7 +1159,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   Here we’re repeating a more meaningful snippet of CSS; these two declarations have to always be declared together. In this instance, we probably would DRY out our CSS.
 
-  I would recommend using a mixin over <a>@extend</a> here because, even though the two declarations are thematically grouped, the rulesets themselves are still separate, unrelated entities: to use <a>@extend</a> would be to physically group these unrelated rulesets together in our CSS, thus making the unrelated related.
+  We would recommend using a mixin over <a>@extend</a> here because, even though the two declarations are thematically grouped, the rulesets themselves are still separate, unrelated entities: to use <a>@extend</a> would be to physically group these unrelated rulesets together in our CSS, thus making the unrelated related.
 
   Our mixin:
 
@@ -1402,7 +1196,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   In short, only DRY code that is actually, thematically related. Do not try to reduce purely coincidental repetition: <b>duplication is better than the wrong abstraction</b>.
 
-## Composition over Inheritance
+### Composition over Inheritance
 
   Now that we’re used to spotting abstractions and creating single responsibilities, we should be in a great position to start composing more complex composites from a series of much smaller component parts. Nicole Sullivan likens this to using Lego; tiny, single responsibility pieces which can be combined in a number of different quantities and permutations to create a multitude of very different looking results.
 
@@ -1410,7 +1204,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   Composition is a very valuable principle for an architecture to make use of, particularly considering the move toward component-based UIs. It will mean you can more easily recycle and reuse functionality, as well rapidly construct larger parts of UI from a known set of composable objects. Think back to our error message example in the <b>[Single Responsibility Principle](#the-single-responsibility-principle)</b> section; we created a complete UI component by composing a number of much smaller and unrelated objects.
 
-## The Separation of Concerns
+### The Separation of Concerns
 
   The separation of concerns is a principle which, at first, sounds a lot like the single responsibility principle. The separation of concerns states that code should be broken up
 
@@ -1422,7 +1216,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   > Let me try to explain to you, what to my taste is characteristic for all intelligent thinking. It is, that one is willing to study in depth an aspect of one’s subject matter in isolation for the sake of its own consistency, all the time knowing that one is occupying oneself only with one of the aspects. We know that a program must be correct and we can study it from that viewpoint only; we also know that it should be efficient and we can study its efficiency on another day, so to speak. In another mood we may ask ourselves whether, and if so: why, the program is desirable. But nothing is gained—on the contrary!—by tackling these various aspects simultaneously. It is what I sometimes have called ‘the separation of concerns’, which, even if not perfectly possible, is yet the only available technique for effective ordering of one’s thoughts, that I know of. This is what I mean by ‘focusing one’s attention upon some aspect’: it does not mean ignoring the other aspects, it is just doing justice to the fact that from this aspect’s point of view, the other is irrelevant. It is being one- and multiple-track minded simultaneously.
 
-  Beautiful. The idea here is to focus fully on one thing at once; build one thing to do its job very well whilst paying as little attention as possible to other facets of your code. Once you have addressed and built all these separate concerns in isolation—meaning they’re probably very modular, decoupled, and encapsulated—you can begin bringing them together into a larger project.
+  Beautiful. The idea here is to focus fully on one thing at once; build one thing to do its job very well whilst paying as little attention as possible to other facets of your code. Once you have addressed and built all these separate concerns in isolation—meaning they’re probably very modular, decoupled, and encapsulated—you can begin bringing them together into a larger project, **which is a concern of it's own**.
 
   A great example is layout. If you are using a grid system, all of the code pertaining to layout should exist on its own, without including anything else. You’ve written code that handles layout, and that’s it:
 
@@ -1462,9 +1256,9 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   The separation of concerns increases reusability and confidence whilst reducing dependency.
 
-## Misconceptions
+### Misconceptions
 
-  There are, I feel, a number of unfortunate misconceptions surrounding the separation of concerns when applied to HTML and CSS. They all seem to revolve around some format of:
+  There are a number of unfortunate misconceptions surrounding the separation of concerns when applied to HTML and CSS. They all seem to revolve around some format of:
 
   > Using classes for CSS in your markup breaks the separation of concerns.
 
@@ -1478,13 +1272,11 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   So, in a bid to circumvent this, people adopt selectors that might look a little like this:
 
-  ```css
+```css
     body > header:first-of-type > nav > ul > li > a {
     }
-  ```
+```
 
   This CSS—presumably to style our site’s main nav—has the usual problems of location dependency, poor Selector Intent, and high specificity, but it also manages to do <i>exactly what developers are trying to avoid</i>, only in the opposite direction: <b>it puts DOM information in your CSS</b>. Aggressive attempts to avoid putting any style hints or hooks in markup only lead to overloading stylesheets with DOM information.
 
   In short: having classes in your markup does not violate the separation of concerns. Classes merely act as an API to link two separate concerns together. The simplest way to separate concerns is to write well formed HTML and well formed CSS, and link to two together with sensible, judicious use of classes.
-
-  **[⬆ back to top](#contents)**
