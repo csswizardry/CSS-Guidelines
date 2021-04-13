@@ -41,6 +41,18 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   These guidelines are opinionated, but they have been repeatedly tried, tested, stressed, refined, broken, reworked, and revisited over a number of years on projects of all sizes.
 
+## Quick Tips
+
+- Never use line-height to set element height. Ensure that UI works as intended when text wraps to multiple lines.
+- Try to avoid using ID's.
+- Try to avoid nesting.
+- Try to avoid using tag (e.g. a, button, etc) names in selectors as this prevents re-use in other contexts.
+- Avoid using `@extend`. If you do use it, make sure you understand the concept!
+- Color and font styles (font-family, font-size, font-weight) should be set with variables.
+- Use hex code for colors, or rgba() if opacity is needed. Avoid RGB format and uppercase, and use long values: #ffffff instead of #FFF.
+- Use [CSS shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) (except when overriding styles) for background, border, font, list-style, margin, and padding values as much as possible.
+- Use milliseconds when defining transition and animation values.
+
 ## Syntax and Formatting
 
   One of the simplest forms of a styleguide is a set of rules regarding syntax and formatting. Having a standard way of writing (literally writing) CSS means that code will always look and feel familiar to all members of the team.
@@ -54,6 +66,8 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
   * meaningful use of whitespace.
 
   But, as with anything, the specifics are somewhat irrelevant — consistency is key.
+
+  We use [Stylelint](https://stylelint.io/) to enforce some of the syntax and formatting rules described in this document.
 
 ### Multiple Files
 
@@ -100,7 +114,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   Here you can see we have
 
-  * each selector on its own new line;
+  * each selector on its own new line; [stylelint/selector-list-comma-newline-after](https://stylelint.io/user-guide/rules/selector-list-comma-newline-after)
   * a space before our opening brace ( <a>{</a> );
   * properties and values on the same line;
   * a space after our property–value delimiting colon ( <a>:</a> ); [stylelint/declaration-colon-space-after](https://stylelint.io/user-guide/rules/declaration-colon-space-after)
@@ -129,6 +143,58 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
   * the closing brace ( <a>}</a> ) does not sit on its own line;
   * the trailing (and, admittedly, optional) semi-colon ( <a>;</a> ) is missing;
   * no spaces after colons ( <a>:</a> ).
+
+### Declaration Order
+
+```scss
+.block__element {
+    // mixins
+    @include clearfix;
+    // declarations
+    display: block;
+    visibility: visible;
+
+    // media queries
+    @include bp(sm-min) {
+        color: #000000;
+    }
+
+    // pseudo selector
+    &:hover {
+        text-decoration: underline;
+
+        // media queries
+        @include bp(sm-min) {
+            color: #000000;
+        }
+    }
+
+    // block modifiers
+    .block--modifier & {
+        text-decoration: underline;
+
+        // media queries
+        @include bp(sm-min) {
+            color: #000000;
+        }
+    }
+
+    // pseudo elements
+    &:after {
+        content: '';
+
+        // media queries
+        @include bp(sm-min) {
+            color: #000000;
+        }
+    }
+
+    // other
+    .textfield__input {
+        border-color: red;
+    }
+}
+```
 
 ### Multi-line CSS
 
@@ -321,6 +387,11 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   Here we can see that <a>.person {}</a> is the Block; it is the sole root of a discrete entity. <a>.person__head {}</a> is an Element; it is a smaller part of the <a>.person {}</a> Block. Finally, <a>.person--tall {}</a> is a Modifier; it is a specific variant of the <a>.person {}</a> Block.
 
+  Note that using a Modifier class without a Block class is invalid, e.g the following example is incorrect:
+```html
+<div class="block--modifier">...</div>
+```
+
 ## Starting Context
 
   Your Block context starts at the most logical, self-contained, discrete location. To continue with our person-based analogy, we’d not have a class like <a>.room__person {}</a>, as the room is another, much higher context. We’d probably have separate Blocks, like so:
@@ -410,6 +481,27 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
   ```
 
   Note that we do not nest a new instance of <a>.person__face {}</a> inside of <a>.person--handsome {}</a>; instead, we make use of Sass’ parent selectors to prepend <a>.person--handsome</a> onto the existing <a>.person__face {}</a> selector. This means that all of our <a>.person__face {}</a>-related rules exist in once place, and aren’t spread throughout the file. This is general good practice when dealing with nested code: keep all of your context (e.g. all <a>.person__face {}</a> code) encapsulated in one location.
+
+### Stateful Namespaces
+
+The way in which States are different to BEM’s Modifiers is that States are temporary. States (can) change from one moment to the next, perhaps based on user action (e.g. `.is-expanded`) or from changes that are being pushed from a server (e.g. `.is-loading`).
+
+- Format: `.[is|has]-state`
+- States are temporary. As such, they are more specific than regular Modifier classes to override possible Modifier styles.
+- Ensure that States work without changing HTML.
+- Never write a bare State class.
+
+Quick example:
+
+```scss
+.modal {
+    &.is-open { }
+}
+
+.modal__content {
+    .modal.is-loading { }
+}
+```
 
 ### Naming Conventions in HTML
 
