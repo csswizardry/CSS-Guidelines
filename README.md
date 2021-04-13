@@ -1,4 +1,6 @@
-# css { guide: lines; }
+# gotoAndPlay CSS Style Guide
+
+Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guidelines).
 
 *High-level advice and guidelines for writing sane, manageable, scalable CSS*
 
