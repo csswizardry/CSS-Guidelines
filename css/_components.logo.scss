@@ -1,0 +1,47 @@
+/*------------------------------------*\
+    #LOGO
+\*------------------------------------*/
+
+// How big is the original logo?
+$logo-width:        360px;
+$logo-height:       120px;
+
+// What size of its container should it render at?
+$logo-proportion:   75%;
+
+/**
+ * Fluid SVGs, courtesy of soqr.fr/testsvg/embed-svg-liquid-layout-responsive-web-design.php
+ */
+.logo-wrap {
+    position: relative;
+    width: 75%;
+    padding-top: $logo-height / $logo-width * $logo-proportion;
+    margin-right: auto;
+    margin-left:  auto;
+    overflow: hidden;
+}
+
+.logo {
+    position: absolute;
+    top:  0;
+    left: 0;
+}
+
+    .logo__character {
+        fill: $color-brand;
+
+        .page-head & {
+            fill: #fff;
+        }
+
+    }
+
+    .logo__punctuation {
+        fill: lighten($color-brand, 25%);
+
+        .page-head & {
+            opacity: 0.5;
+            fill: #fff;
+        }
+
+    }

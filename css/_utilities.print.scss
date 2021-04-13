@@ -1,0 +1,65 @@
+/*------------------------------------*\
+  #PRINT
+\*------------------------------------*/
+
+@media print {
+
+  @page {
+    margin: 0;
+  }
+
+  * {
+    background: none !important;
+    color: #000 !important;
+  }
+
+  html {
+    font-size: 10pt;
+    line-height: 1.4;
+    max-width: 72ch;
+    margin-right: auto;
+    margin-left:  auto;
+  }
+
+  a {
+    text-decoration: underline;
+
+    &:after {
+      content: " (" attr(href) ")";
+      font: menu;
+    }
+
+  }
+
+  ul, ol,
+  pre {
+    page-break-inside: avoid;
+  }
+
+  pre {
+    padding: 0;
+    padding-left: 1em;
+    border-left: 5px solid;
+    border-radius: 0;
+    margin-right: 0;
+    margin-left:  0;
+  }
+
+  .page-head {
+    border-bottom: 1px solid #999;
+
+    .logo__character {
+      fill: black;
+    }
+
+    .logo__punctuation {
+      fill: #999;
+    }
+
+  }
+
+  [id="carbonads"] {
+    display: none;
+  }
+
+}

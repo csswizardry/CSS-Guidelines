@@ -1,0 +1,225 @@
+/*------------------------------------*\
+    #TYPE
+\*------------------------------------*/
+
+/**
+ * Headings
+ */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Titillium Web", "Helvetica Neue", Helvetica, sans-serif;
+    color: $color-brand;
+    font-weight: 200;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.1), 0 1px #fff;
+}
+
+h1,
+.alpha {
+    @include font-size(36px);
+
+    @include media-query(lap-and-up) {
+        @include font-size(64px);
+    }
+
+    @include media-query(desk) {
+        @include font-size(64px);
+    }
+
+}
+
+h2,
+.beta {
+    @include font-size(28px);
+
+    @include media-query(lap-and-up) {
+        @include font-size(36px);
+    }
+
+}
+
+h3,
+.gamma {
+    @include font-size(24px);
+
+    @include media-query(lap-and-up) {
+        @include font-size(28px);
+    }
+
+}
+
+h4,
+.delta {
+    @include font-size(20px);
+
+    @include media-query(lap-and-up) {
+        @include font-size(24px);
+    }
+
+}
+
+h5,
+.epsilon {
+    @include font-size(18px);
+
+    @include media-query(lap-and-up) {
+        @include font-size(20px);
+    }
+
+}
+
+h6,
+.zeta {
+    @include font-size(16px);
+}
+
+.site-title {
+    margin-bottom: 3 * $spacing-unit;
+}
+
+
+
+
+
+/**
+ * Bold elements.
+ */
+a,
+b, strong,
+dt {
+    font-weight: 700;
+}
+
+
+
+
+
+/**
+ * Links
+ */
+a {
+    color: $color-brand;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: underline;
+    }
+
+}
+
+
+
+
+
+/**
+ * Code
+ */
+code, kbd, samp {
+    color: #859900;
+    font-family: Operator Mono, Inconsolata, Monaco, Consolas, "Andale Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+    font-weight: normal;
+    font-style: normal;
+}
+
+pre {
+    white-space: pre;
+    word-wrap: normal;
+    overflow: auto;
+    padding: halve($spacing-unit);
+    margin-right: halve(-$spacing-unit);
+    margin-left:  halve(-$spacing-unit);
+    background-color: #333;
+    border-radius: 3px;
+
+    @include media-query(desk) {
+        margin-right: -$spacing-unit;
+        margin-left:  -$spacing-unit;
+        padding:       $spacing-unit;
+    }
+
+    &,
+    code, kbd, samp {
+        color: #fff;
+    }
+
+}
+
+
+
+
+
+/**
+ * Inline quotes.
+ *
+ */
+q {
+    font-style: italic;
+    quotes: "‘" "’" "“" "”";
+
+    &:before {
+        content: open-quote;
+    }
+
+    &:after {
+        content: close-quote;
+    }
+
+}
+
+
+
+
+
+/**
+ * Blockquotes
+ */
+blockquote {
+    color: #666;
+    font-style: italic;
+    padding-right: $spacing-unit;
+    padding-left:  $spacing-unit;
+
+    p {
+        margin-bottom: 0;
+
+        + p {
+            text-indent: $spacing-unit;
+        }
+
+    }
+
+}
+
+
+
+
+
+/**
+ * Rules
+ */
+hr {
+    border: none;
+    border-top: 5px solid rgba(0, 0, 0, 0.05);
+    margin-bottom: (3 * $spacing-unit) - 5px;
+}
+
+.hr-minor {
+    border-top-width: 1px;
+    width: 50%;
+    margin-right: auto;
+    margin-left:  auto;
+    margin-bottom: $spacing-unit - 1px;
+}
+
+
+
+
+
+/**
+ * Highlight
+ */
+mark,
+.highlight:target {
+    background-color: yellow;
+    color: black;
+}
