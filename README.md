@@ -4,64 +4,6 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
 *High-level advice and guidelines for writing sane, manageable, scalable CSS*
 
-## Contents
-
-  1. [Introduction](#introduction)
-      1. [The Importance of a Styleguide](#the-importance-of-styleguide)
-      1. [Disclaimers](#disclaimers)
-  1. [Syntax and Formatting](#syntax-and-formatting)
-      1. [Multiple Files](#multiple-files)
-      1. [Table Of Contents](#table-of-contents)
-      1. [80 Characters Wide](#80-characters-wide)
-      1. [Tilting](#tilting)
-      1. [Anatomy of a Ruleset](#anatomy-of-a-ruleset)
-      1. [Multi-line Css](#multi-line-css)
-      1. [Indenting](#indenting)
-      1. [Indenting Sass](#indenting-sass)
-      1. [Alignment](#alignment)
-      1. [Meaningful Whitespace](#meaningful-whitespace)
-      1. [HTML](#html)
-  1. [Commenting](#commenting)
-      1. [High-level](#high-level)
-          1. [Object Extension Pointers](#object–extension-pointers)
-      1. [Low-Level](#low-level)
-      1. [Preprocessor Comments](#preprocessor-comments)
-      1. [Removing Comments](#removing-comments)
-  1. [Naming Conventions](#naming-conventions)
-      1. [Hyphen Delimited](#hyphen-delimited)
-      1. [BEM-like Naming](#bem-like-naming)
-          1. [Starting Context](#starting-context)
-          1. [More Layers](#more-layers)
-          1. [Modifying Elements](#modifying-elements)
-      1. [Naming Conventions in HTML](#naming-conventions-in-html)
-      1. [JavaScript Hooks](#javascript-hooks)
-          1. [data- Attributes](#data-attributes)
-      1. [Taking It Further](#taking-it-further)
-  1. [CSS Selectors](#css-selectors)
-      1. [Selector Indent](#selector-indent)
-      1. [Reusability](#reusability)
-      1. [Portability](#portability)
-          1. [Quasi-Qualified Selectors](#quasi-qualified-selectors)
-      1. [Naming](#naming)
-          1. [Naming UI Components](#naming-ui-components)
-      1. [Selector Performance](#selector-performance)
-          1. [The Key Selector](#the-key-selector)
-      1. [General Rules](#general-rules)
-  1. [Specificity](#specificity)
-      1. [IDS in CSS](#ids-in-css)
-      1. [Nesting](#nesting)
-      1. [!important](#important)
-      1. [Hacking Specificity](#hacking-specificity)
-  1. [Architectural Principles](#architectural-principles)
-      1. [High-level Overview](#high-level-overview)
-      1. [Object-orientation](#object-orientation)
-      1. [The Single Responsibility Principle](#the-single-responsibility-principle)
-      1. [The Open/Closed Principle](#the-open/closed-principle)
-      1. [DRY](#dry)
-      1. [Composition over Inheritance](#composition-over-inheritance)
-      1. [The Separation of Concerns](#the-separation-of-concerns)
-      1. [Misconceptions](#misconceptions)
-
 ## Introduction
 
   CSS is not a pretty language. While it is simple to learn and get started with, it soon becomes problematic at any reasonable scale. There isn’t much we can do to change how CSS works, but we can make changes to the way we author and structure it.
@@ -97,11 +39,7 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
 ## Disclaimers
 
-  CSS Guidelines is a styleguide; it is not the styleguide. It contains methodologies, techniques, and tips that I would firmly recommend to my clients and teams, but your own tastes and circumstances may well be different. Your mileage may vary.
-
-   These guidelines are opinionated, but they have been repeatedly tried, tested, stressed, refined, broken, reworked, and revisited over a number of years on projects of all sizes.
-
-   **[⬆ back to top](#contents)**
+  These guidelines are opinionated, but they have been repeatedly tried, tested, stressed, refined, broken, reworked, and revisited over a number of years on projects of all sizes.
 
 ## Syntax and Formatting
 
@@ -111,62 +49,21 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   At a very high-level, we want
 
-  * two (2) space indents, no tabs;
-  * 80 character wide columns;
+  * four (4) space indents, no tabs; [stylelint/indentation](https://stylelint.io/user-guide/rules/indentation)
   * multi-line CSS;
   * meaningful use of whitespace.
 
-  But, as with anything, the specifics are somewhat irrelevant—consistency is key.
+  But, as with anything, the specifics are somewhat irrelevant — consistency is key.
 
 ## Multiple Files
 
-  With the meteoric rise of preprocessors of late, more often is the case that developers are splitting CSS across multiple files.
+  Split discrete chunks of code into their own files, which are concatenated during a build step.
 
-  Even if not using a preprocessor, it is a good idea to split discrete chunks of code into their own files, which are concatenated during a build step.
+  We encourage splitting each components' styles to a separate file.
 
-  If, for whatever reason, you are not working across multiple files, the next sections might require some bending to fit your setup.
+## 80 Characters Wide Comments
 
-## Table of Contents
-
-  A table of contents is a fairly substantial maintenance overhead, but the benefits it brings far outweigh any costs. It takes a diligent developer to keep a table of contents up to date, but it is well worth sticking with. An up-to-date table of contents provides a team with a single, canonical catalogue of what is in a CSS project, what it does, and in what order.
-
-  A simple table of contents will—in order, naturally—simply provide the name of the section and a brief summary of what it is and does, for example:
-
-  ```css
-    /**
-    * CONTENTS
-    *
-    * SETTINGS
-    * Global...............Globally-available variables and config.
-    *
-    * TOOLS
-    * Mixins...............Useful mixins.
-    *
-    * GENERIC
-    * Normalize.css........A level playing field.
-    * Box-sizing...........Better default `box-sizing`.
-    *
-    * BASE
-    * Headings.............H1–H6 styles.
-    *
-    * OBJECTS
-    * Wrappers.............Wrapping and constraining elements.
-    *
-    * COMPONENTS
-    * Page-head............The main page header.
-    * Page-foot............The main page footer.
-    * Buttons..............Button elements.
-    *
-    * TRUMPS
-    * Text.................Text helpers.
-    */
-  ```
-
-  Each item maps to a section and/or include.
-
-  Naturally, this section would be substantially larger on the majority of projects, but hopefully we can see how this section—in the master stylesheet—provides developers with a project-wide view of what is being used where, and why.
-
-## 80 Characters Wide
+  [stylelint/max-line-length](https://stylelint.io/user-guide/rules/max-line-length)
 
   ```css
     /**
@@ -176,84 +73,43 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
     */
   ```
 
-  There will be unavoidable exceptions to this rule—such as URLs, or gradient syntax—which shouldn’t be worried about.
-
-## Tilting
-
-  Begin every new major section of a CSS project with a title:
-
-  ```css
-    /*------------------------------------*\
-      #SECTION-TITLE
-    \*------------------------------------*/
-
-    .selector { }
-  ```
-
-  The title of the section is prefixed with a hash (<b style="color: green;">#</b>) symbol to allow us to perform more targeted searches (e.g. grep, etc.): instead of searching for just <b style="color: green;">SECTION-TITLE</b>—which may yield many results—a more scoped search of <b style="color: green;">#SECTION-TITLE</b> should return only the section in question.
-
-  Leave a carriage return between this title and the next line of code (be that a comment, some Sass, or some CSS).
-
-  If you are working on a project where each section is its own file, this title should appear at the top of each one. If you are working on a project with multiple sections per file, each title should be preceded by five (5) carriage returns. This extra whitespace coupled with a title makes new sections much easier to spot when scrolling through large files:
-
-  ```css
-    /*------------------------------------*\
-      #A-SECTION
-    \*------------------------------------*/
-
-    .selector { }
-
-
-
-
-
-    /*------------------------------------*\
-      #ANOTHER-SECTION
-    \*------------------------------------*/
-
-    /**
-    * Comment
-    */
-
-    .another-selector { }
-  ```
+  This rule should be applied only to comments, exempting all CSS declarations.
 
 ## Anatomy of a Ruleset
 
   Before we discuss how we write out our rulesets, let’s first familiarise ourselves with the relevant terminology:
 
   ```css
-    [selector] {
+  [selector] {
       [property]: [value];
       [<--declaration--->]
-    }
+  }
   ```
 
   For example:
 
   ```css
-    .foo, .foo--bar,
-    .baz {
+  .foo,
+  .foo--bar,
+  .baz {
       display: block;
       background-color: green;
       color: red;
-    }
+  }
   ```
 
   Here you can see we have
 
-  * related selectors on the same line; unrelated selectors on new lines;
+  * each selector on its own new line;
   * a space before our opening brace ( <a>{</a> );
   * properties and values on the same line;
-  * a space after our property–value delimiting colon ( <a>:</a> );
-  * each declaration on its own new line;
+  * a space after our property–value delimiting colon ( <a>:</a> ); [stylelint/declaration-colon-space-after](https://stylelint.io/user-guide/rules/declaration-colon-space-after)
+  * each declaration on its own new line; [stylelint/declaration-block-semicolon-newline-after](https://stylelint.io/user-guide/rules/declaration-block-semicolon-newline-after)
   * the opening brace ( <a>{</a> ) on the same line as our last selector;
-  * our first declaration on a new line after our opening brace ( <a>{</a> );
+  * our first declaration on a new line after our opening brace ( <a>{</a> ); [stylelint/block-opening-brace-newline-after](https://stylelint.io/user-guide/rules/block-opening-brace-newline-after)
   * our closing brace ( <a>}</a> ) on its own new line;
-  * each declaration indented by two (2) spaces;
-  * a trailing semi-colon ( <a>;</a> ) on our last declaration.
-
-  This format seems to be the largely universal standard (except for variations in number of spaces, with a lot of developers preferring two (2)).
+  * each declaration indented by four (4) spaces; [stylelint/indentation](https://stylelint.io/user-guide/rules/indentation)
+  * a trailing semi-colon ( <a>;</a> ) on our last declaration. [stylelint/declaration-block-trailing-semicolon](https://stylelint.io/user-guide/rules/declaration-block-trailing-semicolon)
 
   As such, the following would be incorrect:
 
@@ -276,49 +132,35 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
 ## Multi-line CSS
 
-  CSS should be written across multiple lines, except in very specific circumstances. There are a number of benefits to this:
+  CSS should be written across multiple lines. There are a number of benefits to this:
 
   * A reduced chance of merge conflicts, because each piece of functionality exists on its own line.
   * More ‘truthful’ and reliable <a>diffs</a>, because one line only ever carries one change.
 
-  Exceptions to this rule should be fairly apparent, such as similar rulesets that only carry one declaration each, for example:
+  For example:
 
   ```css
-    .icon {
+  .icon {
       display: inline-block;
       width:  16px;
       height: 16px;
       background-image: url(/img/sprite.svg);
-    }
-
-    .icon--home     { background-position:   0     0  ; }
-    .icon--person   { background-position: -16px   0  ; }
-    .icon--files    { background-position:   0   -16px; }
-    .icon--settings { background-position: -16px -16px; }
+  }
   ```
-
-  These types of ruleset benefit from being single-lined because
-
-  * they still conform to the one-reason-to-change-per-line rule;
-  * they share enough similarities that they don’t need to be read as thoroughly as other rulesets—there is more benefit in being able to scan their selectors, which are of more interest to us in these cases.
 
 ## Indenting
 
-  As well as indenting individual declarations, indent entire related rulesets to signal their relation to one another, for example:
+  Do not indent same level declaration blocks differently:
 
   ```css
-    .foo { }
+  .foo { }
 
-      .foo__bar { }
+  .foo__bar { }
 
-        .foo__baz { }
+  .foo__baz { }
   ```
 
-  By doing this, a developer can see at a glance that <a>.foo__baz {}</a> lives inside <a>.foo__bar {}</a> lives inside <a>.foo {}</a>.
-
-  This quasi-replication of the DOM tells developers a lot about where classes are expected to be used without them having to refer to a snippet of HTML.
-
-## Indenting Sass
+## TODO: Indenting Sass
 
   Sass provides nesting functionality. That is to say, by writing this:
 
@@ -344,78 +186,35 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   <b>N.B.</b> Nesting in Sass should be avoided wherever possible. See [the Specificity section](#specificity) for more details.
 
-## Alignment
-
-  Attempt to align common and related identical strings in declarations, for example:
-
-  ```css
-    .foo {
-      -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-              border-radius: 3px;
-    }
-
-    .bar {
-      position: absolute;
-      top:    0;
-      right:  0;
-      bottom: 0;
-      left:   0;
-      margin-right: -10px;
-      margin-left:  -10px;
-      padding-right: 10px;
-      padding-left:  10px;
-    }
-  ```
-
-  This makes life a little easier for developers whose text editors support column editing, allowing them to change several identical and aligned lines in one go.
-
 ## Meaningful Whitespace
 
-  As well as indentation, we can provide a lot of information through liberal and judicious use of whitespace between rulesets. We use:
-
-  * One (1) empty line between closely related rulesets.
-  * Two (2) empty lines between loosely related rulesets.
-  * Five (5) empty lines between entirely new sections.
+  As well as indentation, we can provide a lot of information through conservative and judicious use of whitespace between rulesets. We use one (1) empty line between rulesets.
 
   For example:
 
   ```css
-  /*------------------------------------*\
-    #FOO
-  \*------------------------------------*/
-
   .foo { }
 
-    .foo__bar { }
-
+  .foo__bar { }
 
   .foo--baz { }
 
-
-
-
-
-  /*------------------------------------*\
-    #BAR
-  \*------------------------------------*/
-
   .bar { }
 
-    .bar__baz { }
+  .bar__baz { }
 
-    .bar__foo { }
+  .bar__foo { }
   ```
 
   There should never be a scenario in which two rulesets do not have an empty line between them. This would be incorrect:
 
   ```css
     .foo { }
-      .foo__bar { }
+    .foo__bar { }
     .foo--baz { }
   ```
 
-## HTML
+## TODO: HTML
 
   Given HTML and CSS’ inherently interconnected nature, it would be remiss of me to not cover some syntax and formatting guidelines for markup.
 
@@ -522,144 +321,64 @@ Based on Harry Roberts' [CSS Guidelines](https://github.com/csswizardry/CSS-Guid
 
   As a rule, you should comment anything that isn’t immediately obvious from the code alone. That is to say, there is no need to tell someone that <a>color: red;</a> will make something red, but if you’re using <a>overflow: hidden;</a> to clear floats—as opposed to clipping an element’s overflow—this is probably something worth documenting.
 
-## High-level
+### Multi-line vs single-line
 
-  For large comments that document entire sections or components, we use a DocBlock-esque multi-line comment which adheres to our 80 column width.
+  If your comment spans multiple lines, use DocBlock-esque multi-line comments. In other cases, use single-line comments.
 
-  Here is a real-life example from the CSS which styles the page header on <a href="https://csswizardry.com/">CSS Wizardry</a>
+  ```scss
+  // single-line-comment
 
-  ```css
-    /**
-      * The site’s main page-head can have two different states:
-      *
-      * 1) Regular page-head with no backgrounds or extra treatments; it just
-      *    contains the logo and nav.
-      * 2) A masthead that has a fluid-height (becoming fixed after a certain point)
-      *    which has a large background image, and some supporting text.
-      *
-      * The regular page-head is incredibly simple, but the masthead version has some
-      * slightly intermingled dependency with the wrapper that lives inside it.
-      */
+  /**
+   * Multi-line comment
+   *
+   * 1) Regular page-head with no backgrounds or extra treatments; it just
+   *    contains the logo and nav.
+   * 2) A masthead that has a fluid-height (becoming fixed after a certain point)
+   *    which has a large background image, and some supporting text.
+   *
+   * The regular page-head is incredibly simple, but the masthead version has some
+   * slightly intermingled dependency with the wrapper that lives inside it.
+   */
   ```
 
   This level of detail should be the norm for all non-trivial code—descriptions of states, permutations, conditions, and treatments.
 
-## Object–Extension Pointers
+### Low-level
 
-  When working across multiple partials, or in an OOCSS manner, you will often find that rulesets that can work in conjunction with each other are not always in the same file or location. For example, you may have a generic button object—which provides purely structural styles—which is to be extended in a component-level partial which will add cosmetics. We document this relationship across files with simple object–extension pointers. In the object file:
-
-  ```css
-  /**
-    * Extend `.btn {}` in _components.buttons.scss.
-    */
-
-    .btn { }
-  ```
-
-  And in your theme file:
-
-  ```css
-    /**
-      * These rules extend `.btn {}` in _objects.buttons.scss.
-      */
-
-    .btn--positive { }
-
-    .btn--negative { }
-  ```
-
-
-  This simple, low effort commenting can make a lot of difference to developers who are unaware of relationships across projects, or who are wanting to know how, why, and where other styles might be being inherited from.
-
-## Low-level
-
-  Oftentimes we want to comment on specific declarations (i.e. lines) in a ruleset. To do this we use a kind of reverse footnote. Here is a more complex comment detailing the larger site headers mentioned above:
-
-  ```css
-    /**
-      * Large site headers act more like mastheads. They have a faux-fluid-height
-      * which is controlled by the wrapping element inside it.
-      *
-      * 1. Mastheads will typically have dark backgrounds, so we need to make sure
-      *    the contrast is okay. This value is subject to change as the background
-      *    image changes.
-      * 2. We need to delegate a lot of the masthead’s layout to its wrapper element
-      *    rather than the masthead itself: it is to this wrapper that most things
-      *    are positioned.
-      * 3. The wrapper needs positioning context for us to lay our nav and masthead
-      *    text in.
-      * 4. Faux-fluid-height technique: simply create the illusion of fluid height by
-      *    creating space via a percentage padding, and then position everything over
-      *    the top of that. This percentage gives us a 16:9 ratio.
-      * 5. When the viewport is at 758px wide, our 16:9 ratio means that the masthead
-      *    is currently rendered at 480px high. Let’s…
-      * 6. …seamlessly snip off the fluid feature at this height, and…
-      * 7. …fix the height at 480px. This means that we should see no jumps in height
-      *    as the masthead moves from fluid to fixed. This actual value takes into
-      *    account the padding and the top border on the header itself.
-      */
-
-      .page-head--masthead {
-        margin-bottom: 0;
-        background: url(/img/css/masthead.jpg) center center #2e2620;
-        @include vendor(background-size, cover);
-        color: $color-masthead; /* [1] */
-        border-top-color: $color-masthead;
-        border-bottom-width: 0;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) inset;
-
-        @include media-query(lap-and-up) {
-          background-image: url(/img/css/masthead-medium.jpg);
-        }
-
-        @include media-query(desk) {
-          background-image: url(/img/css/masthead-large.jpg);
-        }
-
-        > .wrapper { /* [2] */
-          position: relative; /* [3] */
-          padding-top: 56.25%; /* [4] */
-
-          @media screen and (min-width: 758px) { /* [5] */
-            padding-top: 0; /* [6] */
-            height: $header-max-height - double($spacing-unit) - $header-border-width; /* [7] */
-          }
-
-        }
-
-      }
-  ```
-
-  These types of comment allow us to keep all of our documentation in one place whilst referring to the parts of the ruleset to which they belong.
-
-## Preprocessor Comments
-
-  With most—if not all—preprocessors, we have the option to write comments that will not get compiled out into our resulting CSS file. As a rule, use these comments to document code that would not get written out to that CSS file either. If you are documenting code which will get compiled, use comments that will compile also. For example, this is correct:
+  Oftentimes we want to comment on specific declarations (i.e. lines) in a ruleset. Add these comments directly before the declarations.
 
   ```scss
-    // Dimensions of the @2x image sprite:
-    $sprite-width:  920px;
-    $sprite-height: 212px;
+  .header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-    /**
-    * 1. Default icon size is 16px.
-    * 2. Squash down the retina sprite to display at the correct size.
-    */
-    .sprite {
-      width:  16px; /* [1] */
-      height: 16px; /* [1] */
-      background-image: url(/img/sprites/main.png);
-      background-size: ($sprite-width / 2 ) ($sprite-height / 2); /* [2] */
-    }
+      @media only screen and (max-width: $bp-md-min - 1) {
+          position: fixed;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          overflow: auto;
+          // background color is always related to text color
+          background-color: $color-text-03;
+          flex-wrap: wrap;
+          align-items: flex-start;
+          padding-top: $header-height;
+          opacity: 0;
+          visibility: hidden;
+          transition: $transition-duration $transition-easing;
+          transition-property: opacity, visibility;
+      }
+  }
   ```
 
-  We have documented variables—code which will not get compiled into our CSS file—with preprocessor comments, whereas our CSS—code which will get compiled into our CSS file—is documented using CSS comments. This means that we have only the correct and relevant information available to us when debugging our compiled stylesheets.
+  These types of comments allow us to keep all of our documentation together with the ruleset to which they belong. This splits up the documentation into smaller chunks that are easier to reason about and understand.
 
-## Removing Comments
+### Removing Comments
 
   It should go without saying that no comments should make their way into production environments—all CSS should be minified, resulting in loss of comments, before being deployed.
-
-  **[⬆ back to top](#contents)**
 
 ## Naming Conventions
 
