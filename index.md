@@ -44,7 +44,7 @@ Get updates about changes, additions, and new and upcoming sections by following
 * [Syntax and Formatting](#syntax-and-formatting)
     * [Multiple Files](#multiple-files)
     * [Table of Contents](#table-of-contents)
-    * [80 Characters Wide](#characters-wide)
+    * [80 Characters Wide](#80-characters-wide)
     * [Titling](#titling)
     * [Anatomy of a Ruleset](#anatomy-of-a-ruleset)
     * [Multi-line CSS](#multi-line-css)
@@ -201,7 +201,7 @@ A table of contents is a fairly substantial maintenance overhead, but the
 benefits it brings far outweigh any costs. It takes a diligent developer to keep
 a table of contents up to date, but it is well worth sticking with. An
 up-to-date table of contents provides a team with a single, canonical catalogue
-of what is in a CSS project, what it does, and in what order.  
+of what is in a CSS project, what it does, and in what order.
 
 A simple table of contents will—in order, naturally—simply provide the name of
 the section and a brief summary of what it is and does, for example:
@@ -2262,7 +2262,7 @@ have to always be declared together. In this instance, we probably would DRY
 out our CSS.
 
 I would recommend using a mixin over `@extend` here because, even though the two
-declarations are thematically grouped, the rulesets themselves are still 
+declarations are thematically grouped, the rulesets themselves are still
 separate, unrelated entities: to use `@extend` would be to physically group
 these unrelated rulesets together in our CSS, thus making the unrelated related.
 
